@@ -1,0 +1,169 @@
+var findoperdayGrid = null;
+require([ "app/util", "dgrid/Editor","dijit/form/Button" ,"dijit/form/DateTextBox","dijit/form/Select","dijit/form/Textarea","dijit/form/ComboBox"
+          ,"dgrid/OnDemandGrid","dijit/form/TextBox","app/Pagination"
+          ,"dgrid/Selection", "dgrid/Keyboard","dgrid/extensions/ColumnResizer"
+          ,"app/createSyncStore","dstore/Memory","dgrid/extensions/DijitRegistry"
+          ,"dijit/registry", "dojo/dom-style","dojo/_base/declare",
+          "dojo/dom-construct", "dojo/domReady!"], function(util,
+        		  Editor, Button,DateTextBox,Select,Textarea,FilteringSelect,Grid,TextBox
+        		  , Pagination,Selection,Keyboard,ColumnResizer,createSyncStore,Memory,DijitRegistry
+        		  ,registry, domStyle,declare, dc ) {
+	dc.place(dc.create("span",{innerHTML:"公司",style:{"margin-right":"5px"}}),'findbyldiv');
+	var byl_comp= new FilteringSelect({id:"byl_comp",
+		options: [],style:{"width":"245px","margin-right":"15px"}}).placeAt('findbyldiv');
+	var queryCondition = {"comp_id":byl_comp};
+	var findbylbutton =new Button({
+	        label: "查询",
+	        onClick: function(){
+				this.showWait();
+				var postData = {"page":1,"pageSize":pageSize};
+	        	for(var o in queryCondition){
+	        			postData[o] = queryCondition[o].value;
+	        	}
+	        	dojo.xhrPost(dojo.mixin(xhrArgs,{"postData":'postData='+dojo.toJson(postData)}));
+	        }
+	}).placeAt('findbyldiv');
+
+	new Button({
+		label : "导  出",
+		onClick : function() {
+			var postData = {
+				"page" : 1,
+				"pageSize" : 10000
+			};
+			for(var o in queryCondition){
+				postData[o] = queryCondition[o].value;
+			}
+			url = "hygl/findbylexcle?postData="
+				+ dojo.toJson(postData), window.open(url)
+		}
+	}).placeAt('findbyldiv');
+
+	queryGs().then(function(data){
+		console.dir("#####"+data)
+		byl_comp.set('store',new dojo.store.Memory({ data: data.datas}));
+	})
+		byl_comp.set('queryExpr', "*${0}*"  )
+	//查询按钮
+	var xhrArgs = {
+			url : basePath + "hygl/findbyl",
+			postData : 'postData={"page":1,"pageSize":'+pageSize+'}',
+			handleAs : "json",
+			load : function(data) {
+				findbylbutton.hideWait();
+				var time=[];
+			var c=[];
+			var c1=[];
+			for (var i = 0; i < data.length; i++) {
+				time.push(data[i].VEHI_DATE);
+				c.push(data[i].C);
+				c1.push(data[i].C1);
+			}
+			zztb(time,c,c1);
+			},
+		};
+
+	findbylbutton.onClick();
+//	dojo.xhrPost(xhrArgs);
+});
+function zztb(time,c,c1){		
+	var myChart = echarts.init(document.getElementById('findzztbtable'));
+    // 使用
+   
+            
+	option = {
+		    title : {
+		        text: '杭州出租保有量统计图表',
+		        subtext: '',
+		        sublink: ''
+		    },
+		    tooltip : {
+		        trigger: 'axis',
+		        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+		            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+		        },
+		        formatter: function (params){
+		            return params[0].name + '<br/>'
+		                   + params[0].seriesName + ' : ' + params[0].value + '<br/>'
+		                   + params[1].seriesName + ' : ' + (params[1].value + params[0].value);
+		        }
+		    },
+		    legend: {
+		        selectedMode:false,
+		        data:['当前车辆', '新增车辆']
+		    },
+		    toolbox: {
+		        show : true,
+		        feature : {
+		            mark : {show: true},
+		            dataView : {show: true, readOnly: false},
+		            restore : {show: true},
+		            saveAsImage : {show: true}
+		        }
+		    },
+		    calculable : true,
+		    xAxis : [
+		        {
+		            type : 'category',
+		            data : time
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value',
+		            boundaryGap: [0, 0.1]
+		        }
+		    ],
+		    series : [
+		        {
+		            name:'当前车辆',
+		            type:'bar',
+		            stack: 'sum',
+		            barCategoryGap: '50%',
+		            itemStyle: {
+		                normal: {
+		                    color: 'tomato',
+		                    barBorderColor: 'tomato',
+		                    barBorderWidth: 6,
+		                    barBorderRadius:0,
+		                    label : {
+		                        show: true, position: 'insideTop'
+		                    }
+		                }
+		            },
+		            data:c1
+		        },
+		        {
+		            name:'新增车辆',
+		            type:'bar',
+		            stack: 'sum',
+		            itemStyle: {
+		                normal: {
+		                    color: '#fff',
+		                    barBorderColor: 'tomato',
+		                    barBorderWidth: 6,
+		                    barBorderRadius:0,
+		                    label : {
+		                        show: true, 
+		                        position: 'top',
+		                        formatter: function (params) {
+		                            for (var i = 0, l = option.xAxis[0].data.length; i < l; i++) {
+		                                if (option.xAxis[0].data[i] == params.name) {
+		                                    return option.series[0].data[i] + params.value;
+		                                }
+		                            }
+		                        },
+		                        textStyle: {
+		                            color: 'tomato'
+		                        }
+		                    }
+		                }
+		            },
+		            data:c
+		        }
+		    ]
+		};
+
+	
+	echarts.init(document.getElementById('findzztbtable')).setOption(option);				
+}	

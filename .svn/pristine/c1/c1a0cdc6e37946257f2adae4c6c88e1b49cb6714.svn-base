@@ -1,0 +1,33 @@
+<!-- 业户查询 -->
+<html>
+	<head>
+	<style>
+		#cljkdiv{
+			width: 90%;
+			height: 85%;
+			background: url('resources/images/dzdd/cljk.png')  no-repeat center;
+			position: relative;
+			zoom:0.8;
+			margin-top:20px;
+			margin-left:5%;
+		}
+		#cljkzt{
+			text-align:center;
+			height: 8%;
+			font-size:14px;
+			margin-top:20px;
+			text-align: left;
+			text-indent: 2em;
+		}
+		#cljkzt{
+			font-family: '微软雅黑';
+			font-size: 15px;
+			line-height: 20px;
+		}
+	</style>
+	</head>
+	<body>
+		<div id="cljkzt">车辆监控实时展示出租车上下线和空重车状态，包括出租车的总数、上线数、下线数、重车数、空车数，及其Sim卡号、车速(km/h)、状态、汇报时间、当前定位、终端类型、车辆类型等信息，便于管理人员实时掌握车辆状态</div>
+		<div id="cljkdiv"></div>
+	</body>
+</html>

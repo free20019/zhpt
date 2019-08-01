@@ -1,0 +1,10 @@
+<!-- 业户查询 -->
+<html>
+	<head>
+		<script type="text/javascript" src="app/html/monitor/clxx.js"></script>
+	</head>
+	<body>
+		<div id="clxxdiv"></div>
+		<div id="clxxtable" class="clxxtable" ></div>
+	</body>
+</html>

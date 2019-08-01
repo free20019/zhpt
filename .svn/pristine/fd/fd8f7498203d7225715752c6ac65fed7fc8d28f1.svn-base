@@ -1,0 +1,17 @@
+<!--司机账号信息-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="app/html/monitor/yhqxgl.js"></script>
+	<style type="text/css">
+		#yhqxgltooldiv {margin-top: -15px;}
+		#yhqxgladddiv, #yhqxglupdatediv, #yhqxgldeletediv {display: inline-block;}
+	</style>
+</head>
+<body>
+<div id="yhqxgldiv"></div>
+<div id="yhqxgltable" class="yhqxgltable" ></div>
+<div id="yhqxglFrameDialogDiv" class="yhqxglFrameDialog"></div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!--重点区域上线率分析-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="zdqusxlfxdiv"></div>
+<div id="zdqusxlfxtable" class="zdqusxlfxtable" style="height: 350px;" ></div>
+<div id="zdqusxlfxtb" style="height:330px;"></div>
+<script type="text/javascript" src="app/html/monitor/zdqusxlfx.js"></script>
+</body>
+</html>

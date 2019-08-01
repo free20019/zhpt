@@ -1,0 +1,41 @@
+<script type="text/javascript">
+
+
+
+require([ "app/ttt","dojo/dom-construct", "dojo/NodeList-manipulate","dojo/domReady!"]
+,function(ttt,dc,query){
+	var datas = leftYjzhMenu;
+	var ul = dojo.byId('mainSplitterLeft_ul')
+	for(var i=0; i<datas.length; i++){
+		var show  = i>0?'style="display:none"':'',bc =  i>0?'#FFF':'#F58320',cc = i>0?'#000000':'#FFFFFF' ;  
+		dc.place('<li class="li1" style="color:'+cc+'; background:'+bc+'"><span class="li_container"></span>'+datas[i]["name"]+'</li>',ul);
+		var div = dc.place('<div id="li1_'+(i+1)+'_text" '+ show +'>',ul);
+		for(var j=0; j<datas[i]['item'].length; j++){
+			var type = typeof( datas[i]['item'][j]);
+			if( type == 'string'){
+				dc.place('<li class="li2" style="color: #000000; background: #FFF;"><span></span>'+datas[i]["item"][j]+'</li>',div)
+			}else if( type == 'object'){
+				console.log('is object...')
+				var datas2 = datas[i]['item'][j]['item'];
+				var bc2 =  i2>0?'#FFF':'#F58320',cc2 = i2>0?'#000000':'#FFFFFF' ;  
+				dc.place('<li cf=1 class="li2" style="color:'+cc+'; background:'+bc+'"><span class="li_container"></span>'+datas[i]['item'][j]["name"]+'</li>',div);
+				var div2 = dc.place('<div id="li2_'+(j+1)+'_text" >',div);
+				for(var i2=0;i2<datas2.length;i2++){
+					dc.place('<li class="li3" style="color: #000000; background: #FFF;"><span></span>'+datas2[i2]+'</li>',div2)
+				}
+			}
+		}
+	}
+	var t = new ttt('');
+	t.addEvent();
+	t.addEvent2();
+}
+);
+
+</script>
+    <div id="mainSplitterLeft" class="mainSplitterLeft" style="height: 100%">
+		<ul id="mainSplitterLeft_ul" style="padding: 0px;margin: 0px">
+				
+		</ul>
+	</div>
+

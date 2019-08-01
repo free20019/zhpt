@@ -1,0 +1,106 @@
+<!-- 历史轨迹 -->
+<html>
+	<!-- 历史轨迹 -->
+	<head>
+		<script type="text/javascript" src="app/html/monitor/area_management.js"></script>
+		<style type="text/css">
+			.txtstyle{position:relative;}
+			.txtstyle span{
+				white-space:nowrap;
+				display:block;
+				text-align:left;
+				background-color: #3399CC;
+				color:#FFFFFF;
+				width:auto;
+				border:1px solid #3399CC;
+				FONT-FAMILY:微软雅黑;
+				position:absolute;
+				top:-10px;left:25px;
+				white-space:nowrap webkit-border-radius:5px;
+				border-radius:5px;
+			}
+			#tip{
+				position:absolute;
+				right:30px;
+				top:40px;
+				border-radius:3px;
+				line-height:30px;
+			}
+		</style>
+	</head>
+	<body>
+			<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true,gutters:true, liveSplitters:true">
+				<div data-dojo-type="dojox/layout/ContentPane" style="height: 58%; width: 100%" data-dojo-props="splitter:true, region:'top'">
+					<div id="area_manageDiv" style="height: 100%;"></div>
+				</div>
+				<div  data-dojo-type="dojox/layout/ContentPane" style="height: 42%; width: 100%" data-dojo-props="splitter:true, region:'center'">
+					<div id="buttonadmin" style="height: 35px;"></div>
+					<div id="area_manage_table" class="area_manage_table"></div>
+				</div>
+			</div>
+			<div data-dojo-type="dijit/Dialog" data-dojo-id="AddAreaDialog"
+		 title="添加" style="display: none">
+		    <table >
+		        <tr>
+		            <td><label>区域名称:</label></td>
+		           <td><input data-dojo-type="dijit/form/TextBox" id="area_name"></td>
+		        </tr>
+		        <tr>
+		            <td><label>区域描述:</label></td>
+		            <td colspan="3"><Textarea data-dojo-type="dijit/form/Textarea" id="area_ms"></Textarea></td>
+		        </tr>
+		        <tr>
+		            <td><label>区域面积:</label></td>
+		            <td><input data-dojo-type="dijit/form/TextBox" id="area_size" disabled></td>
+		        </tr>
+		        <tr>
+		            <td><label>预报警数:</label></td>
+		            <td colspan="3"><Textarea data-dojo-type="dijit/form/Textarea" id="area_ybj"
+		            value="10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;" disabled></Textarea></td>
+		        </tr>
+		        <tr>
+		            <td><label>区域坐标:</label></td>
+		            <td colspan="3"><Textarea data-dojo-type="dijit/form/Textarea" id="area_zb" disabled></Textarea></td>
+		        </tr>
+		    </table>
+		
+		    <div class="dijitDialogPaneActionBar">
+		        <button data-dojo-type="dijit/form/Button" type="button" onclick="newaddArea()">保存</button>
+		        <button data-dojo-type="dijit/form/Button" type="button" data-dojo-props="onClick:function(){AddAreaDialog.hide();}"
+		                >取消</button>
+		    </div>
+		</div>
+		
+		<div data-dojo-type="dijit/Dialog" data-dojo-id="EidtAreaDialog"
+		 title="修改" style="display: none">
+		    <table >
+		        <tr><input data-dojo-type="dijit/form/TextBox" type="hidden" id="area_id_e">
+		            <td><label>区域名称:</label></td>
+		           <td><input data-dojo-type="dijit/form/TextBox" id="area_name_e"></td>
+		        </tr>
+		        <tr>
+		            <td><label>区域描述:</label></td>
+		            <td colspan="3"><Textarea data-dojo-type="dijit/form/Textarea" id="area_ms_e"></Textarea></td>
+		        </tr>
+		        <tr>
+		            <td><label>区域面积:</label></td>
+		            <td><input data-dojo-type="dijit/form/TextBox" id="area_size_e" disabled></td>
+		        </tr>
+		        <tr>
+		            <td><label>预报警数:</label></td>
+		            <td colspan="3"><Textarea data-dojo-type="dijit/form/Textarea" id="area_ybj_e" disabled></Textarea></td>
+		        </tr>
+		        <tr>
+		            <td><label>区域坐标:</label></td>
+		            <td colspan="3"><Textarea data-dojo-type="dijit/form/Textarea" id="area_zb_e" disabled></Textarea></td>
+		        </tr>
+		    </table>
+		
+		    <div class="dijitDialogPaneActionBar">
+		        <button data-dojo-type="dijit/form/Button" type="button" onclick="neweditArea()">修改</button>
+		        <button data-dojo-type="dijit/form/Button" type="button" data-dojo-props="onClick:function(){EidtAreaDialog.hide();}"
+		                >取消</button>
+		    </div>
+		</div>
+	</body>
+</html>

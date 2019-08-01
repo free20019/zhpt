@@ -1,0 +1,11 @@
+<html>
+<!-- 里程统计 -->
+	<head>
+		<script type="text/javascript" src="app/html/monitor/areaclmx.js"></script>
+	</head>
+	<body>
+		<div id="areaclmxdiv"></div>
+		<div id="areaclmxtable" class="areaclmxtable" style="height: 100px;" ></div>
+		<div id="areaclmxtb" class="areaclmxtb" style="height:500px;"></div>
+	</body>
+</html>

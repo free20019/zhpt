@@ -1,0 +1,41 @@
+<!-- 启动 -->
+<html>
+<head>
+<script type="text/javascript" src="app/html/yjzhXxsc.js"></script>
+	<style type="text/css">
+		.yjzhXxscGridDiv th,.yjzhXxscGridDiv td {text-align: center;}
+		.yjzhXxscGridDiv .field-id {width: 45px;}
+		.yjzhXxscGridDiv .field-TIME {width: 80px;}
+		.yjzhXxscGridDiv .field-SJZT {width: 120px;}
+		.yjzhXxscGridDiv .field-SJJL {width: 650px;}
+		.yjzhXxscGridDiv .field-BJR {width: 100px;}
+		.yjzhXxscGridDiv .field-DJDH {width: 100px;}
+		.yjzhXxscGridDiv .field-JJR {width: 100px;}
+		.yjzhXxscGridDiv .field-SJJB {width: 100px;}
+		.yjzhXxscGridDiv .field-SH {width: 100px;}
+	</style>
+</head>
+	<body class="claro">
+		<div id="yjzhXxscToolBar3"></div>
+		<div id="yjzhXxscGridDiv3" class="yjzhXxscGridDiv" style="height:40%" ></div>
+		<div id="yjzhXxscGridDiv4" data-dojo-type="dijit/layout/BorderContainer"
+		data-dojo-props="persist:true,gutters:true,liveSplitters:true" style="height:40%;margin-top: 10px;">
+		  <div  data-dojo-type="dijit/layout/ContentPane" 
+		      data-dojo-props=" region:'top'"  style="width:100%;height: 60px;margin: 0px;">
+		      <span style="color: #ff0000;font-size: 14px;font-family: '宋体';">报警描述:</span>
+			 <div id="xxsc_sjmiaoshu" style="text-indent:2em;" ></div>
+		  </div>
+		  <div  data-dojo-type="dijit/layout/ContentPane" 
+		      data-dojo-props=" region:'center'"  style="width:100%;margin: 0px;">
+			 <span style="color: #ff0000;font-size: 14px;font-family: '宋体'; margin-top:5px;">事件记录:</span>
+			 <div id="xxsc_content" style="text-indent:2em;">
+			     <!--2015年5月1号，接市民举报，登云路文化商场路段停放大量出租车，造成道路交通阻塞，有闹事的嫌疑，经过2个小时的应急处理，现在的情况是当事人已经撤离现场，恢复了正常的交通秩序。-->
+			 </div>
+		  </div>
+		</div>
+		<!--<div style="text-align: center;">-->
+			<!--<button id="xxsc_bc" type="button"></button>-->
+			<!--<button id="xxsc_sh" type="button"></button>-->
+		<!--</div>-->
+	</body>
+</html>

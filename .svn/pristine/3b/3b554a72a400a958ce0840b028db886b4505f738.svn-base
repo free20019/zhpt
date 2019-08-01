@@ -1,0 +1,24 @@
+<!-- 业户查询 -->
+<html>
+<head>
+    <style>
+        #wyfydiv{
+            width: 100%;
+            height: 90%;
+            background: url('resources/images/dzdd/wyfy.png')  no-repeat center;
+            position: relative;
+        }
+        #wyfyzt{
+            text-align:center;
+            height: 5%;
+            font-size:14px;
+            margin-top:20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="wyfyzt">外语翻译功能，当外宾乘车，而司机无法清楚了解乘客需求时，可致电给电召服务系统来解决。</div>
+<div id="wyfydiv"></div>
+</body>
+</html>

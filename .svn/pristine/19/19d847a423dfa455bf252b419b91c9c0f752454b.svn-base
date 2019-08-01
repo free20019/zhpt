@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>杭州市出租汽车信息系统综合平台</title>
+<link rel="icon" href="resources/images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="app/main.css">
+
+<script type="text/javascript" src="app/config2.js"></script>
+<script type="text/javascript"
+	src="libs/dojo-release-1.10.4-src/release/myDojo/dojo/dojo.js"></script>
+<script type="text/javascript" src="app/main2.js"></script>
+<script type="text/javascript" src="libs/d3.v3.js"></script>
+<script type="text/javascript" src="libs/scroll.js"></script>
+<script type="text/javascript" src="libs/LiveQuery.js"></script>
+<script type="text/javascript" src="libs/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=d0face2397384365119fbf558c48c10a"></script>
+<script type="text/javascript" src="app/init.js"></script>
+<style>
+
+.fontsize{
+	font-size:12px;
+}
+
+#app{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#map{
+		width: 100%;
+    height: 100%;
+}
+
+#panel_left_warpper{
+		position: absolute;
+    left: 20px;
+    top: 20px;
+    overflow: hidden;
+/*     pointer-events: none; */
+    
+/*     background-color: #fff; */
+    width:300px;
+/*     height: 50px; */
+
+}
+
+#panel_left{
+	width:300px;
+}
+#panel_top{
+		position: absolute;
+    top: 20px;
+    left: 500px;
+    min-width: 500px;
+    
+    background-color: #fff;
+    width:100px;
+    height: 50px;
+}
+
+#panel_right{
+		position: absolute;
+    top: 20px;
+    right: 10px;
+    min-width: 400px;
+    
+    background-color: #fff;
+    width:100px;
+    height: 34px;
+    line-height: 34px;
+}
+
+#panel_right span{
+	padding-left: 10px;
+	
+}
+#panel_right_back span{
+	padding-left: 10px;
+	 background-color: #fff;
+}
+
+
+/***/
+#tj_pop{
+		position: absolute;
+    top: 60px;
+    right: 15px;
+    min-width: 245px;
+    
+    background-color: #fff;
+    height: 200px;
+    line-height: 34px;
+
+}
+</style>
+
+<style type="text/css">
+
+* {
+    outline: none;
+}
+
+.claro .dijitTabContainerTop-tabs .dijitTab{
+	padding: 0px 3px;
+}
+
+.claro .dijitTabContainerTop-tabs .dijitTabChecked{
+	padding-top: 0px
+}
+</style>
+
+<style>
+#lx_DIV_31 {
+    color: rgb(76, 76, 76);
+    height: 784px;
+    position: relative;
+    width: 1600px;
+    perspective-origin: 800px 392px;
+    transform-origin: 800px 392px;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / normal Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(76, 76, 76) none 0px;
+    overflow: hidden;
+}/*#lx_DIV_31*/
+
+#lx_DIV_32 {
+    color: rgb(76, 76, 76);
+    height: 48px;
+    min-width: 400px;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    width: 400px;
+    align-self: stretch;
+    perspective-origin: 200px 24px;
+    transform-origin: 200px 24px;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / normal Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(76, 76, 76) none 0px;
+}/*#lx_DIV_32*/
+
+
+
+#lx_DIV_3 {
+    color: rgb(76, 76, 76);
+    float: left;
+    height: 34px;
+    width: 94px;
+    perspective-origin: 47px 17px;
+    transform-origin: 47px 17px;
+    border: 0px none rgb(76, 76, 76);
+    border-radius: 2px 2px 2px 2px;
+    font: normal normal normal normal 12px / normal Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(76, 76, 76) none 0px;
+}/*#lx_DIV_3*/
+
+#lx_SPAN_4 {
+    color: rgb(76, 76, 76);
+    display: block;
+    float: left;
+    height: 34px;
+    width: 5px;
+    perspective-origin: 6px 17px;
+    transform-origin: 6px 17px;
+    background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;
+    border: 0px none rgb(76, 76, 76);
+    border-radius: 2px 0 0 2px;
+    font: normal normal normal normal 12px / normal Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(76, 76, 76) none 0px;
+    padding: 0px 0px 0px 7px;
+}/*#lx_SPAN_4*/
+
+#lx_SPAN_5 {
+    color: rgb(76, 76, 76);
+    display: block;
+    float: left;
+    height: 34px;
+    vertical-align: middle;
+    width: 22px;
+    perspective-origin: 11px 17px;
+    transform-origin: 11px 17px;
+    background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / 17px Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(76, 76, 76) none 0px;
+}/*#lx_SPAN_5*/
+
+#lx_IMG_6 {
+    color: rgb(76, 76, 76);
+    height: 16px;
+    width: 16px;
+    perspective-origin: 8px 12px;
+    transform-origin: 8px 12px;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / 17px Arial, Helvetica, SimSun, sans-serif;
+    margin: 0px 6px 0px 0px;
+    outline: rgb(76, 76, 76) none 0px;
+    padding: 8px 0px 0px;
+}/*#lx_IMG_6*/
+
+#lx_A_7 {
+    color: rgb(102, 102, 102);
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 34px;
+    position: relative;
+    text-decoration: none;
+    vertical-align: middle;
+    width: 48px;
+    perspective-origin: 30px 17px;
+    transform-origin: 30px 17px;
+    background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;
+    border: 0px none rgb(102, 102, 102);
+    font: normal normal normal normal 12px / 34px Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(102, 102, 102) none 0px;
+    padding: 0px 12px 0px 0px;
+}/*#lx_A_7*/
+
+#lx_SPAN_8 {
+    color: rgb(102, 102, 102);
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 34px;
+    width: 36px;
+    perspective-origin: 18px 17px;
+    transform-origin: 18px 17px;
+    border: 0px none rgb(102, 102, 102);
+    font: normal normal normal normal 12px / 34px Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(102, 102, 102) none 0px;
+}/*#lx_SPAN_8*/
+
+#lx_EM_9 {
+    background-position: -13px -17px;
+    color: rgb(102, 102, 102);
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 7px;
+    width: 7px;
+    perspective-origin: 3.5px 3.5px;
+    transform-origin: 3.5px 3.5px;
+    background: rgba(0, 0, 0, 0) url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/ui3/tools/newtools_8e289a5.png) no-repeat scroll -13px -17px / auto padding-box border-box;
+    border: 0px none rgb(102, 102, 102);
+    font: italic normal normal normal 12px / 34px Arial, Helvetica, SimSun, sans-serif;
+    margin: 13px 0px 0px 5px;
+    outline: rgb(102, 102, 102) none 0px;
+}/*#lx_EM_9*/
+
+#lx_DIV_10 {
+    color: rgb(76, 76, 76);
+    float: left;
+    height: 34px;
+    width: 151px;
+    perspective-origin: 75.5px 17px;
+    transform-origin: 75.5px 17px;
+    background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;
+    border: 0px none rgb(76, 76, 76);
+    border-radius: 0 2px 2px 0;
+    font: normal normal normal normal 12px / normal Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(76, 76, 76) none 0px;
+}/*#lx_DIV_10*/
+
+#lx_B_11, #lx_B_15 {
+    color: rgb(76, 76, 76);
+    display: block;
+    float: left;
+    height: 21px;
+    position: relative;
+    top: 7px;
+    width: 0px;
+    perspective-origin: 0.5px 10.5px;
+    transform-origin: 0.5px 10.5px;
+    border-top: 0px none rgb(76, 76, 76);
+    border-right: 1px solid rgb(238, 238, 238);
+    border-bottom: 0px none rgb(76, 76, 76);
+    border-left: 0px none rgb(76, 76, 76);
+    font: normal normal bold normal 12px / normal Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(76, 76, 76) none 0px;
+}/*#lx_B_11, #lx_B_15*/
+
+
+#lx_DIV_2 {
+    color: rgb(76, 76, 76);
+    position: relative;
+    perspective-origin: 122.5px 0px;
+}/*#lx_DIV_2*/
+
+.tools_item{
+background: #fff;
+color: rgb(76, 76, 76);
+    cursor: pointer;
+    float: left;
+    height: 34px;
+/*     width: 53px; */
+    perspective-origin: 32.5px 17px;
+    transform-origin: 32.5px 17px;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / 34px Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(76, 76, 76) none 0px;
+    padding: 0px 12px 0px 0px;
+}
+#lx_SPAN_13 {
+    background-position: 1px -114px;
+    color: rgb(76, 76, 76);
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 34px;
+    width: 29px;
+    perspective-origin: 14.5px 17px;
+    transform-origin: 14.5px 17px;
+    background: rgba(0, 0, 0, 0) url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/ui3/tools/newtools_8e289a5.png) no-repeat scroll 1px -114px / auto padding-box border-box;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / 34px Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(76, 76, 76) none 0px;
+}/*#lx_SPAN_13*/
+
+#lx_I_14, #lx_I_18 {
+    color: rgb(76, 76, 76);
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 34px;
+    width: 24px;
+    perspective-origin: 12px 17px;
+    transform-origin: 12px 17px;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / 34px Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(76, 76, 76) none 0px;
+}/*#lx_I_14, #lx_I_18*/
+
+#lx_DIV_16 {
+    color: rgb(76, 76, 76);
+    cursor: pointer;
+    float: left;
+    height: 34px;
+    width: 72px;
+    perspective-origin: 42px 17px;
+    transform-origin: 42px 17px;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / 34px Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(76, 76, 76) none 0px;
+    padding: 0px 12px 0px 0px;
+}/*#lx_DIV_16*/
+
+#lx_SPAN_17 {
+    background-position: -34px -116px;
+    color: rgb(76, 76, 76);
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 34px;
+    width: 29px;
+    perspective-origin: 18px 17px;
+    transform-origin: 18px 17px;
+    background: rgba(0, 0, 0, 0) url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/ui3/tools/newtools_8e289a5.png) no-repeat scroll -34px -116px / auto padding-box border-box;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / 34px Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(76, 76, 76) none 0px;
+    padding: 0px 7px 0px 0px;
+}/*#lx_SPAN_17*/
+
+#lx_EM_19 {
+    background-position: -13px -17px;
+    color: rgb(76, 76, 76);
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 7px;
+    width: 7px;
+    perspective-origin: 3.5px 3.5px;
+    transform-origin: 3.5px 3.5px;
+    background: rgba(0, 0, 0, 0) url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/ui3/tools/newtools_8e289a5.png) no-repeat scroll -13px -17px / auto padding-box border-box;
+    border: 0px none rgb(76, 76, 76);
+    font: italic normal normal normal 12px / 34px Arial, Helvetica, SimSun, sans-serif;
+    margin: 13px 0px 0px 5px;
+    outline: rgb(76, 76, 76) none 0px;
+}/*#lx_EM_19*/
+
+#lx_DIV_20 {
+    box-shadow: rgba(0, 0, 0, 0.14902) 1px 2px 1px 0px;
+    color: rgb(76, 76, 76);
+    display: none;
+    float: left;
+    height: auto;
+    position: absolute;
+    right: 0px;
+    top: 34px;
+    width: 86px;
+    z-index: 80000;
+    align-self: stretch;
+    perspective-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / normal Arial, Helvetica, SimSun, sans-serif;
+    outline: rgb(76, 76, 76) none 0px;
+}/*#lx_DIV_20*/
+
+#lx_UL_21 {
+    color: rgb(76, 76, 76);
+    height: auto;
+    width: auto;
+    perspective-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / normal Arial, Helvetica, SimSun, sans-serif;
+    list-style: none outside none;
+    margin: 0px;
+    outline: rgb(76, 76, 76) none 0px;
+    padding: 0px;
+}/*#lx_UL_21*/
+
+#lx_LI_22, #lx_LI_25, #lx_LI_28 {
+    box-sizing: border-box;
+    color: rgb(76, 76, 76);
+    cursor: pointer;
+    height: 34px;
+    width: 100%;
+    perspective-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / 34px Arial, Helvetica, SimSun, sans-serif;
+    list-style: none outside none;
+    outline: rgb(76, 76, 76) none 0px;
+    padding: 0px 0px 0px 7px;
+}/*#lx_LI_22, #lx_LI_25, #lx_LI_28*/
+
+#lx_SPAN_23 {
+    background-position: -80px -117px;
+    color: rgb(76, 76, 76);
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 34px;
+    text-align: left;
+    width: 29px;
+    perspective-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    background: rgba(0, 0, 0, 0) url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/ui3/tools/newtools_8e289a5.png) no-repeat scroll -80px -117px / auto padding-box border-box;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / 34px Arial, Helvetica, SimSun, sans-serif;
+    list-style: none outside none;
+    outline: rgb(76, 76, 76) none 0px;
+}/*#lx_SPAN_23*/
+
+#lx_I_24, #lx_I_27, #lx_I_30 {
+    color: rgb(76, 76, 76);
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 34px;
+    text-align: left;
+    perspective-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / 34px Arial, Helvetica, SimSun, sans-serif;
+    list-style: none outside none;
+    margin: 0px 0px 0px 2px;
+    outline: rgb(76, 76, 76) none 0px;
+}/*#lx_I_24, #lx_I_27, #lx_I_30*/
+
+#lx_SPAN_26 {
+    background-position: -80px -168px;
+    color: rgb(76, 76, 76);
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 34px;
+    text-align: left;
+    width: 29px;
+    perspective-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    background: rgba(0, 0, 0, 0) url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/ui3/tools/newtools_8e289a5.png) no-repeat scroll -80px -168px / auto padding-box border-box;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / 34px Arial, Helvetica, SimSun, sans-serif;
+    list-style: none outside none;
+    outline: rgb(76, 76, 76) none 0px;
+}/*#lx_SPAN_26*/
+
+#lx_SPAN_29 {
+    background-position: -163px -117px;
+    color: rgb(76, 76, 76);
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 34px;
+    text-align: left;
+    width: 29px;
+    perspective-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    background: rgba(0, 0, 0, 0) url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/ui3/tools/newtools_8e289a5.png) no-repeat scroll -163px -117px / auto padding-box border-box;
+    border: 0px none rgb(76, 76, 76);
+    font: normal normal normal normal 12px / 34px Arial, Helvetica, SimSun, sans-serif;
+    list-style: none outside none;
+    outline: rgb(76, 76, 76) none 0px;
+}/*#lx_SPAN_29*/
+
+
+</style>		
+
+<style>
+/****/
+
+html {
+	color: #000;
+	background: #FFF;
+}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td
+	{
+	margin: 0;
+	padding: 0
+}
+
+/* table {
+	border-collapse: collapse;
+	border-spacing: 0
+} */
+
+fieldset,img {
+	border: 0
+}
+
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style: normal;
+	font-weight: normal
+}
+
+ol,ul {
+	list-style: none
+}
+
+caption,th {
+	text-align: left
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-size: 100%;
+	font-weight: normal
+}
+
+q:before,q:after {
+	content: ''
+}
+
+abbr,acronym {
+	border: 0;
+	font-variant: normal
+}
+
+sup {
+	vertical-align: text-top
+}
+
+sub {
+	vertical-align: text-bottom
+}
+
+input,textarea,select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	*font-size: 100%
+}
+
+legend {
+	color: #000
+}
+</style>	
+<style>
+#live_query_box_deatil table tr {
+ font-family: '宋体';
+ font-size:12px;
+}
+</style>
+</head>
+<body class="claro">
+<div id="app" style="width: 100%;height: 100%">
+	<div id="map"></div>
+	</div>
+	<div id="panel_left_warpper" >
+		<div id="panel_left"></div>
+	</div>
+<!-- 	<div id="panel_right"> -->
+<!-- 			<span>路况</span><span>卫星</span><span>测距</span><span onclick="toggleLeft()">左列表</span><span id="panel_right_back">返回</span> -->
+<!-- 	</div> -->
+	
+	<div id="lx_DIV_32">
+		<div id="lx_DIV_1">
+			<div id="lx_DIV_2">
+				<div class='tools_item' >
+					<span id="lx_SPAN_4"></span> <span id="lx_SPAN_5"><img alt="天气" src="http://s1.bdstatic.com/r/www/aladdin/img/new_weath/simpleico/19.png" id="lx_IMG_6" /></span> <a href="#" id="lx_A_7"> 
+					<span id="lx_SPAN_8">统计</span><em id="lx_EM_9"></em></a>
+				</div>
+					<div class='tools_item' >
+						<span id="lx_SPAN_13"></span><i id="lx_I_14">路况</i>
+					</div> 
+					<div class='tools_item' >
+						<span id="lx_SPAN_17"></span> <i id="lx_I_18">工具</i><em id="lx_EM_19"></em>
+					</div>
+					<div id="lx_DIV_20">
+						<ul id="lx_UL_21">
+							<li id="lx_LI_22">
+								<span id="lx_SPAN_23"></span> <i id="lx_I_24">测距</i>
+							</li>
+							<li id="lx_LI_25">
+								<span id="lx_SPAN_26"></span> <i id="lx_I_27">标记</i>
+							</li>
+							<li id="lx_LI_28">
+								<span id="lx_SPAN_29"></span> <i id="lx_I_30">分享</i>
+							</li>
+						</ul>
+					</div>
+			</div>
+		</div>
+	</div>
+
+
+<div id="tj_pop" style="display: none">
+	<div><span id="cl_zs"></span></div>
+	<div><span id="cl_sx"></span></div>
+	<div><span id="cl_xx"></span></div>
+	<div><span id="cl_zc"></span></div>
+	<div><span id="cl_kc"></span></div>
+</div>
+</div>
+</body>
+</html>

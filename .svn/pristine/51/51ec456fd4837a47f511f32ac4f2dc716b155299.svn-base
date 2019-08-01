@@ -1,0 +1,324 @@
+<html>
+<head>
+<script type="text/javascript" src="app/html/monitor/shiwucz.js"></script>
+<style type="text/css">
+#AMap {
+	width: 100%;
+	height: 100%;
+}
+
+#AMapToolBox {
+	width: 400px;
+	height: calc(100% - 390px);
+	min-height: 400px;
+	position: absolute;
+	top: 50px;
+	right: 50px;
+	box-shadow: 2px 2px 4px #aaa;
+	background: #ffffff;
+}
+
+.clearMap {
+	padding: 5px 10px;
+	position: absolute;
+	top: 20px;
+	left: -72px;
+	border: none;
+	border-radius: 50px 0 0 50px/50px 0 0 50px;
+	outline: none;
+	background: #c6e9ff;
+}
+
+.one1,.two1 {
+	width: 90px;
+	width: calc(100% - 20px);
+	htight: 85px;
+	min-height: 40px;
+	position: relative;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 10px;
+	border: 1px solid #989898;
+	font-size: 12px;
+	font-weight: none;
+}
+
+.one1>.dt,.two1>.dt {
+	padding-left: .3em;
+	padding-right: .3em;
+	position: absolute;
+	top: -.5em;
+	left: 1em;
+	background: #ffffff;
+	font-weight: none;
+}
+
+.one1>.dd label,.two1>.dd label {
+	width: 90px;
+	margin-top: 15px;
+	margin-left: -10px;
+	text-indent: 25px;
+	display: inline-block;
+}
+
+.one1>.dd input,.two1>.dd input {
+	width: 110px;
+	text-align: center;
+}
+
+.dd input.kssj,.dd input.jssj {
+	width: 160px;
+}
+
+.dwqdfw,.dwzdfw {
+    width: 45px;
+    height: 30px;
+    position: absolute;
+    top: 7px;
+    left: 325px;
+    display: inline-block;
+    line-height: 30px;
+    border: 1px solid #2c699d;
+    border-radius: .2em;
+    text-align: center;
+    color: #fff;
+    background-color: #0f89f5;
+    cursor: pointer;
+}
+#swcz_cx{
+    width: 45px;
+    height: 30px;
+    position: absolute;
+    top: 142px;
+    left: 5px;
+    display: inline-block;
+    line-height: 30px;
+    border: 1px solid #2c699d;
+    border-radius: .2em;
+    text-align: center;
+    color: #fff;
+    background-color: #0f89f5;
+    cursor: pointer;
+}
+#swcz_dc{
+    width: 45px;
+    height: 30px;
+    position: absolute;
+    top: 142px;
+    left: 60px;
+    display: inline-block;
+    line-height: 30px;
+    border: 1px solid #2c699d;
+    border-radius: .2em;
+    text-align: center;
+    color: #fff;
+    background-color: #0f89f5;
+    cursor: pointer;
+}
+.guijichaxun{
+ 	border: 1px solid #2c699d;
+    border-radius: .2em;
+    text-align: center;
+    color: #fff;
+    background-color: #0f89f5;
+    cursor: pointer;
+}
+
+
+[class^=btn] {
+	line-height: 1.3em;
+	margin-top: 5px;
+	margin-left: 10px;
+}
+.claro{
+	font-family:'微软雅黑';
+	font-size: 12px;
+}
+
+.tabFanwei {
+	position: absolute;
+	top: 180px;
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+}
+
+.tabFanweiTitle {
+	position: absolute;
+	z-index: 1;
+	margin-left: -40px;
+    margin-top: 0px;
+}
+
+.tabFanweiTitle li {
+	width: 5em;
+	height: 2em;
+	line-height: 2em;
+	margin-left: 1px;
+	margin-right: 2px;
+	text-align: center;
+	float: left;
+	border: 1px solid #9c9c9c;
+	border-top-left-radius: .3em;
+	border-top-right-radius: .3em;
+	background: #eaeaea;
+	z-index: 1;
+}
+
+.tabFanweiTitle li[data-checked] {
+	border-bottom-color: #ffffff;
+	background: #ffffff;
+}
+
+[id$=Panel] {
+	position: absolute;
+	top: 25px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	border: 1px solid #9c9c9c;
+}
+
+[id$=Panel] table {
+	font-weight: none;
+	font-size: 12px
+}
+
+[id$=Panel] table thead tr {
+	height: 25px;
+	line-height: 25px;
+	border-bottom: 1px solid #bbbbbb;
+	z-index: 1;
+}
+
+[id$=Panel] table thead tr th:nth-child(1),[id$=Panel] .tbody table tbody tr td:nth-child(1)
+	{
+	width: 87px;
+}
+
+[id$=Panel] table thead tr th:nth-child(2),[id$=Panel] .tbody table tbody tr td:nth-child(2)
+	{
+	width: 30%;
+}
+
+[id$=Panel] table thead tr th:nth-child(3),[id$=Panel] .tbody table tbody tr td:nth-child(3)
+	{
+	width: 30%;
+}
+
+[id$=Panel] table thead tr th:nth-child(4),[id$=Panel] .tbody table tbody tr td:nth-child(4)
+	{
+	width: 17%;
+}
+
+[id$=Panel] .tbody {
+	height: 190px;
+	overflow: auto;
+}
+
+[id$=Panel] table tbody tr {
+	height: 23px;
+	line-height: 23px;
+}
+
+[id$=Panel] table tbody tr td {
+	text-align: center;
+}
+#qdfwPanel table,#zdfwPanel table,#clxxPanel table{
+         	border-collapse: collapse;
+        }   
+</style>
+</head>
+<body>
+	<div class="row" style="height: 98%">
+		<div id="AMap"></div>
+		<div id="AMapToolBox">
+			<button type="button" class="clearMap">清理地图</button>
+			<div class="one1">
+				<div class="dt">起点范围</div>
+				<div class="dd">
+					<label>开始时间</label> <input type="text" id="qd_stime"
+						onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})()"
+						style="width:130px;margin-left: -15px;" /><label>前后(分钟)</label> <input
+						type="text" id="qd_etime"
+						style="width:30px;margin-left: -5px;" />
+					<button type="button" class="dwqdfw">定位</button>
+				</div>
+			</div>
+			<div class="two1 clear">
+				<div class="dt">终点范围</div>
+				<div class="dd">
+					<label>开始时间</label> <input type="text" id="zd_stime" 
+						onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})()"
+						style="width:130px;margin-left: -15px;" /><label>前后(分钟)</label> <input
+						type="text" id="zd_etime"
+						style="width:30px;margin-left: -5px;" />
+					<button type="button" class="dwzdfw">定位</button>
+				</div>
+			</div>
+			<button type="button" class="btn_query clear" id="swcz_cx"
+				onclick="findswcz();">查询</button>
+			<button type="button" class="btn_query clear" id="swcz_dc"
+				onclick="xxdc();">导出</button>
+			<!--     <button type="button" class="btn_queryCarInfo">查看车辆信息</button> -->
+			<div class="tabFanwei">
+				<ul class="tabFanweiTitle">
+					<li class="qdfwTab" data-id="qdfwPanel" data-checked="">起点范围</li>
+					<li class="zdfwTab" data-id="zdfwPanel">终点范围</li>
+					<li class="clxxTab" data-id="clxxPanel">车辆信息</li>
+				</ul>
+				<div id="qdfwPanel">
+					<table width="100%" border="0">
+						<thead>
+							<tr>
+								<th style='width:20%'>车牌号码</th>
+								<th style='width:40%'>经纬度</th>
+								<th style='width:40%'>时间</th>
+							</tr>
+						</thead>
+					</table>
+					<div class="tbody">
+						<table>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
+				<div id="zdfwPanel" style="display: none;">
+					<table width="100%">
+						<thead>
+							<tr>
+								<th style='width:20%'>车牌号码</th>
+								<th style='width:40%'>经纬度</th>
+								<th style='width:40%'>时间</th>
+							</tr>
+						</thead>
+					</table>
+					<div class="tbody">
+						<table>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
+				<div id="clxxPanel" style="display: none;">
+					<table style="width: 100%;">
+						<thead>
+							<tr>
+								<th style='width:20%'>车牌号码</th>
+								<th style='width:40%'>经纬度</th>
+								<th style='width:40%'>时间</th>
+							</tr>
+						</thead>
+					</table>
+					<div class="tbody">
+						<table>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

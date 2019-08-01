@@ -1,0 +1,122 @@
+<!-- 业户查询 -->
+<html>
+<head>
+	<script type="text/javascript" src="app/html/monitor/cxytj.js"></script>
+	<style type="text/css">
+	.cxytjtable th,.cxytjtable td {text-align: center;}
+	.cxytjtable .field-id {width: 45px;}
+	.cxytjtable .field-TIME {width: 80px;}
+	.cxytjtable .field-SJZT {width: 120px;}
+	.cxytjtable .field-SJJL {width: 650px;}
+	.cxytjtable .field-BJR {width: 100px;}
+	.cxytjtable .field-DJDH {width: 100px;}
+	.cxytjtable .field-JJR {width: 100px;}
+	.cxytjtable .field-SH {width: 100px;}
+</style>
+</head>
+<body>
+<div id="cxytjdiv"></div>
+<div id="cxytjtable" class="cxytjtable" style="height:30%"></div>
+<div id="cxytjGridDiv" data-dojo-type="dijit/layout/BorderContainer"
+		data-dojo-props="persist:true,gutters:false,liveSplitters:true"
+		style="height:62%;margin-top: 10px;">
+		<span style="color: #ff0000;font-size: 15px;font-family: '宋体';">报警内容:</span>
+		<div id="sjmiaoshu_cxytj" data-dojo-type="dojox/layout/ContentPane"
+			data-dojo-props=" region:'left'" style="text-indent:2em;width:28%;padding: 0px;margin: 15px;top:10px;"
+			></div>
+		<div id="sjmiaoshu_cxytj_map" data-dojo-type="dojox/layout/ContentPane"
+			data-dojo-props=" region:'right'"
+			style="width:70%;height:80%;padding: 0px;margin: 0px;"></div>
+	</div>
+	<script>
+	var myChart = echarts.init(document.getElementById('sjmiaoshu_cxytj_map'));
+	option = {
+    title : {
+        text: '出租车进京上访图',
+        subtext: '数据来自指挥中心',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item'
+    },
+    legend: {
+        x:'left',
+        data:['车辆']
+    },
+    dataRange: {
+        min : 0,
+        max : 80,
+        calculable : true,
+        color: ['maroon','purple','red','orange','yellow','lightgreen']
+    },
+    toolbox: {
+        show : true,
+        orient : 'vertical',
+        x: 'right',
+        y: 'center',
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name: '车辆',
+            type: 'map',
+            mapType: 'china',
+            hoverable: false,
+            roam:true,
+            data : [],
+            markPoint : {
+                symbolSize: 5,       // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
+                itemStyle: {
+                    normal: {
+                        borderColor: '#87cefa',
+                        borderWidth: 1,            // 标注边线线宽，单位px，默认为1
+                        label: {
+                            show: false
+                        }
+                    },
+                    emphasis: {
+                        borderColor: '#1e90ff',
+                        borderWidth: 5,
+                        label: {
+                            show: false
+                        }
+                    }
+                },
+                data : [
+                    {name: "杭州南庄兜", value: 11},
+                    {name: "湖州青山服务区", value: 28},
+                    {name: "湖州太湖服务区", value: 20},
+                    {name: "常州天目湖服务区", value: 44},
+                    {name: "镇江荣炳服务区", value: 43},
+                    {name: "高邮龙奔服务区", value: 40},
+                    {name: "淮阴川星服务区", value: 40},
+                    {name: "新沂服务区", value: 35},
+                    {name: "临沂服务区", value: 32},
+                    {name: "廊坊服务区",value:12}
+                ]
+            },
+            geoCoord: {
+                "杭州南庄兜":[120.1152278535,30.3829857165],
+                "湖州青山服务区":[120.0526253716,30.6649965868],
+                "湖州太湖服务区":[119.9417111999,31.1217188297],
+                "常州天目湖服务区":[119.5140046095,31.3837233116],
+                "镇江荣炳服务区":[119.3991322843,31.8429947734],
+                "高邮龙奔服务区":[119.5118645572,32.7632090013],
+                "淮阴川星服务区":[119.0451073403,33.7973424061],
+                "新沂服务区":[118.5403185814,34.3278117247],
+                "临沂服务区":[118.2521006965,35.1690596547],
+                "廊坊服务区":[116.4807165354,39.4761904072]
+            }
+        }
+        
+    ]
+};
+echarts.init(document.getElementById('sjmiaoshu_cxytj_map')).setOption(option);
+	</script>
+	</body>
+</html>

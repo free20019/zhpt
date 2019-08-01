@@ -1,0 +1,73 @@
+<!-- 启动 -->
+<html>
+<head>
+<style type="text/css">
+
+	.yjzhXxfbGridDiv th,.yjzhXxfbGridDiv td {text-align: center;}
+	.yjzhXxfbGridDiv .field-id {width: 45px;}
+	.yjzhXxfbGridDiv .field-TIME {width: 80px;}
+	.yjzhXxfbGridDiv .field-SJZT {width: 120px;}
+	.yjzhXxfbGridDiv .field-SJJL {width: 650px;}
+	.yjzhXxfbGridDiv .field-BJR {width: 100px;}
+	.yjzhXxfbGridDiv .field-DJDH {width: 100px;}
+	.yjzhXxfbGridDiv .field-JJR {width: 100px;}
+	.yjzhXxfbGridDiv .field-SJJB {width: 100px;}
+	.yjzhXxfbGridDiv .field-SH {width: 100px;}
+</style>
+<script type="text/javascript" src="app/html/yjzhXxfb.js"></script> 
+
+
+</head>
+	<body class="claro">
+		<div id="yjzhXxfbToolBar3"></div>
+		<div id="yjzhXxfbGridDiv3" class="yjzhXxfbGridDiv" style="height:30%" ></div>
+		<div id="yjzhXxfbGridDiv4" data-dojo-type="dijit/layout/BorderContainer"
+		data-dojo-props="persist:true,gutters:true,liveSplitters:true" style="height:40%;margin-top: 10px;">
+		 <!--  <div  data-dojo-type="dijit/layout/ContentPane"
+		      data-dojo-props=" region:'top'"  style="width:100%;height: 20px;margin: 0px;">
+			 <div id="xxfb_sjmiaoshu" ></div>
+		  </div> -->
+		  <!--<div  data-dojo-type="dijit/layout/ContentPane"-->
+		      <!--data-dojo-props=" region:'left'"  style="width:30%;padding: 0px;margin: 0px;">-->
+			 <!--<div>发布方式:</div>-->
+			 <!--<div id="xxfb_fsfs" >-->
+			    <!--<input id="xxfb_checkBox1" /> <label for="xxfb_checkBox1">网站发布</label><br>-->
+			    <!--<input id="xxfb_checkBox2" /> <label for="xxfb_checkBox2">邮件发布</label><br>-->
+			    <!--<input id="xxfb_checkBox3" /> <label for="xxfb_checkBox3">短信发布</label><br>-->
+			 <!--</div>-->
+		  <!--</div>-->
+		  <!--<div  data-dojo-type="dijit/layout/ContentPane"-->
+		      <!--data-dojo-props=" region:'right'"  style="width:70%;padding: 0px;margin: 0px;">-->
+			 <!--<div>收信人:</div>-->
+			 <!--<div id="xxfb_rylb"></div>-->
+			 <!--<div>信息内容:</div>-->
+			 <!--<div id="xxfb_content" >-->
+			     <!--&lt;!&ndash;2015年5月1号，接市民举报，登云路文化商场路段停放大量出租车，造成道路交通阻塞，有闹事的嫌疑，经过2个小时的应急处理，现在的情况是当事人已经撤离现场，恢复了正常的交通秩序。&ndash;&gt;-->
+			 <!--</div>-->
+		  <!--</div>-->
+
+		<!--</div>-->
+		<!--<div style="text-align: center;">-->
+			<!--<button id="xxfb_fs" type="button"></button>-->
+			<!--&lt;!&ndash;<button id="xxfb_bc" type="button"></button>&ndash;&gt;-->
+		<!--</div>-->
+			<span style="color: #ff0000;font-size: 15px;font-family: '宋体';left:5px;top: 5px;">报警描述:</span>
+		<div id="fb_sjmiaoshu" data-dojo-type="dijit/layout/ContentPane"
+			data-dojo-props=" region:'left'"
+			style="text-indent:2em;width:37%;padding: 0px;margin: 15px;top:10px;border:none;"></div>
+			<div data-dojo-type="dijit/layout/ContentPane"
+				 data-dojo-props=" region:'right'"
+				 style="width:60%;padding: 0px;margin: 0px;border: 1px solid #CEDCDC;">
+
+				<div style="height: 80%">
+					<div id="sj_fb" ></div>
+				</div>
+
+				<div style="text-align: center;height: 10%">
+				<input id="fb_checkBox1" /> <label for="fb_checkBox1">短信</label>
+				<input id="fb_checkBox2" /> <label for="fb_checkBox2">邮件</label>
+				<button id="fb_fs" type="button"></button>
+			</div>
+		</div>
+	</body>
+</html>

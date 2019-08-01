@@ -1,0 +1,15 @@
+<html>
+<!-- 里程统计 -->
+	<head>
+				<script type="text/javascript" src="app/html/monitor/lctj.js"></script>
+				<style type="text/css">
+					.lctjtable th,.lctjtable td{text-align: center;}
+					.lctjtable .field-id {width: 40px;}
+					.lctjtable .field-SPEED_TIME {width: 160px;}
+				</style>
+	</head>
+	<body>
+			<div id="lctjdiv"></div>
+			<div id="lctjtable" class="lctjtable"></div>
+	</body>
+</html>

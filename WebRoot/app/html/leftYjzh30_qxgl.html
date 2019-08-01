@@ -1,0 +1,24 @@
+<script type="text/javascript">
+dojo.xhrPost(xhrArgsqx123).then(function(){
+if(leftQxglMenu.length==0){
+	document.write('');
+	window.location.href="http://"+self.location.host+"/zhpt/demo.html";
+	alert("无权限访问");
+}else{
+require([ "app/TreeLayout","dojo/domReady!"],function(TreeLayout){
+	new TreeLayout('mainSplitterLeft_ul10',leftQxglMenu,{m2:eftQxglMenuView,m3:[]},{'bgc':'#cfe5fa','fc':'#000'}).init();
+});
+	}
+});
+</script>
+			
+<div id="pane2" data-dojo-type="dijit/layout/ContentPane" data-dojo-props='selected:true,
+			title:"组织权限管理系统", iconClass:"dijitEditorIcon dijitEditorIconSave", tooltip:"tooltip for simple pane" '>
+				
+				<div class="mainSplitterLeft" style="height: 100%">
+					<ul id="mainSplitterLeft_ul10" style="padding: 0px;margin: 0px">
+							
+					</ul>
+				</div>
+		
+</div>

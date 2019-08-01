@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript"
+	src="http://115.236.61.148:9085/jslib/LiveQuery.js"></script>
+<script type="text/javascript" src="app/html/yjzhyjyj.js"></script>
+<script language="JavaScript" src="http://115.236.61.148:9085/jslib/jquery-2.1.1.min.js"></script>
+<style>
+#app{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#map{
+		width: 100%;
+    height: 100%;
+}#panel_left_warpper{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    overflow: hidden;
+/*     filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=3);/*ie*/ */
+/*     -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/ */
+/*     -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/ */
+/*     box-shadow:2px 2px 10px #909090;/*opera或ie9*/ */
+/*     pointer-events: none; */
+    
+/*     background-color: #fff; */
+    width:300px;
+/*     height: 50px; */
+
+}
+
+#panel_left{
+	width:300px;
+}
+</style>
+<style type="text/css">
+
+* {
+    outline: none;
+}
+
+.claro #panel_left_warpper  .dijitTabContainerTop-tabs .dijitTab{
+	padding: 0px 3px;
+}
+
+.claro #panel_left_warpper  .dijitTabContainerTop-tabs .dijitTabChecked{
+	padding-top: 0px
+}
+#areaListDetail{
+    font-family: '微软雅黑';
+    font-size: 12px;
+}
+#areaListDetail div{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 7px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid rgba(105, 105, 105, 0.2);
+    white-space: nowrap;
+}
+#areaListDetail div:hover{
+    color: #0C88E8;
+}
+.gridTableBodyTr2{
+    background-color:#ffffff;
+}
+ .txtstyle{position:relative;}
+.txtstyle span{
+    white-space:nowrap;
+    font-size:12px;
+    display:block;
+    text-align:left;
+    background-color: #7c8ddf;
+    color:#FFFFFF;
+    width:auto;
+    border:1px solid #7c8ddf;
+    FONT-FAMILY:微软雅黑;
+    position:absolute;
+    top:-10px;left:25px;
+    white-space:nowrap; webkit-border-radius:5px;
+    border-radius:5px;
+}
+#right-top1{
+    position: absolute;
+    top: 20px;
+    right: 220px;
+    width: 60px;
+    /*background-color: rgba(0, 0, 0, 0.05);*/
+    height: 48px;
+    z-index: 10;
+}
+#message-center{
+    float: left;
+    margin-left: 10px;
+    position: relative;
+}
+#message-center .message-center-entrance{
+    width: 34px;
+    height: 34px;
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    border-radius: 2px;
+    background: url("resources/images/index/tool1.png") no-repeat -114px -165px rgba(255, 255, 255, 1);
+}
+#message-center .message-center-reddot{
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    background-color: #ff0c0c;
+    border-radius: 50%;
+    /*display: none;*/
+}
+#yjbjxx{
+    position: absolute;
+    top: 57px;
+    right: 90px;
+    background-color: rgba(0, 0, 0, 0.05);
+    min-height: 60px;
+    z-index: 10;
+    background: #ffffff;
+    box-shadow: 1px 2px 1px rgba(105, 105, 105, 0.55);
+}
+#yjbjxx ul{
+    margin: 0;
+    padding: 0;
+}
+#yjbjxx ul li{
+    width: 100%;
+    height: 60px;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(105, 105, 105, 0.13);
+}
+#yjbjxx ul li:hover {
+    background: rgba(105, 105, 105, 0.15);
+}
+#yjbjxx ul li a{
+    width: 100%;
+    height: 33%;
+    text-indent: 1em;
+    display: block;
+}
+
+</style>
+
+<body class="claro">
+<div id="app" style="width: 100%;height: 100%">
+	<div id="map"></div>
+	<div id="panel_left_warpper">
+		<div id="panel_left"></div>
+	</div>
+    <div id="right-top1" style="display: none;">
+        <div id="message-center">
+            <div class="message-center-entrance"></div>
+            <div class="message-center-reddot"></div>
+        </div>
+    </div>
+    <div id="yjbjxx" style="display: none;">
+        <ul>
+        </ul>
+    </div>
+</div>
+</body>

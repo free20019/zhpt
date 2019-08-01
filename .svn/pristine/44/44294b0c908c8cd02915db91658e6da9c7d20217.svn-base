@@ -1,0 +1,44 @@
+<!-- 启动 -->
+<html>
+<head>
+ <script type="text/javascript" src="app/html/yjzhQd.js"></script> 
+		
+	</head>
+	<body class="claro">
+		<div id="yjzhQdGridDiv4" data-dojo-type="dijit/layout/BorderContainer"
+		data-dojo-props="persist:true,gutters:true,liveSplitters:true" style="height:90%;margin-top: 10px;">
+		  <div  data-dojo-type="dijit/layout/ContentPane" 
+		      data-dojo-props=" region:'top'"  style="width:100%;height: 20px;margin: 0px;">
+			 <div id="qd_sjmiaoshu" ></div>
+		  </div>
+		  <div  data-dojo-type="dijit/layout/ContentPane" 
+		      data-dojo-props=" region:'left'"  style="width:10%;padding: 0px;margin: 0px;">
+			 <div>预案列表</div>
+			 <div id="qd_yj" >
+			   <input id="qd_checkBox1" /> <label for="bs_checkBox1">预案1</label><br>
+			   <input id="qd_checkBox2" /> <label for="bs_checkBox2">预案2</label><br>
+			   <input id="qd_checkBox3" /> <label for="bs_checkBox3">预案3</label><br>
+			 </div>
+		  </div>
+		  <div   data-dojo-type="dijit/layout/ContentPane" 
+		     data-dojo-props=" region:'right'"
+			 style="width:90%;padding: 0px;margin: 0px;">
+			 <div style="text-align: center;font-size: 25px">预案详情</div>
+			 <div  id="qd_yjxq" >
+			 <div data-dojo-type="dijit/layout/ContentPane" >
+					<p>主要负责人迅速赶赴现场，了解引发事件的起因和有关情况，提出工作方案，直接指挥现场处置工作，并面对面地做出租汽车司机工作，及时疏导化解矛盾和冲突，尽快平息事态。保障道路畅通，人身安全。
+					<p>对出租汽车司机提出的要求，符合法律法规和政策规定的，当场表明解决问题的态度；无法当场明确表态解决的，责成有关职能部门限期研究解决；对确因决策失误或工作不力而侵害群众利益的，据实向司机讲明情况，公开承认失误；对司机提出的不合理要求，讲清道理。当时无法调解的情况下，即刻将涉事人员带回警局，留下部分工作人员，防止现场出现冲突。
+					<p>对异地聚集的，应当劝阻县内的群众不要再到异地聚集，并指派有关负责人率领工作组赶赴现场，开展疏导、化解的接返工作。
+					<p>根据现场实际情况，选择是否通知指挥中心联系医疗队伍前往现场。
+					<p>问题解决，事件结束
+			 </div>
+			 
+			 </div>
+          </div>
+		</div>
+		<div style="text-align: center;">
+			 <button id="qd_start_yj" type="button"></button>
+			 <button id="qd_save_yj" type="button"></button>
+		</div>
+	</body>
+</html>

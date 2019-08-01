@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>MyHtml.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+  		<link data-jsfiddle="common" rel="stylesheet" media="screen" href="../libs/handsontable-0.11.1/dist/handsontable141.full.css">
+  		<script type="text/javascript" src="../libs/jquery-1.10.2.min.js"></script>
+		<script data-jsfiddle="common" src="../libs/handsontable-0.11.1/dist/handsontable141.full.js"></script>
+		<script type="text/javascript">
+		var excel;
+var vehicles,drivers = [];
+var cacheExcelData = null;
+driver = ["赵同辉","陈志明","李林锋","傅小龙","宋  军","郑财良","鲁卫东","吕忠孝","王忠民","陈伟根","冯  胜","周樟龙","戴国利","时红民","唐启庆","郑仁根","张和平","韩文超","卢财振","臧淦余","陈  超","王国泉","孙中源","张亚飞","赵世军","张卫彪","麦征","贺敏强","陈迪庆","徐立万","张更雷","周晓斌","陈明堂","朱  航","李  铮","庄建平","杨世坤","秦  广","赵  波","周洪海","屠世潮","亓鸣飞","徐武兴","叶来元","吴林云","徐伟胜","许民权","张泰来","方流胜","杨建锐","贾振华","张连军","徐  杭","朱洪才","陈俊勇","袁亚东","傅振波","刘学斌","娄国强","徐  峰","徐卫兴","陈信","刘世雄","张守坤","马瑞飚","金勇华","赵  懿","冯红雨","应志宏","昝延东","于  侠","胡  波","倪锦松","程立新","刘小勇","翟哲明","安  辉","黎华绍","祝连富","田宝林","金连升","冯  磊","巫伟平","蒋铁山","陈  伟","沈海峰","叶  华","巫建新","何福禄","李春祥","胡建春","程晓红","杨小珍","黄政如","陈喜云","高玉民","沈继杭","吴跃富","鲁小明","孙惠林","张汉定","吴志寿","林  龙","张耀华","柴  丞","邹晓红","吴时鸿","王海民","邵建明","章  正","陈国祥","石俊辉","郭金宝","张清华","凌建新","陈宝根","韩志强","柯善珊","杨长盛","方洪强","庄伟根","陈正强","李  强","朱红艳","肖  峰","沈  琪","杨红俊","杨建平","徐伟民","陈惠荣","陈春根","宋  琦","王顺德","方丽军","陈潇吉","寿亚平","张荣生","朱国林","茅丹伏","魏建庄","盛  任","滕承武","章  伟","庞建卫","任  松","杜金林","戚新春","周志国","计建平","白井涛","张  烈","陈来法","徐  航","朱劲松","沈国凌","杨佐江","蔡兰付","项樟华","朱金荣","徐廷建","潘永平","李继新","周  卫","单冬寿","张建明","姚洪民","徐玉祥","周建军","袁德法","廖伟明","徐远建","曾长青","梁文伟","朱树屏","池泳涛","姚建良","黄永祥","孟小军","张国伟","夏  炎","何国华","王晓波","周勇坚","甘  强","毕朝阳","杨细军","郑卫红","蒋  兵","沈  坚","傅红辉","曹幸福","宋炳良","朱建国","边国强","汪金聚","蒋惠红","宁善法","王海力","黄国良","金黎明","桑会军","宋  伟","陈立忠","张定法","陈  克","汪珍娟","陈越胜","张广运","倪  晶","白国贤","郑红萍","汪其林","肖春全","邵伟彬","宋海民","王国志","吴国强","孟凡炬","陈  宏","汪国华","俞肖华","姜甘民","李三星","施申余","盛大浩","孟  伟","吴泽敏","刘  军","范娟琴","付梅龙","邵建荣","王  民","黄  亮","丁  洪","胡旭明","詹文祥","周轩更","陈锡培","吁财高","周  明","赵青气","郑仁跃","丁韶勇","沈月祥","陈建平","何明达","王  杰","张惠菊","苏水旺","陈  华","安德兵","邱民华","龚丽英","盛立军","王  勇","潘  胜","席洪超","柴树成","金纪良","庄  伟","王卫东","钱大园","潘柏军","陈冬琴","张  涛","陈智强","郑友党","王建明","张建华","蔡其丰","马永财","杨顺法","邹国忠","张宝根","周杭德","周兴妹","洪再华","谭金平","刘小强","汪文军","吴海斌","程旺通","曹永祥","秦心灵","钱水理","周松军","徐丽娜","夏炳辉","孙建成","张成波","鲍秋平","董顺华","钱红峰","寿建妹","孙文静","汤世荣","李作能","李国彬","陈冠权","徐述明","宋文伟","方旺平","赵长龙","张  杰","蒋伟荣","李军军","汪水林","姚舜华","蔡  晓","严国良","王勇明","周  亮","董伟成","孙亦超","吴永坚","龚方伟","顾洪高","张永春","徐永明","姜向平","沈天军","蒋  勇","王  澎","俞波尔","钱海豹","曾金龙","来勇明","何伟强","罗  忠","陈维","张宁","蒋海平","熊冬洪","张心和","邵宏伟","沈忠华","徐淑楷","王  强","陈志勇","岳  峰","赵春生","沈  健","陈  明","屠方永","戴银娟","密妙生","俞军伟","周金华","胡永建","周杭州","严建平","徐名金","陈小生","战寿斌","余  钧","洪潘海","章建峰","张海军","周学军","朱张林","许建军","金宝发","张冬涵","夏宇峰","张建平","程中桃","姚永炳","鲁华锋","陈大伟","翁建伟","赖寿松","孙家勤","舒水均","沈田园","吴宇峰","何立华","叶友明","田俊锋","唐伟国","潘明军","蒋惠祥","杨  磊","穆红光","凌跃辉","冯关永","关  渊","陈  杰","彭顺喜","陈铮雄","吴志亮","陈荣华","宋秀龙","葛云龙","贾绍斌","张立春","孔华军","李玉书","林立新","李长江","盛建伟","王震球","陈以国","杜以刚","那宏宇","刘  锋","陈玉祥","王海涛","蒋保华","方华安","方晖北","李炳华","吴有顺","徐  江","谢文华","陆  奎","吕卫忠","胡塬威","束  平","赵子鸿","郑金强","孙继春","夏建卫","蒋洪国","王伟","沈伟锋","陈炳有","葛宝源","隽建华","孙丽红","陆国焕","姬荣君","胡水明","郎振国","童晓春","张建生","沈国明","汪祖明","曾步雨","翟卫青","王学武","罗冯勇","俞智奇","冯超杰","杨大明","吴明春","楼宝国","沈利兴","朱向涛","邬  涛","陈  一","瞿志达","汪  毅","杨裘梁","陈琴娥","叶红斌","张加寒","陈柏青","梁明亮","鲍国钧","王小首","王锡林","吴小杰","俞江华","姚春兴","程俊敏","吕伟华","王  鹰","王儒昌","马德法","袁国良","任元林","施伟华","程  高","王建国","史晓琳","李成胜","马勤汉","张  旭","袁法其","蔚普涛","化红伟","章朝晖","闻勇军","王建国","林国良","张瑞平","来跃荣","朱应龙","周祝刚","汪际良","刘广亮","吴  青","应建强","潘建平","彭健","都云德","陈  平","王宝根","郝正伟","李  萍","陈广顺","赵宏杰","白玉坤","周志红","余晓锋","郑玉荣","郭志勇","沈洁峰","周建平","周  强","章宏根","陆有水","肖  军","钱  斌","方  勇","谢啸俊","刘新营","陈  斌","盛东渭","樊晓峰","王  跃","殷文龙","蒋宝清","冯子华","杨建生","杨刚","寿  麟","孔松伟","史建康","何利军","竺  明","陈  亚","金煌","王国荣","唐传飞","金云晓","郑玉良","刘智伟","李学军","邢王晨","柏争清","徐雁洲","陈  玮","周永成","解成龙","徐华坤","冯建明","徐  明","徐赵华","徐连福","莫丽娟","叶关富","沈鹤鸣","张如民","白征宇","冯连兴","洪永祥","胡  冈","高尔林","朱勇祥","朱玉超","陈献平","陈文","赵立春","陈建平","宋慧勇","李现振","冯为荣","张敬丰","宋文强","吴  军","徐  进","张根法","郑志祥","高金燕","沈苏杭","王兴华","刘元兔","董雄壮","程红鸣","贺培林","余钟平","方建平","鞠建国","刘  彤","韩家麟","李志根","王锋林","胡建红","于宏波","程建国","周卫国","黄佩华","马金民","赵永华","王学敏","李伟民","王卫东","倪德根","郑有林","方建军","钱富山","吴锡林","周柏荣","陆勇毅","张忠伟","姚四青","林英良","朱  强","陈芳","叶李琦","陈出新","陈智民","毛  坚","张孝文","袁文贵","周伯建","陈三九","章  兵","林建业","范诗君","王  华","余扬金","徐  虹","戴国林","邬杭玲","楼浩云","郭  云","郑济名","赵国华","王国良","廖桂根","徐志嵩","许贵彬","张广杰","傅桂明","傅  军","祝华巍","李鹤旦"];
+vehicles = ['浙A00001','浙A00002','浙A00003','浙A00004'];
+function mergeCellRow(instance, td, row, col, prop, value, cellProperties) {
+         Handsontable.TextCell.renderer.apply(this, arguments);
+         if(cellProperties.flag == 2){
+         	td.style.display = 'none';
+         }else{
+	         td.setAttribute("rowspan", 2);
+	         var value = vehicles[Math.round(row/2)-1];
+	         if(value){
+	        	 td.innerHTML = value;
+	         }
+         }
+}
+
+function mergeCellCol(instance, td, row, col, prop, value, cellProperties) {
+         Handsontable.TextCell.renderer.apply(this, arguments);
+         td.style.height = '50px';
+         if(cellProperties.flag == 2){
+         	td.style.display = 'none';
+         }else{
+         	 td.setAttribute("colspan", 2);
+	         td.innerHTML = Math.round(col/2)+'日 <br>司机、比例';
+         }
+}
+
+function genExcel(mon){
+	var startCols = 61;
+	switch (parseInt(mon)) {
+	case 1:
+	case 3:	
+	case 5:	
+	case 7:	
+	case 8:	
+	case 10:	
+	case 12:	
+		startCols = 63
+		break;
+	case 4:
+	case 6:	
+	case 9:	
+	case 11:	
+		startCols = 61
+		break;
+	case 2:	
+		startCols = 57
+		break;
+	default:
+		break;
+	}
+	$(excelWrap).handsontable({
+	  startCols:startCols
+	  //,fillHandle: false 填充
+	  ,startRows : vehicles.length*2+1
+	 // minSpareRows: 1,
+	//  ,colHeaders: true//加abcde..列头
+	 // ,rowHeaders: true 123456..
+	  ,contextMenu: true
+	  //,rowHeaders:[1,2]
+	  //,mergeCells:true //为true时右击才会有合并的菜单
+	 // fixedRowsTop:1,
+	 // fixedColumnsLeft :1
+	  // readOnly: true,
+	 // colHeaders :[1,2],
+	 ,className :'htCenter htMiddle'
+	 ,readOnly : false
+	 //,colWidths : 90
+	 //,width:1700
+	 ,debug:true
+	 ,cells: function (row, col, prop) {
+            var cellProperties = { };
+            cellProperties.readOnly = false;                   
+            if (col == 0 && row % 2 === 1) {
+           	 	  cellProperties.readOnly = true;
+                  cellProperties.renderer = mergeCellRow; 
+            }else if (col == 0 && row % 2 === 0 && row > 1) {
+           	 	  cellProperties.readOnly = true;
+                  cellProperties.renderer = mergeCellRow; 
+                  cellProperties.flag = 2;//偶数
+            }else  if (col > 0 && row   === 0) {
+           	 	//console.log(col+','+row+','+prop);
+            	cellProperties.readOnly = true;
+            	if(col%2==0){
+            		cellProperties.flag = 2;//偶数
+            	}
+                cellProperties.renderer = mergeCellCol; 
+            }else  if (col > 0 && row   === 0) {
+           	 	//console.log(col+','+row+','+prop);
+            	cellProperties.readOnly = true;
+            	if(col%2==0){
+            		cellProperties.flag = 2;//偶数
+            	}
+                cellProperties.renderer = mergeCellCol; 
+            }else if(col >=1 && col%2==1 && row > 0){
+            	  cellProperties.type= 'autocomplete';	
+			      cellProperties.source= driver;
+			      cellProperties.strict= true;
+            }else if(col >=1 && col%2==0 && row > 0){
+          	  cellProperties.type= 'numeric';	
+        }
+            return cellProperties;
+      }
+	});
+	excel = $(excelWrap).handsontable('getInstance');
+	if(cacheExcelData){
+		excel.loadData(cacheExcelData);
+	}
+}
+
+
+			$(document).ready(function() {
+			genExcel(2)
+			});
+
+		</script>
+  </head>
+  
+  <body>
+    This is my HTML page. <br>
+    <div style="width: 99%;overflow: auto;">
+    </div>
+	    <div id="excelWrap" ></div>
+  </body>
+</html>

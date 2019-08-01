@@ -1,0 +1,10 @@
+<html>
+<!-- 人员查询 -->
+<head>
+	<script type="text/javascript" src="app/html/monitor/findvehinfo.js"></script>
+</head>
+<body>
+<div id="findvehinfodiv"></div>
+<div id="findvehinfotable" class="findvehinfotable" style="height: 90%" ></div>
+</body>
+</html>

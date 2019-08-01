@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>杭州市出租汽车信息系统综合平台</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="icon" href="resources/images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon" />
+<script language="JavaScript" src="http://115.236.61.148:9085/jslib/jquery-2.1.1.min.js"></script>
+<script language="JavaScript" src="app/config30.js"></script>
+<script type="text/javascript"
+	src="http://115.236.61.148:9085/jslib/myDojo/dojo/dojo.js"></script>
+<script type="text/javascript"
+	src="http://115.236.61.148:9085/jslib/myDojo/dojo/example.js"></script>	
+
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=d0face2397384365119fbf558c48c10a"></script>
+	
+<style>
+html,body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+}
+
+#login{
+	width:100%;
+	height: 100%;
+}
+
+.loginButton{
+	background:#69B2F8;
+}
+.loginButton:hover{
+	background: #247CD0;
+}
+
+
+.dlHover {
+				background-color: #D1E8FF;
+/* 				color: #ffffff; */
+}
+
+.uname , .upasswd{
+ 	position: relative;
+	    border: 1px solid #919191;
+	    height: 40px;
+	    width: 220px;
+	    line-height: 45px;
+	    border-radius: 5px;
+	    outline:none;
+	    font-size: 20px;
+	    padding-left: 10px;  
+}
+.upasswd{
+	margin-top: 10px;
+}
+.uInputHover{
+	border: 1px solid #4791ff;
+}
+.bottomlogin{
+    width: 460px;
+    height: 60px;
+    margin: 0px -253px;
+	position:absolute;
+	top:719px;
+	left:50%;
+	background: -webkit-linear-gradient(left, #84c0f8, #63aef7);
+	background: -ms-linear-gradient(left ,#84c0f8,  #63aef7);
+	background:-moz-linear-gradient(left,#84c0f8,#63aef7);
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#84c0f8,endColorStr=#63aef7);
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+.bottomlogin span {
+	margin: 0px 70px;
+}
+</style>
+
+<script type="text/javascript">
+require(["dojo/dom-class", "dojo/on","dojo/domReady!"],function(domClass,on){
+	loginWarper.style.left = (document.body.offsetWidth - 430)/2 +'px';
+	wz.style.left = (document.body.offsetWidth - 876)/2 +'px';
+	window.onresize = function(){
+		loginWarper.style.left = (document.body.offsetWidth - 430)/2 +'px';
+		wz.style.left = (document.body.offsetWidth - 876)/2 +'px';
+	};
+	
+	on(dojo.byId('loginButton'), 'mouseover,mouseout',function(evt) {
+		domClass.toggle(this, 'dlHover');
+	});
+	
+	on(dojo.byId('username'), 'focus,blur',function(evt) {
+		domClass.toggle(this, 'uInputHover');
+	});
+	on(dojo.byId('password'), 'focus,blur',function(evt) {
+		domClass.toggle(this, 'uInputHover');
+	});
+	
+// 	dojo.connect('loginButton')
+	dojo.connect(dojo.byId('loginButton'), "click", function(e){
+		console.info($("#username").val());
+			dojo.xhrPost({
+				postData : 'postData={"username":"'+$("#username").val()+'","password":"'+$("#password").val()+'"}',
+				url :  basePath+"common/login",
+				handleAs : "json",
+				load : function(data) {
+					if(data.length>0){
+						window.location.href="http://"+self.location.host+"/zhpt/demo2.html";
+					}else{
+						dojo.byId("logininfo").innerHTML="用户名或密码错误";
+					}
+				}
+			});
+	});
+});
+function keydown(event) {
+	if(event.keyCode == 13) {
+		document.getElementById('loginButton').click();
+	}
+}
+</script>
+</head>
+<body >
+<img id=login src="resources/images/index/1.png"/>
+<div id=wz style="position:absolute;left:100px;top:60px">
+	<img  style="width: 876px; zoom:0.95"  src="resources/images/index/1111.png">
+</div>
+<div id=loginWarper style="
+    position: absolute;
+    left: 580px;
+    top: 180px;">
+	<img id="login2" style="width: 390px"  src="resources/images/index/555.png">
+	<div style=" position: relative;
+	    bottom: 230px;width: 390px;text-align:center ;">
+	
+	<br><input id=username name="username" class=uname type="text" placeholder="用户名" value=""/>
+	<br><input id=password name="pwd" class=upasswd type="password" autocomplete="off" placeholder="密码" value=""  onkeydown="keydown(event)"/>
+	 <br><input id="loginButton" class=loginButton type="button" value="登 录" style="
+	  margin-top: 10px;
+	    position: relative;
+	    border: 1px solid #9DABDC ;
+	    height: 38px;
+	    width: 140px;
+	    line-height: 38px;
+	    border-radius: 5px;
+	    outline:none;
+	    font-size: 20px;
+	    font-family: '黑体','宋体', sans-serif;
+    	color: #fff;
+	  ">&nbsp;<span id="logininfo" style="font-size:1px;color:red;"></span>
+	</div>
+</div>
+
+<div class="bottomlogin" >
+<!--<img  src="resources/images/index/bottomscroll_1.jpg">-->
+<div style="position:absolute; z-index:2; left:10px; top:10px; " >
+<h><font size="3" color="#FFFFFF" face="微软雅黑"><span>版权所有：杭州市道路运输管理局</span><span>技术支持单位：杭州通悟科技有限公司</span></font></h>
+</div>
+</div>
+
+</body>
+</html>

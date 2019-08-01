@@ -1,0 +1,133 @@
+<html>
+<head>
+<script type="text/javascript">
+var saveYjzhJr = null;
+require(["app/html/yjzhJr","dojo/domReady!"],function(yjzhJr){
+	var yjzhJr = new yjzhJr();
+	saveYjzhJr = function(json) {
+			yjzhJr.add(json)
+	}
+	yjsjMapShow = new AMap.Map('sjmiaoshu_map', {
+		view : new AMap.View2D({
+			center : new AMap.LngLat(120.141408, 30.299043),
+			zoom : 15
+		})
+	});
+})
+</script>
+
+</head>
+<body class="claro">
+	<div id="yhToolBar"></div>
+	<div id="yjzhJrGridDiv" class="yjzhJrGridDiv" style="height:30%"></div>
+	<div id="yjzhJrGridDiv2" data-dojo-type="dijit/layout/BorderContainer"
+		data-dojo-props="persist:true,gutters:false,liveSplitters:true"
+		style="height:62%;margin-top: 10px;">
+		<span style="color: #ff0000;font-size: 15px;font-family: '宋体';">报警详情:</span>
+		<div id="sjmiaoshu" data-dojo-type="dojox/layout/ContentPane"
+			data-dojo-props=" region:'left'" style="width:28%;padding: 0px;margin: 15px;"
+			></div>
+		<div id="sjmiaoshu_map" data-dojo-type="dojox/layout/ContentPane"
+			data-dojo-props=" region:'right'"
+			style="width:70%;padding: 0px;margin: 0px;"></div>
+	</div>
+
+
+	<div id="yjzh_sc_dialog" data-dojo-type="dijit/Dialog" style="width:200px;height: 110px;" data-dojo-id="yjzh_sc_dialog" title="删除事件">
+		<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true,gutters:false, liveSplitters:true" style="width:180px;height:90px;">
+			<div id="aa" data-dojo-type="dojox/layout/ContentPane" style="overflow: hidden;" data-dojo-props='region:"left", splitter:false, style:"width: 100%;height:90px;left:0px;top:0px"'>
+				<div  style="text-align: center;">
+					<span id=id_nr_sj>确定删除该信息吗？</span><br/><br/>
+					<button id="id_del_sj" data-dojo-type="dijit/form/Button" type="submit" onClick="return yjzh_sc_dialog.isValid()">确认</button>
+					<button data-dojo-type="dijit/form/Button" type="button" onClick="yjzh_sc_dialog.hide()">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="yjzh_jr_dialog" data-dojo-type="dijit/Dialog" style="width: 750px;height: 400px"
+		data-dojo-id="yjzh_jr_dialog" title="添加事件"
+		execute="saveYjzhJr(arguments[0]);">
+
+		<div data-dojo-type="dijit/layout/BorderContainer"
+			data-dojo-props="persist:true,gutters:false, liveSplitters:true" style="width:730px;height: 380px;">
+			<div id="" data-dojo-type="dojox/layout/ContentPane" style="overflow: hidden;"
+			data-dojo-props='region:"left", splitter:false, style:"width: 50%;height:350px;left:0px;top:0px"'>
+					<div class="dijitDialogPaneContentArea">
+							<table>
+								<tr>
+									<td><label for="form_sj">报警时间: </label></td>
+									<td><input data-dojo-type="dijit/form/DateTextBox"
+										data-dojo-props='required:"true"' data-dojo-id="myStartDate"
+										type="text" name="form_sj" id="form_sj"></td>
+								</tr>
+								<tr>
+									<td><label for="form_bjfs">报警方式: </label></td>
+									<td><select id="form_bjfs" name="form_bjfs"
+										data-dojo-type="dijit/form/Select">
+											<option value="电话" selected="selected">电话</option>
+											<option value="监控">监控</option>
+									</select></td>
+								</tr>
+								<tr>
+									<td><label for="form_bjr">报警人姓名: </label></td>
+									<td><input data-dojo-type="dijit/form/ValidationTextBox"
+										data-dojo-props='required:"true"' data-dojo-id="form_bjr"
+										type="text" name="form_bjr" id="form_bjr"></td>
+									</td>
+								</tr>
+								<tr>
+									<td><label for="form_bjrdh">报警人电话: </label></td>
+									<td><input data-dojo-type="dijit/form/ValidationTextBox"
+										data-dojo-props='required:"true"' data-dojo-id="form_bjrdh"
+										type="text" name="form_bjrdh" id="form_bjrdh"></td>
+									</td>
+								</tr>
+								<tr>
+									<td><label for="form_address">地点: </label></td>
+									<td><input data-dojo-type="dijit/form/ValidationTextBox"
+										required="true" type="text" name="form_address" id="form_address"></td>
+								</tr>
+								<tr>
+									<td><label for="form_lb">类别: </label></td>
+									<td><select name="form_lb" data-dojo-type="dijit/form/Select">
+											<option value="停运">停运</option>
+											<option value="专车" selected="selected">专车</option>
+											<option value="节日">节日</option>
+											<option value="重大活动">重大活动</option>
+											<option value="交通事故">交通事故</option>
+											<option value="自然灾害">自然灾害</option>
+									</select></td>
+								</tr>
+								<tr>
+									<td colspan="2"><label for="form_miaoshu">详情: </label></td>
+								</tr>
+								<tr>
+									<td colspan="2"><textarea
+											data-dojo-type="dijit/form/SimpleTextarea" rows="3"
+											maxLength="3000" name="form_miaoshu" id="form_miaoshu">
+				                	</textarea></td>
+				
+								</tr>
+							</table>
+						</div>
+				
+						<div  style="text-align: center;">
+							<button id="id_save_sj" data-dojo-type="dijit/form/Button"
+								type="submit" onClick="return yjzh_jr_dialog.isValid();">
+								保存</button>
+							<button data-dojo-type="dijit/form/Button" type="button"
+								onClick="yjzh_jr_dialog.hide()">取消</button>
+						</div>
+			</div>
+			<div id="sjlrMap" data-dojo-type="dojox/layout/ContentPane" style="    overflow: hidden;"
+			data-dojo-props='region:"center", splitter:false, style:"width: 50%;height:350px;left:0px;top:0px"'>
+
+			</div>
+		</div>
+
+
+	</div>
+
+</body>
+</html>

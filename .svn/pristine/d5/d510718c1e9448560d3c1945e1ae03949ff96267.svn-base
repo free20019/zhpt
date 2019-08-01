@@ -1,0 +1,28 @@
+<!-- 业户查询 -->
+<html>
+	<head>
+	<style>
+		#xxxfdiv{
+			width: 100%;
+			height: 90%;
+			background: url('resources/images/dzdd/xxxf1.png')  no-repeat center;
+			position: relative;
+			zoom:0.58;
+		}
+		#xxxfzt{
+			text-align:center;
+			height: 5%;
+			margin-top:20px;
+			text-align: center;
+			text-indent: 2em;
+			font-family: '微软雅黑';
+			font-size: 15px;
+			line-height: 20px;
+		}
+	</style>
+	</head>
+	<body>
+		<div id="xxxfzt">调度信息和通知信息，两者的区别：调度信息是中心与车台互动，可收到车台的应答；而通知则没有应答。</div>
+		<div id="xxxfdiv"></div>
+	</body>
+</html>

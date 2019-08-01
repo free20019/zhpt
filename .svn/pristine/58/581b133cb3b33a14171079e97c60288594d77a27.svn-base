@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript"
+	src="http://115.236.61.148:9085/jslib/LiveQuery.js"></script>
+<script type="text/javascript" src="app/html/monitor/zdgzcl.js"></script>
+
+    <style>
+
+.fontsize{
+	font-size:25px;
+}
+
+#zdgzclapp{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#zdgzclmap{
+		width: 100%;
+    height: 100%;
+}
+#panel_right_warpper2{
+		position: absolute;
+    right: 20px;
+    top: 20px;
+    overflow: hidden;
+    width: 245px;
+    background-color: #fff;
+    text-align: center;
+    height: 40px;
+    vertical-align: middle;
+    line-height: 40px;
+    border: 1px solid #D3D3D3;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=3);/*ie*/
+    -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+    -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+
+#panel_right_warpper2 a{
+	cursor: pointer;
+    font-family: '微软雅黑';
+}
+
+#panel_right_warpper2 a:HOVER{
+	color: #0C88E8;
+}
+a img {
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+#panel_left_zdgzcl{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    overflow: hidden;
+/*     filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=3);/*ie*/ */
+/*     -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/ */
+/*     -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/ */
+/*     box-shadow:2px 2px 10px #909090;/*opera或ie9*/ */
+/*     pointer-events: none; */
+    
+/*     background-color: #fff; */
+    width:300px;
+/*     height: 50px; */
+
+}
+
+#panel_zdgzcl{
+	width:300px;
+}
+#panel_top{
+		position: absolute;
+    top: 20px;
+    left: 500px;
+    min-width: 500px;
+    
+    background-color: #fff;
+    width:100px;
+    height: 50px;
+}
+
+#panel_right{
+		position: absolute;
+    top: 20px;
+    right: 10px;
+    min-width: 400px;
+
+    background-color: #fdfdfe;
+    width:100px;
+    height: 34px;
+    line-height: 34px;
+}
+
+#panel_right span{
+	padding-left: 10px;
+	
+}
+#panel_right_back span{
+	padding-left: 10px;
+	 background-color: #fff;
+}
+
+
+/***/
+#tj_pop{
+    font-family: '微软雅黑';
+
+    position: absolute;
+    top: 65px;
+    right: 315px;
+    text-align: center;
+
+    background-color: #fdfdfe;
+    height: 165px;
+    width:75px;
+    line-height: 28px;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=3);/*ie*/
+    -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+    -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+#more_left{
+    padding-left: 5px;
+    position: absolute;
+    right: 20px;
+    top: 65px;
+    overflow: hidden;
+    width: 120px;
+    background-color: #fff;
+    height: 30px;
+    vertical-align: middle;
+    line-height: 30px;
+    border: 1px solid #D3D3D3;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=3);/*ie*/
+    -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+    -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+#more_left a{
+    cursor: pointer;
+    font-family: '微软雅黑';
+    padding-left: 2px;
+}
+/*#more_left a:HOVER{*/
+    /*color: #0C88E8;*/
+/*}*/
+#tj_pop span{
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.gridTableTitle{
+    cursor: pointer;
+}
+</style>
+
+<style type="text/css">
+
+* {
+    outline: none;
+}
+
+.claro #panel_left_zdgzcl  .dijitTabContainerTop-tabs .dijitTab{
+	padding: 0px 3px;
+}
+
+.claro #panel_left_zdgzcl  .dijitTabContainerTop-tabs .dijitTabChecked{
+	padding-top: 0px
+}
+</style>
+
+<style>
+.txtstyle{position:relative;}
+			
+			.txtstyle span{
+				white-space:nowrap;
+				font-size:12px;
+				display:block;
+				text-align:left;
+				background-color: #7c8ddf;
+				color:#FFFFFF;
+				width:auto;
+				border:1px solid #7c8ddf;
+				FONT-FAMILY:微软雅黑;
+				position:absolute;
+				top:-10px;left:25px;
+				white-space:nowrap; webkit-border-radius:5px;
+				border-radius:5px;
+			}
+			#tip{
+				position:absolute;
+				right:30px;
+				top:40px;
+				border-radius:3px;
+				line-height:30px;
+				}
+			#qyjkmap{
+/* 				top:-42px; */
+				z-index:-1;
+			}
+			#dojox_layout_ContentPane_2{
+				overflow-y: hidden;
+			}
+
+</style>		
+
+<style>
+
+
+input,textarea,select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	*font-size: 100%
+}
+
+legend {
+	color: #000
+}
+</style>	
+<style>
+#live_query_box_deatil_zdgzcl{
+    margin-top: 6px;
+}
+#live_query_box_deatil_zdgzcl table tr {
+ font-family: '微软雅黑';
+    font-size: 12px;
+    color: rgba(10, 11, 10, 0.84);
+}
+#live_query_box_deatil_zdgzcl table tr td button{
+    font-family: '微软雅黑';
+    font-size:12px;
+    margin-right: 10px;
+}
+#live_query_box_deatil_zdgzcl table tr td button:hover{
+    background: #ffffff;
+}
+#clxx_vhic_comp{
+    width: 285px;
+    margin-left: 10px;
+    margin-top: 6px;
+}
+#clxx_vhic_comp span{
+    font-family: '微软雅黑';
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+#clxx_vhic_comp table tr td{
+    margin: 0 10px 10px 10px;
+    padding: 6px 0px;
+    border-bottom: 1px solid rgba(105, 105, 105, 0.2);
+    white-space: nowrap;
+    font-family: '微软雅黑';
+    font-size: 12px;
+    color: rgba(10, 11, 10, 0.84);
+}
+#clxx_vhic_comp table tr td:hover{
+    color: #0C88E8;
+}
+
+</style>
+<style>
+    #panel_left_tablist{
+        font-family: '微软雅黑';
+        font-size: 13px;
+    }
+    .gridTable{
+        font-family: '微软雅黑';
+        font-size: 14px;
+    }
+    .gridTableBodyTr2{
+        background: none;
+    }
+    #areaListDetail{
+        font-family: '微软雅黑';
+        font-size: 12px;
+    }
+    #areaListDetail div{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 6px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid rgba(105, 105, 105, 0.2);
+        white-space: nowrap;
+    }
+    #areaListDetail div:hover{
+        color: #0C88E8;
+    }
+    .claro #panel_left_zdgzcl .dijitTabContainerTop-tabs .dijitTab{
+        margin: 0 3px;
+        width: 85px;
+        height: 20px;
+    }
+    #returnButton{
+        font-family: '微软雅黑';
+        font-size: 12px;
+        margin: 5px 10px;
+    }
+    #returnButton:hover{
+        background-color: #ffffff;
+    }
+
+</style>
+    <style>
+        #cp_zdcl_xx td{
+            float: right;
+            width: 274px;
+            margin: 0px 20px 0px 6px;
+            padding: 5px 0px;
+            border-bottom: 1px solid rgba(105, 105, 105, 0.2);
+            white-space: nowrap;
+            font-family: '微软雅黑';
+            font-size: 12px;
+            color: rgba(10, 11, 10, 0.84);
+            display: inline-block;
+        }
+        #cp_zdcl1{
+            margin: 5px 0 0 7px;
+        }
+        #cp_zdcl_xx td:hover{
+            color: #0C88E8;
+        }
+        #live_query_box_deatil_zdgzcl{
+		    margin-top: 6px;
+		}
+		#live_query_box_deatil_zdgzcl table tr {
+		 font-family: '微软雅黑';
+		    font-size: 12px;
+		    color: rgba(10, 11, 10, 0.84);
+		}
+		#live_query_box_deatil_zdgzcl table tr td button{
+		    font-family: '微软雅黑';
+		    font-size:12px;
+		    margin-right: 10px;
+		}
+		#live_query_box_deatil_zdgzcl table tr td button:hover{
+		    background: #ffffff;
+		}
+    </style>
+
+</head>
+<body class="claro">
+<div id="zdgzclapp" style="width: 100%;height: 100%">
+	<div id="zdgzclmap"></div>
+	
+	<div id="panel_left_zdgzcl" >
+		<div id="panel_zdgzcl"></div>
+	</div>
+</body>
+</html>

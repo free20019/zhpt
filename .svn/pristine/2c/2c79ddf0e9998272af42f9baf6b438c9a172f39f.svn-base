@@ -1,0 +1,10 @@
+<!--车辆在线统计-->
+<html>
+<head>
+	<script type="text/javascript" src="app/html/monitor/wsxcl.js"></script>
+</head>
+<body>
+<div id="offtjdiv" ></div>
+<div id="offlinetable" class="offlinetable"></div>
+</body>
+</html>

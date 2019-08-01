@@ -1,0 +1,12 @@
+{results:[
+ {"title":"apples","link":"apples.php","description":"apples are awesome yah","id":"0","category":"ok fruits"},
+ {"title":"bananas","link":"bananas.php","description":"bananas are kinda ok","id":"1","category":"ok fruits"},
+ {"title":"tomatoes","link":"tomato.php","description":"tomatoes are very ok","id":"2","category":"awesome fruits"},
+ {"title":"watermelom","link":"watermelon.php","description":"whattam","id":"3","category":"awesome fruits"},
+ {"title":"starfruit","link":"starfruit.php","description":"not sweet","id":"4","category":"rare fruits"},
+ {"title":"oranges","link":"oranges.php","description":"are boring but yummy","id":"5","category":"boring fruits"},
+ {"title":"lemons","link":"lemons.php","description":"are better than limes.","id":"6","category":"boring fruits"},
+ {"title":"limes","link":"limes.php","description":"limes are for margaritas","id":"7","category":"ok fruits"},
+ {"title":"pears","link":"pears.php","description":"rock when you bake them.","id":"8","category":"awesome fruits"},
+ {"title":"kiwi","link":"kiwi.php","description":"is the new pink in fruits.","id":"9","category":"awesome fruits"}
+]}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>物联卡消息下发</title>
+    <meta charset=UTF-8">
+	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	  <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+	  <script type="text/javascript" src="resources/js/jquery-2.1.1.min.js"></script>
+	  <script src="http://api.map.baidu.com/api?v=1.2" type="text/javascript"></script>
+	  <script type="text/javascript" src="libs/layer/layer.js"></script>
+	  <style>
+	  	.inputbox{
+	  		margin:10px 0;
+	  		text-align: center;
+	  	}
+	  	.btcss{
+			font-weight:bold;
+			text-align: center;
+ 	  		background: #58bddc; 
+	  	}
+	  	.tdcss{width:150px;text-align: center;}
+	  	.tdcss1{text-align: center;width:90px;}
+	  	table{
+		  	border-collapse:collapse;
+		  }
+		table, th,td { table-layout:fixed; border: 2px solid #58bddc;}
+		button {
+			background:#51bbdb;
+			border:1px solid #51bbdb;
+			color:#fff;
+		}
+	  </style>
+</head>
+<body>
+<div class="inputbox">
+	<div><h2>物联卡消息下发</h2></div>
+	<div class="inputbox">
+	  <label style="position: absolute;line-height: 100px;">SIM卡号</label>
+	  <textarea id="sjhm" style="resize: none;width: 300px;height: 100px;max-width: 300px;max-height: 200px;margin-left: 69px;"></textarea>
+	</div>
+	<div class="inputbox">
+	  <label style="position: absolute;line-height: 100px;">短信内容</label>
+	  <textarea id="nr" style="resize: none;width: 300px;height: 100px;max-width: 300px;max-height: 200px;margin-left: 69px;"></textarea>
+	</div>
+	<div>
+	  <button id="ptzgxxcx" style="margin-left: 50px;margin-top: 10px;">发送</button>
+	  <button id="buttoncz" style="margin-left: 50px;margin-top: 10px;">重置</button>
+	</div>
+</div>
+<div id="tjbt" style="width:300px;margin:20px auto 0;text-align: center;padding-top:10px"></div>
+<table id="tjul" style="margin: 10px auto;"></table>
+<script type="text/javascript">
+$("#ptzgxxcx").css('background','#51bbdb');
+$("#ptzgxxcx").css("border","1px solid #51bbdb");
+$("#ptzgxxcx").css("color","#fff");
+var regPhone = /^(\d{11}|\d{13})$/;
+$("#sjhm").focus(function(){
+	layer.tips("请输入SIM卡号，多个卡号之间；分隔", "#sjhm", {
+        tips: [2, '#0FA6D8'], //还可配置颜色
+		area:["atuo"]
+    });
+});
+	$("#ptzgxxcx").click(function(){
+		 if ($("#sjhm").val()=='') {
+             alert("SIM卡号不能为空！")
+             return false;
+         }
+// 		 if($("#sjhm").val().indexOf('；')){
+// 			 alert("SIM卡号中存在中文；请将其改为英文;");
+//              return false;
+// 		 }
+		 if ($("#nr").val()=='') {
+             alert("短信内容不能为空！")
+             return false;
+         }
+		 var sz=$("#sjhm").val().split(/;|；|,/);
+		 var jg = "";
+		 for(var i=0; i<sz.length; i++){
+			 if(sz[i].length>0){
+				 if(!regPhone.test(sz[i])){
+					 jg+=(i+1)+"、";
+				 }
+			 }
+		 }
+		 if(jg.length>0){
+			 jg = jg.substr(0,jg.length-1);
+			 var zzjg = window.confirm("第"+jg+"个SIM卡格式不正确，是否继续？");
+			 if(zzjg){
+				 cx();
+			 }
+		 }else{
+		 	cx();
+		 }
+	})
+	function cx(){
+		$.ajax({
+		    type:"post",
+		    url: "gxdc/lchajd",
+		    data:{
+		    	"sjhm" : $("#sjhm").val(),
+		    	"nr" : $("#nr").val()
+		    },
+		    dataType: "JSON",
+		    success:function(data){
+		    	console.log(data)
+		    	time(this);
+	    		setTimeout("fiveminute();",10000);
+		    },
+		    error: function(){
+		    }
+		 });
+	}
+	function fiveminute(){
+		$.ajax({
+		    type:"post",
+		    url: "gxdc/lchajd2",
+		    data:{
+		    },
+		    dataType: "JSON",
+		    success:function(data){
+		    	console.log(data)
+		    	$("#tjbt").html("短信发送情况").css({'border-top':'1px solid #58bddc'});
+		    	
+		    	var tab = "<thead><tr class='btcss'><td>SIM卡号</td><td>发送结果</td><td>回码内容</td></tr></thead><tbody>";
+		    	for(var i=0; i<data.length; i++){
+		    		tab+="<tr class='tdcss1'><td class='tdcss'>"+data[i].SJHM+"</td><td class='tdcss'>"+data[i].TYPE+"</td><td class='tdcss'>"+data[i].HM+"</td></tr>";
+		    	}
+		    		$("#tjul").html(tab+"</tbody>");
+		    },
+		    error: function(){
+		    }         
+		 });
+	}
+	$("#buttoncz").click(function(){
+		$("#tjbt").html("");
+		$("#tjul").html("");
+		$("#sjhm").val("");
+    	$("#nr").val("");
+	})
+	var wait = 10;
+	function time(o) {
+        if (wait == 0) {
+            $("#ptzgxxcx").css('background','#51bbdb');
+            $("#ptzgxxcx").css("border","1px solid #51bbdb");
+            $("#ptzgxxcx").css("color","#fff");
+            $("#ptzgxxcx").removeAttr("disabled");
+            $("#ptzgxxcx").text("发送");
+            fssj = new Date().getTime();
+            wait = 10;
+        } else {
+            $("#ptzgxxcx").css('background-color','#ddd');
+            $("#ptzgxxcx").css("border","none");
+            $("#ptzgxxcx").css("color","#000");
+            $("#ptzgxxcx").attr("disabled", true);
+            $("#ptzgxxcx").text("重新发送(" + wait + ")");
+            wait--;
+            setTimeout(function() {
+                time(o)
+            }, 1000)
+        }
+    }
+</script>
+</body>
+</html>

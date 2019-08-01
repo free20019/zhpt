@@ -1,0 +1,62 @@
+<!-- 启动 -->
+<html>
+<head>
+  <script type="text/javascript" src="app/html/yjzhZhiban.js"></script>
+</head>
+<body class="claro">
+	<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true, gutters:false, liveSplitters:true">
+
+		<div  data-dojo-type="dojox/layout/ContentPane" style="text-align: center; overflow: hidden;"
+			data-dojo-props='region:"left", splitter:false, style:"width: 50%;left:0px;top:0px"'>
+			<div class="beonduty_Box">
+				<h3 class="title">今日值班</h3>
+				<div class="currentDate">
+					<span class="year">2016</span><iii>年</iii>
+					<span class="month">1</span><iii>月</iii>
+					<span class="date">14</span><iii>日</iii>
+					<span class="week">星期一</span>
+				</div>
+				<div class="zhiban">值班长</div>
+				<div class="name zongzhibanStaff"></div>
+				<div class="zhiban">早班 晚班</div>
+				<div class="name zhibanStaff" style="width:280px;"></div>
+				<div class="zhiban">白班电话</div>
+				<div class="phone">
+					<div class="tel">
+						<span>电话：</span>
+						<span class="_tel dh_tel"></span>
+					</div>
+					<!--<div class="mobilephoneb">-->
+						<!--<span>电话：</span>-->
+						<!--<span class="_tel dh_phone"></span>-->
+					<!--</div>-->
+				</div>
+			</div>
+		</div>
+
+		<div   data-dojo-type="dojox/layout/ContentPane" data-dojo-props='region:"center", splitter:false, style:"width: 50%;"'
+			style="text-align: center;overflow: hidden;">
+			<div class="body_Box">
+				<h3 class="title">本周值班</h3>
+				<div class="body">
+					<span class="time">时间</span>
+					<span class="person">早班</span>
+					<span class="telephone">晚班</span>
+				</div>
+				<div class="form" >
+					<ul>
+						<li><span class="data1">  星期一</span><span class="name1"></span><span class="telephone1"></span></li>
+						<li><span class="data1">  星期二</span><span class="name1"></span><span class="telephone1"></span></li>
+						<li><span class="data1">  星期三</span><span class="name1"></span><span class="telephone1"></span></li>
+						<li><span class="data1">  星期四</span><span class="name1"></span><span class="telephone1"></span></li>
+						<li><span class="data1">  星期五</span><span class="name1"></span><span class="telephone1"></span></li>
+						<li><span class="data1">  星期六</span><span class="name1"></span><span class="telephone1"></span></li>
+						<li><span class="data1">  星期天</span><span class="name1"></span><span class="telephone1"></span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!-- 业户查询 -->
+<html>
+	<head>
+		<script type="text/javascript" src="app/html/monitor/qyycxxtj.js"></script>
+	</head>
+	<body>
+		<div id="qyycxxtjdiv"></div>
+		<div id="qyycxxtjtable" class="qyycxxtjtable"></div>
+<!-- 		<div id="qyycxxtjtbdiv"></div> -->
+<!-- 		<div id="qyycxxtjtb"  style="height: 300px" ></div> -->
+	</body>
+</html>

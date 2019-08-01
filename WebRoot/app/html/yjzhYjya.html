@@ -1,0 +1,44 @@
+<!-- 应急预案 -->
+<html>
+<head>
+<script type="text/javascript" src="app/html/yjzhYjya.js"></script>
+<style type="text/css">
+
+.yjyaListWrapper{
+	width: 97%;
+    height: 100%;
+    border-right: 2px dotted #CCCCB3;
+    overflow: hidden;
+}
+#yjyaList{
+	padding: 2px 5px;
+}
+#yjyaList li{
+	border-bottom: 2px solid #7FBDF8;;
+}
+#yjyaList li:HOVER{
+	background: #F3F4F9;
+	cursor: pointer;
+}
+</style>
+</head>
+<body class="claro">
+	<div id="yjzhYaToolBar" style="margin: 5px;"></div>
+	<div id="yjzhYaGridDiv4" data-dojo-type="dijit/layout/BorderContainer"
+		data-dojo-props="persist:true,gutters:true,liveSplitters:true"
+		style="height:90%;">
+		<div data-dojo-type="dijit/layout/ContentPane"
+			data-dojo-props=" region:'left'"
+			style="width:170px;padding: 0px;margin: 0px;">
+			<div class=yjyaListWrapper >
+				<ul id="yjyaList" > </ul>
+			</div>
+		</div>
+
+		<div id="yjzhYjyaContent" data-dojo-type="dijit/layout/ContentPane"
+			data-dojo-props=" region:'center'"
+			style="height:90%;padding: 0px;margin: 0px;">
+		</div>
+	</div>
+</body>
+</html>

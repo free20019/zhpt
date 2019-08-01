@@ -1,0 +1,11 @@
+<html>
+<!-- 单车平均载客时间分析 -->
+<head>
+    <script type="text/javascript" src="app/html/monitor/dcpjzksjfx.js"></script>
+</head>
+<body>
+<div id="dcpjzksjfxdiv"></div>
+<div id="dcpjzksjfxtable" class="dcpjzksjfxtable" style="height: 350px;" ></div>
+<div id="dcpjzksjfxtb" style="height:330px;"></div>
+</body>
+</html>

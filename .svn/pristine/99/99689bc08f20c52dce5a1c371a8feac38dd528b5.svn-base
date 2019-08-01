@@ -1,0 +1,145 @@
+package mvc.controllers;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+import helper.DownloadAct;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import mvc.service.TlaqServer;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+@RequestMapping(value = "/claq")
+public class TlaqAction {
+	private TlaqServer tlaqServer;
+	private DownloadAct downloadAct = new DownloadAct();
+	public TlaqServer getTlaqServer() {
+		return tlaqServer;
+	}
+
+	@Autowired
+	public void setTlaqServer(TlaqServer tlaqServer) {
+		this.tlaqServer = tlaqServer;
+	}
+
+	/**
+	 * 车辆速度曲线统计分析
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/clsdqx")
+	@ResponseBody
+	public String clsdqx(HttpServletRequest request,@RequestParam("postData") String postData) {
+		String msg = "ok";
+		System.out.println("####");
+		msg = tlaqServer.clsdqx(postData);
+		System.out.println(msg);
+		return msg;
+	}
+	@RequestMapping("clsdqxexcle")
+	@ResponseBody
+	public String clsdqxexcle(HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam("postData") String postData) throws IOException{
+		String a[] = {"车号","经度","纬度","速度(KM/H)","方向","时间","位置信息"};//导出列明
+		String b[] = {"VEHICLE_NUM","PX","PY","SPEED","DIRECTION","SPEED_TIME",""};//导出map中的key
+		String gzb = "速度曲线报表";//导出sheet名和导出的文件名
+		String msg = tlaqServer.clsdqx(postData);
+		List<Map<String, Object>>list = downloadAct.parseJSON2List2(msg);//导出的数据
+		downloadAct.download(request,response,a,b,gzb,list);
+		return null;
+	}
+	@RequestMapping("lctjexcle")
+	@ResponseBody
+	public String lctjexcle(HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam("postData") String postData) throws IOException{
+		String a[] = {"车号","经度","纬度","速度(KM/H)","方向","时间","位置信息"};//导出列明
+		String b[] = {"VEHICLE_NUM","PX","PY","SPEED","DIRECTION","SPEED_TIME",""};//导出map中的key
+		String gzb = "里程统计";//导出sheet名和导出的文件名
+		String msg = tlaqServer.clsdqx(postData);
+		List<Map<String, Object>>list = downloadAct.parseJSON2List2(msg);//导出的数据
+		downloadAct.download(request,response,a,b,gzb,list);
+		return null;
+	}
+	/**
+	 * 分公司里程统计分析
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/lctj")
+	@ResponseBody
+	public String lctj(HttpServletRequest request,@RequestParam("postData") String postData) {
+		String msg = "ok";
+		msg = tlaqServer.zlctj(postData);
+		return msg;
+	}
+	@RequestMapping("fgslctjexcle")
+	@ResponseBody
+	public String fgslctjexcle(HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam("postData") String postData) throws IOException{
+		String a[] = {"车号","里程(公里)"};//导出列明
+		String b[] = {"VHIC","LICHENG"};//导出map中的key
+		String gzb = "分公司里程统计";//导出sheet名和导出的文件名
+		String msg = tlaqServer.zlctj(postData);
+		List<Map<String, Object>>list = downloadAct.parseJSON2List2(msg);//导出的数据
+		downloadAct.download(request,response,a,b,gzb,list);
+		return null;
+	}
+	/**
+	 * 在线车辆查询统计
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/zxcltj")
+	@ResponseBody
+	public String zxcltj(HttpServletRequest request,@RequestParam("postData") String postData) {
+		String msg = "ok";
+		System.out.println("####");
+		msg = tlaqServer.findbyno(postData);
+		return msg;
+	}
+	@RequestMapping("zxcltjexcle")
+	@ResponseBody
+	public String zxcltjexcle(HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam("postData") String postData) throws IOException{
+		String a[] = {"公司","车号","汇报时间","SIM卡号","联系人","联系电话","状态"};//导出列明
+		String b[] = {"COMP_NAME","VEHI_NO","STIME","SIM_NUM","OWN_NAME","OWN_TEL","z_state"};//导出map中的key
+		String gzb = "车辆在线统计";//导出sheet名和导出的文件名
+		String msg = tlaqServer.findbyno(postData);
+		List<Map<String, Object>>list = downloadAct.parseJSON2List2(msg);//导出的数据
+		downloadAct.download(request,response,a,b,gzb,list);
+		return null;
+	}
+	@RequestMapping("/offline")
+	@ResponseBody
+	public String offline(HttpServletRequest request,@RequestParam("postData") String postData){
+		String msg="ok";
+		msg=tlaqServer.offline(postData);
+		return msg;
+	}
+	@RequestMapping("offlineexcle")
+	@ResponseBody
+	public String offlineexcle(HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam("postData") String postData) throws IOException{
+		String a[] = {"公司","车号","汇报时间","SIM卡号","联系人","联系电话"};//导出列明
+		String b[] = {"COMP_NAME","VEHI_NO","STIME","SIM_NUM","OWN_NAME","OWN_TEL"};//导出map中的key
+		String gzb = "多日未上线车辆统计";//导出sheet名和导出的文件名
+		String msg = tlaqServer.offline(postData);
+		List<Map<String, Object>>list = downloadAct.parseJSON2List2(msg);//导出的数据
+		downloadAct.download(request,response,a,b,gzb,list);
+		return null;
+	}
+}

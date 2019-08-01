@@ -1,0 +1,136 @@
+<html>
+<head>
+<script>
+require([ "dgrid/Editor","dijit/form/Button" ,"dijit/form/DateTextBox"
+         ,"dgrid/OnDemandGrid","dijit/form/TextBox","dgrid/extensions/Pagination"
+         ,"dgrid/Selection", "dgrid/Keyboard","dgrid/extensions/ColumnResizer"
+         ,"app/createAsyncStore","dstore/Memory","dgrid/extensions/DijitRegistry"
+         ,"dijit/registry", "dojo/dom-style","dojo/_base/declare",
+         "dojo/dom-construct", "app/util","dojo/domReady!"], function(
+        		  Editor, Button,DateTextBox,Grid,TextBox
+        		  , Pagination,Selection,Keyboard,ColumnResizer,createAsyncStore,Memory,DijitRegistry
+        		  ,registry, domStyle,declare, dc,util ) {
+	var lcGrid = store = deferred = null,count = 0;
+	var columns = [
+		       		{field:'dojoId',label : "序号"}, // give column a custom name
+		    		{field:'startTime', 
+		    			label : "开始时间" ,
+		    			editor: DateTextBox,
+		    			formatter:util.formatYYYYMMDD,
+		    			canEdit: function(o,v){
+		    				return o.dojoId > count;
+		    			}
+		    		},
+		    		{field:'endTime', 
+		    			label : "结束时间" ,
+		    			editor: DateTextBox,
+		    			formatter:util.formatYYYYMMDD,
+		    			canEdit: function(o,v){
+		    				return o.dojoId > count;
+		    			}
+		    		},
+		    		{field:'lc', 
+		    			label : "里程（公里）" ,
+		    			editor: "text",
+		    			canEdit: function(o,v){
+		    				return o.dojoId > count;
+		    			}
+		    		}
+		];
+		
+		new Button({
+		        label: "刷 新",
+		        onClick: function(){
+		        	var postData ={"page":1,"pageSize":1000};
+		        	dojo.xhrPost(dojo.mixin(xhrArgs,{"postData":'postData='+dojo.toJson(postData)}));
+		        }
+		}).placeAt('lcToolBar');
+		new Button({
+		        label: "添加里程",
+		        onClick: function(){
+		        	lcGrid.collection.put({dojoId: lcGrid.collection.data.length+1, startTime: new Date().getTime(), endTime: new Date().getTime(), lc: 400});
+		        }
+		}).placeAt('lcToolBar');
+					
+		new Button({
+		        label: "保存",
+		        onClick: function(){
+		        	 lcGrid.save();
+		        	 dojo.forEach(lcGrid.collection.data,function(item,index){
+		        		 if(item.dojoId > count){
+		        			var temp = dojo.clone(item)
+		        			temp.startTime = new Date(temp.startTime).getTime()
+		        			temp.endTime = new Date(temp.endTime).getTime()
+		        			var postData= "postData="+dojo.toJson(temp);
+		        			dojo.xhrPost({
+		        				postData:postData,
+		        		        url:encodeURI('lc/save'),
+		        		        load:function(data){ 
+		        		           console.log('save 22'+data)
+		        		           deferred = dojo.xhrPost(xhrArgs);
+		        		           btjs();
+		        		        }
+		        		    });
+		        		 }
+		        	 });
+		        }
+		}).placeAt('lcToolBar');
+		
+		
+		new Button({
+		        label: "删除",
+		        onClick: function(){
+		        	if(!window.confirm( '确认删除选择的行')){
+		        		return;
+		        	}
+		        	 dojo.forEach(lcGrid.collection.data,function(item,index){
+		        			console.log('delete -- -'); 
+		        		 if(lcGrid.isSelected(item)){
+		        			var postData= 'postData={"id":"'+item.id+'"}';
+		        			dojo.xhrPost({
+		        				postData:postData,
+		        		        url:encodeURI('lc/del'),
+		        		        load:function(data){ 
+		        		           console.log('delete 22'+data)
+		        		           deferred = dojo.xhrPost(xhrArgs);
+		        		           btjs();
+		        		        }
+		        		    });
+		        			
+		        		 }
+		        	 });
+		        }
+		}).placeAt('lcToolBar');
+	var xhrArgs = {
+		url : "/rybt/lc/get",
+		postData : 'postData={"page":1,"pageSize":'+pageSize+'}',
+		handleAs : "json",
+		load : function(data) {
+			console.log(data);
+			count = data.datas.length;
+				for(var i=0; i<data.datas.length;  i++){
+    		    	data.datas[i] = dojo.mixin({ dojoId: i+1 }, data.datas[i]);
+    		    }
+				console.log(data.datas)
+				store = createAsyncStore({ data: data.datas });
+				lcGrid.set("collection",store);
+		},
+		error : function(error) {
+			targetNode.innerHTML = "An unexpected error occurred: "
+					+ error;
+		}
+	};
+	var CustomGrid = declare([DijitRegistry,Grid, Keyboard, Selection, ColumnResizer,Editor]);
+	lcGrid= new CustomGrid({
+		columns: columns
+	},"lcGridDiv");
+
+	dojo.xhrPost(xhrArgs);
+});
+	</script>
+	</head>
+	<body class="claro">
+		<div id="lcToolBar" style="height: 45px;"></div>
+		<div id="lcGridDiv" class="lcDivGrid" ></div>
+	</body>
+</html>

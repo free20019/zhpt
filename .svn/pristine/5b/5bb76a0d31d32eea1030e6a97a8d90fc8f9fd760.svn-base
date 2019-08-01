@@ -1,0 +1,10 @@
+<html>
+<!-- 里程统计 -->
+<head>
+	<script type="text/javascript" src="app/html/monitor/findbyl.js"></script>
+</head>
+<body>
+<div id="findbyldiv"></div>
+<div id="findzztbtable" class="findoperdaytable" style="height: 100%" ></div>
+</body>
+</html>

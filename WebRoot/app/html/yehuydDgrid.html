@@ -1,0 +1,83 @@
+<html>
+<head>
+	<script>
+		require([ "dgrid/Editor","dijit/form/Button" ,"dijit/form/DateTextBox"
+				  ,"dgrid/OnDemandGrid","dijit/form/TextBox","dgrid/extensions/Pagination"
+				  ,"dgrid/Selection", "dgrid/Keyboard","dgrid/extensions/ColumnResizer"
+				  ,"app/createAsyncStore","dstore/Memory","dgrid/extensions/DijitRegistry"
+				  ,"dijit/registry", "dojo/dom-style","dojo/_base/declare",
+				  "dojo/dom-construct","app/util", "dojo/domReady!"], function(
+						  Editor, Button,DateTextBox,Grid,TextBox
+						  , Pagination,Selection,Keyboard,ColumnResizer,createAsyncStore,Memory,DijitRegistry
+						  ,registry, domStyle,declare, dc,util ) {
+		var yehuydGrid = store = null;
+			dc.place(dc.create("span",{innerHTML:"异动时间",style:{"margin-right":"5px"}}),'yehuydToolBar');
+			new TextBox({id:"yehuyd_startTime",style:{"width":"8em","margin-right":"15px"}}).placeAt('yehuydToolBar');
+			dc.place(dc.create("span",{innerHTML:"至",style:{"margin-right":"5px"}}),'yehuydToolBar');
+			new TextBox({id:"yehuyd_endTime",style:{"width":"8em","margin-right":"15px"}}).placeAt('yehuydToolBar');
+
+			new Button({
+					label: "查  询",
+					onClick: function(){
+						var postData = {"page":1,"pageSize":pageSize};
+						postData["name"] = dojo.byId('userName').value;
+						postData["baId"] = dojo.byId('baId').value;
+						dojo.xhrPost(dojo.mixin(xhrArgs,{"postData":'postData='+dojo.toJson(postData)}));
+					}
+			}).placeAt('yehuydToolBar');
+		var xhrArgs = {
+			url : "/rybt/usersyd/get",
+			postData : 'postData={"page":1,"pageSize":'+pageSize+'}',
+			handleAs : "json",
+			load : function(data) {
+				console.log(data)
+				var columns = {
+					dojoId : "序号", // give column a custom name
+					userName : "姓名",
+					tel : { label : "手机" },
+					baId : { label : "业户" },
+					compId : { label : "分公司" },
+					ydTime : { label : "异动时间" ,formatter:util.formatYYYYMMDD},
+					ydRemark : { label : "异动原因" }
+				};
+
+					var CustomGrid = declare([DijitRegistry,Grid, Keyboard, Selection, ColumnResizer]);
+					for(var i=0; i<data.datas.length;  i++){
+						data.datas[i] = dojo.mixin({ dojoId: i+1 }, data.datas[i]);
+					}
+					console.log(data.datas)
+					store = new Memory({ data: {
+						identifier: 'dojoId',
+						label: 'dojoId',
+						items: data.datas
+					} });
+
+					//new Grid({ columns : columns }, "yehuydGridDiv").renderArray(data.datas);
+					if(yehuydGrid){
+						yehuydGrid = null;
+						dojo.empty('yehuydGridDiv')
+// 							yehuydGrid.destroy();
+					}
+					yehuydGrid= new CustomGrid({
+						//className: "dgrid-autoheight",
+						collection:  store,
+						columns: columns
+					},"yehuydGridDiv");
+					console.log(yehuydGrid);
+			},
+			error : function(error) {
+				targetNode.innerHTML = "An unexpected error occurred: "
+						+ error;
+			}
+		};
+
+		var deferred = dojo.xhrPost(xhrArgs);
+		});
+
+	</script>
+	</head>
+	<body class="claro">
+		<div id="yehuydToolBar" style="height: 45px;"></div>
+		<div id="yehuydGridDiv" class="yehuydGridDiv" ></div>
+	</body>
+</html>

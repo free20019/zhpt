@@ -1,0 +1,349 @@
+package mvc.service;
+
+import helper.JWDSwitch;
+import helper.JacksonUtil;
+
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import mvc.cache.DataItem;
+import mvc.cache.GisData;
+import net.sf.json.JSONArray;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import oracle.net.aso.a;
+
+import org.codehaus.jackson.type.TypeReference;
+import org.hibernate.annotations.common.util.StringHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
+
+@Service
+public class QxglServer {
+	protected JdbcTemplate jdbcTemplate = null;
+	protected JdbcTemplate jdbcTemplate2 = null;
+
+	public JdbcTemplate getJdbcTemplate() {
+		return jdbcTemplate;
+	}
+
+	@Autowired
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
+	public JdbcTemplate getJdbcTemplate2() {
+		return jdbcTemplate2;
+	}
+
+	@Autowired
+	public void setJdbcTemplate2(JdbcTemplate jdbcTemplate2) {
+		this.jdbcTemplate2 = jdbcTemplate2;
+	}
+
+	private JacksonUtil jacksonUtil = JacksonUtil.buildNormalBinder();
+
+	public String test() {
+		System.out.println(jdbcTemplate);
+		System.out.println(jdbcTemplate2);
+
+		return "ok";
+	}
+
+	public String qxglcheckbm(HttpServletRequest request) {
+		String isString = (String)request.getSession().getAttribute("qxid");
+		System.out.println("##########"+isString);
+		String str ="select t.* from zhpt.TB_QXGL_YH@taxilink114 t where t.parent ='124' and t.id in ("+isString+") ";
+		List<Map<String, Object>> list = jdbcTemplate2.queryForList(str);
+		System.out.println(str);
+		System.out.println("@@   "+isString);
+		String aa="";
+		List<String> last1= new ArrayList<String>();
+		List<String> last2= new ArrayList<String>();
+		List<String> last3= new ArrayList<String>();
+		List<String> last4= new ArrayList<String>();
+		List<String> last5= new ArrayList<String>();
+		List<String> last6= new ArrayList<String>();
+		List<String> last7= new ArrayList<String>();
+		List<String> last8= new ArrayList<String>();
+		List<String> last9= new ArrayList<String>();
+		for (int i = 0; i < list.size(); i++) {
+			aa = "{'name':'"+list.get(i).get("NAME").toString()+"','item':[";//]}";
+			String pid = list.get(i).get("ID").toString();
+			String s1 ="select t.* from zhpt.TB_QXGL_YH@taxilink114 t where t.parent = '"+pid+"' and t.id in ("+isString+")";
+			List<Map<String, Object>> s1list = jdbcTemplate2.queryForList(s1);
+			String bb="";
+			for (int j = 0; j < s1list.size(); j++) {
+				String pid1 = s1list.get(j).get("ID").toString();
+				String s2 ="select t.* from zhpt.TB_QXGL_YH@taxilink114 t where t.parent = '"+pid1+"' and t.id in ("+isString+")";
+				List<Map<String, Object>> s2list = jdbcTemplate2.queryForList(s2);
+				if(s2list.size()>0){
+					bb = "{'name':'"+s1list.get(j).get("NAME").toString()+"','item':[";
+					for (int k = 0; k < s2list.size(); k++) {
+						bb += "'"+s2list.get(k).get("NAME").toString()+"',";
+					}
+					bb = bb.substring(0,bb.length()-1)+"]},";
+				}else{
+					aa+="'"+s1list.get(j).get("NAME").toString()+"',";
+				}
+			}
+			String cc = aa+bb;
+			cc = cc.substring(0,cc.length()-1)+"],'id':'"+list.get(i).get("PICID").toString()+"'}";
+			if(list.get(i).get("MENUID").toString().equals("1")){
+				last1.add(cc);
+			}else if(list.get(i).get("MENUID").toString().equals("2")){
+				last2.add(cc);
+			}else if(list.get(i).get("MENUID").toString().equals("3")){
+				last3.add(cc);
+			}else if(list.get(i).get("MENUID").toString().equals("4")){
+				last4.add(cc);
+			}else if(list.get(i).get("MENUID").toString().equals("5")){
+				last5.add(cc);
+			}else if(list.get(i).get("MENUID").toString().equals("6")){
+				last6.add(cc);
+			}else if(list.get(i).get("MENUID").toString().equals("7")){
+				last7.add(cc);
+			}else if(list.get(i).get("MENUID").toString().equals("8")){
+				last8.add(cc);
+			}else if(list.get(i).get("MENUID").toString().equals("9")){
+				last9.add(cc);
+			}
+		}
+		Map<String, Object> m = new HashMap<String, Object>();
+		m.put("xt1", last1);
+		m.put("xt2", last2);
+		m.put("xt3", last3);
+		m.put("xt4", last4);
+		m.put("xt5", last5);
+		m.put("xt6", last6);
+		m.put("xt7", last7);
+		m.put("xt8", last8);
+		m.put("xt9", last9);
+		return jacksonUtil.toJson(m);
+	}
+	
+	public String qxglcheckjs(String postData) {
+		Map<String, Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String, Object>>() {});
+		int page = Integer.valueOf(String.valueOf(paramMap.get("page")));
+		int pageSize = Integer.valueOf(String.valueOf(paramMap.get("pageSize")));
+		String name = String.valueOf(paramMap.get("name"));
+		
+		String str1 ="select * from (select t.*,t1.COMPETENCEID,rownum r from zhpt.TB_QXGL_YHB@taxilink114 t,zhpt.TB_QXGL_GWB@taxilink114 t1 where t.job = t1.job and t.NAME like '%"+name+"%')tt where tt.r<=" + (page * pageSize) + " and tt.r>= "+(page - 1) * pageSize;
+		List<Map<String, Object>> list = jdbcTemplate2.queryForList(str1);
+		
+		List<Object> newList = new ArrayList<Object>();
+		System.out.println(list.size());
+		for (int i = 0; i < list.size(); i++) {
+			Map<String, Object> map = list.get(i);
+			map.put("name", list.get(i).get("NAME"));
+			map.put("username", list.get(i).get("USERNAME"));
+			map.put("job", list.get(i).get("JOB"));
+			map.put("competenceid", list.get(i).get("COMPETENCEID"));
+			newList.add(map);
+		}
+		String sql1 ="select * from zhpt.TB_QXGL_YHB@taxilink114 t,zhpt.TB_QXGL_GWB@taxilink114 t1 where t.job = t1.job and t.NAME like '%"+name+"%'";
+		List<Map<String, Object>> list1 = jdbcTemplate2.queryForList(sql1);
+		Map<String, Object> m = new HashMap<String, Object>();
+		m.put("datas", newList);
+		m.put("count", list1.size());
+		System.out.println(m);
+		return jacksonUtil.toJson(m);
+	}
+	
+	public String qxglcheckgw(String postData) {
+		Map<String, Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String, Object>>() {});
+		int page = Integer.valueOf(String.valueOf(paramMap.get("page")));
+		int pageSize = Integer.valueOf(String.valueOf(paramMap.get("pageSize")));
+		String name = String.valueOf(paramMap.get("name"));
+		
+		String str1 ="select * from(select t.*,rownum r from zhpt.TB_QXGL_GWB@taxilink114 t where t.job like '%"+name+"%')tt  where tt.r<=" + (page * pageSize) + " and tt.r>= "+(page - 1) * pageSize;
+		List<Map<String, Object>> list = jdbcTemplate2.queryForList(str1);
+		
+		List<Object> newList = new ArrayList<Object>();
+		for (int i = 0; i < list.size(); i++) {
+			Map<String, Object> map = list.get(i);
+			map.put("job", list.get(i).get("JOB"));
+			map.put("competenceid", list.get(i).get("COMPETENCEID"));
+			newList.add(map);
+		}
+		String sqlString="select t.* from zhpt.TB_QXGL_GWB@taxilink114 t where t.job like '%"+name+"%'";
+		List<Map<String, Object>> list1 = jdbcTemplate2.queryForList(sqlString);
+		Map<String, Object> m = new HashMap<String, Object>();
+		m.put("datas", newList);
+		m.put("count", list1.size());
+		System.out.println(m);
+		return jacksonUtil.toJson(m);
+	}
+
+	public String gwTree(String postData) {
+		Map<String, Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String, Object>>() {});
+		String ids = String.valueOf(paramMap.get("ids"));
+		String [] id = ids.split(",");
+		
+		
+		String sql = "select t.* from zhpt.TB_QXGL_YH@taxilink114 t";
+		List<Map<String, Object>> list = jdbcTemplate2.queryForList(sql);
+		List<Map<String, Object>> list1 = new ArrayList<Map<String,Object>>();
+		for (int i = 0; i < list.size(); i++) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("id", "d"+list.get(i).get("ID"));
+			map.put("name", list.get(i).get("NAME"));
+			if(ids.equals("")){
+				map.put("checked", false);
+			}else{
+			for (int j = 0; j < id.length; j++) {
+				if(id[j].equals(list.get(i).get("ID").toString())){
+					map.put("checked", true);
+					break;
+				}else{
+					map.put("checked", false);
+				}
+			}
+			}
+			map.put("parent", ("d"+list.get(i).get("PARENT")).equals("dnull")?"":("d"+list.get(i).get("PARENT")));
+			list1.add(map);
+		}
+		return jacksonUtil.toJson(list1);
+	}
+	public int delJs(String id) {
+		String sql="delete from zhpt.TB_QXGL_YHB@taxilink114 t where t.qxid='"+id+"'";
+		System.out.println(sql);
+		int count=jdbcTemplate2.update(sql);
+		return count;
+	}
+
+	public int addJs(String postData) {
+		Map<String, Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String, Object>>() {});
+		String name = String.valueOf(paramMap.get("name"));
+		String username = String.valueOf(paramMap.get("username"));
+		String password = String.valueOf(paramMap.get("password"));
+		String job = String.valueOf(paramMap.get("job"));
+		String sql1="select t.qxid from zhpt.TB_QXGL_GWB@taxilink114 t where t.job='"+job+"'";
+		List<Map<String, Object>> list = jdbcTemplate2.queryForList(sql1);
+	    String id=list.get(0).get("QXID").toString();
+	    
+		String sql= "insert into zhpt.TB_QXGL_YHB@taxilink114 t (t.name,t.username,t.password,t.job,t.id) values ('"+name+"','"+username+"','"+password+"','"+job+"','"+id+"')";
+		System.out.println(sql);
+		int count=jdbcTemplate2.update(sql);
+		return count;
+	}
+	
+
+	public int editJs(String postData) {
+		Map<String, Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String, Object>>() {});
+		String name = String.valueOf(paramMap.get("name"));
+		String username = String.valueOf(paramMap.get("username"));
+		String password = String.valueOf(paramMap.get("password"));
+		String job = String.valueOf(paramMap.get("job"));
+		System.out.println(job);
+		String sql1="select t.qxid from zhpt.TB_QXGL_GWB@taxilink114 t where t.job='"+job+"'";
+		List<Map<String, Object>> list = jdbcTemplate2.queryForList(sql1);
+	    String ids=list.get(0).get("QXID").toString();
+		String id = String.valueOf(paramMap.get("id"));
+		System.out.println(id);
+		String aString="";
+		if(!password.equals(null)){
+			aString = "t.password='"+password+"',";
+		}
+		String sql="update zhpt.TB_QXGL_YHB@taxilink114 t set "+
+				"t.name='"+name+"'," +
+				"t.username='"+username+"'," +
+				aString +
+				"t.job='"+job+"',"+
+				"t.id='"+ids+"' where qxid='"+id+"'";
+		System.out.println(sql);
+		int count=jdbcTemplate2.update(sql);
+		return count;
+	}
+	
+	
+	public int delGw(String id) {
+		String sql="delete from zhpt.TB_QXGL_GWB@taxilink114 t where t.qxid='"+id+"'";
+		System.out.println(sql);
+		int count=jdbcTemplate2.update(sql);
+		return count;
+	}
+
+	public int addGw(String postData) {
+		Map<String, Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String, Object>>() {});
+		String job = String.valueOf(paramMap.get("tj_job"));
+		String competence = String.valueOf(paramMap.get("gwqxglId")).replaceAll("d", "");
+		String competenceid = String.valueOf(paramMap.get("tj_qx"));	    
+		String sql= "insert into zhpt.TB_QXGL_GWB@taxilink114 t (t.job,t.competence,t.competenceid) values ('"+job+"','"+competence+"','"+competenceid+"')" ;
+		System.out.println(sql);
+		int count=jdbcTemplate2.update(sql);
+		return count;
+	}
+	
+
+	public int editGw(String postData) {
+		Map<String, Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String, Object>>() {});
+		String competenceid = String.valueOf(paramMap.get("tj_qx"));
+		String aaString = String.valueOf(paramMap.get("gwqxglId"));
+		String competence = aaString.replaceAll("d", "");
+		String job = String.valueOf(paramMap.get("tj_job"));
+	    String id = String.valueOf(paramMap.get("gwqxglIds"));
+		
+		String sql="update zhpt.TB_QXGL_GWB@taxilink114 t set "+
+				"t.competence='"+competence+"'," +
+				"t.competenceid='"+competenceid+"'," +
+				"t.job='"+job+"' where qxid='"+id+"'";
+		System.out.println(sql);
+		int count=jdbcTemplate2.update(sql);
+		return count;
+	}
+
+	public String gwxl() {
+		String sql1="select t.job,t.qxid from zhpt.TB_QXGL_GWB@taxilink114 t ";
+		List<Map<String, Object>> list = jdbcTemplate2.queryForList(sql1);
+		List<Map<String, Object>> list1 = new ArrayList<Map<String,Object>>();
+		for (int i = 0; i < list.size(); i++) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("name", list.get(i).get("JOB"));
+			map.put("id", list.get(i).get("QXID"));
+			list1.add(map);
+		}
+		Map<String, Object> m = new HashMap<String, Object>();
+		m.put("data", list1);
+		return jacksonUtil.toJson(m);
+	}
+
+	public String xsgl(HttpServletRequest request) {
+		String name = (String)request.getSession().getAttribute("user");
+		String user = (String)request.getSession().getAttribute("name");
+		String sql="select t.job,t.name from zhpt.TB_QXGL_YHB@taxilink114 t where t.username='"+name+"'";
+		List<Map<String, Object>> list = jdbcTemplate2.queryForList(sql);
+		System.out.println(sql);
+		Map<String, Object> map = new HashMap<String, Object>();
+		   map.put("user", list.get(0).get("JOB"));
+		   map.put("name", list.get(0).get("NAME"));
+		return jacksonUtil.toJson(map);
+	}
+}

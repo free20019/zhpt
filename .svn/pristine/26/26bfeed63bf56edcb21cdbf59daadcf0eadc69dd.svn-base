@@ -1,0 +1,28 @@
+<html>
+<head>
+ <script type="text/javascript" src="app/html/yjzhBs.js"></script> 
+
+</head>
+<body class="claro">
+<!-- 	<div id="yhToolBar3" style="height: 45px;"></div> -->
+<!-- 	<div id="yhGridDiv3" class="yhGridDiv" style="height:40%"></div> -->
+<!-- 	<div id="yhGridDiv4" data-dojo-type="dijit/layout/BorderContainer" -->
+<!-- 		data-dojo-props="persist:true,gutters:false,liveSplitters:true" -->
+<!-- 		style="height:40%;margin-top: 10px;"> -->
+<!-- 		<div id="bs_sjmiaoshu" data-dojo-type="dijit/layout/ContentPane" -->
+<!-- 			data-dojo-props=" region:'left'" -->
+<!-- 			style="width:40%;padding: 0px;margin: 0px;"></div> -->
+<!-- 		<div data-dojo-type="dijit/layout/ContentPane" -->
+<!-- 			data-dojo-props=" region:'right'" -->
+<!-- 			style="width:60%;padding: 0px;margin: 0px;"> -->
+<!-- 			<div id="sj_bs"></div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<div style="text-align: center;"> -->
+<!-- 		<input id="bs_checkBox1" /> <label for="bs_checkBox1">短信</label> <input -->
+<!-- 			id="bs_checkBox2" /> <label for="bs_checkBox2">邮件</label> -->
+<!-- 		<button id="bs_fs" type="button"></button> -->
+<!-- 	</div> -->
+查询统计建设中....
+</body>
+</html>

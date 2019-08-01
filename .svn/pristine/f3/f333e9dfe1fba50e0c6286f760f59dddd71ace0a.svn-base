@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>杭州市出租汽车信息系统综合平台</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="icon" href="resources/images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet"
+	href="libs/dojo-release-1.10.4-src/dijit/themes/claro/claro.css">
+<!-- <link rel="stylesheet" href="app/main.css"> -->
+<!-- <link data-jsfiddle="common" rel="stylesheet" media="screen" href="libs/handsontable-0.11.1/dist/handsontable141.full.css"> -->
+
+<script type="text/javascript" src="app/config.js"></script>
+<!-- <script type="text/javascript" src="libs/handsontable-0.11.1/dist/handsontable.min.js"></script> -->
+<script type="text/javascript"
+	src="libs/dojo-release-1.10.4-src/dojo/dojo.js"></script>
+<!-- <script type="text/javascript" -->
+<!-- 	src="libs/dojo-release-1.10.4-src/release/myDojo/dojo/dojo.js"></script> -->
+<!-- <script type="text/javascript" -->
+<!-- 	src="libs/dojo-release-1.10.4-src/release/myDojo/dojo/example.js"></script> -->
+<!-- <script type="text/javascript" src="app/main.js"></script> -->
+<!-- <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=d0face2397384365119fbf558c48c10a"></script> -->
+
+	
+<!-- <script type="text/javascript" -->
+<!-- 	src="libs/dojo-release-1.10.4-src/release/myDojo2/dojo/dojo.js"></script> -->
+<!-- <script type="text/javascript" -->
+<!-- 	src="libs/dojo-release-1.10.4-src/release/myDojo2/dojo/example.js"></script> -->
+	<script type="text/javascript">
+		require([
+			"dojo/_base/array",
+			"dojo/dom",
+			"dojo/parser",
+	
+			"dijit/Toolbar",
+			"dijit/form/Button",
+
+			"dijit/ToolbarSeparator",
+			"dijit/Declaration",
+			"dijit/form/DropDownButton",
+			"dijit/form/ComboButton",
+			"dijit/form/ToggleButton",
+	
+			"dijit/ColorPalette",
+			"dijit/TooltipDialog",
+			"dijit/form/TextBox",
+	
+			"dijit/Menu",
+			"dijit/MenuItem",
+	
+			"dojo/domReady!"
+		], function(array, dom, parser, Toolbar, Button){
+			console.log(111111)
+			parser.parse();//需要解析，否则就会报错
+			    // Find the dialog
+			    var dialog = dijit.byId("dialog");
+			    // Set the content equal to what dojo.config is
+			    dialog.set("content", "<pre>hello\t"  + "```");
+			    // Show the dialog
+			    dialog.show();
+		});
+	</script>		
+</head>
+<body class="claro" >
+	<div id="dialog" data-dojo-type="dijit/Dialog" data-dojo-props="title: 'dojoConfig / dojo/_base/config'"></div>
+</body>
+</html>

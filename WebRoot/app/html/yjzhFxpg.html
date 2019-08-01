@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="mainFxpg" style="height:500px"></div>
+    <!-- ECharts单文件引入 -->
+    
+    <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('mainFxpg'));
+        // 使用
+       
+                
+                 option = {
+              grid:{
+					x:30,y:10,x2:10,y2:30
+				},
+    title : {
+        text: '',
+        subtext: ''
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['停运','专车','节日','重大活动','交通事故','自然灾害']
+    },
+    toolbox: {
+        show : false
+       
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['1月', '2月', '3月', '4月', '5月', '6月','7月', '8月', '9月', '10月', '11月', '12月']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            axisLabel : {
+                formatter: '{value}'
+            }
+        }
+    ],
+    series : [
+        {
+            name:'停运',
+            type:'line',
+            data:[58, 69, 38, 74, 69, 30, 89, 48, 58, 63, 77, 87]
+        },
+        {
+            name:'专车',
+            type:'line',
+            data:[50, 70, 40, 70, 70, 25, 88, 48, 60, 60, 75, 85]
+        },
+        {
+            name:'节日',
+            type:'line',
+            data:[56, 60, 42, 72, 72, 35, 90, 48, 65, 66, 80, 82]
+        },
+        {
+            name:'重大活动',
+            type:'line',
+            data:[60, 65, 44, 80, 65, 28, 92, 48, 62, 65, 81, 85]
+        },
+        {
+            name:'交通事故',
+            type:'line',
+            data:[65, 63, 50, 69, 78, 33, 95, 48, 56, 59, 78, 80]
+        },
+        {
+            name:'自然灾害',
+            type:'line',
+            data:[70, 69, 40, 75, 50, 30, 91, 48, 55, 60, 77, 90]
+        }
+    ]
+};
+      
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            
+    </script>
+</body>

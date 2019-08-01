@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <script data-jsfiddle="common" src="../libs/jquery-1.10.2.min.js"></script>
+  <script data-jsfiddle="common" src="../libs/handsontable-0.11.1/dist/jquery.handsontable.full.js"></script>
+  <link data-jsfiddle="common" rel="stylesheet" media="screen" href="../libs/handsontable-0.11.1/dist/jquery.handsontable.full.css">
+
+<script>
+
+var excel;
+function mergeCell(instance, td, row, col, prop, value, cellProperties) {
+              Handsontable.TextCell.renderer.apply(this, arguments);
+              //td.colspan = 2; wrong, should be like this :
+              td.setAttribute("colspan", 2);
+              td.setAttribute("class", "test");
+}
+$(document).ready(function(){
+	
+	$('#example').handsontable({
+	  //data: data,
+	  startCols:5
+	 // minSpareRows: 1,
+	  ,colHeaders: true//加abcde..列头
+	  ,contextMenu: true
+	  ,rowHeaders:[1,2]
+	  //,mergeCells:true //为true时右击才会有合并的菜单
+	 // fixedRowsTop:1,
+	 // fixedColumnsLeft :1
+	  // readOnly: true,
+	 // colHeaders :[1,2],
+	 ,cells: function (row, col, prop) {
+            var cellProperties = {};
+                  cellProperties.readOnly = true;                   
+            if (col != 0 && row === 0) {
+                  cellProperties.renderer = mergeCell; 
+            }
+            return cellProperties;
+      }
+	});
+	
+	
+	excel = $('#example').handsontable('getInstance');
+	
+}
+)
+
+</script>
+ </head>
+ <body>
+  
+  <div style ="width: 800px"> 
+		<div class="handsontable" id="example"></div>
+</div>
+ </body>
+</html>

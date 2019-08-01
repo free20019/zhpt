@@ -1,0 +1,10 @@
+<!-- 业户查询 -->
+<html>
+<head>
+	<script type="text/javascript" src="app/html/monitor/khxxts.js"></script>
+</head>
+<body>
+<div id="khxxtsdiv"></div>
+<div id="khxxtstable" class="khxxtstable" ></div>
+</body>
+</html>

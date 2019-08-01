@@ -1,0 +1,10 @@
+<!-- 业户查询 -->
+<html>
+<head>
+	<script type="text/javascript" src="app/html/monitor/tbxx.js"></script>
+</head>
+<body>
+<div id="tbxxdiv"></div>
+<div id="tbxxtable" class="tbxxtable"></div>
+</body>
+</html>

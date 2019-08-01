@@ -1,0 +1,70 @@
+package mvc.entity;
+
+public class TreeNode {
+	private Integer id;  
+    private Integer pId;  
+    private String name;  
+    private Boolean checked;  
+    private Boolean open;
+    private String icon;
+    private Boolean isParent;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Integer getpId() {
+		return pId;
+	}
+	public void setpId(Integer pId) {
+		this.pId = pId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Boolean getChecked() {
+		return checked;
+	}
+	public void setChecked(Boolean checked) {
+		this.checked = checked;
+	}
+	public Boolean getOpen() {
+		return open;
+	}
+	public void setOpen(Boolean open) {
+		this.open = open;
+	}  
+	
+	 public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+	
+	public TreeNode(Integer id, Integer pId, String name, Boolean checked, Boolean open,String icon,Boolean isParent) {  
+	        super();  
+	        this.id = id;  
+	        this.pId = pId;  
+	        this.name = name;  
+	        this.checked = checked;  
+	        this.open = open;  
+	        this.icon=icon;
+	        this.isParent = isParent;
+	    }  
+	    public TreeNode() {  
+	        super();  
+	    }
+		public Boolean getIsParent() {
+			return isParent;
+		}
+		public void setIsParent(Boolean isParent) {
+			this.isParent = isParent;
+		}  
+    
+	    
+}

@@ -1,0 +1,107 @@
+<div style="width: 100%;height: 100%">
+<div id="lsgjcondition" style="height: 40px;">
+	<table>
+		<tr>
+			<td>
+				<label>起止时间:</label>
+			</td>
+			<td>
+				<input data-dojo-type="dijit/form/TextBox" id="lsgj_stime" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})()" style="width:160px">
+			</td>
+			<td>
+				<label>-</label>
+			</td>
+			<td>
+				<input data-dojo-type="dijit/form/TextBox" id="lsgj_etime" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})()" style="width:160px">
+			</td>
+			<td>
+				<label>车号:</label>
+			</td>
+			<td>
+				<input id="lsgj_vhic" style="width:160px">
+			</td>
+			<td>
+				<button data-dojo-type="dijit/form/Button" type="button" id="findlsgj" onclick=" findlsgj()">查询</button>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="lsgjmapdiv" style="width: 700px;height: 500px"></div>
+</div>
+<div id="sou_rect1" style="
+	height: 350px;
+    width: 350px;
+    background: #ffffff;
+    position: absolute;
+    top: 75px;
+    left: 364px;
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.15);
+    display: none;
+    border: 1px solid #000000;
+    overflow: inherit;
+    ">
+	<ul></ul>
+</div>
+<style>
+	#sou_rect1{
+		pointer-events: auto;
+		max-height: 350px;
+		min-height: 0px;
+		background: #ffffff;
+		position: relative;
+		top: 5px;
+		box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.15);
+		width: 350px;
+		overflow: hidden;
+	}
+	#sou_rect1:hover {
+		overflow: auto;
+	}
+	#sou_rect1 ul{
+		margin: 0px;
+		padding: 0px;
+
+	}
+	#sou_rect1 ul li{
+		width: 100%;
+		height: 35px;
+		display: block;
+		border-bottom: 1px solid rgba(105, 105, 105, 0.1);
+		line-height: 35px;
+		float: left;
+		cursor: pointer;
+	}
+	#sou_rect1 ul li i{
+		font-family: '微软雅黑';
+		font-size: 12px;
+		color: rgba(105, 105, 105, 0.56);
+		font-style: normal;
+	}
+	#sou_rect1 ul li span{
+		display: block;
+		float: left;
+		height: 20px;
+		width: 15px;
+		vertical-align: middle;
+		background: url("resources/images/index/sousuo.png") no-repeat ;
+		margin-left: 10px;
+		margin-top: 11px;
+	}
+	#sou_rect1 ul li a {
+		float: right;
+		height: 80%;
+		width: 100px;
+		border-left:1px solid rgba(105, 105, 105, 0.08);
+		padding-left: 10px;
+		position: relative;
+		top: 4px;
+		line-height: 28px;
+		font-family: '微软雅黑';
+		font-size: 12px;
+		color: rgba(105, 105, 105, 0.56);
+		font-style: normal;
+	}
+	#sou_rect1 li:hover{
+		background: rgba(105, 105, 105, 0.25);
+	}
+</style>

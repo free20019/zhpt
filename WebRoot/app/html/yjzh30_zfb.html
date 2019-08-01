@@ -1,0 +1,40 @@
+<!-- 支付宝主页面 -->
+<html>
+<head>
+<script>
+require(["dijit/layout/TabContainer", "dojox/layout/ContentPane", "dojo/domReady!" ],
+		function(TabContainer, ContentPane) {
+	tc = new TabContainer({
+		style : "height: 100%; width: 100%;"
+	}, "tc1-prog");
+
+	var cp1 = new ContentPane({
+		title : "交易信息总览",
+		href : 'app/html/monitor/jyxx.html'
+	});
+	cp1.onShow = function(){
+		tc.resize();
+	}
+	tc.addChild(cp1);
+	tc.startup();
+
+});
+</script>
+</head>
+<body class="claro">
+	<div data-dojo-type="dijit/layout/BorderContainer"
+		data-dojo-props="persist:true,gutters:true, liveSplitters:true">
+		<div data-dojo-type="dojox/layout/ContentPane"
+			data-dojo-props="splitter:true, region:'left'"
+			style="width: 250px;padding: 0px;margin: 0px;" id="cpLeft"
+			href="app/html/leftYjzh30_zfb.html"></div>
+
+		<div data-dojo-type="dojox/layout/ContentPane"
+			data-dojo-props=" region:'center'" id="cpCenter">
+			<div style="width: 100%; height: 100%">
+				<div id="tc1-prog"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

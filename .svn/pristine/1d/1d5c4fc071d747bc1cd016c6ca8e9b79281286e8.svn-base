@@ -1,0 +1,10 @@
+<!-- 业户查询 -->
+<html>
+<head>
+	<script type="text/javascript" src="app/html/monitor/wxjy.js"></script>
+</head>
+<body>
+<div id="wxjydiv"></div>
+<div id="wxjytable" style="height:78%"></div>
+</body>
+</html>

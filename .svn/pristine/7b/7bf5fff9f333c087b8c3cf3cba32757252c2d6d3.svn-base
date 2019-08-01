@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>共享单车查询</title>
+    <meta charset=UTF-8">
+	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	  <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+	  <script type="text/javascript" src="resources/js/jquery-2.1.1.min.js"></script>
+	  <script src="http://api.map.baidu.com/api?v=1.2" type="text/javascript"></script>
+	  <style type="text/css">
+	  	body{font-size:16px}
+	  	.tdcss{width:90px;text-align: right;}
+	  	.tdcss1{text-align: center;width:90px;}
+	  	.kdcss{width:45%;height:23px;box-sizing:border-box;}
+	  	.inputbox{
+	  		margin:10px 0;
+	  		text-align: center;
+	  	}
+	  	.titlecss{
+	  		margin-top:-10px;
+	  		padding-top:2em;
+	  	}
+	  	ul li{
+			list-style: none;
+		}
+		button{
+			background : #58bddc;
+		}
+/* 		table tr:nth-child(odd){ */
+/* 			background: #58bddc; */
+/* 		} */
+/* 		table tr:nth-child(even){ */
+/* 			background: #85dbf5; */
+/* 		} */
+		.btcss{
+			font-weight:bold;
+			text-align: center;
+ 	  		background: #58bddc; 
+	  	}
+		table{
+		  	border-collapse:collapse;
+		  }
+	table, th,td { table-layout:fixed; border: 2px solid #58bddc;}
+	  </style>
+</head>
+<body>
+<div class="titlecss">
+	<div class="inputbox">
+	  <label class="col-mid-2 control-label">公司名称</label>
+	  <select id="gs" class="kdcss">
+	  	<option value="骑呗单车">骑呗单车</option>
+	  	<option value="ofo小黄车">ofo小黄车</option>
+	  	<option value="摩拜单车">摩拜单车</option>
+	  	<option value="小鸣单车">小鸣单车</option>
+	  	<option value="永安行">永安行</option>
+	  	<option value="优拜单车">优拜单车</option>
+	  	<option value="Hellobike">Hellobike</option>
+	  </select>
+	</div>
+	<div class="inputbox">
+	  <label class="col-mid-2 control-label">车辆编号</label>
+	  <input type="text" id="bh" class="kdcss"/><br>
+	</div>
+	<div class="inputbox">
+	  <button id="ptzgxxcx">查询</button>
+	  <button id="gxdctj">统计</button>
+	</div>
+</div>
+	 <ul style="width:280px;margin:0 auto">
+		  <li id="gs1">公司名称：</li>
+		  <li id="bh1">车辆编号：</li>
+		  <li id="sj">查询时间：</li>
+		  <li id="ba">是否备案：</li>
+<!-- 		  <li id="jd">经度：</li> -->
+<!-- 		  <li id="wd">纬度：</li> -->
+	 </ul>
+	 <div id="tjbt" style="width:300px;margin:20px auto 0;text-align: center;padding-top:10px"></div>
+	 <table id="tjul" style="margin: 10px auto;"></table>
+<script type="text/javascript">
+	$("#ptzgxxcx").click(function(){
+		 var regsz = /^[0-9]{5,12}$/;
+		 if (!regsz.test($("#bh").val())) {
+             alert("车辆编号格式不正确！")
+             return false;
+         }
+		$.ajax({
+	    type:"post",
+	    url: "gxdc/gxdccx",
+	    data:{
+	    	"gs" : $("#gs").val(),
+	    	"bh" : $("#bh").val()
+	    },
+	    dataType: "json",
+	    success:function(data){
+	    	console.log(data)
+	    	if(data.length>0){
+	    		getLocation();
+		    	$("#gs1").text("公司名称："+data[0].COMP_NAME);
+		    	$("#bh1").text("车辆编号："+data[0].VEHI_BH);
+		    	$("#sj").text("查询时间："+setformat(new Date()));
+		    	$("#ba").text("是否备案：已备案");
+	    	}else{
+	    		$("#gs1").text("公司名称："+$("#gs").val());
+		    	$("#bh1").text("车辆编号："+$("#bh").val());
+		    	$("#sj").text("查询时间："+setformat(new Date()));
+		    	$("#ba").text("是否备案：未备案");
+	    	}
+	    },
+	    error: function(){
+	    }         
+	 });
+	})
+	$("#gxdctj").click(function(){
+		$.ajax({
+	    type:"post",
+	    url: "gxdc/bal",
+	    data:{
+	    },
+	    dataType: "json",
+	    success:function(data){
+	    	console.log(data)
+	    	$("#tjbt").html("所有企业单车情况").css({'border-top':'1px solid #58bddc'});
+	    	
+	    	var tab = "<thead><tr class='btcss'><td>公司名</td><td>已备案数</td><td>已查询数</td><td>未备案数</td><td>未备案率</td></tr></thead><tbody>";
+	    	for(var i=0; i<data.length; i++){
+	    		tab+="<tr class='tdcss1'><td class='tdcss'>"+data[i].COMP_NAME+"：</td><td>"+data[i].C+"</td><td>"+data[i].C2+"</td><td>"+data[i].C1+"</td><td>"+data[i].LV+"%</td></tr>";
+// 		    	$("#tjul").append("<li>"+data[i].COMP_NAME+"： "+data[i].LV+"%</li>")
+	    	}
+	    		$("#tjul").html(tab+"</tbody>");
+	    },
+	    error: function(){
+	    }         
+	 });
+	})
+	function setformat(obj){
+	var y=(obj.getFullYear()).toString();
+	var m=(obj.getMonth()+1).toString();
+	if(m.length==1){
+		m="0"+m;
+	}
+	var d=obj.getDate().toString();
+	if(d.length==1){
+		d="0"+d;
+	}
+	var h = obj.getHours().toString();
+	if(h.length==1){
+		h="0"+h;
+	}
+	var mi = obj.getMinutes().toString();
+	if(mi.length==1){
+		mi="0"+mi;
+	}
+	var s = obj.getSeconds().toString();
+	if(s.length==1){
+		s="0"+s;
+	}
+	var time=y+"-"+m+"-"+d+" "+h+":"+mi+":"+s;
+	return time;
+}
+	 function getLocation() {
+		 console.log(1)
+	        var options = {
+	            enableHighAccuracy : true,
+	            maximumAge : 1000
+	        }
+	        if (navigator.geolocation) {
+	            //浏览器支持geolocation
+	            navigator.geolocation.getCurrentPosition(onSuccess, onError,
+	                    options);
+	        } else {
+	            //浏览器不支持geolocation
+	            alert('您的浏览器不支持地理位置定位');
+	        }
+	    }
+	    //成功时
+	    function onSuccess(position) {
+	        //返回用户位置
+	        //经度
+	        var longitude = position.coords.longitude;
+	        //纬度
+	        var latitude = position.coords.latitude;
+// 	        alert('经度'+longitude+'，纬度'+latitude);
+	        $("#jd").text("经度："+longitude);
+	    	$("#wd").text("纬度："+latitude);
+
+	    }
+	    //失败时
+	    function onError(error) {
+	        switch (error.code) {
+	        case 1:
+	            alert("位置服务被拒绝，请点击刷新重试！");
+	            break;
+	        case 2:
+	            alert("暂时获取不到位置信息，请点击刷新重试！");
+	            break;
+	        case 3:
+	            alert("获取信息超时，请点击刷新重试！");
+	            break;
+	        case 4:
+	            alert("未知错误，请点击刷新重试！");
+	            break;
+	        }
+	    }
+</script>
+</body>
+</html>

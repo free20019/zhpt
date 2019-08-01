@@ -1,0 +1,11 @@
+<html>
+<!-- 里程统计 -->
+<head>
+	<script type="text/javascript" src="app/html/monitor/shizailv.js"></script>
+</head>
+<body>
+<div id="shizailvdiv"></div>
+<div id="shizailvtable" class="shizailvtable" style="height: 350px;" ></div>
+<div id="shizailvtb" style="height:330px;"></div>
+</body>
+</html>

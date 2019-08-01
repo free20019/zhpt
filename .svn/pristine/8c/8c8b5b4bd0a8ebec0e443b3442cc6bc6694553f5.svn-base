@@ -1,0 +1,71 @@
+<!-- 业户查询 -->
+<html>
+	<head>
+		<script type="text/javascript" src="app/html/monitor/taxiyyts.js"></script>
+		<style type="text/css">
+			.yytsclass th,.yytsclass td{text-align: center;}
+			.yytsclass .field-DATE {width: 80px;}
+			.yytsclass .field-a1 {width: 50px;}
+			.yytsclass .field-a2 {width: 50px;}
+			.yytsclass .field-a3 {width: 50px;}
+			.yytsclass .field-a4 {width: 50px;}
+			.yytsclass .field-a5 {width: 50px;}
+			.yytsclass .field-a6 {width: 50px;}
+			.yytsclass .field-a7 {width: 50px;}
+			.yytsclass .field-a8 {width: 50px;}
+			.yytsclass .field-a9 {width: 50px;}
+			.yytsclass .field-a10 {width: 50px;}
+			.yytsclass .field-a11 {width: 50px;}
+			.yytsclass .field-a12 {width: 50px;}
+			.yytsclass .field-a13 {width: 50px;}
+			.yytsclass .field-a14 {width: 50px;}
+			.yytsclass .field-a15 {width: 50px;}
+			.yytsclass .field-a16 {width: 50px;}
+			.yytsclass .field-a17 {width: 50px;}
+			.yytsclass .field-a18 {width: 50px;}
+			.yytsclass .field-a19 {width: 50px;}
+			.yytsclass .field-a20 {width: 50px;}
+			.yytsclass .field-a21 {width: 50px;}
+			.yytsclass .field-a22 {width: 50px;}
+			.yytsclass .field-a23 {width: 50px;}
+			.yytsclass{height:260px;}
+			
+			
+			.tsystyclass th,.tsystyclass td{text-align: center;}
+			.tsystyclass .field-DATE {width: 100px;}
+			.tsystyclass .field-a0 {width: 50px;}
+			.tsystyclass .field-a1 {width: 50px;}
+			.tsystyclass .field-a2 {width: 50px;}
+			.tsystyclass .field-a3 {width: 50px;}
+			.tsystyclass .field-a4 {width: 50px;}
+			.tsystyclass .field-a5 {width: 50px;}
+			.tsystyclass .field-a6 {width: 50px;}
+			.tsystyclass .field-a7 {width: 50px;}
+			.tsystyclass .field-a8 {width: 50px;}
+			.tsystyclass .field-a9 {width: 50px;}
+			.tsystyclass .field-a10 {width: 50px;}
+			.tsystyclass .field-a11 {width: 50px;}
+			.tsystyclass .field-a12 {width: 50px;}
+			.tsystyclass .field-a13 {width: 50px;}
+			.tsystyclass .field-a14 {width: 50px;}
+			.tsystyclass .field-a15 {width: 50px;}
+			.tsystyclass .field-a16 {width: 50px;}
+			.tsystyclass .field-a17 {width: 50px;}
+			.tsystyclass .field-a18 {width: 50px;}
+			.tsystyclass{height:170px;}
+		</style>
+	</head>
+	<body>
+		<div style="text-align:center;font-size:30px;font-weight:bold;"><span>出租汽车营运态势</span></div>
+		<span>上线率</span>
+		<div id="tssxl" class="yytsclass"></div>
+		</br><span>在线营运率</span>
+		<div id="tszxyyl"  class="yytsclass"></div>
+		</br><span>一小时未营运车辆数</span>
+		<div id="tswsx" class="yytsclass"></div>
+		</br><span>重点监控区域车辆数</span>
+		<div id="tszdcls" class="yytsclass"></div>
+		</br><span>疑似停运车辆分析(自4点开始未营运车辆数量统计)</span>
+		<div id="tsysty" class="tsystyclass"></div>
+	</body>
+</html>

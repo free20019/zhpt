@@ -1,0 +1,143 @@
+<html>
+<!-- 里程统计 -->
+	<head>
+		<script type="text/javascript" src="app/html/monitor/xtqxgl.js"></script>
+		<style>
+			#qxgl_top{
+				width: 100%;
+				height: 7%;
+				position: relative;
+				box-shadow: 0px 2px 0px #696969;
+			}
+			#qxgl_bm,#qxgl_gw,#qxgl_js,#qxgl_qx{
+				width: 24%;
+				height: 93%;
+				float: left;
+				margin: 0 5px;
+			}
+			#qxgl_bcgg{
+				position: absolute;
+				right: 30px;
+				top: 15px;
+				width: 70px;
+				height: 25px;
+				background: #7fbdf8;
+				text-align: center;
+				line-height: 25px;
+				border-radius: 5px;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+				box-shadow: 1px 1px 0px rgba(105, 105, 105, 0.29);
+				color: #ffffff;
+			}
+			span{
+				font-family: '微软雅黑';
+				font-size: 14px;
+			}
+			#qxgl_bcgg:hover{
+				background: rgba(20, 156, 223, 0.75);
+			}
+
+			[id^=qxgl_] span{
+				height: 2em;
+				width: 100%;
+				background: #ffffff;
+				display: block;
+				text-align: center;
+				line-height: 2em;
+			}
+			ul {margin: 0; padding: 0;}
+			li {padding: 2px 0; text-indent: 40px; border: 1px solid #ffffff;}
+			li[checked] {background: #0C88E8;}
+			li input {position: relative; top: 3px; right: 3px}
+		</style>
+	</head>
+	<body>
+		<div id="qxgl_top">
+			<span id="qxgl_bcgg">保存更改</span>
+		</div>
+		<div id="qxgl_bm">
+			<span>部门</span>
+			<ul id="bm"></ul>
+		</div>
+		<div id="qxgl_gw">
+			<span>岗位</span>
+			<ul id="gw"></ul>
+		</div>
+		<div id="qxgl_js">
+			<span>角色</span>
+			<ul id="js"></ul>
+		</div>
+		<div id="qxgl_qx">
+			<span>权限</span>
+			<ul id="qx"></ul>
+		</div>
+	</body>
+</html>
+<script LANGUAGE="JavaScript">
+	var bm = ['技术部','人事部','产品部'];
+	var gw = [
+		{'pname':'技术部','list':[{'name': '技术部1'},{'name': '技术部2'},{'name': '技术部3'},{'name': '技术部4'}]},
+		{'pname':'人事部','list':[{'name': '人事部1'},{'name': '人事部2'},{'name': '人事部3'}]},
+		{'pname':'产品部','list':[{'name': '产品部1'},{'name': '产品部2'},{'name': '产品部3'},{'name': '产品部4'},{'name': '产品部5'}]}];
+	var js = [
+		{'pname':'技术部1', 'list':[{'name': '张三'},{'name': '李四'}]},
+		{'pname':'技术部2', 'list':[{'name': '王五'}]},
+		{'pname':'技术部3', 'list':[{'name': '小明'},{'name': '小红'}]},
+		{'pname':'技术部4', 'list':[{'name': '小兰'},{'name': '大白'},{'name': '小黑'}]},
+		{'pname':'人事部1', 'list':[{'name': '于浩'},{'name': '小吴'}]},
+		{'pname':'人事部2', 'list':[{'name': '梧桐'},{'name': '大辉'}]},
+		{'pname':'人事部3', 'list':[{'name': '小雨'},{'name': '张六'},{'name': '顺丰'},{'name': '无期'}]},
+		{'pname':'产品部1', 'list':[{'name': '慕白'}]},
+		{'pname':'产品部2', 'list':[{'name': '琉璃'}]},
+		{'pname':'产品部3', 'list':[{'name': '菲儿'},{'name': '尔康'}]},
+		{'pname':'产品部4', 'list':[{'name': '迪尔'},{'name': '贝尔'}]},
+		{'pname':'产品部5', 'list':[{'name': '波克'},{'name': '可可'}]}
+	];
+	$(function() {
+		var showBM = function() {
+			var html = '';
+			bm.forEach(function(item) {
+				html += '<li>'+item+'</li>'
+			});
+			return html;
+		};
+		$('#bm').html(showBM);
+		$('#bm > li').click(function() {
+			$('#bm > li').removeAttr('checked');
+			$(this).attr('checked', '');
+			$('#gw').html('');
+			$('#js').html('');
+			$('#qx').html('');
+			for (var i = 0; i < gw.length; i++) {
+				if ($(this).text() == gw[i].pname) {
+					var list = gw[i].list, html = '';
+					for (var j = 0; j < list.length; j++) {
+						html += '<li>'+list[j].name+'</li>';
+					}
+					$('#gw').html(html);
+				}
+			}
+			$('#gw > li').on('click', function() {
+				$('#gw > li').removeAttr('checked');
+				$(this).attr('checked', '');
+				$('#js').html('');
+				$('#qx').html('');
+				for (var i = 0; i < js.length; i++) {
+					if ($(this).text() == js[i].pname) {
+						var list = js[i].list, html = '';
+						for (var j = 0; j < list.length; j++) {
+							html += '<li><input type="checkbox" name="'+$(this).attr('id')+'_checked_'+j+'"/>' + list[j].name + '</li>';
+						}
+						$('#js').html(html);
+					}
+				}
+				$('#js > li').on('click', function() {
+					$('#js > li').removeAttr('checked');
+					$(this).attr('checked', '');
+					$('#qx').html('');
+				});
+			});
+		});
+	});
+</script>

@@ -1,0 +1,30 @@
+<!-- 业户查询 -->
+<html>
+	<head>
+	<style>
+		#cldddiv{
+			width: 100%;
+			height: 80%;
+			background: url('resources/images/dzdd/xxxf.png')  no-repeat center;
+			position: relative;
+		}
+		#clddzt{
+			text-align:center;
+			height: 8%;
+			font-size:14px;
+			margin-top:20px;
+			text-align: left;
+			text-indent: 2em;
+		}
+		#clddzt{
+			font-family: '微软雅黑';
+			font-size: 15px;
+			line-height: 20px;
+		}
+	</style>
+	</head>
+	<body>
+		<div id="clddzt">具有单车调度和多车调度功能，通过在系统中选定某辆车对其发送调度指令。也可以满足分组调度，可以通过在GIS地图上指定区域，对区域内的车辆群发调度指令，提高调度工作效率和调度的灵活性。</div>
+		<div id="cldddiv"></div>
+	</body>
+</html>

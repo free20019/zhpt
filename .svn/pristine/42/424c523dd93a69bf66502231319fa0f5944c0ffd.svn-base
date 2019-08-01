@@ -1,0 +1,215 @@
+<!-- 业户查询 -->
+<html>
+<head>
+    <style>
+        #swczdiv{
+            width: 100%;
+            height: 80%;
+            background: url('resources/images/dzdd/swcz.png')  no-repeat center;
+            position: relative;
+        }
+        #swczzt{
+            text-align:center;
+            height: 8%;
+            font-size:15px;
+            margin-top:20px;
+            text-align: left;
+            text-indent: 2em;
+            font-family: '微软雅黑';
+            line-height: 20px;
+        }
+        *{margin:0 auto ; padding:0;font-size:13px}
+        .panel-titleLine { margin-bottom: 20px; padding: .3em; border: 1px solid #eeeeee;; }
+        .panel-titleLine .panel-titleSpan { position: relative; top: -1em; left: .3em; padding: .2em .5em; background: white }
+        .panel_oneSpan > div { display: block; margin-top: .3em; margin-bottom: .3em; }
+        .panel_twoSpan > div { display: inline-block; width: 49%; margin-top: .3em; margin-bottom: .3em; }
+    </style>
+</head>
+<body>
+<!--<div id="swczzt">根据乘客描述的上下车时间、上下车地点，在地图上框选上下车的大致区域范围，并结合乘客的上下车大概时间范围、乘客的辅助描述信息查找可能的车辆，并联系失物查找。</div>-->
+<!--<div id="swczdiv"></div>-->
+<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true,gutters:false, liveSplitters:true" id="dzfwContainer">
+    <div data-dojo-type="dojox/layout/ContentPane" data-dojo-props="region:'center', splitter:false" id="dzfw_centerCenter" style="padding: 0;">
+        <div id="map" style="position: absolute; top: 0; left: 0;right: 0;bottom: 0;"></div>
+    </div>
+    <div data-dojo-type="dojox/layout/ContentPane" data-dojo-props="region:'right', splitter:false" id="dzfw_rightCenter">
+        <div style="width:390px; padding: 8px;">
+            <div class="panel-titleLine" style="position: relative;">
+                <span class="panel-titleSpan">区域一</span>
+                <div class="panel_twoSpan">
+                    <div>
+                        <label>初始精度</label>
+                        <input type="text" style="width:8em;"/>
+                    </div>
+                    <div>
+                        <label>初始维度</label>
+                        <input type="text" style="width:8em;"/>
+                    </div>
+                </div>
+                <div class="panel_twoSpan">
+                    <div>
+                        <label>结束精度</label>
+                        <input type="text" style="width:8em;"/>
+                    </div>
+                    <div>
+                        <label>结束维度</label>
+                        <input type="text" style="width:8em;"/>
+                    </div>
+                </div>
+                <div class="panel_oneSpan">
+                    <div>
+                        <label>开始时间</label>
+                        <input type="date" style="width:8em;"/>
+                        <input type="time" style="width:8em;"/>
+                    </div>
+                    <div>
+                        <label>结束时间</label>
+                        <input type="date" style="width:8em;"/>
+                        <input type="time" style="width:8em;"/>
+                    </div>
+                </div>
+                <button style="position: absolute; bottom: 10px; right: 20px;">选择区域</button>
+            </div>
+            <!--区域2-->
+            <div class="panel-titleLine" style="position: relative;">
+                <span class="panel-titleSpan">区域二</span>
+                <div class="panel_twoSpan">
+                    <div>
+                        <label>初始精度</label>
+                        <input type="text" style="width:8em;"/>
+                    </div>
+                    <div>
+                        <label>初始维度</label>
+                        <input type="text" style="width:8em;"/>
+                    </div>
+                </div>
+                <div class="panel_twoSpan">
+                    <div>
+                        <label>结束精度</label>
+                        <input type="text" style="width:8em;"/>
+                    </div>
+                    <div>
+                        <label>结束维度</label>
+                        <input type="text" style="width:8em;"/>
+                    </div>
+                </div>
+                <div class="panel_oneSpan">
+                    <div>
+                        <label>开始时间</label>
+                        <input type="date" style="width:8em;"/>
+                        <input type="time" style="width:8em;"/>
+                    </div>
+                    <div>
+                        <label>结束时间</label>
+                        <input type="date" style="width:8em;"/>
+                        <input type="time" style="width:8em;"/>
+                    </div>
+                </div>
+                <button style="position: absolute; bottom: 10px; right: 20px;">选择区域</button>
+            </div>
+            <!--区域3-->
+            <div class="panel-titleLine" style="position: relative;">
+                <span class="panel-titleSpan">区域三</span>
+                <div class="panel_twoSpan">
+                    <div>
+                        <label>初始精度</label>
+                        <input type="text" style="width:8em;"/>
+                    </div>
+                    <div>
+                        <label>初始维度</label>
+                        <input type="text" style="width:8em;"/>
+                    </div>
+                </div>
+                <div class="panel_twoSpan">
+                    <div>
+                        <label>结束精度</label>
+                        <input type="text" style="width:8em;"/>
+                    </div>
+                    <div>
+                        <label>结束维度</label>
+                        <input type="text" style="width:8em;"/>
+                    </div>
+                </div>
+                <div class="panel_oneSpan">
+                    <div>
+                        <label>开始时间</label>
+                        <input type="date" style="width:8em;"/>
+                        <input type="time" style="width:8em;"/>
+                    </div>
+                    <div>
+                        <label>结束时间</label>
+                        <input type="date" style="width:8em;"/>
+                        <input type="time" style="width:8em;"/>
+                    </div>
+                </div>
+                <button style="position: absolute; bottom: 10px; right: 20px;">选择区域</button>
+            </div>
+            <!--查看-->
+            <div class="panel_oneSpan" style="border-bottom: 1px solid #eee;">
+                <div>
+                    <button>查询</button>
+                    <button>查看车辆信息</button>
+                    <button>结果导出</button>
+                </div>
+            </div>
+
+            <div style="margin-top:3px;width:100%">
+                <div style="float:left;"><button>区域一</button></div>
+                <div style="float:left;"><button>区域二</button></div>
+                <div style="float:left;"><button>区域三</button></div>
+            </div>
+
+            <div style="padding-top:3px;width:100%;clear:both">
+                <table border="1" cellspacing="0" cellpadding="0" style="width: 100%;">
+                    <thead>
+                    <tr>
+                        <th style="text-align: center;">车牌号码</th>
+                        <th style="text-align: center;">精度</th>
+                        <th style="text-align: center;">维度</th>
+                        <th style="text-align: center;">车速</th>
+                        <th style="text-align: center;">方向</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>浙AT012</td>
+                        <td>120.12</td>
+                        <td>30.27</td>
+                        <td>25</td>
+                        <td>315</td>
+                    </tr>
+                    <tr>
+                        <td>浙AT012</td>
+                        <td>120.12</td>
+                        <td>30.27</td>
+                        <td>25</td>
+                        <td>315</td>
+                    </tr>
+                    <tr>
+                        <td>浙AT012</td>
+                        <td>120.12</td>
+                        <td>30.27</td>
+                        <td>25</td>
+                        <td>315</td>
+                    </tr>
+                    <tr>
+                        <td>浙AT012</td>
+                        <td>120.12</td>
+                        <td>30.27</td>
+                        <td>25</td>
+                        <td>315</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="javascript">
+    var map = new AMap.Map('map', {
+        resizeEnable: true,
+        zoom:11
+    });
+</script>
+</body>
+</html>

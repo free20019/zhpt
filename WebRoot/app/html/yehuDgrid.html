@@ -1,0 +1,79 @@
+<html>
+<head>
+	<script>
+		require([ "dgrid/Editor","dijit/form/Button" ,"dijit/form/DateTextBox"
+				  ,"dgrid/OnDemandGrid","dijit/form/TextBox","app/Pagination"
+				  ,"dgrid/Selection", "dgrid/Keyboard","dgrid/extensions/ColumnResizer"
+				  ,"app/createAsyncStore","dstore/Memory","dgrid/extensions/DijitRegistry"
+				  ,"dijit/registry", "dojo/dom-style","dojo/_base/declare",
+				  "dojo/dom-construct", "dojo/domReady!"], function(
+						  Editor, Button,DateTextBox,Grid,TextBox
+						  , Pagination,Selection,Keyboard,ColumnResizer,createAsyncStore,Memory,DijitRegistry
+						  ,registry, domStyle,declare, dc ) {
+		var yehuGrid = store = null;
+			dc.place(dc.create("span",{innerHTML:"姓名",style:{"margin-right":"5px"}}),'yehuToolBar');
+			var name = new TextBox({id:"yehu_name",style:{"width":"8em","margin-right":"15px"}}).placeAt('yehuToolBar');
+			dc.place(dc.create("span",{innerHTML:"业户",style:{"margin-right":"5px"}}),'yehuToolBar');
+			var baId = new TextBox({id:"yehu_baId",style:{"width":"8em","margin-right":"15px"}}).placeAt('yehuToolBar');
+			var queryCondition = {"name":name,"baId":baId};
+
+			new Button({
+					label: "查  询",
+					onClick: function(){
+						var postData = {"page":1,"pageSize":pageSize};
+						for(var o in queryCondition){
+							postData[o] = queryCondition[o].value;
+						}
+						dojo.xhrPost(dojo.mixin(xhrArgs,{"postData":'postData='+dojo.toJson(postData)}));
+					}
+			}).placeAt('yehuToolBar');
+			var columns = {
+				dojoId : "序号", // give column a custom name
+				userName : "姓名",
+				tel : { label : "手机" },
+				baId : { label : "业户" },
+				compId : { label : "分公司" }
+			};
+		var xhrArgs = {
+			url : "/rybt/users/get",
+			postData : 'postData={"page":1,"pageSize":'+pageSize+'}',
+			handleAs : "json",
+			load : function(data) {
+				console.log(data)
+				yehuGrid.totalCount = data.count;
+					for(var i=0; i<data.datas.length;  i++){
+						data.datas[i] = dojo.mixin({ dojoId: i+1 }, data.datas[i]);
+					}
+					console.log(data.datas)
+					store = new Memory({ data: {
+						identifier: 'dojoId',
+						label: 'dojoId',
+						items: data.datas
+					} });
+					yehuGrid.set('collection',store);
+					yehuGrid.pagination.refresh(data.datas.length);
+			},
+			error : function(error) {
+				targetNode.innerHTML = "An unexpected error occurred: "
+						+ error;
+			}
+		};
+		var CustomGrid = declare([DijitRegistry,Grid, Keyboard, Selection,ColumnResizer]);
+		yehuGrid= new CustomGrid({
+			//className: "dgrid-autoheight",
+			totalCount : 0,
+			columns: columns,
+			pagination:null
+		},"yehuGridDiv");
+		var pageii = new Pagination(yehuGrid,xhrArgs,queryCondition);
+		dc.place(pageii.first(),'yehuGridDiv','after');
+// 			var deferred = dojo.xhrPost(xhrArgs);
+		});
+
+	</script>
+	</head>
+	<body class="claro">
+		<div id="yehuToolBar" style="height: 45px;"></div>
+		<div id="yehuGridDiv" class="yehuGridDiv" ></div>
+	</body>
+</html>

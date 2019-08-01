@@ -1,0 +1,11 @@
+<html>
+<!-- 里程统计 -->
+<head>
+	<script type="text/javascript" src="app/html/monitor/areaclfx.js"></script>
+</head>
+<body>
+	<div id="areaclfxdiv"></div>
+	<div id="areaclfxtable" class="areaclfxtable" style="height: 350px;" ></div>
+	<div id="areaclfxtb" style="height:330px;"></div>
+</body>
+</html>

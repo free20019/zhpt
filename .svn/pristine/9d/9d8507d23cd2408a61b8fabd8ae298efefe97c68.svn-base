@@ -1,0 +1,44 @@
+<html>
+<head>
+	<script type="text/javascript" src="app/html/yjzhBs.js"></script>
+	<style type="text/css">
+		.yhGridDiv th,.yhGridDiv td {text-align: center;}
+		.yhGridDiv .field-id {width: 45px;}
+		.yhGridDiv .field-TIME {width: 80px;}
+		.yhGridDiv .field-SJZT {width: 120px;}
+		.yhGridDiv .field-SJJL {width: 650px;}
+		.yhGridDiv .field-BJR {width: 100px;}
+		.yhGridDiv .field-DJDH {width: 100px;}
+		.yhGridDiv .field-JJR {width: 100px;}
+		.yhGridDiv .field-SJJB {width: 100px;}
+		.yhGridDiv .field-SH {width: 100px;}
+	</style>
+</head>
+<body class="claro">
+	<div id="yhToolBar3"></div>
+	<div id="yhGridDiv3" class="yhGridDiv" style="height:30%"></div>
+	<div id="yhGridDiv4" data-dojo-type="dijit/layout/BorderContainer"
+		data-dojo-props="persist:true,gutters:false,liveSplitters:true"
+		style="height:60%;margin-top: 10px;">
+		<span style="color: #ff0000;font-size: 15px;font-family: '宋体';">报警描述:</span>
+		<div id="bs_sjmiaoshu" data-dojo-type="dijit/layout/ContentPane"
+			data-dojo-props=" region:'left'"
+			style="text-indent:2em;width:37%;padding: 0px;margin: 15px;top:10px;"></div>
+		<div data-dojo-type="dijit/layout/ContentPane"
+			data-dojo-props=" region:'right'"
+			style="width:60%;padding: 0px;margin: 0px;border: 1px solid #CEDCDC;">
+			
+			<div style="height: 80%">
+				<div id="sj_bs" ></div>
+			</div>
+			
+			<div style="text-align: center;height: 10%">
+				<input id="bs_checkBox1" /> <label for="bs_checkBox1">短信</label>
+				<input id="bs_checkBox2" /> <label for="bs_checkBox2">邮件</label>
+				<button id="bs_fs" type="button"></button>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

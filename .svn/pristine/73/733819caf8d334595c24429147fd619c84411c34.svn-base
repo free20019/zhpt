@@ -1,0 +1,10 @@
+<html>
+<!-- 里程统计 -->
+<head>
+	<script type="text/javascript" src="app/html/monitor/findoperday.js"></script>
+</head>
+<body>
+<div id="findoperdaydiv"></div>
+<div id="findoperdaytable" class="findoperdaytable" style="height: 100%" ></div>
+</body>
+</html>

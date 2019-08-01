@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自行车运行热点分析</title>
+	<script type="text/javascript" src="resources/js/jquery-2.1.1.min.js"></script>
+    <script src="app/html/monitor/czczcz.js"></script>
+	<script type="text/javascript" src="app/html/monitor/czjyqkfx.js"></script>
+	<style>
+		#lxt-contentPane {  height: 100%;  margin: 0;  padding: 0;  }
+		#lxt-mapBox {  width: 100%;  height: 100%;  }
+
+		#lxt-mapShowPanel {
+			position: absolute;
+			top: 40px;
+			left: 20px;
+			padding: 10px;
+			background: #ffffff;
+		}
+		#lxt-mapShowPanel-right {
+			position: absolute;
+			top: 40px;
+			right: 20px;
+			padding: 10px;
+			background: #ffffff;
+		}
+		#lxt-mapShowList {
+			margin-top: 10px;
+			margin-left: -20px;
+		}
+		#lxt-mapShowList-right {
+			margin-top: 10px;
+			margin-left: -20px;
+		}
+		#lxt-mapShowList .iconItem {
+			position: relative;
+			line-height: 20px;
+			font-size: 14px;
+			color: #333333;
+			cursor: pointer;
+		}
+		#lxt-mapShowList-right .iconItem {
+			position: relative;
+			line-height: 20px;
+			font-size: 14px;
+			color: #333333;
+			cursor: pointer;
+		}
+		#lxt-mapShowList-right .iconItem {
+			position: relative;
+			line-height: 20px;
+			font-size: 14px;
+			color: #333333;
+			cursor: pointer;
+		}
+		#lxt-mapShowList-right .iconItem {
+			position: relative;
+			line-height: 20px;
+			font-size: 14px;
+			color: #333333;
+			cursor: pointer;
+		}
+		#lxt-mapShowList .iconItem:hover {
+			color: red;
+		}
+		#lxt-mapShowList-right .iconItem:hover {
+			color: red;
+		}
+		#lxt-mapShowList .iconItem:before {
+			content: '';
+			display: inline-block;
+			width: 12px;
+			height: 12px;
+			margin-right: 10px;
+			border-radius: 50%;
+			vertical-align: middle;
+		}
+		#lxt-mapShowList-right .iconItem:before {
+			content: '';
+			display: inline-block;
+			width: 12px;
+			height: 12px;
+			margin-right: 10px;
+			border-radius: 50%;
+			vertical-align: middle;
+		}
+		#lxt-mapShowList .iconItem:before {  background: #6e7074;  }
+		#lxt-mapShowList-right .iconItem:before {  background: #6e7074;  }
+		#lxt-mapShowList .iconItem.action {
+			color : #c43530;
+		}
+		#lxt-mapShowList-right .iconItem.action {
+			color : #c43530;
+		}
+		#lxt-mapShowList .iconItem.action:before, #lxt-mapShowList .iconItem:hover:before {  background: #c43530;  }
+		#lxt-mapShowList-right .iconItem.action:before, #lxt-mapShowList-right .iconItem:hover:before {  background: #c43530;  }
+		#lxt-mapShowList .fontcolor1 {color:red}
+		#lxt-mapShowList-right .fontcolor1 {color:red}
+		#lxt-mapShowList .fontcolor2 {color:black}
+		#lxt-mapShowList-right .fontcolor2 {color:black}
+		.inputDateBox {
+			width: 90px;
+		}
+		#lxt-mapBox table{
+		  border-collapse:collapse;
+	  	}
+		
+		#lxt-mapBox table, td, th{
+		  border:1px solid black;
+		}
+		#lxt-mapBox td{
+			width : 80px;
+			height : 40px;
+			text-align:center;
+			vertical-align:middle;
+		}
+		.cardTitle {
+			position: relative;
+			display: inline-block;
+			width: 160px;
+			line-height: 21px;
+			margin-top: 10px;
+			border-top: 2px solid #d94042;
+			border-bottom: 2px solid #d94042;
+			font-size: 14px;
+			text-align: center;
+			color: #d94042;
+		}
+		.cardTitle[hot]:before {
+			content: attr(hot);
+			position: absolute;
+			left: 0;
+			display: inline-block;
+			width: 25px;
+			height: 21px;
+			line-height: 21px;
+			text-align: center;
+			color: #ffffff;
+			background: #d94042;
+		}
+		.cardTitle:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 15px;
+			height: 15px;
+			/*border: 12px solid transparent;*/
+			/*border-right-color: #d94042;*/
+			box-shadow: -1px -1px 0 1px #d94042;
+			-webkit-transform: rotate(-45deg) translate(3px, 7px);
+			-moz-transform: rotate(-45deg) translate(3px, 7px);
+			-ms-transform: rotate(-45deg) translate(3px, 7px);
+			-o-transform: rotate(-45deg) translate(3px, 7px);
+			transform: rotate(-45deg) translate(3px, 7px);
+		}
+	</style>
+</head>
+<body>
+
+<div id="lxt-contentPane">
+	<div id="lxt-mapBox">
+		<table id="lxt-table">
+		</table>
+	</div>
+	<div id="lxt-mapShowPanel">
+		<span class="cardTitle" hot="热">热门上车地点</span>
+		<ul id="lxt-mapShowList">
+ 			<li class="iconItem sc" OrientID="火车东站">火车东站(1284)</li>
+ 			<li class="iconItem sc" OrientID="城战火车站">城战火车站(965)</li>
+ 			<li class="iconItem sc" OrientID="龙翔桥">龙翔桥(638)</li>
+ 			<li class="iconItem sc" OrientID="凤起路">凤起路(538)</li>
+ 			<li class="iconItem sc" OrientID="汽车西站">汽车西站(458)</li>
+		</ul>
+	</div>
+	<div id="lxt-mapShowPanel-right">
+		<span class="cardTitle" hot="热">热门下车地点</span>
+		<ul id="lxt-mapShowList-right">
+ 			<li class="iconItem xc" OrientID="龙翔桥">龙翔桥(1126)</li>
+ 			<li class="iconItem xc" OrientID="火车东站">火车东站(956)</li>
+ 			<li class="iconItem xc" OrientID="西湖文化广场">西湖文化广场(735)</li>
+ 			<li class="iconItem xc" OrientID="南山路">南山路(624)</li>
+ 			<li class="iconItem xc" OrientID="汽车北站">汽车北站(563)</li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<script type="text/javascript">
+require([ "app/TreeLayout","dojo/domReady!"],function(TreeLayout){
+		new TreeLayout('mainSplitterLeft_ul',leftYjzhMenu,{m2:menuHandlerLevel2,m3:menuHandlerLevel3},{'bgc':'#cfe5fa','fc':'#000'}).init();
+		new TreeLayout('mainSplitterLeft_ul2',leftMap,{m2:leftMapView,m3:[]},{'bgc':'#cfe5fa','fc':'#000'}).init();
+		new TreeLayout('mainSplitterLeft_ul3',leftScjgMenu,{m2:leftScjgView,m3:[]},{'bgc':'#cfe5fa','fc':'#000'}).init();
+		new TreeLayout('mainSplitterLeft_ul4',leftFzjcMenu,{m2:leftFzjcView,m3:[]},{'bgc':'#cfe5fa','fc':'#000'}).init();
+});
+</script>
+<div id="markupAccordion" data-dojo-type="dijit/layout/AccordionContainer" data-dojo-props='style:"width: 400px; height: 100%px; overflow: hidden"'>
+			
+			<div id="pane2" data-dojo-type="dijit/layout/ContentPane" data-dojo-props='selected:true,
+			title:"日常监控与预警", iconClass:"dijitEditorIcon dijitEditorIconSave", tooltip:"tooltip for simple pane" '>
+				
+				<div class="mainSplitterLeft" style="height: 100%">
+					<ul id="mainSplitterLeft_ul2" style="padding: 0px;margin: 0px">
+							
+					</ul>
+				</div>
+		</div>
+		<div id="pane3" data-dojo-type="dijit/layout/ContentPane" data-dojo-props='
+			title:"市场监管", iconClass:"dijitEditorIcon dijitEditorIconSave", tooltip:"tooltip for simple pane" '>
+				<div class="mainSplitterLeft" style="height: 100%">
+					<ul id="mainSplitterLeft_ul3" style="padding: 0px;margin: 0px">
+							
+					</ul>
+				</div>
+		</div>
+		<div id="pane4" data-dojo-type="dijit/layout/ContentPane" data-dojo-props='
+			title:"辅助决策", iconClass:"dijitEditorIcon dijitEditorIconSave", tooltip:"tooltip for simple pane" '>
+				<div class="mainSplitterLeft" style="height: 100%">
+					<ul id="mainSplitterLeft_ul4" style="padding: 0px;margin: 0px">
+							
+					</ul>
+				</div>
+		</div>
+		
+		<div id="pane1" data-dojo-type="dijit/layout/ContentPane" data-dojo-props='
+			title:"应急指挥", iconClass:"dijitEditorIcon dijitEditorIconSave", tooltip:"tooltip for simple pane" '>
+				<div id="mainSplitterLeft" class="mainSplitterLeft" style="height: 100%">
+					<ul id="mainSplitterLeft_ul" style="padding: 0px;margin: 0px">
+							
+					</ul>
+				</div>
+			</div>
+</div>

@@ -1,0 +1,61 @@
+<!-- 监控流程 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>D3: Using color in SVG</title>
+<style type="text/css">
+/* No style rules here yet */
+#svgWraper {
+	overflow: auto;
+}
+
+svg rect {
+	fill:url(#orange_red)
+}
+
+svg text {
+	pointer-events: none;
+	fill: #000;
+}
+</style>
+
+<script type="text/javascript" src="app/html/yjzh/lcjk.js">
+	
+</script>
+</head>
+<body>
+	<div data-dojo-type="dijit/layout/BorderContainer"
+		data-dojo-props="persist:true,gutters:false,liveSplitters:true"
+		style="height:100%;margin-top: 10px;">
+		<div data-dojo-type="dijit/layout/ContentPane"
+			data-dojo-props=" region:'top'"
+			style="width:100%;padding: 0px;margin: 0px;height: 50%">
+			<div id=svgWraper>
+				<svg>
+				<defs>
+					  <linearGradient id="orange_red" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" style="stop-color: rgb(255,255,155);
+					stop-opacity:1"></stop>
+					<stop offset="100%"
+											style="stop-color: rgb(255,255,255);
+					stop-opacity:1"></stop>
+					</linearGradient>
+					<marker id="arrow" markerUnits="strokeWidth" markerWidth="12"
+						markerHeight="12" viewBox="0 0 12 12" refX="10" refY="6"
+						orient="auto">
+					<path d="M2,2 L10,6 L2,10 L6,6 L2,2" fill="#f00"></path></marker>
+					</defs>
+				</svg>
+			</div>
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane"
+			data-dojo-props=" region:'left'"
+			style="width:100%;padding: 0px;margin: 0px;height: 50%">
+			<div id=gridDiv style="margin: 15px 5px;"></div>
+		</div>
+	</div>
+
+
+</body>
+</html>

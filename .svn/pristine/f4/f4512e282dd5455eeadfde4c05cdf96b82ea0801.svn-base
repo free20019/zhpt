@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>杭州市出租汽车信息系统综合平台</title>
+<link rel="icon" href="resources/images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="app/main.css">
+
+<!-- <link rel="stylesheet" -->
+<!-- 	href="libs/dojo-release-1.10.4-src/dijit/themes/claro/claro.css"> -->
+<!-- <link data-jsfiddle="common" rel="stylesheet" media="screen" href="libs/handsontable-0.11.1/dist/handsontable141.full.css"> -->
+
+<!-- <script type="text/javascript" src="libs/handsontable-0.11.1/dist/handsontable.min.js"></script> -->
+<script>
+	var 	dojoConfig ={parseOnLoad:true};
+	var lastMousePos = {};
+</script>
+<script type="text/javascript"
+	src="http://115.236.61.148:9085/jslib/myDojo/dojo/dojo.js"></script>
+<script type="text/javascript"
+	src="http://115.236.61.148:9085/jslib/myDojo/dojo/example.js"></script>	
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=d0face2397384365119fbf558c48c10a"></script>
+
+	
+<!-- <script type="text/javascript" -->
+<!-- 	src="libs/dojo-release-1.10.4-src/release/myDojo2/dojo/dojo.js"></script> -->
+<!-- <script type="text/javascript" -->
+<!-- 	src="libs/dojo-release-1.10.4-src/release/myDojo2/dojo/example.js"></script> -->
+			
+<style>
+html,body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+	text-align: center;
+}
+
+#borderContainer {
+	width: 100%;
+	height: 100%;
+}
+
+.claro .dijitSplitContainer-child, .claro .dijitBorderContainer-child{
+	border: 0px;
+	background: #b39b86;
+}
+
+.claro .dijitContentPane {
+    padding: 0px; 
+}
+
+.exit1Hover {
+	background-image: url('resources/images/index2/exit.png');
+}
+@media screen and (max-width: 1100px) {
+	*,body,h2,h1,div,img{
+		zoom:0.8;
+	}
+}
+	#flip10:hover{
+		outline: 1px solid #F4F9FD;
+	}
+	#flip9:hover{
+		outline: 1px solid #F4F9FD;
+	}
+	#flip11:hover{
+		outline: 1px solid #F4F9FD;
+	}
+</style>
+
+<script type="text/javascript">
+	var selectFlip = null;
+	var flags =[false,false,false,false,false,false,false,false];
+	var time = new Date(),zzz=false;
+	var testTime = new Date();
+	var dates = [time,time,time,time,time,time,time,time];
+	var colors = ['#2387F9','#FE495C','#796895','#FE495C','#696AA3','#E5A8AD','#923A84','#060C16']
+	var htmls = [
+"<img   width='100%' height='100%' src='resources/images/index2/10_1.png'></img>",
+"<img   width='100%' height='100%' src='resources/images/index2/10_2.png'></img>",
+"<img   width='100%' height='100%' src='resources/images/index2/10_3.png'></img>",
+"<img  width='100%' height='100%' src='resources/images/index2/10_4_1.png'></img>",
+"<img  width='100%' height='100%' src='resources/images/index2/10_4_2.png'></img>",
+"<img  width='100%' height='100%' src='resources/images/index2/10_4_3.png'></img>",
+"<img  width='100%' height='100%' src='resources/images/index2/10_4_4.png'></img>",
+"<img  width='100%' height='100%' src='resources/images/index2/125_03.png'></img>",
+"<img  width='100%' height='100%' src='resources/images/index2/103.png'></img>",
+"<img  width='100%' height='100%' src='resources/images/index2/105.png'></img>"
+	             ];
+	var contents = [
+	                '实现对出租汽车司机运营行为、学习情况、服务的监管，建立司机IC卡与司机资质信息的关联，达到对司机日常的监督，维护出租汽车行业市场秩序，打击非法运行车辆，保障出租汽车司机和企业的合法权益，促进行业健康发展。'
+	                ,'借助相关标准规范指标体系，建立一定的模型，选取适当的算法，对建立的指标进行数据挖掘与统计分析，展示出租汽车运营规律、服务水平和服务质量等各类统计指标信息，并根据分析指标和数据实现出租汽车运营的决策支持。'
+	                ,'实时展示全市出租汽车运行状况，对出租汽车的运行状态和安全情况进行全面监控，及时发现运行中存在的管理和安全问题，并通过分析和监测，对出租汽车运营异常情况进行预测和报警提示，满足运力调配业务需要，防止不稳定事件发生。'
+	                ,'通过日常应急监测，对出租汽车行业运营异常报警、突发事件、紧急事件及时响应，根据相应预案及领导指示完成对出租汽车指挥调度、应急处置，为出租汽车行业安全、平稳、正常、有序运营提供保障'
+	                ,'支持“滴滴、快的、优步、神州专车”等第三方打车或专车约车系统的数据接入，包括运营商信息、业户信息、车辆信息和营运信息的数据采集、数据处理和数据存储'
+	                ,'在出租汽车硬件设备改造的基础上，实现银联闪付、支付宝等在线支付约车费用功能，方便乘客支付'
+	                ,'电召调度使用全市统一特服电话号码，以呼叫中心、互联网等形式，为乘客提供电召调度、预约服务、失物查找等服务；为出租汽车司机提供路线规划、地点及里程费用查询、路况查询、外语翻译等服务'
+	                ,'实现与出租汽车服务管理信息平台相关的其他信息系统的数据共享，以及实现将该系统所产生的相关营运数据上报省、部级，从而为行业管理及相关部门提供数据支撑'];
+	
+	function mouseCoords(ev) 
+	{ 
+		if(ev.pageX || ev.pageY){ 
+			return {x:ev.pageX, y:ev.pageY}; 
+		} 
+		return { 
+			x:ev.clientX + document.body.scrollLeft - document.body.clientLeft, 
+			y:ev.clientY + document.body.scrollTop - document.body.clientTop 
+		}; 
+	} 
+	
+require(["dojox/fx/flip","dojo/dom-class", "dojo/on","dojo/html","dojo/domReady!"]
+, function(flip,domClass,on){
+	borderContainer.style.left = (document.body.offsetWidth - 1280)/2 +'px'
+	window.onresize = function(){
+		borderContainer.style.left = (document.body.offsetWidth - 1280)/2 +'px'
+	}
+	
+	function init22(id,f,fd,html,index){
+		var item = dojo.byId(id);item.status = 0;item.sTime=0;item.eTime=0;item.duration=300
+		dojo.connect(item, "mouseover", function(e){
+			selectFlip  = index;
+//	 		dojo.disconnect(f1Handler);
+// console.log(111,item,this)
+		console.log(111,this.status)
+		if(this.status == 1){
+			console.log('exit....')
+			return;
+		}
+		this.status = 1;
+// 		console.log(222,item.status)
+// 			var date = new Date();
+// 			if(date.getTime()-fd.getTime() < 500){
+// 				return;
+// 			}
+// 			fd = date;
+			var anim = dojox.fx.flip({ 
+				node: id,
+				dir: "right",
+				depth: .5,
+//	 			endColor: "yellow",
+				duration:300
+			})											  
+			dojo.connect(anim, "onEnd", this, function(){ 
+				var n = dojo.byId(id);
+					n.innerHTML = contents[index];
+					dojo.style(n, {
+						color: "#FFF"
+						,background: colors[index]
+					});
+			})
+			anim.play(); 
+			this.sTime = new Date();
+// 			console.log('anim#',anim)
+		});
+	};
+	
+	function init33(id,f,fd,html,index){
+		var item = dojo.byId(id);
+		dojo.connect(item, "mouseout", function(e){
+			var now = new Date();
+			console.log('#444', now.getTime() , this.sTime.getTime())
+			if(now.getTime()  - this.sTime.getTime() > ( this.duration + 100)){
+				console.log('## > 400')
+				item.status = 0;
+			}
+			if(now.getTime()  - this.sTime.getTime() < this.duration ){
+				return;
+			}
+			var anim = dojox.fx.flip({ 
+				node: id,
+				dir: "left",
+				depth: .5,
+//	 			endColor: "yellow",
+				duration:300
+			})											  
+			dojo.connect(anim, "onEnd", this, function(){ 
+				var n = dojo.byId(id);
+				n.innerHTML =html;
+			})
+			anim.play(); 
+		});
+	};
+	
+	function init66(id,f,fd,html,index){
+		var item = dojo.byId(id);item.status = 0;item.sTime=0;item.eTime=0;item.duration=300;
+		var handler = null;
+		dojo.connect(item, "mouseenter", function(e){
+			if(selectFlip == index){
+				return;
+			}
+			if(!handler){
+				dojo.disconnect(handler);
+			}
+			selectFlip  = index;
+			var anim = dojox.fx.flip({ 
+				node: id,
+				dir: "right",
+				depth: .5,
+//	 			endColor: "yellow",
+				duration:300
+			})											  
+			dojo.connect(anim, "onEnd", this, function(){ 
+				console.log('##handle:',handler)
+				if(!handler){
+					//return;
+					dojo.disconnect(handler);
+				}
+				var n = dojo.byId(id);
+					n.innerHTML = contents[index];
+	 				dojo.style(n, {
+						color: "#FFF"
+						,background: colors[index]
+					});
+					
+					handler  = dojo.connect(item, "mouseleave", function(e){
+						console.log(selectFlip != index,selectFlip,index)
+// 						if(selectFlip != index){
+							var anim2 = dojox.fx.flip({ 
+								node: id,
+								dir: "left",
+								depth: .5,
+	//				 			endColor: "yellow",
+								duration:300
+							})		
+							dojo.disconnect(handler);
+							dojo.connect(anim2, "onEnd", this, function(){ 
+								var n = dojo.byId(id);
+								n.innerHTML =html;
+								dojo.disconnect(handler);
+							})
+							anim2.play(); 
+// 						}
+						
+					})
+					
+			})
+			anim.play(); 
+			this.sTime = new Date();
+// 			console.log('anim#',anim)
+		});
+	};
+	
+	function init77(id,f,fd,html,index){
+		var item = dojo.byId(id);item.status = 0;item.sTime=0;item.eTime=0;item.duration=300;
+		item.myContent = contents[index];
+		item.myInnerHtml = htmls[index];
+		var xyPosition = null;
+		item.xy = {'x':0,'y':0,'x2':0,'y2':0};
+		
+		dojo.connect(item, "mouseenter", function(e){
+			testTime = new Date();
+			console.log('enter....',item.id)
+			xyPosition = dojo.position(item)
+			console.log(xyPosition)
+			item.xy.x = xyPosition.x;
+			item.xy.y=xyPosition.y;
+			item.xy.x2=xyPosition.x+xyPosition.w;
+			item.xy.y2=xyPosition.y+xyPosition.h;
+			console.log('event',e)
+			if(!(item.status == 32 || item.status == 0)){
+				return;
+			}
+			selectFlip  = index;
+			var anim = dojox.fx.flip({ 
+				node: id,
+				dir: "right",
+				depth: .5,
+//	 			endColor: "yellow",
+				duration:300
+			})											  
+			dojo.connect(anim, "onEnd", this, function(){ 
+				item.status = 22;
+				var n = dojo.byId(id);
+					n.innerHTML = contents[index];
+	 				dojo.style(n, {
+						color: "#FFF"
+						,background: colors[index]
+					});
+	 				for(var ii=0;ii<flags.length;ii++){
+	 					var flipId = 'flip'+(ii+1);
+						var item2 = dojo.byId(flipId);
+						console.log(ii,item2.status)
+	 				}
+// 					var ttTime = new Date();
+// 					console.log('time...',id,ttTime.getTime() - testTime.getTime())
+// 					if(ttTime.getTime() - testTime.getTime() < 300){
+// 						testTime = ttTime;
+// 						return;
+// 					}
+	 				
+			})
+			anim.play(); 
+			this.sTime = new Date();
+		});
+	};
+	
+	function init88(id,f,fd,html,index){
+		var item = dojo.byId(id);item.status = 0;item.sTime=0;item.eTime=0;item.duration=300;
+		item.myContent = contents[index];
+		item.myInnerHtml = htmls[index];
+		var xyPosition = null;
+		item.xy = {'x':0,'y':0,'x2':0,'y2':0};
+		
+		dojo.connect(item, "mouseenter", function(e){
+			testTime = new Date();
+			console.log('enter....',item.id)
+			xyPosition = dojo.position(item)
+			console.log(xyPosition)
+			item.xy.x = xyPosition.x;
+			item.xy.y=xyPosition.y;
+			item.xy.x2=xyPosition.x+xyPosition.w;
+			item.xy.y2=xyPosition.y+xyPosition.h;
+			console.log('event',e)
+			if(!(item.status == 32 || item.status == 0)){
+				return;
+			}
+			selectFlip  = index;
+			var anim = dojox.fx.flip({ 
+				node: id,
+				dir: "right",
+				depth: .5,
+//	 			endColor: "yellow",
+				duration:300
+			})											  
+			dojo.connect(anim, "onEnd", this, function(){ 
+				item.status = 22;
+				var n = dojo.byId(id);
+					n.innerHTML = contents[index];
+	 				dojo.style(n, {
+						color: "#FFF"
+						,background: colors[index]
+	 					,'text-align':'left'
+	 					,'font-size' : '13px'
+	 					,'line-height': '20px'
+					});
+	 				for(var ii=0;ii<flags.length;ii++){
+	 					var flipId = 'flip'+(ii+1);
+						var item2 = dojo.byId(flipId);
+						console.log(ii,item2.status)
+	 				}
+			})
+			anim.play(); 
+			this.sTime = new Date();
+		});
+	};
+	
+	
+
+	document.onmousemove = function (ev) 
+	{ 
+		ev= ev || window.event; 
+		var mousePos = mouseCoords(ev);
+		lastMousePos.x = mousePos.x;lastMousePos.y = mousePos.y;
+		//console.log(mousePos.x,mousePos.y); 
+	} ; 
+	
+	for(var i=0;i<flags.length;i++){
+// 		init22('flip'+(i+1),flags[i],dates[i],htmls[i],i)
+// 		init33('flip'+(i+1),flags[i],dates[i],htmls[i],i)
+// init66('flip'+(i+1),flags[i],dates[i],htmls[i],i)
+//init88('flip'+(i+1),flags[i],dates[i],htmls[i],i)
+	}
+	/*
+	setInterval(function(){for(var ii=0;ii<flags.length;ii++){
+		var flipId = 'flip'+(ii+1);
+		var item2 = dojo.byId(flipId);
+		if(item2.status != 22){
+			continue;
+		}
+		
+			console.log(lastMousePos,item2.xy)
+		if(lastMousePos.x < item2.xy.x || lastMousePos.x > item2.xy.x2
+				|| lastMousePos.y < item2.xy.y ||  lastMousePos.y > item2.xy.y2 ){
+			var anim2 = dojox.fx.flip({ 
+				node: item2,
+				dir: "left",
+				depth: .5,
+				duration:300
+			})		
+			console.log('anim2',item2.id);//item2.innerHTML =htmls[ii];
+			dojo.connect(anim2, "onEnd", item2, function(){ 
+				//console.log('end ..',this.id)
+				this.status = 32;
+				this.innerHTML = this.myInnerHtml;
+				zzz  = false;
+			})
+			anim2.play(); 
+		}
+	}},600)
+	*/
+	function init44(id){
+		dojo.connect(dojo.byId(id), "onmouseover", function(e){
+			this.style.outline='1px solid #F4F9FD'
+		})
+		dojo.connect(dojo.byId(id), "onmouseout", function(e){
+			this.style.outline='none'
+		})
+	}
+	
+	for(var i=0;i<flags.length;i++){
+		init44('flip'+(i+1))
+	}
+
+	function init55(id,index){
+		dojo.connect(dojo.byId(id), "onclick", function(e){
+			console.log(index)
+			var a = index==0?'scjg':index==1?'fzjc':index=='2'?'jkyj':index=='5'?'zfb':index=='7'?'xxbs':index=='4'?'zcyy':index=='6'?'dzdd':'yjzh';
+				window.location.href="http://"+self.location.host+"/zhpt/index30_"+a+".html"
+				
+		})
+	}
+			dojo.connect(dojo.byId('flip10'), "onclick", function(e){
+				var a = 'qxgl';
+				window.location.href="http://"+self.location.host+"/zhpt/index30_"+a+".html"
+
+			});
+			
+			dojo.connect(dojo.byId('flip9'), "onclick", function(e){
+				window.location.href="http://115.236.61.148:9080/area3/login.action"
+
+			});
+			dojo.connect(dojo.byId('flip11'), "onclick", function(e){
+				window.location.href="http://wyc.hzcb.gov.cn/app/login.html"
+
+			});
+			
+			
+		
+			
+			
+	
+	for(var i=0;i<flags.length;i++){
+// 		init55('flip'+(i+1))
+		init55('flip'+(i+1),i)
+	}
+	
+	
+	 var glqxxhrArgs = {
+	        url :  "qxgl/xsgl",
+// 	    		url:"http://localhost:8080/zhpt/qxgl/xsgl",
+	        handleAs : "json",
+	        load : function(data) {
+	        	console.log(data)
+	        	var now = new Date();
+	dojo.html.set(dojo.byId('info1'),''+data.name+'<br>'+data.user+'<br>'+now.getFullYear() +'/' + (now.getMonth()+1)+'/'+now.getDate())
+	        }
+	 }
+	 dojo.xhrPost(glqxxhrArgs);
+	
+	
+	
+	
+// 	dojo.byId('info1').set('html','管理员')
+console.log(this)
+	on(dojo.byId('exit1'), 'mouseover,mouseout',function(evt) {
+		console.log(this)
+		domClass.toggle(this, 'exit1Hover');
+	})
+	
+	on(dojo.byId('exit1'), 'click',function(evt) {
+		window.location.href="http://"+self.location.host+"/zhpt/demo.html"
+	})	
+// 	if(window.document.body.offsetWidth > 1300){
+// 		borderContainer.style.left = (window.document.body.offsetWidth -1300)/2
+// 	}
+})
+	
+</script>
+</head>
+<body class="claro" style="background-color: #b39b86;text-align: center;">
+<!-- 	<img id=login src="resources/images/index2/zhujiemian.png"></img> -->
+	<div data-dojo-type="dijit/layout/BorderContainer"
+		data-dojo-props='persist:true,gutters:true,  style:"width:1280px;"'
+		id="borderContainer">
+		 
+		
+			<div  data-dojo-type="dojox/layout/ContentPane" 
+			data-dojo-props='region:"top", splitter:false, style:"width: 100%;height:50%;"'>
+					<script type="dojo/on" data-dojo-event="show" data-dojo-args="e">
+     					borderContainer.style.left = (document.body.offsetWidth - 1280)/2 +'px'
+  				</script>
+					<div data-dojo-type="dijit/layout/BorderContainer"
+						data-dojo-props="persist:true,gutters:true, liveSplitters:true" >
+							<div data-dojo-type="dojox/layout/ContentPane" 
+							data-dojo-props='region:"left", splitter:false, style:"overflow: hidden;width: 80%;height:100%;"'>
+								<img width='100%' height='100%' src='resources/images/index2/1(2).png'></img>
+							
+							</div>
+							
+							<div  data-dojo-type="dojox/layout/ContentPane" 
+							data-dojo-props='region:"center", splitter:false, style:"overflow: hidden;background-color: #abc;width: 20%;height:100%;"' id="flip10">
+								
+
+								<img  width='100%' height='100%' src='resources/images/index2/-2(2).png'></img>
+								<div id='info1' style="
+							    position: relative;
+							    bottom: 90px;
+							    text-align: center;
+							    color: #fff;
+							    font-size: 25px;
+							    font-family: '宋体', '黑体',sans-serif;
+								"></div>
+								<div id='exit1'  style="position: absolute;width: 28px;height: 28px;top:5px;right: 5px;" ></div>
+							</div>
+					</div>
+					
+			</div>
+			
+			<div id="cpBottom" data-dojo-type="dojox/layout/ContentPane" 
+			data-dojo-props='region:"center", splitter:false, style:"width: 100%;height:50%;"'>
+					<div data-dojo-type="dijit/layout/BorderContainer"
+						data-dojo-props="persist:true,gutters:true, liveSplitters:true" >
+							<div data-dojo-type="dojox/layout/ContentPane" 
+							data-dojo-props='region:"left", splitter:false, style:"width: 15%;height:100%;"'>
+									
+									<div data-dojo-type="dijit/layout/BorderContainer"
+										data-dojo-props="persist:true,gutters:false, liveSplitters:true" style="padding: 1px" >
+											<div id=flip1 style="" data-dojo-type="dojox/layout/ContentPane" 
+											data-dojo-props='region:"top", splitter:false, style:"overflow: hidden;width: 100%;height:50%;"'>
+												<img  width='100%' height="100%" src='resources/images/index2/10_1.png'></img>
+<!-- 													<div style="background: transparent url(resources/images/index2/9.png) 0 -120px no-repeat;height: 231px;width: 183px;""></div> -->
+											</div>
+											
+											<div id=flip2 data-dojo-type="dojox/layout/ContentPane" style="margin-top: 5px"
+											data-dojo-props='region:"center", splitter:false, style:"overflow: hidden;width: 100%;height:50%;"'>
+												<img  width='100%' height="100%" src='resources/images/index2/10_2.png'></img>
+<!-- 												<img style="margin-left: 10px" width='90%' height='100%' src='resources/images/index2/4.png'></img> -->
+											</div>
+									</div>
+									
+							</div>
+							
+							<div id=flip3 data-dojo-type="dojox/layout/ContentPane" 
+							data-dojo-props='region:"center", splitter:false, style:"overflow: hidden;"'>
+<!-- 									<img style="margin-left: 10px" width='90%' height='100%' src='resources/images/index2/5.png'></img> -->
+								<img  width='100%' height="100%" src='resources/images/index2/10_3.png'></img>
+							</div>
+							
+							
+							<div  data-dojo-type="dojox/layout/ContentPane" 
+							data-dojo-props='region:"right", splitter:false, style:"width: 55%;height:100%;"'>
+									<div data-dojo-type="dijit/layout/BorderContainer"
+										data-dojo-props="persist:true,gutters:false, liveSplitters:true" style="padding: 1px">
+											<div data-dojo-type="dojox/layout/ContentPane" 
+											data-dojo-props='region:"top", splitter:false, style:"overflow: hidden;width: 100%;height:50%;"'>
+												
+												<div data-dojo-type="dijit/layout/BorderContainer"
+													data-dojo-props="persist:true,gutters:false, liveSplitters:true" style="padding: 1px">
+														<div id=flip4  data-dojo-type="dojox/layout/ContentPane" 
+														data-dojo-props='region:"left", splitter:false, style:"overflow: hidden;width: 30%;height:100%;"'>
+																	<img  width='100%' height="100%" src='resources/images/index2/10_4_1.png'></img>
+														</div>
+														<div data-dojo-type="dojox/layout/ContentPane" 
+														data-dojo-props='region:"center", splitter:false, style:"overflow: hidden;width: 70%;height:100%;"'>
+																
+																<div data-dojo-type="dijit/layout/BorderContainer"
+																data-dojo-props="persist:true,gutters:false, liveSplitters:true" style="padding: 1px">
+																	<div id=flip5  data-dojo-type="dojox/layout/ContentPane" 
+																	data-dojo-props='region:"left", splitter:false, style:"overflow: hidden;width: 33%;height:100%;"' style="margin-left: 5px">
+																		<img  width='100%' height="100%" src='resources/images/index2/10_4_2.png'></img>
+																	</div>
+																	<div id=flip6  data-dojo-type="dojox/layout/ContentPane" 
+																	data-dojo-props='region:"center", splitter:false, style:"overflow: hidden;width: 33%;height:100%;"' style="margin-left: 5px">
+																		<img  width='100%' height="100%" src='resources/images/index2/10_4_3.png'></img>
+																	</div>
+																	<div id=flip7  data-dojo-type="dojox/layout/ContentPane" 
+																	data-dojo-props='region:"right", splitter:false, style:"overflow: hidden;width: 33%;height:100%;"' style="margin-left: 5px">
+																		<img  width='100%' height="100%" src='resources/images/index2/10_4_4.png'></img>
+																	</div>
+																</div>
+														</div>
+												</div>
+											</div>
+											
+											<div data-dojo-type="dojox/layout/ContentPane"
+													data-dojo-props='region:"center", splitter:false, style:"overflow: hidden;width: 100%;height:50%;"' >
+													<div data-dojo-type="dijit/layout/BorderContainer"
+													data-dojo-props="persist:true,gutters:false, liveSplitters:true" style="padding: 1px">
+														<div  id=flip8 data-dojo-type="dojox/layout/ContentPane" 
+														data-dojo-props='region:"left", splitter:false, style:"overflow: hidden;width: 50%;height:100%;"'>
+															<img  width='100%' height="100%" src='resources/images/index2/125_03.png'></img>
+														</div>
+														<div data-dojo-type="dojox/layout/ContentPane" 
+														data-dojo-props='region:"center", splitter:false, style:"overflow: hidden;width: 50%;height:100%;"'>
+																
+																<div data-dojo-type="dijit/layout/BorderContainer"
+																data-dojo-props="persist:true,gutters:false, liveSplitters:true" style="padding: 1px">
+																	<div  id=flip9 data-dojo-type="dojox/layout/ContentPane" 
+																	data-dojo-props='region:"left", splitter:false, style:"overflow: hidden;width: 50%;height:100%;"' style="margin-left: 5px">
+																		<img  width='100%' height="100%" src='resources/images/index2/103.png'></img>
+																	</div>
+																	<div  id=flip11 data-dojo-type="dojox/layout/ContentPane" 
+																	data-dojo-props='region:"center", splitter:false, style:"overflow: hidden;width: 50%;height:100%;"' style="margin-left: 5px">
+																		<img  width='100%' height="100%" src='resources/images/index2/105.png'></img>
+																	</div>
+																</div>
+														</div>
+												</div>
+											</div>
+									</div>
+							</div>
+					</div>
+			</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!-- 业户查询 -->
+<html>
+	<head>
+	<style>
+		.mater{
+			width:75%;
+			height:50px;
+			margin:0 auto;
+		}
+		.left{
+			width:16%;
+			float:left;
+		}
+		.gd{
+			width:100%;
+			height:220px;
+			overflow-y: scroll;
+		}
+		.under{
+			width:16%;
+			float:left;
+		}
+		.right{
+			width:auto;
+			float:left;
+			margin-top:50px;
+		}
+		.right button{
+			width:60px;
+			height:30px;
+			margin-top: 10px;
+			margin-left: 20px;
+		}
+		.xxnr{
+			width:100%;
+			clear: both;
+		}
+	</style>
+	</head>
+	<body>
+		<div class="mater">
+			<div id="clddzt">具有单车调度和多车调度功能，通过在系统中选定某辆车对其发送调度指令。也可以满足分组调度，可以通过在GIS地图上指定区域，对区域内的车辆群发调度指令，提高调度工作效率和调度的灵活性。</div>
+			<div class="left">
+						<p>所有车辆</p>
+						<div style="border:1px solid #D3D3D3">
+							<div class="gd">
+								<p>测108865165456</p>
+								<p>测22323</p>
+								<p>测2312</p>
+								<p>测0202</p>
+								<p>测2545</p>
+								<p>测564</p>
+								<p>测458456</p>
+							</div>
+							车牌：<input type="text" style="margin-bottom: 5px">
+						</div>
+						车队：<input type="text" style="margin-top: 5px">
+					</div><div style="width:5%;height:272px;float:left;margin-top: 50px;padding-left: 40px;">
+					<button> >> </button><br>
+					<br>
+					<button> > </button><br>
+					<br>
+					<button> < </button><br>
+					<br><br><br>
+					<button> > </button><br>
+					<br>
+					<button> < </button><br>
+				</div>
+			<div class="under">
+					<p>消息车辆</p>
+					<div style="width:100%;height:273px;border:1px solid #D3D3D3">
+						浙AT3056
+					</div>
+				</div>
+			<div class="right">
+				<button>发送</button>
+				<br>
+				<button>关闭</button>
+			</div>
+			<div class="xxnr">
+					<p>消息内容</p>
+					<a href="#">请输入需要发送的消息:</a>
+					<div style="width:400px;height:200px;border:1px solid #5E616D;clear: both"></div>
+				</div>
+			<div style="width:100%;">
+					<p>定制内容</p>
+					<a href="#">请需要发送的定制内容</a>
+					<div style="width:400px;height:200px;border:1px solid #D3D3D3;overflow-y: scroll" >
+						<div style="width:515px;">
+							<p>不好意思，乘客坐错车了，请你不用再等了！</p>
+							<p>不好意思，乘客取消用车，请你不用过去了！</p>
+							<p>对不起，你的位置太远，请不用过去了！</p>
+							<p>你好，乘客电话打不通，未通知车号，请你先确认乘客是否还需要用车</p>
+							<p>对不起，中心暂时联系不上乘客，请你做其他生意吧！</p>
+							<p>你好，乘客改变上车地点，请到****出接乘客，谢谢！</p>
+							<p>你好，乘客已来催，请你抓紧时间，谢谢！</p>
+							<p>你好，麻烦你跟乘客解释一下，你是代替浙AT过去的，谢谢！</p>
+							<p>你好，你的家人有事找你，请联系2245645545</p>
+							<p>你好，请你马上与乘客联系一下，号码110！</p>
+						</div>
+					</div>
+				</div>
+		</div>
+	</body>
+</html>

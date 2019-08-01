@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <script data-jsfiddle="common" src="../libs/jquery-1.10.2.min.js"></script>
+  <script data-jsfiddle="common" src="../libs/handsontable-0.11.1/dist/jquery.handsontable.full.js"></script>
+  <link data-jsfiddle="common" rel="stylesheet" media="screen" href="../libs/handsontable-0.11.1/dist/jquery.handsontable.full.css">
+
+<script>
+
+var data = [
+  ["", "1日\n司机、比例", "", "2日\n司机、比例", "", "3"],
+  ["浙A00001", '张三', 60, 4303, 354, 5814],
+  ["", '李四', 40, 2867, 412, 5284],
+  ["浙A00002", '王五',, 2517, 4822, 552, 6127],
+  ["", '李一', 2422, 5399, 776, 4151]
+];
+
+$(document).ready(function(){
+	
+	$('#example').handsontable({
+	  data: data,
+	  minSpareRows: 1,
+	  colHeaders: true,
+	  contextMenu: true,
+	  rowHeaders:[1,2],
+	  // fixedRowsTop:1,
+	  // readOnly: true,
+	 // colHeaders :[1,2],
+	 cell:[{row: 0, col: 1, readOnly: true,type:'text'}],
+	 
+	  mergeCells: [
+	  	{row: 0, col: 1, rowspan: 1, colspan: 2} 
+		,{row: 1, col: 0, rowspan: 2, colspan: 1} 
+		,{row: 0, col: 3, rowspan: 1, colspan: 2} 
+		,{row: 3, col: 0, rowspan: 2, colspan: 1}
+	  ],
+	  className :'htCenter htMiddle',
+	  columns: [
+    {},
+    {
+      type: 'autocomplete',		
+      source: ['张三', '李四', '李一', '王五', 'A6', 'Volvo'],
+      strict: true
+    },
+    {},
+    
+    
+    {
+      type: 'autocomplete',		
+      source: ['张三', '李四', '李一', '王五', 'A6', 'Volvo'],
+      strict: true
+    },
+    {},
+    {}
+  ]
+	});
+}
+)
+
+</script>
+ </head>
+ <body>
+  
+<div class="handsontable" id="example"></div>
+ </body>
+</html>

@@ -1,0 +1,15 @@
+<!-- 业户查询 -->
+<html>
+	<head>
+		<script type="text/javascript" src="app/html/monitor/sjycxxtj.js"></script>
+		<style type="text/css">
+
+				</style>
+	</head>
+	<body>
+		<div id="sjycxxtjdiv"></div>
+		<div id="sjycxxtjtable" class="sjycxxtjtable" ></div>
+<!-- 		<div id="sjycxxtjtbdiv"></div> -->
+<!-- 		<div id="sjycxxtjtb"  style="height: 300px" ></div> -->
+	</body>
+</html>

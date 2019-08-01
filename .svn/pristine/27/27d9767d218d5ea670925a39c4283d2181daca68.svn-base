@@ -1,0 +1,86 @@
+<html>
+<head>
+	<script>
+		require([ "dgrid/Editor","dijit/form/Button" ,"dijit/form/DateTextBox"
+				  ,"dgrid/OnDemandGrid","dijit/form/TextBox","dgrid/extensions/Pagination"
+				  ,"dgrid/Selection", "dgrid/Keyboard","dgrid/extensions/ColumnResizer"
+				  ,"app/createAsyncStore","dstore/Memory","dgrid/extensions/DijitRegistry"
+				  ,"dijit/registry", "dojo/dom-style","dojo/_base/declare",
+				  "dojo/dom-construct", "app/util","dojo/domReady!"], function(
+						  Editor, Button,DateTextBox,Grid,TextBox
+						  , Pagination,Selection,Keyboard,ColumnResizer,createAsyncStore,Memory,DijitRegistry
+						  ,registry, domStyle,declare, dc,util ) {
+		var vehicleydGrid = store = null;
+			dc.place(dc.create("span",{innerHTML:"异动时间",style:{"margin-right":"5px"}}),'vehicleydToolBar');
+			new TextBox({id:"vehicleyd_startTime",style:{"width":"8em","margin-right":"15px"}}).placeAt('vehicleydToolBar');
+			dc.place(dc.create("span",{innerHTML:"至",style:{"margin-right":"5px"}}),'vehicleydToolBar');
+			new TextBox({id:"vehicleyd_endTime",style:{"width":"8em","margin-right":"15px"}}).placeAt('vehicleydToolBar');
+
+			new Button({
+					label: "查  询",
+					onClick: function(){
+						console.log('222222222');
+						var postData = {"page":1,"pageSize":pageSize};
+						postData["no"] = dojo.byId('vehicleyd_no').value;
+						postData["baId"] = dojo.byId('vehicleyd_baId').value;
+							//'postData={"page":1,"pageSize":100,"name":"'+dojo.byId('name').value+'"}';
+						dojo.xhrPost(dojo.mixin(xhrArgs,{"postData":'postData='+dojo.toJson(postData)}));
+					}
+			}).placeAt('vehicleydToolBar');
+		var xhrArgs = {
+			url : "/rybt/vehicleyd/get",
+			postData : 'postData={"page":1,"pageSize":'+pageSize+'}',
+			handleAs : "json",
+			load : function(data) {
+				console.log(data)
+				var columns = {
+					dojoId : "序号", // give column a custom name
+					no : "车号",
+					baId : { label : "业户" },
+					compId : { label : "分公司" },
+					remark : { label : "备注" },
+					ydTime : { label : "异动时间" ,formatter:util.formatYYYYMMDD},
+					ydRemark : { label : "异动原因" }
+				};
+
+
+					var CustomGrid = declare([DijitRegistry,Grid, Keyboard, Selection,ColumnResizer]);
+					for(var i=0; i<data.datas.length;  i++){
+						data.datas[i] = dojo.mixin({ dojoId: i+1 }, data.datas[i]);
+					}
+					console.log(data.datas)
+					store = new Memory({ data: {
+						identifier: 'dojoId',
+						label: 'dojoId',
+						items: data.datas
+					} });
+
+					//new Grid({ columns : columns }, "vehicleydGridDiv").renderArray(data.datas);
+					if(vehicleydGrid){
+						vehicleydGrid = null;
+						dojo.empty('vehicleydGridDiv')
+// 							vehicleydGrid.destroy();
+					}
+					vehicleydGrid= new CustomGrid({
+						//className: "dgrid-autoheight",
+						collection:  store,
+						columns: columns
+					},"vehicleydGridDiv");
+					console.log(vehicleydGrid);
+			},
+			error : function(error) {
+				targetNode.innerHTML = "An unexpected error occurred: "
+						+ error;
+			}
+		};
+
+		var deferred = dojo.xhrPost(xhrArgs);
+		});
+
+	</script>
+</head>
+<body class="claro">
+	<div id="vehicleydToolBar" style="height: 45px;"></div>
+	<div id="vehicleydGridDiv" class="vehicleydGridDiv" ></div>
+</body>
+</html>

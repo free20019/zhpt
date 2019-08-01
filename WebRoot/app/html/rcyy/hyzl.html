@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>行业总览</title>
+	<link rel="stylesheet" href="resources/css/reset.css">
+<!-- 	<script src="../../../resources/js/jquery-2.1.1.min.js"></script> -->
+<!-- 	<script src="../../../resources/js/echarts.min.js"></script> -->
+	<style>
+		.clearfix { zoom: 1; }
+		.clearfix:after { display: block; clear: both; height: 0; content: ''; visibility: hidden; }
+
+		.panel {
+			margin-bottom: 20px;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+			box-shadow: 0 1px 1px rgba(0,0,0,.05);
+		}
+		.panel-heading {
+			padding: 10px 15px;
+			border-bottom: 1px solid #ddd;
+			border-top-left-radius: 3px;
+			border-top-right-radius: 3px;
+			font-size: 16px;
+			color: #333;
+		}
+		.panel-body > .panel-heading,
+		.panel-body > .item > .panel-heading,
+		.panel-body > [class^='item-'] > .panel-heading {
+			margin-top: -15px;
+		}
+		.panel-body {
+			padding: 15px;
+		}
+		.item {
+			float: left;
+			margin-right: 15px;
+		}
+		.item.item-c2 {
+			width: calc(50% - 7.5px);
+		}
+		.item.item-c2:nth-child(2n) {
+			margin-right: 0;
+		}
+		.item.item-c2:nth-last-child(1),
+		.item.item-c2:nth-last-child(2) {
+			margin-bottom: 0;
+		}
+		.item.item-c3 {
+			width: calc(33.33% - 12px);
+		}
+		.item.item-c3:nth-child(3n) {
+			margin-right: 0;
+		}
+		.item.item-c3:nth-last-child(1),
+		.item.item-c3:nth-last-child(2),
+		.item.item-c3:nth-last-child(3) {
+			margin-bottom: 0;
+		}
+		.panel-heading .item {
+			height: 20px;
+			line-height: 20px;
+			border-right: 1px solid #dddddd;
+			text-align: center;
+			box-sizing: border-box;
+		}
+		.panel-heading .item:last-child {
+			border-right: none;
+		}
+		.highlight,
+		[class^='highlight-'] {
+			font-size: 140%;
+		}
+		.highlight-red {
+			color: #fb5d8e;
+		}
+		.highlight-orange {
+			color: #fc9c3c;
+		}
+		.highlight-green {
+			color: #03ce8f;
+		}
+		/*栅格*/
+		@media (min-width: 992px) {
+			.item-col-1, .item-col-10, .item-col-11, .item-col-12, .item-col-2, .item-col-3, .item-col-4, .item-col-5, .item-col-6, .item-col-7, .item-col-8, .item-col-9 {
+				float: left;
+			}
+			.item-col-1 {
+				width: 8.33333333%;
+			}
+			.item-col-2 {
+				width: 16.66666667%;
+			}
+			.item-col-3 {
+				width: 25%;
+			}
+			.item-col-4 {
+				width: 33.33333333%;
+			}
+			.item-col-5 {
+				width: 41.66666667%;
+			}
+			.item-col-6 {
+				width: 50%;
+			}
+			.item-col-7 {
+				width: 58.33333333%;
+			}
+			.item-col-8 {
+				width: 66.66666667%;
+			}
+			.item-col-9 {
+				width: 75%;
+			}
+			.item-col-10 {
+				width: 83.33333333%;
+			}
+			.item-col-11 {
+				width: 91.66666667%;
+			}
+			.item-col-12 {
+				width: 100%;
+			}
+		}
+		.show-grid [class^=item-col-] {
+			padding-top: 10px;
+			padding-bottom: 10px;
+			background-color: #eee;
+			background-color: rgba(86,61,124,.15);
+			border: 1px solid #ddd;
+			border: 1px solid rgba(86,61,124,.2);
+		}
+
+		/*table*/
+		.table {
+			width: 100%;
+			max-width: 100%;
+			margin-bottom: 15px;
+		}
+		caption {
+			padding-top: 3px;
+			padding-bottom: 3px;
+			margin-top: -10px;
+			color: #c8cbd2;
+			text-align: left;
+		}
+		.table thead {
+			box-sizing: border-box;
+		}
+		.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+			padding: 6px;
+			line-height: 1.42857143;
+			vertical-align: top;
+			/*border-bottom: 1px solid #ddd;*/
+		}
+		.table > tbody > tr:last-child > td, .table > tbody > tr:last-child > th {
+			border-bottom: none;
+		}
+		.table > thead > tr  {
+			color: #6e7590;
+			background-color: #dde3fb;
+		}
+		.table > thead > tr > th {
+			vertical-align: bottom;
+			border-bottom: 2px solid #fff;
+		}
+		.table > tbody > tr  {
+			background-color: #f0f3fb;
+		}
+		.table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
+			border-top: 0;
+		}
+		.table > tbody > tr > th.ranking,
+		.table > tbody > tr > td.ranking {
+			color: #ff598c;
+		}
+		.table > tbody > tr:first-child > th.ranking,
+		.table > tbody > tr:first-child > td.ranking {
+			position: relative;
+		}
+		.table > tbody > tr:first-child > th.ranking:before,
+		.table > tbody > tr:first-child > td.ranking:before {
+			content: '1';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			margin: -10px;
+			border-radius: 50%;
+			color: #fff;
+			background-color: #ff598c;
+		}
+		.panel-body .table > thead > tr > th,
+		.panel-body .table > tbody > tr > td {
+		    white-space: nowrap;
+		    overflow: hidden;
+		}
+
+		/*btn*/
+		.btnBox {
+			text-align: center;
+		}
+		.btn {
+			display: inline-block;
+			padding: 6px 12px;
+			margin-bottom: 0;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 1.42857143;
+			text-align: center;
+			white-space: nowrap;
+			vertical-align: middle;
+			-ms-touch-action: manipulation;
+			touch-action: manipulation;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			background-image: none;
+			border: 1px solid transparent;
+			border-radius: 4px;
+		}
+		.btn-details {
+			color: #fff;
+			background-color: #7685fc;
+			border-color: #6a77e2;
+		}
+
+		#hyzl-echarts_clzx,
+		#hyzl-echarts_clzk {
+			height: 196px;
+			margin-bottom: 15px;
+		}
+		#hyzl-echarts_ddzl,
+		#hyzl-echarts_jyzl {
+			height: 171px;
+			margin-bottom: 15px;
+		}
+		#hyzl-echarts_tsxx,
+		#hyzl-echarts_yjjwtzb {
+			height: 284px;
+		}
+	</style>
+</head>
+<body class="claro">
+<div class="panel-body clearfix">
+	<div class="panel">
+		<div class="panel-heading">行业基础状况</div>
+		<div class="panel-body clearfix">
+			<div class="item item-c3">
+				<div class="panel-heading" style="border-bottom: none; font-size: 14px;">企业总览</div>
+				<div class="panel" style="margin-bottom: 0;">
+					<div class="panel-heading clearfix" style="font-size: 14px;">
+						<div class="item item-c2">企业总数</div>
+						<div class="item item-c2"><span class="highlight-red">126</span>家</div>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<caption>企业管辖区域企业排名</caption>
+							<thead>
+							<tr>
+								<th>排名</th>
+								<th>企业名称</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<th class="ranking" width="50">1</th>
+								<td>杭州外事旅游汽车集团有限公司</td>
+							</tr>
+							<tr>
+								<th class="ranking">2</th>
+								<td>杭州北山出租汽车有限公司</td>
+							</tr>
+							<tr>
+								<th class="ranking">3</th>
+								<td>杭州大众出租汽车股份有限公司</td>
+							</tr>
+							<tr>
+								<th class="ranking">4</th>
+								<td>浙江物产元通汽车集团有限公司</td>
+							</tr>
+							<tr>
+								<th class="ranking">5</th>
+								<td>杭州新能源出租汽车有限公司</td>
+							</tr>
+							</tbody>
+						</table>
+						<div class="btnBox">
+							<a class="btn btn-details">查看详情</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item item-c3">
+				<div class="panel-heading" style="border-bottom: none; font-size: 14px;">车辆总览</div>
+				<div class="panel" style="margin-bottom: 0;">
+					<div class="panel-heading clearfix" style="font-size: 14px;">
+						<div class="item item-c2">车辆总数</div>
+						<div class="item item-c2"><span class="highlight-red">13247</span>辆</div>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<caption>企业管辖区域车辆排名</caption>
+							<thead>
+							<tr>
+								<th>排名</th>
+								<th>品牌</th>
+								<th>数量</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<th class="ranking" width="50">1</th>
+								<td>索纳塔</td>
+								<td width="80">7568</td>
+							</tr>
+							<tr>
+								<th class="ranking">2</th>
+								<td>伊兰特</td>
+								<td>1724</td>
+							</tr>
+							<tr>
+								<th class="ranking">3</th>
+								<td>尼桑</td>
+								<td>1628</td>
+							</tr>
+							<tr>
+								<th class="ranking">4</th>
+								<td>桑塔纳</td>
+								<td>408</td>
+							</tr>
+							<tr>
+								<th class="ranking">5</th>
+								<td>尼桑轩逸</td>
+								<td>304</td>
+							</tr>
+							</tbody>
+						</table>
+						<div class="btnBox">
+							<a class="btn btn-details">查看详情</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item item-c3">
+				<div class="panel-heading" style="border-bottom: none; font-size: 14px;">驾驶员总览</div>
+				<div class="panel" style="margin-bottom: 0;">
+					<div class="panel-heading clearfix" style="font-size: 14px;">
+						<div class="item item-c2">驾驶员总数</div>
+						<div class="item item-c2"><span class="highlight-red">6823</span>人</div>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<caption>企业管辖区域企业排名</caption>
+							<thead>
+							<tr>
+								<th>排名</th>
+								<th>地址</th>
+								<th>数量</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<th class="ranking" width="50">1</th>
+								<td>杭州</td>
+								<td width="80">4026</td>
+							</tr>
+							<tr>
+								<th class="ranking">2</th>
+								<td>商丘</td>
+								<td>1326</td>
+							</tr>
+							<tr>
+								<th class="ranking">3</th>
+								<td>金华</td>
+								<td>526</td>
+							</tr>
+							<tr>
+								<th class="ranking">4</th>
+								<td>宁波</td>
+								<td>430</td>
+							</tr>
+							<tr>
+								<th class="ranking">5</th>
+								<td>常州</td>
+								<td>268</td>
+							</tr>
+							</tbody>
+						</table>
+						<div class="btnBox">
+							<a class="btn btn-details">查看详情</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="item-col-4" style="padding-right: 7px; box-sizing: border-box;">
+		<div class="panel">
+			<div class="panel-heading">行业运行状况</div>
+			<div class="panel-body clearfix">
+				<div class="item item-c2">
+					<div class="panel-heading" style="border-bottom: none; font-size: 14px;">车辆在线总览</div>
+					<div class="panel" style="margin-bottom: 0;">
+						<div class="panel-heading" style="white-space: nowrap; overflow: hidden;font-size: 12px;">车辆在线数：<span class="highlight-orange">10178</span></div>
+						<div class="panel-body" style="white-space: nowrap; overflow: hidden;">
+							<div style="margin-bottom: 15px;">车辆在线率：<span class="highlight-green">76%</span></div>
+							<div id="hyzl-echarts_clzx"></div>
+							<div class="btnBox">
+								<a class="btn btn-details">查看详情</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item item-c2">
+					<div class="panel-heading" style="border-bottom: none; font-size: 14px;">车辆载客总览</div>
+					<div class="panel" style="margin-bottom: 0;">
+						<div class="panel-heading" style="white-space: nowrap; overflow: hidden;font-size: 14px;">载客车辆数：<span class="highlight-orange">5953</span></div>
+						<div class="panel-body" style="white-space: nowrap; overflow: hidden;">
+							<div style="margin-bottom: 15px;">车辆载客率：<span class="highlight-green">58%</span></div>
+							<div id="hyzl-echarts_clzk"></div>
+							<div class="btnBox">
+								<a class="btn btn-details">查看详情</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="item-col-8" style="padding-left: 7px; box-sizing: border-box;">
+		<div class="panel">
+			<div class="panel-heading">行业营运状况</div>
+			<div class="panel-body clearfix">
+				<div class="item-col-12">
+					<div class="panel-heading" style="border-bottom: none; font-size: 14px;">运营总览</div>
+					<div class="panel" style="margin-bottom: 0;">
+						<div class="panel-body clearfix">
+							<div class="item-col-4">
+								<div class="panel" style="margin-right: 15px; margin-bottom: 0; padding: 5px 15px 6px;">营运总里程：<span class="highlight">166856</span>公里</div>
+							</div>
+							<div class="item-col-4">
+								<div class="panel" style="margin-right: 15px; margin-bottom: 0; padding: 5px 15px 6px;">营运总时间：<span class="highlight">7823</span>小时</div>
+							</div>
+							<div class="item-col-4 btnBox">
+								<a class="btn btn-details">查看详情</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item-col-12">
+					<div class="item item-c2">
+						<div class="panel-heading" style="margin-top: 0; border-bottom: none; font-size: 14px;">订单总览</div>
+						<div class="panel" style="margin-bottom: 0;">
+							<div class="panel-body clearfix">
+								<div id="hyzl-echarts_ddzl"></div>
+								<div class="btnBox">
+									<a class="btn btn-details">查看详情</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item item-c2">
+						<div class="panel-heading" style="margin-top: 0; border-bottom: none; font-size: 14px;">交易总览</div>
+						<div class="panel" style="margin-bottom: 0;">
+							<div class="panel-body clearfix">
+								<div id="hyzl-echarts_jyzl"></div>
+								<div class="btnBox">
+									<a class="btn btn-details">查看详情</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="item-col-7">
+		<div class="panel" style="margin-right: 15px; margin-bottom: 0;">
+			<div class="panel-heading">车载设备状况</div>
+			<div class="panel-body clearfix">
+				<div class="item item-c2">
+					<div class="panel-heading" style="border-bottom: none; font-size: 14px;">车载设备总览</div>
+					<div class="panel" style="margin-bottom: 0;">
+						<div class="panel-heading clearfix" style="font-size: 14px;">
+							<div class="item item-c2">车载设备总数</div>
+							<div class="item item-c2"><span class="highlight-red">1300</span>件</div>
+						</div>
+						<div class="panel-body">
+							<table class="table">
+								<caption>终端品牌排名</caption>
+								<thead>
+								<tr>
+									<th>排名</th>
+									<th>设备类型</th>
+									<th>设备数量</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<th class="ranking" width="50">1</th>
+									<td>出租部标</td>
+									<td width="80">12542</td>
+								</tr>
+								<tr>
+									<th class="ranking">2</th>
+									<td>华强GPRS</td>
+									<td>658</td>
+								</tr>
+								<tr>
+									<th class="ranking">3</th>
+									<td>飞田GPRS</td>
+									<td>34</td>
+								</tr>
+								<tr>
+									<th class="ranking">4</th>
+									<td>淳安华强</td>
+									<td>12</td>
+								</tr>
+								<tr>
+									<th class="ranking">5</th>
+									<td>海太</td>
+									<td>1</td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="btnBox">
+								<a class="btn btn-details">查看详情</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item item-c2">
+					<div class="panel-heading" style="border-bottom: none; font-size: 14px;">故障设备总数</div>
+					<div class="panel" style="margin-bottom: 0;">
+						<div class="panel-heading clearfix" style="font-size: 14px;">
+							<div class="item item-c2">故障设备总数</div>
+							<div class="item item-c2"><span class="highlight-red">20</span>件</div>
+						</div>
+						<div class="panel-body">
+							<table class="table">
+								<caption>企业故障设备排名</caption>
+								<thead>
+								<tr>
+									<th>排名</th>
+									<th>企业名称</th>
+									<th>故障数量</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<th class="ranking" width="50">1</th>
+									<td>杭州出租汽车集团</td>
+									<td width="80">236</td>
+								</tr>
+								<tr>
+									<th class="ranking">2</th>
+									<td>杭州一运出租汽车</td>
+									<td>186</td>
+								</tr>
+								<tr>
+									<th class="ranking">3</th>
+									<td>浙江中侨汽车出租</td>
+									<td>136</td>
+								</tr>
+								<tr>
+									<th class="ranking">4</th>
+									<td>杭州之江旅游汽车</td>
+									<td>92</td>
+								</tr>
+								<tr>
+									<th class="ranking">5</th>
+									<td>浙江外事旅游汽车</td>
+									<td>56</td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="btnBox">
+								<a class="btn btn-details">查看详情</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="item-col-5">
+		<div class="panel" style="margin-right: 15px; margin-bottom: 0;">
+			<div class="panel-heading" style="position: relative;">
+				<span>投诉信息总览</span>
+				<div class="btnBox" style="position: absolute; top: 5px; right: 15px;">
+					<a class="btn btn-details">查看详情</a>
+				</div>
+			</div>
+			<div class="panel-body clearfix">
+				<div class="item-col-7">
+					<div class="panel-heading" style="border-bottom: none; font-size: 14px;">投诉类型总览</div>
+					<div class="panel" style="margin-bottom: 0; margin-right: 15px;">
+						<div class="panel-body">
+							<div id="hyzl-echarts_tsxx"></div>
+						</div>
+					</div>
+				</div>
+				<div class="item-col-5">
+					<div class="panel-heading" style="border-bottom: none; font-size: 14px;">已解决问题占比</div>
+					<div class="panel" style="margin-bottom: 0;">
+						<div class="panel-body">
+							<div id="hyzl-echarts_yjjwtzb"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	(function ($) {
+		$(function () {
+			var hyzlEcharts_clzx = echarts.init(document.getElementById('hyzl-echarts_clzx'));
+			hyzlEcharts_clzx.setOption({
+				title : {
+			        text: '',
+			        subtext: '',
+			        x:'center'
+			    },
+// 			    tooltip : {
+// 			        trigger: 'item',
+// 			        formatter: "{a} <br/>{b} : {c} ({d}%)"
+// 			    },
+			    legend: {
+			        orient: 'vertical',
+// 			        left: 'left',
+			        y: 'bottom',
+					x: 'center',
+			        data: ['在线数','离线数']
+			    },
+			    series : [
+			        {
+			            name: '车辆数',
+			            type: 'pie',
+			            radius : '80%',
+			            center: ['50%', '40%'],
+			            data:[
+			                {value:3069, name:'在线数'},
+			                {value:10178, name:'离线数'}
+			            ],
+			            itemStyle: {
+			                emphasis: {
+			                    shadowBlur: 10,
+			                    shadowOffsetX: 0,
+			                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+			                }
+			            }
+			        }
+			    ]
+			});
+			var hyzlEcharts_clzk = echarts.init(document.getElementById('hyzl-echarts_clzk'));
+			hyzlEcharts_clzk.setOption({
+				color: ['#ff9f43','#fdca57'],
+				legend: {
+					orient: 'horizontal',
+					y: 'bottom',
+					x: 'center',
+					data: ['实载','空载']
+				},
+				series : [
+					{
+						name: '访问来源',
+						type: 'pie',
+						radius : '80%',
+						center: ['50%', '40%'],
+						data:[
+							{value:5953, name:'实载'},
+							{value:4225, name:'空载'}
+						],
+						itemStyle: {
+							emphasis: {
+								shadowBlur: 10,
+								shadowOffsetX: 0,
+								shadowColor: 'rgba(0, 0, 0, 0.5)'
+							}
+						},
+						labelLine: {
+							show: false
+						},
+						label: {
+							formatter: '{b}：{d}%',
+							position: 'inside'
+						}
+					}
+				]
+			});
+			var hyzlEcharts_ddzl = echarts.init(document.getElementById('hyzl-echarts_ddzl'));
+			hyzlEcharts_ddzl.setOption( {
+				title : {
+			        text: '',
+			        subtext: ''
+			    },
+			    tooltip : {
+			        trigger: 'axis'
+			    },
+			    grid:{
+                    x:40,
+                    y:55,
+                    x2:5,
+                    y2:20,
+                    borderWidth:1
+                },
+			    legend: {
+			        data:['订单(单)']
+			    },
+			    calculable : true,
+			    xAxis : [
+			        {
+			            type : 'category',
+			            data : ['出租集团','外事旅游','八达客运','和谐出租','之江客运']
+			        }
+			    ],
+			    yAxis : [
+			        {
+			            type : 'value'
+			        }
+			    ],
+			    series : [
+			        {
+			            name:'订单(单)',
+			            type:'bar',
+			            data:[1586, 1253, 935, 835, 536],
+			            markPoint : {
+			                data : [
+			                    {type : 'max', name: '最大值'}
+			                ]
+			            }
+			        }
+			    ]
+			});
+			var hyzlEcharts_jyzl = echarts.init(document.getElementById('hyzl-echarts_jyzl'));
+			hyzlEcharts_jyzl.setOption( {
+				title : {
+			        text: '',
+			        subtext: ''
+			    },
+			    tooltip : {
+			        trigger: 'axis'
+			    },
+			    grid:{
+                    x:40,
+                    y:55,
+                    x2:5,
+                    y2:20,
+                    borderWidth:1
+                },
+			    legend: {
+			        data:['金额(万)']
+			    },
+			    calculable : true,
+			    xAxis : [
+			        {
+			            type : 'category',
+			            data : ['出租集团','外事旅游','八达客运','和谐出租','之江客运']
+			        }
+			    ],
+			    yAxis : [
+			        {
+			            type : 'value'
+			        }
+			    ],
+			    series : [
+			        {
+			            name:'金额(万)',
+			            type:'bar',
+			            data:[23.52, 20.56, 16.28, 13.58, 9.25],
+			            markPoint : {
+			                data : [
+			                    {type : 'max', name: '最大值'}
+			                ]
+			            }
+			        }
+			    ]
+			});
+			var hyzlEcharts_tsxx = echarts.init(document.getElementById('hyzl-echarts_tsxx'));
+			hyzlEcharts_tsxx.setOption({
+				title : {
+			        text: '',
+			        subtext: '' 
+			    },
+			    tooltip : {
+			        trigger: 'axis'
+			    },
+			    grid:{
+                    x:40,
+                    y:55,
+                    x2:5,
+                    y2:20,
+                    borderWidth:1
+                },
+			    legend: {
+			        data:['投诉(单)']
+			    },
+			    calculable : true,
+			    xAxis : [
+			        {
+			            type : 'category',
+			            data : ['出租集团','外事旅游','八达客运','和谐出租','之江客运']
+			        }
+			    ],
+			    yAxis : [
+			        {
+			            type : 'value'
+			        }
+			    ],
+			    series : [
+			        {
+			            name:'投诉(单)',
+			            type:'bar',
+			            data:[135, 168, 123, 86, 100],
+			            markPoint : {
+			                data : [
+			                    {type : 'max', name: '最大值'}
+			                ]
+			            }
+			        }
+			    ]
+			});
+			var hyzlEcharts_yjjwtzb = echarts.init(document.getElementById('hyzl-echarts_yjjwtzb'));
+			hyzlEcharts_yjjwtzb.setOption({
+				color: ['#fbc956','#ff6a6c','#1ad19e','#4ea5ff','#cad6e6'],
+				legend: {
+					orient: 'horizontal',
+					y: '75%',
+					x: 'center',
+					data: ['拒载','绕路','不整洁','态度差','无车可用']
+				},
+				series : [
+					{
+						name: '访问来源',
+						type: 'pie',
+						radius : '70%',
+						center: ['50%', '35%'],
+						data:[
+							{value:24, name:'拒载'},
+							{value:24, name:'绕路'},
+							{value:24, name:'不整洁'},
+							{value:24, name:'态度差'},
+							{value:76, name:'无车可用'}
+						],
+						itemStyle: {
+							emphasis: {
+								shadowBlur: 10,
+								shadowOffsetX: 0,
+								shadowColor: 'rgba(0, 0, 0, 0.5)'
+							}
+						},
+						labelLine: {
+							show: false
+						},
+						label: {
+							formatter: '{b}：{d}%',
+							position: 'inside'
+						}
+					}
+				]
+			});
+		})
+	})(jQuery);
+</script>
+</body>
+</html>

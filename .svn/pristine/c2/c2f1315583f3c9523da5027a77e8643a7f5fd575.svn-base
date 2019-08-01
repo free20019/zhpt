@@ -1,0 +1,28 @@
+<html>
+<!-- 里程统计 -->
+	<head>
+		<script type="text/javascript" src="app/html/monitor/yjycclcx.js"></script>
+		<style type="text/css">
+			.yjycclcxtable th,.yjycclcxtable td{text-align: center;}
+			.yjycclcxtable .field-id {width: 40px;}
+			.yjycclcxtable .field-SPEED_TIME {width: 160px;}
+			.yjycclcxtable .field-VHIC {width: 100px;}
+			.yjycclcxtable .field-SHANGCHE {width: 160px;}
+			.yjycclcxtable .field-XIACHE {width: 160px;}
+			.yjycclcxtable .field-SIM {width: 120px;}
+			.yjycclcxtable .field-JINE1 {width: 100px;}
+			.yjycclcxtable .field-AVG_SPEED {width: 160px;}
+			.yjycclcxtable .field-RUNTIME {width: 100px;}
+			.yjycclcxtable .field-SPEED {width: 100px;}
+		</style>
+	</head>
+	<body>
+		<div id="yjycclcxdiv"></div>
+		<div id="yjycclcxtable" class="yjycclcxtable"></div>
+		<div id="work_map_dialog" data-dojo-type="dijit/Dialog"
+			 style="height:530px;width:700px" data-dojo-id="work_map_dialog"
+			title="作业查看窗口">
+			<div id="work_map" style="height:510px;width:700px;margin-top: -10px;margin-left: -8px;"></div>
+		</div>
+	</body>
+</html>

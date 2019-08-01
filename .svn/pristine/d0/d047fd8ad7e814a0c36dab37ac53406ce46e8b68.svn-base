@@ -1,0 +1,10 @@
+<!-- 业户查询 -->
+<html>
+	<head>
+		<script type="text/javascript" src="app/html/monitor/czsbxx.js"></script>
+	</head>
+	<body>
+		<div id="czsbxxdiv"></div>
+		<div id="czsbxxtable" class="czsbxxtable" ></div>
+	</body>
+</html>

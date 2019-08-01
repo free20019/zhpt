@@ -1,0 +1,17 @@
+<!--速度曲线报表-->
+<html>
+<head>
+	<script type="text/javascript" src="app/html/monitor/sdqxbj.js"></script>
+</head>
+<body>
+<div data-dojo-type="dijit/layout/BorderContainer" style="height: 100%;width: 100%" data-dojo-props="persist:true,gutters:true, liveSplitters:true">
+	<div data-dojo-type="dojox/layout/ContentPane" style="height: 58%; width: 100%;padding:0px" data-dojo-props="splitter:true, region:'top'">
+		<div id="speedtjdiv" ></div>
+		<div id="speedform" style="height:330px;"></div>
+	</div>
+	<div  data-dojo-type="dojox/layout/ContentPane" style="height: 42%; width: 100%;overflow-y:hidden " data-dojo-props="splitter:true, region:'center'">
+		<div id="speedtable" class="speedtable" style="height: 98%" ></div>
+	</div>
+</div>
+</body>
+</html>

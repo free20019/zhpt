@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript"
+	src="http://115.236.61.148:9085/jslib/LiveQuery.js"></script>
+<!-- <script type="text/javascript" src="app/init.js"></script> -->
+
+<style>
+.txtstyle{position:relative;}
+			
+			.txtstyle span{
+				white-space:nowrap;
+				font-size:12px;
+				display:block;
+				text-align:left;
+				background-color: #7c8ddf;
+				color:#FFFFFF;
+				width:auto;
+				border:1px solid #7c8ddf;
+				FONT-FAMILY:微软雅黑;
+				position:absolute;
+				top:-10px;left:25px;
+				white-space:nowrap; webkit-border-radius:5px;
+				border-radius:5px;
+			}
+			#tip{
+				position:absolute;
+				right:30px;
+				top:40px;
+				border-radius:3px;
+				line-height:30px;
+				}
+			#qyjkmap{
+/* 				top:-42px; */
+				z-index:-1;
+			}
+			#dojox_layout_ContentPane_2{
+				overflow-y: hidden;
+			}
+
+</style>		
+    <style>
+
+.fontsize{
+	font-size:25px;
+}
+
+#app2{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#map2{
+		width: 100%;
+    height: 100%;
+}
+#panel_right_warpper2{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    overflow: hidden;
+    width: 70px;
+    background-color: #fff;
+    text-align: center;
+    height: 40px;
+    vertical-align: middle;
+    line-height: 40px;
+    border: 1px solid #D3D3D3;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=3);/*ie*/
+    -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+    -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+
+#panel_right_warpper2 a{
+	cursor: pointer;
+    font-family: '微软雅黑';
+}
+
+#panel_right_warpper2 a:HOVER{
+	color: #0C88E8;
+}
+a img {
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+#panel_left_warpper2{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    overflow: hidden;
+/*     filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=3);/*ie*/ */
+/*     -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/ */
+/*     -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/ */
+/*     box-shadow:2px 2px 10px #909090;/*opera或ie9*/ */
+/*     pointer-events: none; */
+    
+/*     background-color: #fff; */
+    width:300px;
+/*     height: 50px; */
+
+}
+
+#panel_left2{
+	width:300px;
+}
+#panel_top{
+		position: absolute;
+    top: 20px;
+    left: 500px;
+    min-width: 500px;
+    
+    background-color: #fff;
+    width:100px;
+    height: 50px;
+}
+
+#panel_right{
+		position: absolute;
+    top: 20px;
+    right: 10px;
+    min-width: 400px;
+
+    background-color: #fdfdfe;
+    width:100px;
+    height: 34px;
+    line-height: 34px;
+}
+
+#panel_right span{
+	padding-left: 10px;
+	
+}
+#panel_right_back span{
+	padding-left: 10px;
+	 background-color: #fff;
+}
+
+
+/***/
+#tj_pop2{
+    font-family: '微软雅黑';
+
+    position: absolute;
+    top: 65px;
+    right: 315px;
+    text-align: center;
+
+    background-color: #fdfdfe;
+    height: 165px;
+    width:75px;
+    line-height: 28px;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=3);/*ie*/
+    -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+    -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+#more_left{
+    padding-left: 5px;
+    position: absolute;
+    right: 20px;
+    top: 65px;
+    overflow: hidden;
+    width: 120px;
+    background-color: #fff;
+    height: 30px;
+    vertical-align: middle;
+    line-height: 30px;
+    border: 1px solid #D3D3D3;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=3);/*ie*/
+    -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+    -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+#more_left a{
+    cursor: pointer;
+    font-family: '微软雅黑';
+    padding-left: 2px;
+}
+/*#more_left a:HOVER{*/
+    /*color: #0C88E8;*/
+/*}*/
+#tj_pop2 span{
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.gridTableTitle{
+    cursor: pointer;
+}
+</style>
+
+<style type="text/css">
+
+* {
+    outline: none;
+}
+
+.claro #panel_left_warpper2  .dijitTabContainerTop-tabs .dijitTab{
+	padding: 0px 3px;
+}
+
+.claro #panel_left_warpper2  .dijitTabContainerTop-tabs .dijitTabChecked{
+	padding-top: 0px
+}
+</style>
+
+<style>
+
+
+</style>		
+
+<style>
+
+
+input,textarea,select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	*font-size: 100%
+}
+
+legend {
+	color: #000
+}
+</style>	
+<style>
+#live_query_box_deatil{
+    margin-top: 6px;
+}
+#live_query_box_deatil table tr {
+ font-family: '微软雅黑';
+    font-size: 12px;
+    color: rgba(10, 11, 10, 0.84);
+}
+#live_query_box_deatil table tr td button{
+    font-family: '微软雅黑';
+    font-size:12px;
+    margin-right: 10px;
+}
+#live_query_box_deatil table tr td button:hover{
+    background: #ffffff;
+}
+#clxx_vhic_comp{
+    width: 285px;
+    margin-left: 10px;
+    margin-top: 6px;
+}
+#clxx_vhic_comp span{
+    font-family: '微软雅黑';
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+#clxx_vhic_comp table tr td{
+    margin: 0 10px 10px 10px;
+    padding: 6px 0px;
+    border-bottom: 1px solid rgba(105, 105, 105, 0.2);
+    white-space: nowrap;
+    font-family: '微软雅黑';
+    font-size: 12px;
+    color: rgba(10, 11, 10, 0.84);
+}
+#clxx_vhic_comp table tr td:hover{
+    color: #0C88E8;
+}
+
+</style>
+<style>
+    #panel_left_tablist{
+        font-family: '微软雅黑';
+        font-size: 13px;
+    }
+    .gridTable{
+        font-family: '微软雅黑';
+        font-size: 14px;
+    }
+    .gridTableBodyTr2{
+        background: none;
+    }
+    #areaListDetail{
+        font-family: '微软雅黑';
+        font-size: 12px;
+    }
+    #areaListDetail div{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 7px;
+        padding-bottom: 7px;
+        border-bottom: 1px solid rgba(105, 105, 105, 0.2);
+        white-space: nowrap;
+    }
+    #areaListDetail div:hover{
+        color: #0C88E8;
+    }
+    .claro #panel_left_warpper2 .dijitTabContainerTop-tabs .dijitTab{
+        margin: 0 3px;
+        width: 85px;
+        height: 20px;
+    }
+    #returnButton{
+        font-family: '微软雅黑';
+        font-size: 12px;
+        margin: 5px 10px;
+    }
+    #returnButton:hover{
+        background-color: #ffffff;
+    }
+    #sendButton{
+        font-family: '微软雅黑';
+        font-size: 12px;
+        margin: 5px 10px;
+    }
+    #sendButton:hover{
+        background-color: #ffffff;
+    }
+</style>
+<style>
+  .cltext{
+       width:7em;
+       height:20px;
+       display:inline-block;
+       text-align:right;
+       padding-right:5px;
+       margin-top:5px;
+  }
+  .clbuttonbox{
+  		text-align:center;
+  		margin-top:10px;
+  }
+  
+  
+  #selectVehicleBox, #releaseBox {
+            width: 300px;
+            margin-left: 45px;
+            /*display: inline-block;*/
+            float: left;
+            border: 1px solid #0d1c37;
+        }
+        #selectVehicleBox, #releaseBox {
+            min-height: 390px;
+        }
+        #selectVehicleBox > .vehicleInfoBox {
+            border: none;
+        }
+        #fwdPane .vehicleInfoBox li span,
+        #pqPane .vehicleInfoBox .v_pq span,
+        #selectVehicleBox .vehicleInfoBox .v_fwd span,
+        #selectVehicleBox .vehicleInfoBox .v_pq span {
+            width: 100%;
+        }
+        
+        #releaseTestarea {
+            width: 298px;
+            height: 170px;
+            resize: none;
+        }
+        .presetBox ul li{
+        	padding:0;
+        	margin:0;
+        }
+        .presetBox li {
+            height: 20px; line-height: 20px; white-space: nowrap; overflow: hidden; text-indent: 5px;
+            -moz-user-select: -moz-none; -webkit-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer;
+        }
+        .presetBox li:nth-child(even) {
+            background: #eee;
+        }
+        .presetBox {
+            width: 280px; height: 140px; overflow: auto;margin-left:-30px;
+        }
+        .btnRelease {
+            width: 100%; height: 45px; border: 1px solid #0d1c37; font-size: 20px; color: #ffffff; background: #0f2556;
+        }
+</style>
+
+</head>
+<body class="claro">
+<div id="app2" style="width: 100%;height: 100%">
+	<div id="map2"></div>
+	<div id="panel_left_warpper2" >
+		<div id="panel_left2"></div>
+	</div>
+	<div id="panel_right_warpper2">
+            <a id="quyua"     onmouseover="lb_open(this)"   onmouseout="lb_close(this)"><img id="quyu"  src="resources/images/index/gengduo2.png" ><span  style="margin-left: 2px;">&nbsp;范围&nbsp;</span></a>
+	</div>
+	<div id="qyDialog" data-dojo-type="dijit/Dialog"
+		style="" data-dojo-id="qyDialog"
+		title="添加区域">
+
+		<div data-dojo-type="dijit/layout/BorderContainer"
+			data-dojo-props="persist:true,gutters:false, liveSplitters:true"
+			style="width: 317px;height: 80px;">
+			<div id="" data-dojo-type="dojox/layout/ContentPane"
+				style="overflow-y: auto;"
+				data-dojo-props='region:"left", splitter:false, style:"width: 307px;height:70px;left:0px;top:0px"'>
+				<div class="dijitDialogPaneContentArea">
+					<span
+						class="cltext">区域名称：</span><input
+						data-dojo-type="dijit/form/ValidationTextBox" required="true"
+						id="qy_fwdmc" name="qy_fwdmc" /><br />
+						<input
+						data-dojo-type="dijit/form/TextBox" required="true"
+						id="qy_jwd" name="qy_jwd" style='display:none;'/>
+				</div>
+					<div class="clbuttonbox" style="width: 100%">
+						<button data-dojo-type="dijit/form/Button" id="qy_queding">确定</button>
+						<button data-dojo-type="dijit/form/Button"
+							data-dojo-props="onClick:function(){qyDialog.hide();}">取消</button>
+					</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<div data-dojo-type="dijit/Dialog"  data-dojo-id="sendDialog" title="信息发布" >
+	<div data-dojo-type="dijit/layout/BorderContainer"
+			data-dojo-props="persist:true,gutters:false, liveSplitters:true"
+			style="width: 400px;height: 450px;">
+			<div id="" data-dojo-type="dojox/layout/ContentPane"
+				style="overflow-y: auto;"
+				data-dojo-props='region:"left", splitter:false, style:"width: 390px;height:440px;left:0px;top:0px"'>
+				
+				<div class="layoutPane" style="width: 300px; height: 100%; color: #000;">
+			        <div id="releaseBox" >
+			            <span class="title">车辆数量:</span><input data-dojo-type="dijit/form/ValidationTextBox" required="true"
+						id="cl_sl" name="cl_sl" />
+			            <div class="title">发布内容</div>
+			            <textarea id="releaseTestarea"></textarea>
+			            <ul class="presetBox">
+			                <li>司机你好，请注意安全驾驶。</li>
+			                <li>司机你好，请配合调度员要求，前往指定服务地点。</li>
+			            </ul>
+			            <button class="btnRelease">发送</button>
+			        </div>
+			    </div>
+			</div>
+</div>
+<script>
+dojo.ready(function(){
+	map = new AMap.Map('map2', {
+		//resizeEnable: true,
+		//rotateEnable: true,
+		//dragEnable: true,
+		//zoomEnable: true,
+		//设置可缩放的级别
+		//zooms: [3,18],
+	    animateEnable:false,
+	    jogEnable:false,
+	  //  mapStyle:'light',//'fresh',//'dark',
+		//传入2D视图，设置中心点和缩放级别
+	   // features:['road','bg','building'],//,'point','bg',
+		view: new AMap.View2D({
+			center: new AMap.LngLat(120.153576,30.287459),
+			zoom: 15
+		})
+	
+	});
+});
+
+var qycx;
+require(["dijit/layout/TabContainer", "dijit/Dialog","dijit/layout/ContentPane", "dojo/on","dojo/domReady!"]
+, function(TabContainer,Dialog, ContentPane,on){
+
+	mapTabContainer2 = new TabContainer({
+			doLayout:false,
+			style: "opacity: 0.9;" //height: 50%; width: 300px;
+   }, "panel_left2");
+
+   var cp1 = new ContentPane({
+	   		id:'cp_qyjk2',
+        title: "区域监控",
+        style:"height:600px;overflow: hidden",
+        content: ""
+   });
+   mapTabContainer2.addChild(cp1);
+   cp1.onShow = function(){
+		tc.resize();
+   };
+   mapTabContainer2.startup();
+   
+   
+   dojo.xhrGet({
+		url : basePath + "clqk/qyjk",//clqk/qyjk
+		handleAs : "json",
+		load : function(data) {
+			qyjk = data;
+			vehilist = qyjk.vehilist;
+			l2=qyjk.l2;
+			l3=qyjk.l3;
+			l4=qyjk.l4;
+			l5=qyjk.l5;
+			l6=qyjk.l6;
+			l7=qyjk.l7;
+			console.log(vehilist);
+			redenerQyjk();
+		  	dadian();
+		}
+});
+   dojo.xhrGet({
+		url : basePath + "clqk/qycx",//clqk/qyjk
+		handleAs : "json",
+		load : function(data) {
+			qycx = data;
+			console.log(qycx);
+		}
+});
+
+//    在地图上画圆
+var djan=0;
+  dojo.connect(dojo.byId('quyua'),'click',this,function(){
+	  	map.on('click', function(e) {
+		        var circle = new AMap.Circle({
+		            center: [e.lnglat.getLng(), e.lnglat.getLat()],// 圆心位置
+		            radius: 500, //半径
+		            strokeColor: "#F33", //线颜色
+		            strokeOpacity: 0.55, //线透明度
+		            strokeWeight: 1.5, //线粗细度
+		            fillColor: "#F33", //填充颜色
+		            fillOpacity: 0.15//填充透明度
+		        });
+// 		        circle.setMap(map);
+		        djan=1;
+				dojo.byId('qy_jwd').value=e.lnglat.getLng()+","+e.lnglat.getLat();
+	   });
+  });
+  AMap.event.addListener(map, "rightclick", function(e) {
+	  if(djan==1){
+		  qyDialog.show().then(function() {
+			  var handler=dojo.connect(dojo.byId('qy_queding'),'click',this,function(){
+				  console.log(dojo.byId('qy_jwd').value)
+					 oo = qyDialog.getValues();
+					 dojo.xhrPost({
+						 url : basePath + "clqk/qyadd",
+						 postData : 'postData='+dojo.toJson(oo),
+						 handleAs : "json",
+						 load : function(data) {
+							 alert(data.info);
+							 qyDialog.hide();
+							 deferred = dojo.xhrPost(xhrArgs);
+							 dojo.disconnect(handler);
+							 djan=0;
+						 },
+						 error : function(error) {
+							 targetNode.innerHTML = "An unexpected error occurred: " + error;
+						 }
+					 });
+			 });
+		  });
+	  }
+  });
+});
+function dadian(){
+	// console.log(map.getZoom())
+	  var zoom = map.getZoom();
+	  if(zoom >=17 && zoom <= 18 ){
+		  addMark4(1) //1,管理员可视范围打点 2,全屏打点
+	  }else if(zoom >=14 && zoom <= 16 ){
+		  addMark3(3)
+	  }else if(zoom >=12 && zoom <= 13 ){
+		  addMark3(2)
+	  }else if(zoom >=10 && zoom <= 11 ){
+		  addMark3(4)
+	  }else if(zoom >=8 && zoom <= 9 ){
+		  addMark3(5)
+	  }else if(zoom >=6 && zoom <= 7 ){
+		  addMark3(6)
+	  }else if(zoom <= 5 ){
+		  addMark3(7)
+	  }
+ }
+var  monmks = [];
+
+function addMark3(level){
+	//map.clearMap();
+	map.remove(monmks);
+	monmks = [];
+    var list ;
+    if(level == 1){
+        list = vehilist;
+    }else if(level == 2){
+        list = l2;
+    }else if(level == 3){
+        list = l3;
+    }else if(level == 4){
+        list = l4;
+    }else if(level == 5){
+        list = l5;
+    }else if(level == 6){
+        list = l6;
+    }else if(level == 7){
+        list = l7;
+    }
+	for(var i=0;i<list.length;i++){
+	    var obj = v = list[i];
+	    if(v.cluster > 1){
+	         var point = new AMap.LngLat(v.longi, v.lati);
+	        //自定义点标记内容
+	        var markerContent = document.createElement("div");
+	        markerContent.className = "markerContent";
+	        var markerSpan = document.createElement("span");
+	        markerSpan.innerHTML = v.cluster;
+	        var length = v.cluster.toString().length;
+	        var width = 7*length;
+	        if (length==1) {
+	            length = 4; //1位数时是背景太小，所以要加大一点
+	        }
+	        var tmp = "height:"+ width + "px;line-height:"+ width + "px;border-radius :"+ width + "px";
+	        markerContent.setAttribute("style", 'padding:' + length + 'px; background-color: #ffbf00;'+tmp);
+	        markerContent.appendChild(markerSpan);
+	        var marker3=new AMap.Marker({
+	            "position":point,
+	            "content":markerContent   //自定义点标记覆盖物内容
+	        });
+	        marker3.setMap(map);  //在地图上添加点
+	        monmks.push(marker3);
+	    }else if(!v.deleteFlag){
+	        var icon = ''
+					if(obj.onoffstate=="1"){
+						if(obj.carStatus=="0"){
+							icon="resources/images/c.png";
+						}else{
+							icon="resources/images/h.png";
+						}
+					}else{
+						icon="resources/images/d.png";
+					}
+
+			var marker1 = new AMap.Marker({
+	  			   map:map,
+				   icon:icon,
+				    position:new AMap.LngLat(obj.longi,obj.lati),
+				    offset:new AMap.Pixel(-8,-8), //相对于基点的偏移位置
+				    draggable:false,
+				    vehicle:obj
+				});
+			monmks.push(marker1);
+			AMap.event.addListener(marker1,"click",function(e){
+				//  console.log(this,e)
+				  var obj = this.Ae.vehicle;
+				  	var txt = "<b style='color:#3399FF'>"+obj.vehino+"</b><br/><b>[所属公司]</b>："+obj.compname+"<br/><b>[车辆类型]</b>："+obj.cartype+"<br/><b>[车辆颜色]</b>："+obj.color+"<br/><b>[SIM卡]</b>："+obj.vehisim+"<br/><b>[联系人]</b>："+obj.ownname
+							  +"<br/><b>[联系电话]</b>："+obj.owntel+"<br/><b>[经度]</b>："+obj.longi+"<br/><b>[纬度]</b>："+obj.lati;
+				  inforWindow.setContent(txt);
+				  inforWindow.open(map,new AMap.LngLat(obj.longi,obj.lati));
+				});
+			  AMap.event.addListener(map,"click",function(e){
+				  inforWindow.close();
+				});
+
+	    }
+	}
+}
+
+/// 1，可视范围内打点  2，全屏打点
+function addMark4(type){
+	if(type == 1){
+		if(map.getZoom() < 17){
+			return;
+		}
+	}
+	//|| inforWindow.getIsOpen()
+
+// 	inforWindow.open(map,inforWindow.getPosition());
+	//map.clearMap();
+	map.remove(monmks);
+	monmks = [];
+	//if(marker!=""){
+	//    marker.setMap(null);
+	//}
+
+	var containsCount = 0;
+	var bounds = map.getBounds();
+	for(var i=0;i<vehilist.length;i++){
+	    var v = obj = vehilist[i];
+	    if(bounds.contains(new AMap.LngLat(v.longi,v.lati))){
+	        containsCount++;
+	        var icon = '';
+			if(obj.onoffstate=="1"){
+				if(obj.carStatus=="0"){
+					icon="resources/images/c.png";
+				}else{
+					icon="resources/images/h.png";
+				}
+			}else{
+				icon="resources/images/d.png";
+			}
+
+			var marker1 = new AMap.Marker({
+	  			   map:map,
+				   icon:icon,
+				    position:new AMap.LngLat(obj.longi,obj.lati),
+				    offset:new AMap.Pixel(-8,-8), //相对于基点的偏移位置
+				    draggable:false
+				});
+			marker1.vehicle=obj;
+			monmks.push(marker1);
+			AMap.event.addListener(marker1,"click",function(e){
+				//  console.log(this,e)
+				  var obj = this.vehicle;
+				  	var txt = "<b style='color:#3399FF'>"+obj.vehino+"</b><br/><b>[所属公司]</b>："+obj.compname+"<br/><b>[车辆类型]</b>："+obj.cartype+"<br/><b>[车辆颜色]</b>："+obj.color+"<br/><b>[GPS时间]</b>："+obj.dateTime.substr(0,19)+"<br/><b>[SIM卡]</b>："+obj.vehisim+"<br/><b>[联系人]</b>："+obj.ownname
+							  +"<br/><b>[联系电话]</b>："+obj.owntel+"<br/><b>[经度]</b>："+obj.longi+"<br/><b>[纬度]</b>："+obj.lati;
+				  inforWindow.setContent(txt);
+				  inforWindow.open(map,new AMap.LngLat(obj.longi,obj.lati));
+				});
+		    AMap.event.addListener(map,"click",function(e){
+			  inforWindow.close();
+			});
+
+	    }
+	}
+}
+
+function redenerQyjk(flag){
+	for(var i=0;i<qycx.results.length;i++){
+		qycx.results[i].cl_arr = [];
+		var arr=[];
+		var cls=0;
+		 var lnglat = new AMap.LngLat(qycx.results[i].AREA_COORDINATES.split(",")[0], qycx.results[i].AREA_COORDINATES.split(",")[1]);
+		var circle = new AMap.Circle({
+	        center: [qycx.results[i].AREA_COORDINATES.split(",")[0], qycx.results[i].AREA_COORDINATES.split(",")[1]],// 圆心位置
+	        radius: 500, //半径
+	        strokeColor: "#F33", //线颜色
+	        strokeOpacity: 0.55, //线透明度
+	        strokeWeight: 1.5, //线粗细度
+	        fillColor: "#F33", //填充颜色
+	        fillOpacity: 0.15//填充透明度
+	    });
+// 		circle.setMap(map);
+		for(var j=0;j<qyjk.vehilist.length;j++){
+			if(circle.contains([qyjk.vehilist[j].longi,qyjk.vehilist[j].lati])){
+				cls++;
+				qycx.results[i].cl_arr.push(qyjk.vehilist[j]);
+				arr.push(lnglat.distance([qyjk.vehilist[j].longi,qyjk.vehilist[j].lati]));
+			}
+		}
+		for(var x=0;x<qycx.results[i].cl_arr.length;x++){
+			for(var y=x+1;y<qycx.results[i].cl_arr.length;y++){
+				if(arr[x]>arr[y]){
+					var temp=qycx.results[i].cl_arr[x];
+					qycx.results[i].cl_arr[x]=qycx.results[i].cl_arr[y];
+					qycx.results[i].cl_arr[y]=temp;
+				}
+			}
+		}
+		qycx.results[i].cls=cls;
+	}
+	var table = json2table(qycx.results);
+	dijit.byId('cp_qyjk2').set('content',table);
+ 	noscroll(table);
+// 	var div = dojo.create("div", {style:" overflow: auto; padding-right: 15px;width:115%;height: 100%;" });
+// 	dojo.place(json2table(qyjk.arealist),div,'first')
+// 	dojo.place(div,'cp_qyjk2','first')
+	dojo.query('#cp_qyjk2 tr').forEach(function(item,index){
+// 		if(parseInt(dojo.query('#cp_qyjk2 tr')[index].children[2].innerText)<parseInt(dojo.query('#cp_qyjk2 tr')[index].children[1].innerText)){
+// 			dojo.query('#cp_qyjk2 tr')[index].style.color='#FF0907';
+// 			dojo.query('#cp_qyjk2 tr')[index].style.fontWeight='bold';
+// 		}
+		dojo.connect(item, "click", qycx.results, function(){
+console.log(item)
+console.log(index)
+			var qyzbz = qycx.results[index-1].cl_arr
+			var qyzbjg=new AMap.LngLat(qyzbz[0].longi,qyzbz[0].lati);
+var circle = new AMap.Circle({
+    center: qyzbjg,// 圆心位置
+    radius: 500, //半径
+    strokeColor: "#F33", //线颜色
+    strokeOpacity: 0.55, //线透明度
+    strokeWeight: 1.5, //线粗细度
+    fillColor: "#F33", //填充颜色
+    fillOpacity: 0.15//填充透明度
+});
+	circle.setMap(map);
+			map.setCenter(qyzbjg);
+			var tmp='',vehicles = qycx.results;
+			for(var i=0;i<qyzbz.length;i++){
+				tmp +='<div>'+qyzbz[i].vehino+" "+qyzbz[i].compname+'</div>';
+			}
+			dijit.byId('cp_qyjk2').set('content','');
+
+			var button = dojo.create("button", {id:"returnButton", innerHTML: "返回" });
+			var button1 = dojo.create("button", {id:"sendButton", innerHTML: "发送" });
+			var areaListDetail = dojo.create("div", {id:"areaListDetail", innerHTML: tmp });
+			dojo.place(button,areaListDetail,'first');
+			dojo.place(button1,areaListDetail,'first');
+			dojo.place(areaListDetail,'cp_qyjk2','first');
+			noscroll('areaListDetail');
+			dojo.connect(button, "click", this, function(){
+				redenerQyjk();
+			});
+			dojo.connect(button1, "click", this, function(){
+				sendDialog.show().then(function() {
+					  var handler=dojo.connect(dojo.byId('qy_queding'),'click',this,function(){
+							 oo = qyDialog.getValues();
+							 dojo.xhrPost({
+								 url : basePath + "wwgl/qyadd",
+								 postData : 'postData='+dojo.toJson(oo),
+								 handleAs : "json",
+								 load : function(data) {
+									 alert(data.info);
+									 qyDialog.hide();
+									 deferred = dojo.xhrPost(xhrArgs);
+									 dojo.disconnect(handler);
+									 djan=0;
+								 },
+								 error : function(error) {
+									 targetNode.innerHTML = "An unexpected error occurred: " + error;
+								 }
+							 });
+					 });
+			});
+
+					dojo.query('.presetBox li').on('dblclick', function() {
+//	                    console.info($(this).html());
+	                    var str = dojo.byId('releaseTestarea').value;
+	                    var text = dojo.byId('releaseTestarea').value.length > 0 ? str + '\n' +  this.innerHTML : this.innerHTML;
+	                    console.log(this.innerHTML)
+	                    dojo.byId('releaseTestarea').value=text;
+	                });
+					
+					dojo.query('.btnRelease').on('click', function() {
+						sendDialog.hide().then(function() {
+							var mdt_no=[];
+		                	var note=dojo.byId("releaseTestarea").value;
+		                	for(var i=0;i<qyjk.vehilist.length;i++){
+		                		if(parseInt(dojo.byId('cl_sl').value) == 1){
+			                		if(qyjk.vehilist[i].vehino == dojo.query('#areaListDetail div')[0].innerHTML.substring(0,7)){
+			                			mdt_no.push(qyjk.vehilist[i].vehisim);
+			                		}
+		                		}else{
+		                			for(var k=0;k<parseInt(dojo.byId('cl_sl').value);k++){
+		                				if(qyjk.vehilist[i].vehino == dojo.query('#areaListDetail div')[k].innerHTML.substring(0,7)){
+		    	                			mdt_no.push(qyjk.vehilist[i].vehisim);
+		    	                		}
+		                			}
+		                		}
+		                	}
+		                	console.log(mdt_no)
+//	 	                    $.ajax({
+//	 	                	    type:"POST",
+//	 	                        url: basePath + "/clqk/client",
+//	 	                	    data:{"mdt_no":mdt_no.toString(),"note":note},
+//	 	                	    datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+//	 	                	    success:function(data){
+//	 								console.log("ok");
+//	 	                	    }
+//	 	                	});
+		                	var oo = {mdt_no: mdt_no.toString() ,note:note}
+		                	dojo.xhrPost({
+		                		postData : 'postData='+dojo.toJson(oo),
+// 		                		postData : {"mdt_no":mdt_no.toString(),"note":note},
+								 url: basePath + "clqk/client",
+								handleAs : "json",
+								load : function(data) {
+									console.log(data);
+	                				alert("发送成功");
+								}
+							});
+						});
+	                	
+	                });
+				  
+			});
+			dojo.query('#areaListDetail div').forEach(function (item,index) {
+				dojo.connect(item,'click', function () {
+					for(var i=0;i<vehilist.length;i++){
+						if(item.innerText == vehilist[i].AREA_NAME){
+							markercar(vehilist[i])
+						}
+					}
+				});
+			});
+		});
+	})
+}
+function json2table(jsonList){
+	console.log(jsonList)
+	var config = {"name":"driver",
+// 			"temp_parameter":"","url": basePath + "driver/get",
+			"title":[
+			         {'col':'AREA_NAME','name':'区域','styleTitle':'width:50%','style':'text-align:left;padding-left:25px'}
+			         ,{'col':'cls','name':'车辆数','styleTitle':'width:50%','style':'text-align:center'}
+// 			         ,{'col':'areabjs','name':'预报警数','styleTitle':'width:25%','style':'text-align:center'}
+	             	]}
+
+// 	             jsonList = [{"name":123,"sfz":456},{"name":123,"sfz":456},{"name":123,"sfz":456},{"name":123,"sfz":456}]
+	             	var table = document.createElement('table');
+		table.className = 'gridTable';
+		var cellIndex = 0;
+		//1 title
+		var row = table.insertRow(0);
+		row.className = 'gridTableTitle';
+		var title = config['title'];
+		console.log()
+		for(var i=0;i<title.length;i++){
+			var cell = row.insertCell(cellIndex++);
+			cell.innerHTML = title[i]['name'];
+			if(title[i]['styleTitle'] !=null){
+				cell.style.cssText = title[i]['styleTitle']
+			}
+		}
+		//2 body
+		for(var i=0;i<jsonList.length;i++){
+			cellIndex = 0;
+			row = table.insertRow(i+1);
+			if(i%2==0){
+				row.className = 'gridTableBodyTr1';
+			}else{
+				row.className = 'gridTableBodyTr2';
+			}
+			for(var j=0;j<title.length;j++){
+				var cell = row.insertCell(cellIndex++);
+				cell.className = 'gridTableBodyTd';
+				if(title[j]['col'] == 'all'){
+					cell.innerHTML = jsonList[i][[title[j]['col']]].length;
+				}else{
+					cell.innerHTML = jsonList[i][[title[j]['col']]];
+				}
+				if(title[j]['style'] !=null){
+					cell.style.cssText = title[j]['style'];
+				}
+			}
+
+		}
+
+		return table;
+}
+function noscroll(node){
+	console.log('###noscroll....')
+	if (typeof node == "string") {
+        node =    dojo.byId(node);
+  }
+	var parentNode = node.parentNode;
+	var newWidth = (parseInt(dojo.getComputedStyle(node).width) + 15) +'px';
+	console.log('###'+newWidth);
+	dojo.setStyle(node,{'overflow':'hidden'})
+//	node.style.width = newWidth
+	var warperParent = dojo.create("div",{style:"overflow: hidden;  position: relative;height:100%"})
+	var warperSub = dojo.create("div",{style:" overflow: auto; padding-right: 15px; height: 100%;width:"+newWidth})
+	dojo.place(warperParent,parentNode,'first')
+	dojo.place(warperSub,warperParent,'first')
+	dojo.place(node,warperSub,'first')
+}
+function udaddPolygonvehi(name,obj){  
+	var polygonArr=new Array();//多边形覆盖物节点坐标数组   
+	var zbs = obj.split(",");
+	for(var i=0;i<zbs.length;i++){
+		var zb = zbs[i];
+		polygonArr.push(new AMap.LngLat(zb[0],zb[1]));   
+	}
+	
+	polygonarea = new AMap.Circle({
+        center: polygonArr,// 圆心位置
+        radius: 500, //半径
+        strokeColor: "#F33", //线颜色
+        strokeOpacity: 0.55, //线透明度
+        strokeWeight: 1.5, //线粗细度
+        fillColor: "#F33", //填充颜色
+        fillOpacity: 0.15//填充透明度
+    });
+	polygonarea.setMap(map);  
+
+	 	var markerContent = document.createElement("div");
+	    markerContent.className = "txtstyle";
+		var markerSpan = document.createElement("span");
+		markerSpan.innerHTML = "区域名:"+name;
+		markerContent.appendChild(markerSpan);
+		markerContent.onmouseover=function() {markerSpan.innerHTML = "区域名:"+name;};
+		markerContent.onmouseout=function() {markerSpan.innerHTML = "区域名:"+name;};
+	    markerarea = new AMap.Marker({
+		    map:map,
+		     zIndex:10001, 
+		    position:new AMap.LngLat( zbs[0].split(",")[0],zbs[0].split(",")[1]),     
+		    offset:new AMap.Pixel(-14,7), //相对于基点的偏移位置
+		    draggable:false,  //是否可拖动
+		    content:markerContent  //自定义点标记覆盖物内容
+		    
+		});
+
+}
+
+</script>
+</body>
+</html>

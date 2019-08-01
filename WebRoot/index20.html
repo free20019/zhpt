@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>杭州市出租汽车信息系统综合平台</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="icon" href="resources/images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="app/main.css">
+
+<script type="text/javascript" src="app/main2.js"></script>
+<script type="text/javascript"
+	src="http://115.236.61.148:9085/jslib/LiveQuery.js"></script>
+<script type="text/javascript" src="libs/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=d0face2397384365119fbf558c48c10a"></script>
+<script type="text/javascript" src="app/init.js"></script>
+<script type="text/javascript" src="app/util.js"></script>
+<style>
+
+.fontsize{
+	font-size:12px;
+}
+
+#app{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#map{
+		width: 100%;
+    height: 100%;
+}
+#panel_right_warpper{
+		position: absolute;
+    right: 20px;
+    top: 20px;
+    overflow: hidden;
+    width:250px;
+    background-color: #696969;
+    height: 25px;
+    vertical-align: middle;
+    line-height: 25px;
+}
+#panel_left_warpper{
+		position: absolute;
+    left: 20px;
+    top: 20px;
+    overflow: hidden;
+/*     pointer-events: none; */
+    
+/*     background-color: #fff; */
+    width:300px;
+/*     height: 50px; */
+
+}
+
+#panel_left{
+	width:300px;
+}
+#panel_top{
+		position: absolute;
+    top: 20px;
+    left: 500px;
+    min-width: 500px;
+    
+    background-color: #fff;
+    width:100px;
+    height: 50px;
+}
+
+#panel_right{
+		position: absolute;
+    top: 20px;
+    right: 10px;
+    min-width: 400px;
+    
+    background-color: #fff;
+    width:100px;
+    height: 34px;
+    line-height: 34px;
+}
+
+#panel_right span{
+	padding-left: 10px;
+	
+}
+#panel_right_back span{
+	padding-left: 10px;
+	 background-color: #fff;
+}
+
+
+/***/
+#tj_pop{
+		position: absolute;
+    top: 43px;
+    left: 1170px;
+    min-width: 245px;
+    
+    background-color: #fff;
+    height: 200px;
+    width:249px;
+    line-height: 34px;
+
+}
+</style>
+
+<style type="text/css">
+
+* {
+    outline: none;
+}
+
+.claro .dijitTabContainerTop-tabs .dijitTab{
+	padding: 0px 3px;
+}
+
+.claro .dijitTabContainerTop-tabs .dijitTabChecked{
+	padding-top: 0px
+}
+</style>
+
+<style>
+
+
+</style>		
+
+<style>
+/****/
+
+html {
+	color: #000;
+	background: #FFF;
+}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td
+	{
+	margin: 0;
+	padding: 0
+}
+
+/* table {
+	border-collapse: collapse;
+	border-spacing: 0
+} */
+
+fieldset,img {
+	border: 0
+}
+
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style: normal;
+	font-weight: normal
+}
+
+ol,ul {
+	list-style: none
+}
+
+caption,th {
+	text-align: left
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-size: 100%;
+	font-weight: normal
+}
+
+q:before,q:after {
+	content: ''
+}
+
+abbr,acronym {
+	border: 0;
+	font-variant: normal
+}
+
+sup {
+	vertical-align: text-top
+}
+
+sub {
+	vertical-align: text-bottom
+}
+
+input,textarea,select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	*font-size: 100%
+}
+
+legend {
+	color: #000
+}
+</style>	
+<style>
+#live_query_box_deatil table tr {
+ font-family: '微软雅黑';
+ font-size:12px;
+}
+
+</style>
+</head>
+<body class="claro">
+<div id="app" style="width: 100%;height: 100%">
+	<div id="map"></div>
+	</div>
+	<div id="panel_left_warpper" >
+		<div id="panel_left"></div>
+	</div>
+<!-- 	<div id="panel_right"> -->
+<!-- 			<span>路况</span><span>卫星</span><span>测距</span><span onclick="toggleLeft()">左列表</span><span id="panel_right_back">返回</span> -->
+<!-- 	</div> -->
+	
+	<div id="panel_right_warpper">
+			<a><span id="cl_tj">统计</span></a> <a><span id="cl_lsgj">历史轨迹</span></a> <a><span id=test2222>显示/隐藏</span></a>
+	</div>
+
+<div id="tj_pop" style="display: none">
+	<div><span id="cl_zs"></span></div>
+	<div><span id="cl_sx"></span></div>
+	<div><span id="cl_xx"></span></div>
+	<div><span id="cl_zc"></span></div>
+	<div><span id="cl_kc"></span></div>
+</div>
+</div>
+</body>
+</html>

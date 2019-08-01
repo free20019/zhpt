@@ -1,0 +1,9 @@
+<html>
+<head>
+	<script type="text/javascript" src="app/html/monitor/jjqyc.js"></script>
+</head>
+<body>
+<div id="jjqycdiv"></div>
+<div id="jjqyctable" style="height:90%" class="jjqyctable"></div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!-- 业户查询 -->
+<html>
+<head>
+    <style>
+        #lxghdiv{
+            width: 100%;
+            height: 80%;
+            background: url('resources/images/dzdd/lxgh.png')  no-repeat center;
+            position: relative;
+        }
+        #lxghzt{
+            text-align:center;
+            height: 8%;
+            font-size:14px;
+            margin-top:20px;
+            text-align: center;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+<body>
+<div id="lxghzt">路线辅助规划功能，当司机对目的地不太熟悉时，可致电给电召服务系统，由座席人员查找地点、大致距离及行驶路线，并以电话方式告知司机。</div>
+<div id="lxghdiv"></div>
+</body>
+</html>

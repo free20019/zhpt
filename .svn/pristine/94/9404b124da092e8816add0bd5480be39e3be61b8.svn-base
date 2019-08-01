@@ -1,0 +1,95 @@
+<html>
+<head>
+	<script>
+		require([ "dgrid/Editor","dijit/form/Button" ,"dijit/form/DateTextBox"
+				  ,"dgrid/OnDemandGrid","dijit/form/TextBox","app/Pagination"
+				  ,"dgrid/Selection", "dgrid/Keyboard","dgrid/extensions/ColumnResizer"
+				  ,"app/createAsyncStore","dstore/Memory","dgrid/extensions/DijitRegistry"
+				  ,"dijit/registry", "dojo/dom-style","dojo/_base/declare",
+				  "dojo/dom-construct", "dojo/domReady!"], function(
+						  Editor, Button,DateTextBox,Grid,TextBox
+						  ,Pagination,Selection,Keyboard,ColumnResizer,createAsyncStore,Memory,DijitRegistry
+						  ,registry, domStyle,declare, dc ) {
+		var vehicleGrid = store =  null;
+			dc.place(dc.create("span",{innerHTML:"车号",style:{"margin-right":"5px"}}),'vehicleToolBar');
+		var no=	new TextBox({id:"vehicle_no",style:{"width":"8em","margin-right":"15px"}}).placeAt('vehicleToolBar');
+			dc.place(dc.create("span",{innerHTML:"业户",style:{"margin-right":"5px"}}),'vehicleToolBar');
+		var baId=	new TextBox({id:"vehicle_baId",style:{"width":"8em","margin-right":"15px"}}).placeAt('vehicleToolBar');
+		var queryCondition = {"no":no,"baId":baId};
+
+			new Button({
+					label: "查  询",
+					onClick: function(){
+						var postData = {"page":1,"pageSize":pageSize};
+						for(var o in queryCondition){
+							postData[o] = queryCondition[o].value;
+						}
+	// 				        	postData["baId"] = dojo.byId('vehicle_baId').value;
+							//'postData={"page":1,"pageSize":100,"name":"'+dojo.byId('name').value+'"}';
+						dojo.xhrPost(dojo.mixin(xhrArgs,{"postData":'postData='+dojo.toJson(postData)}));
+					}
+			}).placeAt('vehicleToolBar');
+
+			var columns = {
+					dojoId : "序号", // give column a custom name
+					no : "车号",
+					baId : { label : "业户" },
+					jyxkzh : { label : "经营许可证号" },
+					cp : { label : "厂牌" },
+					jbdl : { label : "交班地点" },
+					jbsj : { label : "交班时间" },
+					remark : { label : "备注" }
+			};
+
+
+
+		var xhrArgs = {
+			url : "/rybt/vehicle/get",
+			postData : 'postData={"page":1,"pageSize":'+pageSize+'}',
+			handleAs : "json",
+			load : function(data) {
+				console.log(data)
+					vehicleGrid.totalCount = data.count;
+					for(var i=0; i<data.datas.length;  i++){
+						data.datas[i] = dojo.mixin({ dojoId: i+1 }, data.datas[i]);
+					}
+					console.log(data.datas)
+					store = new Memory({ data: {
+						identifier: 'dojoId',
+						label: 'dojoId',
+						items: data.datas
+					} });
+
+					//new Grid({ columns : columns }, "vehicleGridDiv").renderArray(data.datas);
+					vehicleGrid.set('collection',store);
+
+					vehicleGrid.pagination.refresh(data.datas.length);
+			},
+			error : function(error) {
+				targetNode.innerHTML = "An unexpected error occurred: "
+						+ error;
+			}
+		};
+
+		var CustomGrid = declare([DijitRegistry,Grid, Keyboard, Selection,ColumnResizer]);
+		vehicleGrid= new CustomGrid({
+			//className: "dgrid-autoheight",
+			//collection:  store,
+			totalCount : 0,
+			columns: columns,
+			pagination:null
+		},"vehicleGridDiv");
+
+		var pageii = new Pagination(vehicleGrid,xhrArgs,queryCondition);
+		console.log('1234........',pageii.getName());
+		dc.place(pageii.first(),'vehicleGridDiv','after');
+
+		//var deferred = dojo.xhrPost(xhrArgs);
+		});
+	</script>
+</head>
+<body class="claro">
+	<div id="vehicleToolBar" style="height: 45px;"></div>
+	<div id="vehicleGridDiv" class="vehicleGridDiv" ></div>
+</body>
+</html>

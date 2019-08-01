@@ -1,0 +1,21 @@
+<!-- 业户查询 -->
+<html>
+<head>
+	<script type="text/javascript" src="app/html/monitor/szdc.js"></script>
+	<style>
+		.szdcDiv th,.szdcDiv td {text-align: center;}
+		.szdcDiv .field-dojoId {width: 45px;}
+		.szdcDiv .field-COMPNAME {width: 80px;}
+		.szdcDiv .field-PLATENUMBER {width: 120px;}
+		.szdcDiv .field-VIN {width: 200px;}
+		.szdcDiv .field-NAME {width: 100px;}
+		.szdcDiv .field-IDCARDNUMBER {width: 200px;}
+		.szdcDiv .field-TRANSACTION {width: 100px;}
+		.szdcDiv .field-COMPLAINTS {width: 100px;}
+	</style>
+</head>
+<body>
+<div id="szdcdiv"></div>
+<div id="szdctable" class="szdcDiv" style="height:90%"></div>
+</body>
+</html>

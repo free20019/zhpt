@@ -1,0 +1,220 @@
+<!-- 业户查询 -->
+<html>
+<head>
+	<style>
+		#xxxfzt{
+			text-align:center;
+			height: 5%;
+			margin-top:20px;
+			text-align: center;
+			text-indent: 2em;
+			font-family: '微软雅黑';
+			font-size: 15px;
+			line-height: 20px;
+		}
+		.matter{
+			width:60%;
+			height:825px;
+			margin:0 auto;
+			border:1px solid #000;
+		}
+		.left{
+			width:20%;
+			float:left;
+			margin-left:5px;
+		}
+		.zzjg ul{
+			width:272px;
+			list-style: none;
+		}
+		.zzjg{
+			width:100%;
+			height:350px;
+			overflow-y: scroll;
+			overflow-x: scroll;
+		}
+		.kj{
+			height:720px;
+			border:1px solid #000;
+		}
+		.cllb{
+			width:100%;
+			height:350px;
+			overflow-y: scroll;
+		}
+		.under{
+			width:40%;
+			height:825px;
+			float:left;
+			margin-left:80px;
+		}
+		.under table thead{
+			height:720px;
+			border:1px solid #000;
+		}
+		.right{
+			width:30%;
+			float:left;
+			margin-left:5px;
+		}
+	</style>
+</head>
+<body>
+<div id="xxxfzt">协助企业可以对所属车辆的司机以及公众进行消息发布，包括司机星级评定信息、车辆星级评定信息、调度信息、服务形象宣传等。</div>
+<div class="matter">
+	<div class="left">
+		<p>组织结构</p>
+		<div class="kj">
+			<div class="zzjg">
+				<p>出租车</p>
+				<ul>
+					<li>上城出租</li>
+					<li>下城出租</li>
+					<li>交通91.8杭州交通经济之声广播</li>
+					<li>余杭通悟</li>
+					<li>大川个体车辆</li>
+					<li>奔驰</li>
+					<li>拱墅出租</li>
+					<li>文明办应急车队</li>
+					<li>杭州一运出租汽车有限公司</li>
+					<li>杭州万利出租汽车有限公司</li>
+					<li>杭州三产发展服务公司</li>
+					<li>杭州三产发展服务公司（省外事车队）</li>
+					<li>杭州三客实业总公司</li>
+					<li>杭州三星客运出租汽车有限公司</li>
+					<li>杭州万利出租汽车有限公司</li>
+					<li>杭州三产发展服务公司</li>
+					<li>杭州三产发展服务公司（省外事车队）</li>
+					<li>杭州三客实业总公司</li>
+					<li>杭州三星客运出租汽车有限公司</li>
+				</ul>
+			</div>
+			<br>
+			<div class="cllb">
+				<p>车辆列表</p>
+				<table>
+					<tr>
+						<td>车牌号码</td>
+						<td>车牌颜色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+					<tr>
+						<td>浙AT3719</td>
+						<td>蓝色</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<p>条件：<input type="text" style="width:100px"> 查找</p>
+	</div>
+	<div class="under">
+		<p>发送信息车辆列表</p>
+		<div class="kj">
+			<table>
+				<tr>
+					<td>车辆列表</td>
+					<td>发送状态</td>
+				</tr>
+			</table>
+		</div>
+		<p>自由组：<input type="text" style="width:100px">
+			<input type="text" readonly="none" value="区域选择车辆">
+		</p>
+	</div>
+	<div class="right">
+		<p>发送消息栏</p>
+		<div style="width:300px;height:300px;border:1px solid #000"></div>
+		<p>标志：</p>
+		<input type="checkbox">紧急&nbsp;&nbsp;
+		<input type="checkbox">终端显示器显示<br>
+		<input type="checkbox">终端TTS播读
+		<input type="checkbox">广告屏显示
+		<div style="height:30px;line-height:30px;border:1px solid #ddd">
+			<input type="radio">中心导航信息
+			<input type="radio">CAN故障码信息
+		</div>
+		<div style="width:100%;border:1px solid #ddd">
+			<button style="width:150px; margin-top: 10px">发送</button>
+		</div>
+		<p>定制消息栏</p>
+		<div style="width:100%;border:1px solid #ddd">
+			<p>请速回电！</p>
+			<p>司机你好！</p>
+			<p>司机你辛苦了！</p>
+			<p>我来测试了</p>
+		</div>
+	</div>
+</div>
+</body>
+</html>

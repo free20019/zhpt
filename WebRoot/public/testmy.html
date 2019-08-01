@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <script data-jsfiddle="common" src="../libs/jquery-1.10.2.min.js"></script>
+<!--  <script data-jsfiddle="common" src="../libs/handsontable-0.11.1/lib/jquery.min.js"></script>-->
+  <script data-jsfiddle="common" src="../libs/handsontable-0.11.1/dist/jquery.handsontable.full.js"></script>
+  <link data-jsfiddle="common" rel="stylesheet" media="screen" href="../libs/handsontable-0.11.1/dist/jquery.handsontable.full.css">
+
+  <!--
+  Loading demo dependencies. They are used here only to enhance the examples on this page
+  
+  <link data-jsfiddle="common" rel="stylesheet" media="screen" href="demo/css/samples.css">
+  <script src="demo/js/samples.js"></script>
+  <script src="demo/js/highlight/highlight.pack.js"></script>
+  <link rel="stylesheet" media="screen" href="demo/js/highlight/styles/github.css">
+  <link rel="stylesheet" href="demo/css/font-awesome/css/font-awesome.min.css">
+-->
+<script>
+
+var data = [
+  ["", "Maserati", "Mazda", "Mercedes", "Mini", "Mitsubishi"],
+  ["2009", 0, 2941, 4303, 354, 5814],
+  ["2010", 5, 2905, 2867, 412, 5284],
+  ["2011", 4, 2517, 4822, 552, 6127],
+  ["2012", 2, 2422, 5399, 776, 4151]
+];
+
+$(document).ready(function(){
+	
+	$('#example').handsontable({
+	  data: data,
+	  minSpareRows: 1,
+	  colHeaders: true,
+	  contextMenu: true,
+	  mergeCells: [
+		{row: 1, col: 1, rowspan: 3, colspan: 3} 
+	  ]
+	});
+}
+)
+
+</script>
+ </head>
+ <body>
+  
+<div class="handsontable" id="example"></div>
+ </body>
+</html>

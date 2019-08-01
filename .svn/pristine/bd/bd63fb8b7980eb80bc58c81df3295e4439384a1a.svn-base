@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript"
+	src="http://115.236.61.148:9085/jslib/LiveQuery.js"></script>
+<script type="text/javascript" src="app/init.js"></script>
+
+<style>
+.txtstyle{position:relative;}
+			
+			.txtstyle span{
+				white-space:nowrap;
+				font-size:12px;
+				display:block;
+				text-align:left;
+				background-color: #7c8ddf;
+				color:#FFFFFF;
+				width:auto;
+				border:1px solid #7c8ddf;
+				FONT-FAMILY:微软雅黑;
+				position:absolute;
+				top:-10px;left:25px;
+				white-space:nowrap; webkit-border-radius:5px;
+				border-radius:5px;
+			}
+			#tip{
+				position:absolute;
+				right:30px;
+				top:40px;
+				border-radius:3px;
+				line-height:30px;
+				}
+			#qyjkmap{
+/* 				top:-42px; */
+				z-index:-1;
+			}
+			#dojox_layout_ContentPane_2{
+				overflow-y: hidden;
+			}
+
+</style>		
+    <style>
+
+.fontsize{
+	font-size:25px;
+}
+
+#app{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#map{
+		width: 100%;
+    height: 100%;
+}
+#panel_right_warpper{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    overflow: hidden;
+    width: 370px;
+    background-color: #fff;
+    text-align: center;
+    height: 40px;
+    vertical-align: middle;
+    line-height: 40px;
+    border: 1px solid #D3D3D3;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=3);/*ie*/
+    -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+    -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+
+#panel_right_warpper a{
+	cursor: pointer;
+    font-family: '微软雅黑';
+}
+
+#panel_right_warpper a:HOVER{
+	color: #0C88E8;
+}
+a img {
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+#panel_left_warpper{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    overflow: hidden;
+/*     filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=3);/*ie*/ */
+/*     -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/ */
+/*     -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/ */
+/*     box-shadow:2px 2px 10px #909090;/*opera或ie9*/ */
+/*     pointer-events: none; */
+    
+/*     background-color: #fff; */
+    width:300px;
+/*     height: 50px; */
+
+}
+
+#panel_left{
+	width:300px;
+}
+#panel_top{
+		position: absolute;
+    top: 20px;
+    left: 500px;
+    min-width: 500px;
+    
+    background-color: #fff;
+    width:100px;
+    height: 50px;
+}
+
+#panel_right{
+		position: absolute;
+    top: 20px;
+    right: 10px;
+    min-width: 400px;
+
+    background-color: #fdfdfe;
+    width:100px;
+    height: 34px;
+    line-height: 34px;
+}
+
+#panel_right span{
+	padding-left: 10px;
+	
+}
+#panel_right_back span{
+	padding-left: 10px;
+	 background-color: #fff;
+}
+
+
+/***/
+#tj_pop{
+    font-family: '微软雅黑';
+
+    position: absolute;
+    top: 65px;
+    right: 315px;
+    text-align: center;
+
+    background-color: #fdfdfe;
+    height: 165px;
+    width:75px;
+    line-height: 28px;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=3);/*ie*/
+    -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+    -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+#more_left{
+    padding-left: 5px;
+    position: absolute;
+    right: 20px;
+    top: 65px;
+    overflow: hidden;
+    width: 120px;
+    background-color: #fff;
+    height: 30px;
+    vertical-align: middle;
+    line-height: 30px;
+    border: 1px solid #D3D3D3;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=3);/*ie*/
+    -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+    -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+#more_left a{
+    cursor: pointer;
+    font-family: '微软雅黑';
+    padding-left: 2px;
+}
+/*#more_left a:HOVER{*/
+    /*color: #0C88E8;*/
+/*}*/
+#tj_pop span{
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.gridTableTitle{
+    cursor: pointer;
+}
+</style>
+
+<style type="text/css">
+
+* {
+    outline: none;
+}
+
+.claro #panel_left_warpper  .dijitTabContainerTop-tabs .dijitTab{
+	padding: 0px 3px;
+}
+
+.claro #panel_left_warpper  .dijitTabContainerTop-tabs .dijitTabChecked{
+	padding-top: 0px
+}
+</style>
+
+<style>
+
+
+</style>		
+
+<style>
+
+
+input,textarea,select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	*font-size: 100%
+}
+
+legend {
+	color: #000
+}
+</style>	
+<style>
+#live_query_box_deatil{
+    margin-top: 6px;
+}
+#live_query_box_deatil table tr {
+ font-family: '微软雅黑';
+    font-size: 12px;
+    color: rgba(10, 11, 10, 0.84);
+}
+#live_query_box_deatil table tr td button{
+    font-family: '微软雅黑';
+    font-size:12px;
+    margin-right: 10px;
+}
+#live_query_box_deatil table tr td button:hover{
+    background: #ffffff;
+}
+#clxx_vhic_comp{
+    width: 285px;
+    margin-left: 10px;
+    margin-top: 6px;
+}
+#clxx_vhic_comp span{
+    font-family: '微软雅黑';
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+#clxx_vhic_comp table tr td{
+    margin: 0 10px 10px 10px;
+    padding: 6px 0px;
+    border-bottom: 1px solid rgba(105, 105, 105, 0.2);
+    white-space: nowrap;
+    font-family: '微软雅黑';
+    font-size: 12px;
+    color: rgba(10, 11, 10, 0.84);
+}
+#clxx_vhic_comp table tr td:hover{
+    color: #0C88E8;
+}
+
+</style>
+<style>
+    #panel_left_tablist{
+        font-family: '微软雅黑';
+        font-size: 13px;
+    }
+    .gridTable{
+        font-family: '微软雅黑';
+        font-size: 14px;
+    }
+    .gridTableBodyTr2{
+        background: none;
+    }
+    #areaListDetail{
+        font-family: '微软雅黑';
+        font-size: 12px;
+    }
+    #areaListDetail div{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 7px;
+        padding-bottom: 7px;
+        border-bottom: 1px solid rgba(105, 105, 105, 0.2);
+        white-space: nowrap;
+    }
+    #areaListDetail div:hover{
+        color: #0C88E8;
+    }
+    .claro #panel_left_warpper .dijitTabContainerTop-tabs .dijitTab{
+        margin: 0 3px;
+        width: 85px;
+        height: 20px;
+    }
+    #returnButton{
+        font-family: '微软雅黑';
+        font-size: 12px;
+        margin: 5px 10px;
+    }
+    #returnButton:hover{
+        background-color: #ffffff;
+    }
+</style>
+
+</head>
+<body class="claro">
+<div id="app" style="width: 100%;height: 100%">
+	<div id="map"></div>
+	
+	<div id="panel_left_warpper" >
+		<div id="panel_left"></div>
+	</div>
+<!-- 	<div id="panel_right"> -->
+<!-- 			<span>路况</span><span>卫星</span><span>测距</span><span onclick="toggleLeft()">左列表</span><span id="panel_right_back">返回</span> -->
+<!-- 	</div> -->
+
+	<div id="panel_right_warpper">
+			<a id="cl_tj"    onmouseover="lb_open(this)"   onmouseout="lb_close(this)"><img id="tongji"   src="resources/images/index/tongji2.png"  ><span  style="margin-left: 2px;border-right: 1px solid #e8e8e8;">&nbsp;统计&nbsp;</span></a>
+            <a id="cl_lsgj"  onmouseover="lb_open(this)"   onmouseout="lb_close(this)"><img id="guiji"    src="resources/images/index/guiji2.png"   ><span  style="margin-left: 2px;border-right: 1px solid #e8e8e8;">&nbsp;轨迹&nbsp;</span></a>
+            <a id="mapsslk"  onmouseover="lb_open(this)"   onmouseout="lb_close(this)"><img id="lukuang"  src="resources/images/index/lukuang2.png" ><span  style="margin-left: 2px;border-right: 1px solid #e8e8e8;">&nbsp;路况&nbsp;</span></a>
+            <a id="mapwxt"   onmouseover="lb_open(this)"   onmouseout="lb_close(this)"><img id="weixing"  src="resources/images/index/weixing2.png" ><span  style="margin-left: 2px;border-right: 1px solid #e8e8e8;">&nbsp;卫星图&nbsp;</span></a>
+            <a id="ssjk_lb"  onmouseover="lb_open(this)"   onmouseout="lb_close(this)"><img id="liebiao"  src="resources/images/index/liebiao2.png" ><span  style="margin-left: 2px;border-right: 1px solid #e8e8e8;">&nbsp;列表&nbsp;</span></a>
+            <a id="more"     onmouseover="lb_open(this)"   onmouseout="lb_close(this)"><img id="gengduo"  src="resources/images/index/gengduo2.png" ><span  style="margin-left: 2px;">&nbsp;更多&nbsp;</span></a>
+	</div>
+<div id="more_left" style="display: none">
+    <a id="map_cj" onclick="lb_open1(this)" ><img id="ceju"   src="resources/images/index/ceju2.png">   <span  style="border-right: 1px solid #e8e8e8;">&nbsp;测距&nbsp;</span></a>
+<!--     <a id="map_yx" onclick="lb_open1(this)" ><img id="circle" src="resources/images/index/circle2.png"> <span  style="border-right: 1px solid #e8e8e8;">&nbsp;圆&nbsp;</span></a> -->
+    <a id="map_fx" onclick="lb_open1(this)" ><img id="rect"   src="resources/images/index/rect2.png">   <span  style="">&nbsp;方框&nbsp;</span></a>
+</div>
+
+
+<div id="tj_pop" style="display: none">
+    <div><span id="cl_zs"     ></span></div>
+    <div><span id="cl_sx" ></span></div>
+    <div><span id="cl_xx" ></span></div>
+    <div><span id="cl_zc" ></span></div>
+    <div><span id="cl_kc" ></span></div>
+    </div>
+<div data-dojo-id="lsgjDialog" title="历史轨迹" style="height:1500px;width:1500px" data-dojo-type="dijit/Dialog" data-dojo-props="href: 'app/html/monitor/history.html'"></div>
+</div>
+
+</body>
+</html>

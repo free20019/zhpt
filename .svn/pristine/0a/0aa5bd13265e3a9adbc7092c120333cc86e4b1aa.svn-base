@@ -1,0 +1,1674 @@
+@import url("http://115.236.61.148:9085/jslib/myDojo/dijit/themes/claro/claro.css");
+@import url("http://115.236.61.148:9085/jslib/myDojo/dijit/themes/claro/document.css");
+@import url("http://115.236.61.148:9085/jslib/myDojo/dojox/grid/enhanced/resources/claro/EnhancedGrid.css");
+@import url("http://115.236.61.148:9085/jslib/myDojo/dojox/grid/enhanced/resources/EnhancedGrid_rtl.css");
+@import url("http://115.236.61.148:9085/jslib/myDojo/dgrid/css/dgrid.css");
+@import url("http://115.236.61.148:9085/jslib/myDojo/dgrid/css/skins/claro.css");
+@import url("http://115.236.61.148:9085/jslib/myDojo/cbtree/themes/claro/claro.css");
+
+
+html,body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+	font-size: 12px;
+}
+
+* {
+	outline: none;
+}
+.level2MenuHide{
+	display: none;
+}
+.level2MenuShow{
+	display: block;
+}
+/**overload**/
+.claro{
+	font-size: 12px;
+}
+.claro .dijitSplitContainer-child, .claro .dijitBorderContainer-child {
+    /* border: 1px #b5bcc7 solid; */
+   /*  border:0px; */
+}
+
+.claro .dijitTabContainerTop-dijitContentPane, .claro .dijitTabContainerLeft-dijitContentPane, .claro .dijitTabContainerBottom-dijitContentPane, .claro .dijitTabContainerRight-dijitContentPane, .claro .dijitAccordionContainer-dijitContentPane {
+    background-color: #ffffff;
+    padding: 0px 2px;
+}
+
+.claro .dijitAccordionContainer .dijitAccordionContainer-child {
+    padding-top: 0px;
+}
+
+/****/
+
+.panel-titleLine { margin-bottom: 20px; padding: .3em; border: 1px solid #eeeeee;; }
+.panel-titleLine .panel-titleSpan { position: relative; top: -1em; left: .3em; padding: .2em .5em; background: white }
+.panel_oneSpan > div { display: block; margin-top: .3em; margin-bottom: .3em; }
+.panel_twoSpan > div { display: inline-block; width: 49.4%; margin-top: .3em; margin-bottom: .3em; }
+
+
+/****** LEFT ****/
+#pane1,#pane2,#pane3,#pane4{
+	padding: 0px
+}
+ul li
+{
+	list-style-type:none;
+}
+#cpTopleft{
+	margin-left: 5px;
+}
+
+.mainSplitterLeft li {
+	/* height: 30px;
+	font-size: 14px;
+	line-height: 30px; */
+	cursor: pointer;
+	/* padding: 0px 0px 0px 3px; */
+	
+	word-wrap: break-word;
+	overflow: hidden;	
+}
+
+.mainSplitterLeft {
+	
+	
+}
+
+.li1{
+	margin-left: 0px;
+    padding: 0px 0px 0px 3px;
+/*     border-bottom: 1px solid #7FBDF8;
+ */    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    border-top: 1px solid #cfe5fa;
+    font-family:'Microsoft YaHei', '黑体', 'Source Sans Pro', 'Segoe UI', 'Droid Sans', Tahoma, Arial,
+		sans-serif;
+}
+
+.li1 span{
+	height: 16px;
+	width: 16px;
+	display: inline-block;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+
+.li2 {
+	/* margin-top:1px;
+	margin-left: 25px;
+	margin-right: 5px; */
+	padding-left: 10px;
+	list-style:none;
+	height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+
+.li2 span{
+	background: url('../resources/images/2jcd.png') no-repeat;
+	height: 16px;
+	width: 20px;
+	display: inline-block;
+	margin-left: 10px;
+	vertical-align: middle;
+}
+
+.li3 {
+	margin-top:1px;
+	margin-left: 35px;
+	margin-right: 5px;
+}
+
+.li3 span{
+	background: url('../resources/images/2jcd.png') no-repeat;
+	height: 16px;
+	width: 20px;
+	display: inline-block;
+	margin-left: 10px;
+	vertical-align: middle;
+}
+
+.li_container{
+	background: url('../resources/images/2jcd.png') no-repeat !important;
+}
+
+/*** new framework **/
+.dgrid-header, .dgrid-cell{
+		height:25px;
+		/* line-height: 2em; */
+}
+.dgrid-row-table {
+	height: initial;
+}
+#borderContainer {
+	width: 100%;
+	height: 100%;
+}
+
+.dgrid {
+	height: 90%;
+	margin-top: 5px;
+}
+
+.dgrid_nofy {
+	height: 93%;
+}
+.dgrid-cell{
+	  vertical-align: middle;
+	  text-align:center;
+}
+/**** page **/
+.pagination {
+	zoom: 1;
+}
+
+.pagination table {
+	float: left;
+	height: 30px;
+}
+
+.pagination td {
+	border: 0;
+}
+
+.pagination span {
+	font-size: 12px;
+}
+
+.page_first {
+	margin-left: 5px;
+	cursor: pointer;
+	vertical-align: middle;
+	height: 16px;
+	width: 18px;
+	display: inline-block;
+	background: url('../resources/images/first.gif') no-repeat;
+	margin: 4px 0px 2px 2px;
+}
+
+.page_prev {
+	cursor: pointer;
+	vertical-align: middle;
+	height: 16px;
+	width: 18px;
+	display: inline-block;
+	background: url('../resources/images/prev.gif') no-repeat;
+	margin: 4px 0px 2px 2px;
+}
+
+.page_next {
+	cursor: pointer;
+	vertical-align: middle;
+	height: 16px;
+	width: 18px;
+	display: inline-block;
+	background: url('../resources/images/next.gif') no-repeat;
+	margin: 4px 0px 2px 2px;
+}
+
+.page_last {
+	cursor: pointer;
+	vertical-align: middle;
+	height: 16px;
+	width: 18px;
+	display: inline-block;
+	background: url('../resources/images/last.gif') no-repeat;
+	margin: 4px 0px 2px 2px;
+}
+
+.page_input {
+	width: 30px;
+	text-align: center;
+}
+
+.page_remark {
+	margin-left: 55px;
+	vertical-align: middle;
+	/*float:right;
+	*/
+	margin-right: 5px;
+}
+
+.pagination a{
+	height: 26px;
+	display: inline-block;
+	background: #FFF;
+	cursor: pointer;
+	outline: none;
+	border: 1px solid #fff ;
+	width: 25px
+}
+
+.pagination a:hover{
+	background: #E0EEEE;
+	border: 1px solid #CDC9C9;
+}
+.pagination-separator{
+	float: left;
+	height: 24px;
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #FFF;
+	margin: 3px 1px;
+}
+
+/** TOP **/
+#cpTop {
+	padding: 0px;
+	height: 50px ;
+	color: #FFF;
+	background-color: #F58320;
+	font-family: Microsoft YaHei;
+	font-size: 25px;
+	line-height: 50px;
+}
+
+
+/**grid table***/
+	.gridTable {
+	border-spacing: 0;
+	border-collapse: collapse;
+	/*border-left: #DEDEDE solid 1px;*/
+/* 	margin-left: 5px; */
+	margin-top: 5px;
+	margin-left: 6px;
+ 	width: 280px;
+	table-layout: fixed;
+}
+
+.gridTableTitle {
+	text-align: center;
+	font-weight: bold;
+	border: 1px solid rgba(105, 105, 105, 0.3);
+}
+.gridTableTitle td:first-child:after, .gridTableTitle td:first-child +td:after {
+	content: '';
+	height: 11px;
+	position: absolute;
+	top: 6px;
+	right: 0px;
+	border-right: 1px solid rgba(105,105,105, 0.3);
+}
+
+.gridTableTitle td {
+	text-align: center;
+	font-weight: bold;
+	position: relative;
+	/*padding-left: 5px;*/
+	/*border-right: rgba(105, 105, 105, 0.3) solid 1px;*/
+	height: 20px;
+}
+.gridTableBodyTd {
+	padding-left: 5px;
+	position: relative;
+	border-bottom: #DEDEDE solid 1px;
+	/*border-right: #DEDEDE solid 1px;*/
+	text-align: left;
+	height: 25px;
+	/*省略号*/
+	white-space: nowrap;
+	　　text-overflow: ellipsis;
+	overflow: hidden;
+	font-size: 14px;
+	cursor: pointer;
+}
+[class^=gridTableBodyTr]:hover{
+	color: #0C88E8;
+}
+.gridTableBodyTd:first-child:after, .gridTableBodyTd:first-child +td:after {
+	content: '';
+	height: 18px;
+	position: absolute;
+	right: 0px;
+	border-right: 1px solid rgba(105,105,105, 0.3);
+}
+.gridTableBodyTd:first-child:after{
+	clear: both;
+	background: url("../resources/images/index/zb2.png") no-repeat;
+	left: 2px;
+	height: 20px;
+	text-align: left;
+	zoom: 0.8;
+	z-index: 1;
+}
+[class^=gridTableBodyTr]:hover{
+	left: 15px;
+	height: 20px;
+	text-align: left;
+	zoom: 1.2;
+	z-index: 999;
+}
+.gridTableBodyTd:first-child:hover:after{
+	background: url("../resources/images/index/zb1.png") no-repeat;
+}
+
+
+
+/*奇偶行*/
+.gridTableBodyTr1 {
+	background-color: #fff;
+}
+
+.gridTableBodyTr2 {
+	background-color: #E0EEEE;
+}
+/**grid table end***/
+
+
+/** scroll start **/
+.slimScroll {
+    border: 1px solid #CCC;
+    margin-top: 20px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    height: 200px;  /* set this height in percentage to test resizing */
+    width: 380px;
+}
+
+/* custom stylings */
+.wrapper, .scroll-wrapper {
+    padding: 5px;
+}
+.scroll-wrapper.mac + .scrollBarContainer{
+    background-color: transparent;
+}
+.scrollBarContainer.animate .scroll{
+    transition: 2s opacity ease;
+    -ms-transition: 2s opacity ease;
+    opacity: 0;
+}
+.scrollBarContainer:hover .scroll{
+    opacity: 0.5;
+    transition: none;
+    -ms-transition: none;
+}
+.unselectable {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+} 
+
+.scroll{
+    border-radius: 10px;
+}
+.wrapper + .scrollBarContainer{
+    background-color: #eee9ee;
+}
+.scrollBar {
+    background-color: #60F509;
+    border-radius: 10px;
+    opacity: 0.5;
+}
+.scroll-bar{
+    background-color: #14D1E0;
+}
+
+/** scroll end **/
+
+
+/*
+* LiveQuery 1.0
+* @author marcos weskamp
+* @published: Nov 20, 2008.
+* Copyright 2008, Marcos Weskamp marcos@marumushi.com
+* This work is licensed under a Creative Commons Attribution 3.0 Unported License. 
+* http://creativecommons.org/licenses/by/3.0/
+*/
+.LiveQuery { margin:2px; font: 11px/16px Simsun, serif;}
+.LiveQuery form input { padding:5px; background-color:#FEFEFE; border:1px solid #666; color: #333;}
+.LiveQuery .Input { float:left;margin:0px;padding:1px 30px;background: rgba(255, 255, 255, 0.24) url('../resources/images/index/cljk2.png') no-repeat scroll 5px 6px;}
+.LiveQuery .Last { float:right; display:none; }
+.LiveQuery .QueryInput{ padding:3px 0px; display:block; overflow:hidden; display:block; /**/border:1px solid rgba(105, 105, 105, 0.2); }
+.LiveQuery .SearchIcon{ background:transparent url(../resources/images/livequery/search.gif) no-repeat scroll 0 0; display:none; }
+.LiveQuery .Button{ padding:4px; text-transform:uppercase;}
+.LiveQuery .TextInput{ padding-right:2px; width:240px; background: rgba(255, 255, 255, 0.25) url(../resources/images/livequery/search-icon-light.gif) no-repeat scroll 230px 6px; }
+.LiveQuery .ResultBox div, 
+.LiveQuery .ResultBox h1,
+.LiveQuery .ResultBox h2,
+.LiveQuery .ResultBox p { font-family:'微软雅黑';font-size:12px;padding:0px; margin:0px; overflow:hidden; /*text-transform:lowercase;*/ font-weight:normal; }
+.LiveQuery .ResultBox h1{ border-bottom:1px solid #BBBBBB; font-family:'微软雅黑';font-size:13px; font-style:italic; margin:8px 10px 5px 10px; }
+.LiveQuery .ResultBox h2 { font-family:'微软雅黑';font-size:14px; color:#444; margin-bottom:2px; }
+.LiveQuery .ResultBox .ListItem:hover h2{color: #0C88E8;}
+.LiveQuery .ResultBox .ListItem:hover{cursor: pointer;}
+.fontsize{margin-left: 10px;}
+.LiveQuery .ResultBox p { font-family:'微软雅黑';font-size:13px;margin:0px 0px 0px 4px; color:#888; }
+.LiveQuery .ResultBox b { font-weight:normal; }
+.LiveQuery .ResultBox a { text-decoration: none; color: #BBB; border: none; }
+.LiveQuery .ResultBox a:visited, 
+.LiveQuery .ResultBox a:active, 
+.LiveQuery .ResultBox a:focus{ }
+.LiveQuery .ResultBox .ListItem { padding:4px 4px 4px 14px; }
+.LiveQuery .QueryInput,
+.LiveQuery .ResultBox{ /*background-color:#F0F0F0;*/ background-position:left bottom; background-repeat:no-repeat; width:285px; }
+.LiveQuery .ResultBox{
+	border-color:#000000 #BBBBBB #BBBBBB;
+	border-style:none solid solid;
+	border-width:0 1px 1px;
+	color:#333333;
+	font-size:14px;
+	margin:-1px 0 0 0px;
+	padding:0px;
+	position:absolute;
+	overflow: hidden;
+}
+.LiveQuery .ResultBox .ListItem:hover,
+.LiveQuery .ResultBox .Selected { background-color:#F3F4F4; }
+.LiveQuery .ResultBox .NoResults { padding:5px }
+.LiveQuery .ResultBox .NoResults p { color:#666; }
+.LiveQuery .ResultBox .NoResults b { color:#000; font-style:italic; }
+
+.LiveQuery .ResultsPage .Result { margin:1px 0px; padding:4px 4px 10px;border-bottom:1px solid #F0F0F0;width:700px;}
+.LiveQuery .ResultsPage .Result h3 { color:#000; font-size:16px; font-weight:normal;padding:0px;margin:5px 0px;}
+.LiveQuery .ResultsPage .Result p { color:#444; font-size:14px;margin:0px;padding:0px;}
+
+.LiveQuery .ResultBox .Inside{height: 215px; overflow-y: auto;/*padding-right: 15px;*/width: 110%;}
+.LiveQuery .Inside .header{ border-bottom: 1px solid #ddd;}
+.LiveQuery .QueryInput .Input input{
+		padding: 5px;
+    border: 0px solid #95D0FF;
+    font-size: 14px;
+	font-family: '微软雅黑';
+	color: rgba(79, 79, 79, 0.73);
+}
+
+
+
+/****/
+.menu_scjg_jcxxgl{
+	    background: url('../resources/images/index3_2/jcxxgl.png') no-repeat !important;
+}
+
+.menu_rcjkyyj_yxztjk{
+	    background: url('../resources/images/index3_2/yxztjk.png') no-repeat !important;
+}
+.menu_rcjkyyj_aqjkybj{
+	    background: url('../resources/images/index3_2/aqjkyjb.png') no-repeat !important;
+}
+
+
+.menu_scjg_jcxxgl{
+	    background: url('../resources/images/index3_2/jcxxgl.png') no-repeat !important;
+}
+.menu_scjg_sjyyjg{
+	    background: url('../resources/images/index3_2/sjyyjg.png') no-repeat !important;
+}
+.menu_scjg_zfjcxx{
+	    background: url('../resources/images/index3_2/zfjcxx.png') no-repeat !important;
+}
+.menu_scjg_fwzljd{
+	    background: url('../resources/images/index3_2/fwzljd.png') no-repeat !important;
+}
+
+
+.menu_fzjc_zhcx{
+	    background: url('../resources/images/index3_2/zhgl.png') no-repeat !important;
+}
+.menu_fzjc_yyqktjfx{
+	    background: url('../resources/images/index3_2/yyqktjfx.png') no-repeat !important;
+}
+.menu_fzjc_yyxytjfx{
+	    background: url('../resources/images/index3_2/yyxytjfx.png') no-repeat !important;
+}
+.menu_fzjc_yltz{
+	    background: url('../resources/images/index3_2/yltz.png') no-repeat !important;
+}
+
+
+.menu_yjzh_jr{
+	    background: url('../resources/images/index3_2/yjjr.png') no-repeat !important;
+}
+.menu_yjzh_xy{
+	    background: url('../resources/images/index3_2/yjxy.png') no-repeat !important;
+}
+.menu_yjzh_sjcl{
+	    background: url('../resources/images/index3_2/sjcl.png') no-repeat !important;
+}
+.menu_yjzh_xxfb{
+	    background: url('../resources/images/index3_2/xxfb.png') no-repeat !important;
+}
+.menu_yjzh_pgfx{
+	    background: url('../resources/images/index3_2/pgfx.png') no-repeat !important;
+}
+.menu_yjzh_zyk{
+	    background: url('../resources/images/index3_2/zyk.png') no-repeat !important;
+}
+
+[class$=table] th, [class$=table] td {text-align: center;}
+/*历史轨迹**monitor/area_management.html*/ /*.area_manage_table th,.area_manage_table td{text-align: center;}*/
+.area_manage_table .field-id {width: 40px;}
+.area_manage_table .field-AREA_NAME {width: 140px;}
+.area_manage_table .field-AREA_DESCRIBE {width: 500px;}
+.area_manage_table .field-AREA_SIZE {width: 140px;}
+.area_manage_table .field-ALARMNUM {width: 100px;}
+/*里程统计**monitor/areaclfx.html*/ /*.areaclfxtable th,.areaclfxtable td{text-align: center;}*/
+.areaclfxtable .field-message {width: 110px;}
+.areaclfxtable .field-y0 {width: 50px;}
+.areaclfxtable .field-y1 {width: 50px;}
+.areaclfxtable .field-y2 {width: 50px;}
+.areaclfxtable .field-y3 {width: 50px;}
+.areaclfxtable .field-y4 {width: 50px;}
+.areaclfxtable .field-y5 {width: 50px;}
+.areaclfxtable .field-y6 {width: 50px;}
+.areaclfxtable .field-y7 {width: 50px;}
+.areaclfxtable .field-y8 {width: 50px;}
+.areaclfxtable .field-y9 {width: 50px;}
+.areaclfxtable .field-y10 {width: 50px;}
+.areaclfxtable .field-y11 {width: 50px;}
+.areaclfxtable .field-y12 {width: 50px;}
+.areaclfxtable .field-y13 {width: 50px;}
+.areaclfxtable .field-y14 {width: 50px;}
+.areaclfxtable .field-y15 {width: 50px;}
+.areaclfxtable .field-y16 {width: 50px;}
+.areaclfxtable .field-y17 {width: 50px;}
+.areaclfxtable .field-y18 {width: 50px;}
+.areaclfxtable .field-y19 {width: 50px;}
+.areaclfxtable .field-y20 {width: 50px;}
+.areaclfxtable .field-y21 {width: 50px;}
+.areaclfxtable .field-y22 {width: 50px;}
+.areaclfxtable .field-y23 {width: 50px;}
+.areaclfxtable .field-y24 {width: 50px;}
+.areaclfxtable .field-y25 {width: 50px;}
+.areaclfxtable .field-y26 {width: 50px;}
+.areaclfxtable .field-y27 {width: 50px;}
+.areaclfxtable .field-y28 {width: 50px;}
+.areaclfxtable .field-y29 {width: 50px;}
+.areaclfxtable .field-y30 {width: 50px;}
+.areaclfxtable .field-y31 {width: 50px;}
+.areaclfxtable .field-y32 {width: 50px;}
+.areaclfxtable .field-y33 {width: 50px;}
+.areaclfxtable .field-y34 {width: 50px;}
+.areaclfxtable .field-y35 {width: 50px;}
+.areaclfxtable .field-y36 {width: 50px;}
+.areaclfxtable .field-y37 {width: 50px;}
+.areaclfxtable .field-y38 {width: 50px;}
+.areaclfxtable .field-y39 {width: 50px;}
+.areaclfxtable .field-y40 {width: 50px;}
+.areaclfxtable .field-y41 {width: 50px;}
+.areaclfxtable .field-y42 {width: 50px;}
+.areaclfxtable .field-y43 {width: 50px;}
+.areaclfxtable .field-y44 {width: 50px;}
+.areaclfxtable .field-y45 {width: 50px;}
+.areaclfxtable .field-y46 {width: 50px;}
+.areaclfxtable .field-y47 {width: 50px;}
+/*里程统计**monitor/areaclfx.html*/ /*.areaclmxtable th,.areaclmxtable td{text-align: center;}*/
+.areaclmxtable .field-message {width: 110px;}
+.areaclmxtable .field-y0 {width: 50px;}
+.areaclmxtable .field-y1 {width: 50px;}
+.areaclmxtable .field-y2 {width: 50px;}
+.areaclmxtable .field-y3 {width: 50px;}
+.areaclmxtable .field-y4 {width: 50px;}
+.areaclmxtable .field-y5 {width: 50px;}
+.areaclmxtable .field-y6 {width: 50px;}
+.areaclmxtable .field-y7 {width: 50px;}
+.areaclmxtable .field-y8 {width: 50px;}
+.areaclmxtable .field-y9 {width: 50px;}
+.areaclmxtable .field-y10 {width: 50px;}
+.areaclmxtable .field-y11 {width: 50px;}
+.areaclmxtable .field-y12 {width: 50px;}
+.areaclmxtable .field-y13 {width: 50px;}
+.areaclmxtable .field-y14 {width: 50px;}
+.areaclmxtable .field-y15 {width: 50px;}
+.areaclmxtable .field-y16 {width: 50px;}
+.areaclmxtable .field-y17 {width: 50px;}
+.areaclmxtable .field-y18 {width: 50px;}
+.areaclmxtable .field-y19 {width: 50px;}
+.areaclmxtable .field-y20 {width: 50px;}
+.areaclmxtable .field-y21 {width: 50px;}
+.areaclmxtable .field-y22 {width: 50px;}
+.areaclmxtable .field-y23 {width: 50px;}
+.areaclmxtable .field-y24 {width: 50px;}
+.areaclmxtable .field-y25 {width: 50px;}
+.areaclmxtable .field-y26 {width: 50px;}
+.areaclmxtable .field-y27 {width: 50px;}
+.areaclmxtable .field-y28 {width: 50px;}
+.areaclmxtable .field-y29 {width: 50px;}
+.areaclmxtable .field-y30 {width: 50px;}
+.areaclmxtable .field-y31 {width: 50px;}
+.areaclmxtable .field-y32 {width: 50px;}
+.areaclmxtable .field-y33 {width: 50px;}
+.areaclmxtable .field-y34 {width: 50px;}
+.areaclmxtable .field-y35 {width: 50px;}
+.areaclmxtable .field-y36 {width: 50px;}
+.areaclmxtable .field-y37 {width: 50px;}
+.areaclmxtable .field-y38 {width: 50px;}
+.areaclmxtable .field-y39 {width: 50px;}
+.areaclmxtable .field-y40 {width: 50px;}
+.areaclmxtable .field-y41 {width: 50px;}
+.areaclmxtable .field-y42 {width: 50px;}
+.areaclmxtable .field-y43 {width: 50px;}
+.areaclmxtable .field-y44 {width: 50px;}
+.areaclmxtable .field-y45 {width: 50px;}
+.areaclmxtable .field-y46 {width: 50px;}
+.areaclmxtable .field-y47 {width: 50px;}
+.areaclmxtb th,.areaclmxtb td{text-align: center;}
+.areaclmxtb .field-id {width: 40px;}
+.areaclmxtb .field-COMP_NAME {width: 260px;}
+.areaclmxtb .field-AREA_NAME {width: 150px;}
+.areaclmxtb .field-VEHI_NO {width: 110px;}
+.areaclmxtb .field-SPEED {width: 110px;}
+.areaclmxtb .field-VEHI_SIM {width: 110px;}
+.areaclmxtb .field-OWN_NAME {width: 110px;}
+.areaclmxtb .field-OWN_TEL {width: 110px;}
+/*业户查询**monitor/clxx.html*/ /*.clxxtable th,.clxxtable td{text-align: center;}*/
+.clxxtable .field-dojoId {width: 40px;}
+.clxxtable .field-PLATE_NUMBER {width: 100px;}
+.clxxtable .field-PLATE_TYPE {width: 80px;}
+.clxxtable .field-PLATE_COLOR {width: 100px;}
+.clxxtable .field-LICENSE_NUMBER {width: 130px;}
+.clxxtable .field-ANNUAL_REVIEW_VALID_PERIOD_END {width: 180px;}
+.clxxtable .field-COM_NAME {width: 260px;}
+.clxxtable .field-COM_LICENSE_NUMBER {width: 130px;}
+.clxxtable .field-BUSINESS_SCOPE_NAME {width: 130px;}
+/*业户查询**monitor/clycxxtj.html*/ /*.clycxxtjtable th,.clycxxtjtable td{text-align: center;}*/
+.clycxxtjtable .field-dojoId {width: 40px;}
+.clycxxtjtable .field-COMP {width: 260px;}
+.clycxxtjtable .field-VHIC {width: 100px;}
+.clycxxtjtable .field-MONEY {width: 100px;}
+.clycxxtjtable .field-TIMES {width: 100px;}
+.clycxxtjtable .field-DISTANCE {width: 100px;}
+.clycxxtjtable .field-EMPTY {width: 100px;}
+.clycxxtjtable .field-TOTAL {width: 110px;}
+.clycxxtjtable .field-PERCENT {width: 130px;}
+.clycxxtjtable .field-TIMEOUT {width: 150px;}
+.clycxxtjtable .field-WAITTIME {width: 180px;}
+/*业户查询**monitor/czsbxx.html*/ /*.czsbxxtable th,.czsbxxtable td{text-align: center;}*/
+.czsbxxtable .field-dojoId {width: 40px;}
+.czsbxxtable .field-CPHM {width: 100px;}
+.czsbxxtable .field-CPYS {width: 100px;}
+.czsbxxtable .field-JSYJSZH {width: 150px;}
+.czsbxxtable .field-JSYSFZH {width: 170px;}
+.czsbxxtable .field-JSYDH {width: 120px;}
+.czsbxxtable .field-JCDD {width: 260px;}
+.czsbxxtable .field-JCSJ {width: 130px;}
+.czsbxxtable .field-WFSS {width: 100px;}
+/*单车平均空驶里程分析**monitor/dcpjkslcfx.html*/ /*.dcpjkslcfxtable th,.dcpjkslcfxtable td{text-align: center;}*/
+.dcpjkslcfxtable .field-message {width: 120px;}
+.dcpjkslcfxtable .field-y0 {width: 50px;}
+.dcpjkslcfxtable .field-y1 {width: 50px;}
+.dcpjkslcfxtable .field-y2 {width: 50px;}
+.dcpjkslcfxtable .field-y3 {width: 50px;}
+.dcpjkslcfxtable .field-y4 {width: 50px;}
+.dcpjkslcfxtable .field-y5 {width: 50px;}
+.dcpjkslcfxtable .field-y6 {width: 50px;}
+.dcpjkslcfxtable .field-y7 {width: 50px;}
+.dcpjkslcfxtable .field-y8 {width: 50px;}
+.dcpjkslcfxtable .field-y9 {width: 50px;}
+.dcpjkslcfxtable .field-y10 {width: 50px;}
+.dcpjkslcfxtable .field-y11 {width: 50px;}
+.dcpjkslcfxtable .field-y12 {width: 50px;}
+.dcpjkslcfxtable .field-y13 {width: 50px;}
+.dcpjkslcfxtable .field-y14 {width: 50px;}
+.dcpjkslcfxtable .field-y15 {width: 50px;}
+.dcpjkslcfxtable .field-y16 {width: 50px;}
+.dcpjkslcfxtable .field-y17 {width: 50px;}
+.dcpjkslcfxtable .field-y18 {width: 50px;}
+.dcpjkslcfxtable .field-y19 {width: 50px;}
+.dcpjkslcfxtable .field-y20 {width: 50px;}
+.dcpjkslcfxtable .field-y21 {width: 50px;}
+.dcpjkslcfxtable .field-y22 {width: 50px;}
+.dcpjkslcfxtable .field-y23 {width: 50px;}
+.dcpjkslcfxtable .field-y24 {width: 50px;}
+.dcpjkslcfxtable .field-y25 {width: 50px;}
+.dcpjkslcfxtable .field-y26 {width: 50px;}
+.dcpjkslcfxtable .field-y27 {width: 50px;}
+.dcpjkslcfxtable .field-y28 {width: 50px;}
+.dcpjkslcfxtable .field-y29 {width: 50px;}
+.dcpjkslcfxtable .field-y30 {width: 50px;}
+.dcpjkslcfxtable .field-y31 {width: 50px;}
+.dcpjkslcfxtable .field-y32 {width: 50px;}
+.dcpjkslcfxtable .field-y33 {width: 50px;}
+.dcpjkslcfxtable .field-y34 {width: 50px;}
+.dcpjkslcfxtable .field-y35 {width: 50px;}
+.dcpjkslcfxtable .field-y36 {width: 50px;}
+.dcpjkslcfxtable .field-y37 {width: 50px;}
+.dcpjkslcfxtable .field-y38 {width: 50px;}
+.dcpjkslcfxtable .field-y39 {width: 50px;}
+.dcpjkslcfxtable .field-y40 {width: 50px;}
+.dcpjkslcfxtable .field-y41 {width: 50px;}
+.dcpjkslcfxtable .field-y42 {width: 50px;}
+.dcpjkslcfxtable .field-y43 {width: 50px;}
+.dcpjkslcfxtable .field-y44 {width: 50px;}
+.dcpjkslcfxtable .field-y45 {width: 50px;}
+.dcpjkslcfxtable .field-y46 {width: 50px;}
+.dcpjkslcfxtable .field-y47 {width: 50px;}
+/*单车平均行驶总里程分析**monitor/dcpjxszlcfx.html*/ /*.dcpjxszlcfxtable th,.dcpjxszlcfxtable td{text-align: center;}*/
+.dcpjxszlcfxtable .field-message {width: 120px;}
+.dcpjxszlcfxtable .field-y0 {width: 50px;}
+.dcpjxszlcfxtable .field-y1 {width: 50px;}
+.dcpjxszlcfxtable .field-y2 {width: 50px;}
+.dcpjxszlcfxtable .field-y3 {width: 50px;}
+.dcpjxszlcfxtable .field-y4 {width: 50px;}
+.dcpjxszlcfxtable .field-y5 {width: 50px;}
+.dcpjxszlcfxtable .field-y6 {width: 50px;}
+.dcpjxszlcfxtable .field-y7 {width: 50px;}
+.dcpjxszlcfxtable .field-y8 {width: 50px;}
+.dcpjxszlcfxtable .field-y9 {width: 50px;}
+.dcpjxszlcfxtable .field-y10 {width: 50px;}
+.dcpjxszlcfxtable .field-y11 {width: 50px;}
+.dcpjxszlcfxtable .field-y12 {width: 50px;}
+.dcpjxszlcfxtable .field-y13 {width: 50px;}
+.dcpjxszlcfxtable .field-y14 {width: 50px;}
+.dcpjxszlcfxtable .field-y15 {width: 50px;}
+.dcpjxszlcfxtable .field-y16 {width: 50px;}
+.dcpjxszlcfxtable .field-y17 {width: 50px;}
+.dcpjxszlcfxtable .field-y18 {width: 50px;}
+.dcpjxszlcfxtable .field-y19 {width: 50px;}
+.dcpjxszlcfxtable .field-y20 {width: 50px;}
+.dcpjxszlcfxtable .field-y21 {width: 50px;}
+.dcpjxszlcfxtable .field-y22 {width: 50px;}
+.dcpjxszlcfxtable .field-y23 {width: 50px;}
+.dcpjxszlcfxtable .field-y24 {width: 50px;}
+.dcpjxszlcfxtable .field-y25 {width: 50px;}
+.dcpjxszlcfxtable .field-y26 {width: 50px;}
+.dcpjxszlcfxtable .field-y27 {width: 50px;}
+.dcpjxszlcfxtable .field-y28 {width: 50px;}
+.dcpjxszlcfxtable .field-y29 {width: 50px;}
+.dcpjxszlcfxtable .field-y30 {width: 50px;}
+.dcpjxszlcfxtable .field-y31 {width: 50px;}
+.dcpjxszlcfxtable .field-y32 {width: 50px;}
+.dcpjxszlcfxtable .field-y33 {width: 50px;}
+.dcpjxszlcfxtable .field-y34 {width: 50px;}
+.dcpjxszlcfxtable .field-y35 {width: 50px;}
+.dcpjxszlcfxtable .field-y36 {width: 50px;}
+.dcpjxszlcfxtable .field-y37 {width: 50px;}
+.dcpjxszlcfxtable .field-y38 {width: 50px;}
+.dcpjxszlcfxtable .field-y39 {width: 50px;}
+.dcpjxszlcfxtable .field-y40 {width: 50px;}
+.dcpjxszlcfxtable .field-y41 {width: 50px;}
+.dcpjxszlcfxtable .field-y42 {width: 50px;}
+.dcpjxszlcfxtable .field-y43 {width: 50px;}
+.dcpjxszlcfxtable .field-y44 {width: 50px;}
+.dcpjxszlcfxtable .field-y45 {width: 50px;}
+.dcpjxszlcfxtable .field-y46 {width: 50px;}
+.dcpjxszlcfxtable .field-y47 {width: 50px;}
+/*单车平均营运次数分析**monitor/dcpjyycsfx.html*/ /*.dcpjyycsfxtable th,.dcpjyycsfxtable td{text-align: center;}*/
+.dcpjyycsfxtable .field-message {width: 110px;}
+.dcpjyycsfxtable .field-y0 {width: 50px;}
+.dcpjyycsfxtable .field-y1 {width: 50px;}
+.dcpjyycsfxtable .field-y2 {width: 50px;}
+.dcpjyycsfxtable .field-y3 {width: 50px;}
+.dcpjyycsfxtable .field-y4 {width: 50px;}
+.dcpjyycsfxtable .field-y5 {width: 50px;}
+.dcpjyycsfxtable .field-y6 {width: 50px;}
+.dcpjyycsfxtable .field-y7 {width: 50px;}
+.dcpjyycsfxtable .field-y8 {width: 50px;}
+.dcpjyycsfxtable .field-y9 {width: 50px;}
+.dcpjyycsfxtable .field-y10 {width: 50px;}
+.dcpjyycsfxtable .field-y11 {width: 50px;}
+.dcpjyycsfxtable .field-y12 {width: 50px;}
+.dcpjyycsfxtable .field-y13 {width: 50px;}
+.dcpjyycsfxtable .field-y14 {width: 50px;}
+.dcpjyycsfxtable .field-y15 {width: 50px;}
+.dcpjyycsfxtable .field-y16 {width: 50px;}
+.dcpjyycsfxtable .field-y17 {width: 50px;}
+.dcpjyycsfxtable .field-y18 {width: 50px;}
+.dcpjyycsfxtable .field-y19 {width: 50px;}
+.dcpjyycsfxtable .field-y20 {width: 50px;}
+.dcpjyycsfxtable .field-y21 {width: 50px;}
+.dcpjyycsfxtable .field-y22 {width: 50px;}
+.dcpjyycsfxtable .field-y23 {width: 50px;}
+.dcpjyycsfxtable .field-y24 {width: 50px;}
+.dcpjyycsfxtable .field-y25 {width: 50px;}
+.dcpjyycsfxtable .field-y26 {width: 50px;}
+.dcpjyycsfxtable .field-y27 {width: 50px;}
+.dcpjyycsfxtable .field-y28 {width: 50px;}
+.dcpjyycsfxtable .field-y29 {width: 50px;}
+.dcpjyycsfxtable .field-y30 {width: 50px;}
+.dcpjyycsfxtable .field-y31 {width: 50px;}
+.dcpjyycsfxtable .field-y32 {width: 50px;}
+.dcpjyycsfxtable .field-y33 {width: 50px;}
+.dcpjyycsfxtable .field-y34 {width: 50px;}
+.dcpjyycsfxtable .field-y35 {width: 50px;}
+.dcpjyycsfxtable .field-y36 {width: 50px;}
+.dcpjyycsfxtable .field-y37 {width: 50px;}
+.dcpjyycsfxtable .field-y38 {width: 50px;}
+.dcpjyycsfxtable .field-y39 {width: 50px;}
+.dcpjyycsfxtable .field-y40 {width: 50px;}
+.dcpjyycsfxtable .field-y41 {width: 50px;}
+.dcpjyycsfxtable .field-y42 {width: 50px;}
+.dcpjyycsfxtable .field-y43 {width: 50px;}
+.dcpjyycsfxtable .field-y44 {width: 50px;}
+.dcpjyycsfxtable .field-y45 {width: 50px;}
+.dcpjyycsfxtable .field-y46 {width: 50px;}
+.dcpjyycsfxtable .field-y47 {width: 50px;}
+/*单车平均营运收益分析**monitor/dcpjyysyfx.html*/ /*.dcpjyysyfxtable th,.dcpjyysyfxtable td{text-align: center;}*/
+.dcpjyysyfxtable .field-message {width: 110px;}
+.dcpjyysyfxtable .field-y0 {width: 50px;}
+.dcpjyysyfxtable .field-y1 {width: 50px;}
+.dcpjyysyfxtable .field-y2 {width: 50px;}
+.dcpjyysyfxtable .field-y3 {width: 50px;}
+.dcpjyysyfxtable .field-y4 {width: 50px;}
+.dcpjyysyfxtable .field-y5 {width: 50px;}
+.dcpjyysyfxtable .field-y6 {width: 50px;}
+.dcpjyysyfxtable .field-y7 {width: 50px;}
+.dcpjyysyfxtable .field-y8 {width: 50px;}
+.dcpjyysyfxtable .field-y9 {width: 50px;}
+.dcpjyysyfxtable .field-y10 {width: 50px;}
+.dcpjyysyfxtable .field-y11 {width: 50px;}
+.dcpjyysyfxtable .field-y12 {width: 50px;}
+.dcpjyysyfxtable .field-y13 {width: 50px;}
+.dcpjyysyfxtable .field-y14 {width: 50px;}
+.dcpjyysyfxtable .field-y15 {width: 50px;}
+.dcpjyysyfxtable .field-y16 {width: 50px;}
+.dcpjyysyfxtable .field-y17 {width: 50px;}
+.dcpjyysyfxtable .field-y18 {width: 50px;}
+.dcpjyysyfxtable .field-y19 {width: 50px;}
+.dcpjyysyfxtable .field-y20 {width: 50px;}
+.dcpjyysyfxtable .field-y21 {width: 50px;}
+.dcpjyysyfxtable .field-y22 {width: 50px;}
+.dcpjyysyfxtable .field-y23 {width: 50px;}
+.dcpjyysyfxtable .field-y24 {width: 50px;}
+.dcpjyysyfxtable .field-y25 {width: 50px;}
+.dcpjyysyfxtable .field-y26 {width: 50px;}
+.dcpjyysyfxtable .field-y27 {width: 50px;}
+.dcpjyysyfxtable .field-y28 {width: 50px;}
+.dcpjyysyfxtable .field-y29 {width: 50px;}
+.dcpjyysyfxtable .field-y30 {width: 50px;}
+.dcpjyysyfxtable .field-y31 {width: 50px;}
+.dcpjyysyfxtable .field-y32 {width: 50px;}
+.dcpjyysyfxtable .field-y33 {width: 50px;}
+.dcpjyysyfxtable .field-y34 {width: 50px;}
+.dcpjyysyfxtable .field-y35 {width: 50px;}
+.dcpjyysyfxtable .field-y36 {width: 50px;}
+.dcpjyysyfxtable .field-y37 {width: 50px;}
+.dcpjyysyfxtable .field-y38 {width: 50px;}
+.dcpjyysyfxtable .field-y39 {width: 50px;}
+.dcpjyysyfxtable .field-y40 {width: 50px;}
+.dcpjyysyfxtable .field-y41 {width: 50px;}
+.dcpjyysyfxtable .field-y42 {width: 50px;}
+.dcpjyysyfxtable .field-y43 {width: 50px;}
+.dcpjyysyfxtable .field-y44 {width: 50px;}
+.dcpjyysyfxtable .field-y45 {width: 50px;}
+.dcpjyysyfxtable .field-y46 {width: 50px;}
+.dcpjyysyfxtable .field-y47 {width: 50px;}
+/*单车平均载客等候时间分析**monitor/dcpjzkdhsjfx.html*/ /*.dcpjzkdhsjfxtable th,.dcpjzkdhsjfxtable td{text-align: center;}*/
+.dcpjzkdhsjfxtable .field-message {width: 110px;}
+.dcpjzkdhsjfxtable .field-y0 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y1 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y2 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y3 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y4 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y5 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y6 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y7 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y8 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y9 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y10 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y11 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y12 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y13 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y14 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y15 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y16 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y17 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y18 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y19 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y20 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y21 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y22 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y23 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y24 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y25 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y26 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y27 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y28 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y29 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y30 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y31 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y32 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y33 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y34 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y35 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y36 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y37 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y38 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y39 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y40 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y41 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y42 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y43 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y44 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y45 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y46 {width: 50px;}
+.dcpjzkdhsjfxtable .field-y47 {width: 50px;}
+/*单车平均载客里程**monitor/dcpjzklc.html*/ /*.dcpjzklctable th,.dcpjzklctable td{text-align: center;}*/
+.dcpjzklctable .field-message {width: 120px;}
+.dcpjzklctable .field-y0 {width: 50px;}
+.dcpjzklctable .field-y1 {width: 50px;}
+.dcpjzklctable .field-y2 {width: 50px;}
+.dcpjzklctable .field-y3 {width: 50px;}
+.dcpjzklctable .field-y4 {width: 50px;}
+.dcpjzklctable .field-y5 {width: 50px;}
+.dcpjzklctable .field-y6 {width: 50px;}
+.dcpjzklctable .field-y7 {width: 50px;}
+.dcpjzklctable .field-y8 {width: 50px;}
+.dcpjzklctable .field-y9 {width: 50px;}
+.dcpjzklctable .field-y10 {width: 50px;}
+.dcpjzklctable .field-y11 {width: 50px;}
+.dcpjzklctable .field-y12 {width: 50px;}
+.dcpjzklctable .field-y13 {width: 50px;}
+.dcpjzklctable .field-y14 {width: 50px;}
+.dcpjzklctable .field-y15 {width: 50px;}
+.dcpjzklctable .field-y16 {width: 50px;}
+.dcpjzklctable .field-y17 {width: 50px;}
+.dcpjzklctable .field-y18 {width: 50px;}
+.dcpjzklctable .field-y19 {width: 50px;}
+.dcpjzklctable .field-y20 {width: 50px;}
+.dcpjzklctable .field-y21 {width: 50px;}
+.dcpjzklctable .field-y22 {width: 50px;}
+.dcpjzklctable .field-y23 {width: 50px;}
+.dcpjzklctable .field-y24 {width: 50px;}
+.dcpjzklctable .field-y25 {width: 50px;}
+.dcpjzklctable .field-y26 {width: 50px;}
+.dcpjzklctable .field-y27 {width: 50px;}
+.dcpjzklctable .field-y28 {width: 50px;}
+.dcpjzklctable .field-y29 {width: 50px;}
+.dcpjzklctable .field-y30 {width: 50px;}
+.dcpjzklctable .field-y31 {width: 50px;}
+.dcpjzklctable .field-y32 {width: 50px;}
+.dcpjzklctable .field-y33 {width: 50px;}
+.dcpjzklctable .field-y34 {width: 50px;}
+.dcpjzklctable .field-y35 {width: 50px;}
+.dcpjzklctable .field-y36 {width: 50px;}
+.dcpjzklctable .field-y37 {width: 50px;}
+.dcpjzklctable .field-y38 {width: 50px;}
+.dcpjzklctable .field-y39 {width: 50px;}
+.dcpjzklctable .field-y40 {width: 50px;}
+.dcpjzklctable .field-y41 {width: 50px;}
+.dcpjzklctable .field-y42 {width: 50px;}
+.dcpjzklctable .field-y43 {width: 50px;}
+.dcpjzklctable .field-y44 {width: 50px;}
+.dcpjzklctable .field-y45 {width: 50px;}
+.dcpjzklctable .field-y46 {width: 50px;}
+.dcpjzklctable .field-y47 {width: 50px;}
+/*单车平均载客时间分析**monitor/dcpjzksjfx.html*/ /*.dcpjzksjfxtable th,.dcpjzksjfxtable td{text-align: center;}*/
+.dcpjzksjfxtable .field-message {width: 110px;}
+.dcpjzksjfxtable .field-y0 {width: 50px;}
+.dcpjzksjfxtable .field-y1 {width: 50px;}
+.dcpjzksjfxtable .field-y2 {width: 50px;}
+.dcpjzksjfxtable .field-y3 {width: 50px;}
+.dcpjzksjfxtable .field-y4 {width: 50px;}
+.dcpjzksjfxtable .field-y5 {width: 50px;}
+.dcpjzksjfxtable .field-y6 {width: 50px;}
+.dcpjzksjfxtable .field-y7 {width: 50px;}
+.dcpjzksjfxtable .field-y8 {width: 50px;}
+.dcpjzksjfxtable .field-y9 {width: 50px;}
+.dcpjzksjfxtable .field-y10 {width: 50px;}
+.dcpjzksjfxtable .field-y11 {width: 50px;}
+.dcpjzksjfxtable .field-y12 {width: 50px;}
+.dcpjzksjfxtable .field-y13 {width: 50px;}
+.dcpjzksjfxtable .field-y14 {width: 50px;}
+.dcpjzksjfxtable .field-y15 {width: 50px;}
+.dcpjzksjfxtable .field-y16 {width: 50px;}
+.dcpjzksjfxtable .field-y17 {width: 50px;}
+.dcpjzksjfxtable .field-y18 {width: 50px;}
+.dcpjzksjfxtable .field-y19 {width: 50px;}
+.dcpjzksjfxtable .field-y20 {width: 50px;}
+.dcpjzksjfxtable .field-y21 {width: 50px;}
+.dcpjzksjfxtable .field-y22 {width: 50px;}
+.dcpjzksjfxtable .field-y23 {width: 50px;}
+.dcpjzksjfxtable .field-y24 {width: 50px;}
+.dcpjzksjfxtable .field-y25 {width: 50px;}
+.dcpjzksjfxtable .field-y26 {width: 50px;}
+.dcpjzksjfxtable .field-y27 {width: 50px;}
+.dcpjzksjfxtable .field-y28 {width: 50px;}
+.dcpjzksjfxtable .field-y29 {width: 50px;}
+.dcpjzksjfxtable .field-y30 {width: 50px;}
+.dcpjzksjfxtable .field-y31 {width: 50px;}
+.dcpjzksjfxtable .field-y32 {width: 50px;}
+.dcpjzksjfxtable .field-y33 {width: 50px;}
+.dcpjzksjfxtable .field-y34 {width: 50px;}
+.dcpjzksjfxtable .field-y35 {width: 50px;}
+.dcpjzksjfxtable .field-y36 {width: 50px;}
+.dcpjzksjfxtable .field-y37 {width: 50px;}
+.dcpjzksjfxtable .field-y38 {width: 50px;}
+.dcpjzksjfxtable .field-y39 {width: 50px;}
+.dcpjzksjfxtable .field-y40 {width: 50px;}
+.dcpjzksjfxtable .field-y41 {width: 50px;}
+.dcpjzksjfxtable .field-y42 {width: 50px;}
+.dcpjzksjfxtable .field-y43 {width: 50px;}
+.dcpjzksjfxtable .field-y44 {width: 50px;}
+.dcpjzksjfxtable .field-y45 {width: 50px;}
+.dcpjzksjfxtable .field-y46 {width: 50px;}
+.dcpjzksjfxtable .field-y47 {width: 50px;}
+/*多日未上线车辆统计**monitor/drwsxcl.html*/ /*.offlinetable th,.offlinetable td{text-align: center;}*/
+.offlinetable .field-id {width: 40px;}
+.offlinetable .field-STIME {width: 160px;}
+.offlinetable .field-COMP_NAME {width: 240px;}
+/*里程统计**monitor/fgslctj.html*/ /*.fgslctjtable th,.fgslctjtable td{text-align: center;}*/
+.fgslctjtable .field-id {width: 40px;}
+/*里程统计**monitor/findcompxx.html*/ /*.findcompxxtable th,.findcompxxtable td{text-align: center;}*/
+.findcompxxtable .field-dojoId {width: 40px;}
+.findcompxxtable .field-SPEED_TIME {width: 160px;}
+/*里程统计**monitor/findoperday.html*/ /*.findoperdaytable th,.findoperdaytable td{text-align: center;}*/
+.findoperdaytable .field-id {width: 40px;}
+.findoperdaytable .field-DB_TIME {width: 170px;}
+.findoperdaytable .field-JDDBD {width: 100px;}
+.findoperdaytable .field-JDDSB {width: 100px;}
+.findoperdaytable .field-RUN_TIMES {width: 130px;}
+.findoperdaytable .field-RUN_TIMES {width: 130px;}
+.findoperdaytable .field-ACTUAL_LOAD_RATE {width: 130px;}
+.findoperdaytable .field-RUN_TIME {width: 120px;}
+.findoperdaytable .field-WAITTING_TIME {width: 160px;}
+.findoperdaytable .field-ACTUAL_LOAD_MILEAGE {width: 160px;}
+.findoperdaytable .field-NO_LOAD_MILEAGE {width: 160px;}
+/*里程统计**monitor/findopermonth.html*/ /*.findopermonthtable th,.findopermonthtable td{text-align: center;}*/
+.findopermonthtable .field-id {width: 40px;}
+.findopermonthtable .field-REPORT_TIME {width: 100px;}
+.findopermonthtable .field-REPORE_VHICNO {width: 100px;}
+.findopermonthtable .field-REPORE_VHIC {width: 130px;}
+.findopermonthtable .field-REPORE_NO {width: 130px;}
+.findopermonthtable .field-REPORE_TURNOVER {width: 130px;}
+.findopermonthtable .field-REPORE_RADE {width: 130px;}
+.findopermonthtable .field-REPORE_AMOUNT_REVENUE {width: 130px;}
+.findopermonthtable .field-REPORE_ACTUAL_LOADING {width: 130px;}
+.findopermonthtable .field-REPORE_CAR_TIME {width: 160px;}
+.findopermonthtable .field-REPROE_REVENUE_TIME {width: 160px;}
+.findopermonthtable .field-REPORE_WAIT_TIME {width: 160px;}
+.findopermonthtable .field-REPORE_MILEAGE {width: 160px;}
+.findopermonthtable .field-REPORE_ACTUAL_MILEAGE {width: 160px;}
+.findopermonthtable .field-REPORE_EMPTY_MILEAGE {width: 160px;}
+/*里程统计**monitorfindoperyear.html/*/ /*.findoperyeartable th,.findoperyeartable td{text-align: center;}*/
+.findoperyeartable .field-id {width: 40px;}
+.findoperyeartable .field-REPORT_TIME {width: 100px;}
+.findoperyeartable .field-JDDSB {width: 100px;}
+.findoperyeartable .field-PJREPORE_VHIC {width: 180px;}
+.findoperyeartable .field-REPORE_NO {width: 130px;}
+.findoperyeartable .field-MONTHREPORE_NO {width: 180px;}
+.findoperyeartable .field-DAYREPORE_NO {width: 180px;}
+.findoperyeartable .field-REPORE_RADE {width: 130px;}
+.findoperyeartable .field-REPORE_CAR_TIME {width: 130px;}
+.findoperyeartable .field-PJREPORE_CAR_TIME {width: 160px;}
+.findoperyeartable .field-REPORE_AMOUNT_REVENUE {width: 160px;}
+.findoperyeartable .field-MONTHREPORE_AMOUNT_REVENUE {width: 160px;}
+.findoperyeartable .field-DAYREPORE_AMOUNT_REVENUE {width: 160px;}
+.findoperyeartable .field-REPORE_MILEAGE {width: 160px;}
+.findoperyeartable .field-MONTHREPORE_MILEAGE {width: 160px;}
+.findoperyeartable .field-DAYREPORE_MILEAGE {width: 160px;}
+.findoperyeartable .field-REPORE_ACTUAL_MILEAGE {width: 160px;}
+.findoperyeartable .field-MONTHREPORE_ACTUAL_MILEAGE {width: 220px;}
+.findoperyeartable .field-DAYREPORE_ACTUAL_MILEAGE {width: 220px;}
+.findoperyeartable .field-REPORE_EMPTY_MILEAGE {width: 160px;}
+.findoperyeartable .field-MONTHREPORE_EMPTY_MILEAGE {width: 220px;}
+.findoperyeartable .field-DAYREPORE_EMPTY_MILEAGE {width: 220px;}
+.findoperyeartable .field-PEPORE_ACTUAL_LOADING {width: 160px;}
+/*人员查询**monitor/findrenyuan.html*/ /*.findrenyuantable th,.findrenyuantable td{text-align: center;}*/
+.findrenyuantable .field-dojoId {width: 40px;}
+.findrenyuantable .field-VEHI_NO {width: 260px;}
+.findrenyuantable .field-COMP_NAME {width: 160px;}
+.findrenyuantable .field-OWN_NAME {width: 160px;}
+.findrenyuantable .field-OWN_TEL {width: 160px;}
+/*里程统计**monitor/findvehinfo.html*/ /*.findvehinfotable th,.findvehinfotable td{text-align: center;}*/
+.findvehinfotable .field-dojoId {width: 40px;}
+.findvehinfotable .field-COMP_NAME {width: 260px;}
+.findvehinfotable .field-VEHI_NO {width: 160px;}
+.findvehinfotable .field-VEHI_SIM {width: 160px;}
+.findvehinfotable .field-MDT_NO {width: 160px;}
+.findvehinfotable .field-VT_NAME {width: 160px;}
+.findvehinfotable .field-MT_NAME {width: 160px;}
+.findvehinfotable .field-OWN_NAME {width: 160px;}
+.findvehinfotable .field-OWN_TEL {width: 160px;}
+.findvehinfotable .field-VC_NAME {width: 160px;}
+/*营运信息查询**monitor/findyyinfo.html*/ /*.findyyinfotable th,.findyyinfotable td{text-align: center;}*/
+.findyyinfotable .field-dojoId {width: 40px;}
+.findyyinfotable .field-VEHI_NO {width: 100px;}
+.findyyinfotable .field-YINGYUN {width: 100px;}
+.findyyinfotable .field-SHANGCHE {width: 160px;}
+.findyyinfotable .field-XIACHE {width: 160px;}
+.findyyinfotable .field-JINE {width: 80px;}
+.findyyinfotable .field-JICHENG {width: 120px;}
+.findyyinfotable .field-KONGSHI {width: 120px;}
+.findyyinfotable .field-DENGHOU {width: 100px;}
+.findyyinfotable .field-JIAOYITYPE {width: 160px;}
+/*业户查询**monitor/fwzlzhpd.html*/ /*.fwzlzhpdtable th,.fwzlzhpdtable td{text-align: center;}*/
+.fwzlzhpdtable .field-dojoId {width: 40px;}
+/*业户查询**monitor/khxxcf.html*/ /*.khxxcftable th,.khxxcftable td{text-align: center;}*/
+.khxxcftable .field-dojoId {width: 40px;}
+.khxxcftable .field-TBSJQ {width: 150px;}
+.khxxcftable .field-TBSJZ {width: 150px;}
+.khxxcftable .field-DBSJCYZGZH {width: 150px;}
+.khxxcftable .field-DBSJXM {width: 80px;}
+.khxxcftable .field-DBSJSFZH {width: 160px;}
+.khxxcftable .field-CPHM {width: 120px;}
+.khxxcftable .field-SHRY {width: 100px;}
+.khxxcftable .field-QYMC {width: 80px;}
+.khxxcftable .field-CPYS {width: 80px;}
+/*业户查询**monitor/khxxts.html*/ /*.khxxtstable th,.khxxtstable td{text-align: center;}*/
+.khxxtstable .field-dojoId {width: 40px;}
+.khxxtstable .field-ILLEGAL_FACT {width: 500px;}
+.khxxtstable .field-ILLEGAL_TIME {width: 130px;}
+.khxxtstable .field-ILLEGAL_LOCATION {width: 150px;}
+.khxxtstable .field-VEHICLE_PLATE_NUMBER {width: 100px;}
+.khxxtstable .field-PARTY_NAME {width: 110px;}
+.khxxtstable .field-COMPANY_NAME {width: 150px;}
+.khxxtstable .field-COMPANY_LICENSE_NUMBER {width: 120px;}
+/*业户查询**monitor/khxxwz.html*/ /*.khxxwztable th,.khxxwztable td{text-align: center;}*/
+.khxxwztable .field-dojoId {width: 40px;}
+.khxxwztable .field-ILLEGAL_FACT {width: 500px;}
+.khxxwztable .field-ILLEGAL_TIME {width: 130px;}
+.khxxwztable .field-VEHICLE_PLATE_NUMBER {width: 100px;}
+.khxxwztable .field-COMPANY_NAME {width: 160px;}
+.khxxwztable .field-PARTY_NAME {width: 120px;}
+.khxxwztable .field-COMPANY_LICENSE_NUMBER {width: 120px;}
+.khxxwztable .field-FINE {width: 80px;}
+.khxxwztable .field-DEDUCTION_SCORE {width: 80px;}
+.khxxwztable .field-PUNISH_UNIT {width: 80px;}
+.khxxwztable .field-ILLEGAL_LOCATION {width: 160px;}
+/*里程统计**monitor/lctj.html*/ /*.lctjtable th,.lctjtable td{text-align: center;}*/
+.lctjtable .field-id {width: 40px;}
+.lctjtable .field-SPEED_TIME {width: 160px;}
+/*业户查询**monitor/qyycxxtj.html*/ /*.qyycxxtjtable th,.qyycxxtjtable td{text-align: center;}*/
+.qyycxxtjtable .field-dojoId {width: 40px;}
+.qyycxxtjtable .field-COMP {width: 260px;}
+.qyycxxtjtable .field-TOTAL {width: 100px;}
+.qyycxxtjtable .field-DRIVING {width: 100px;}
+.qyycxxtjtable .field-CCL {width: 100px;}
+.qyycxxtjtable .field-MONEY {width: 100px;}
+.qyycxxtjtable .field-TIMES {width: 100px;}
+.qyycxxtjtable .field-DISTANCE {width: 100px;}
+.qyycxxtjtable .field-EMPTY {width: 100px;}
+.qyycxxtjtable .field-TOTALDIS {width: 120px;}
+.qyycxxtjtable .field-YPERCENT {width: 100px;}
+.qyycxxtjtable .field-TIMEOUT {width: 160px;}
+.qyycxxtjtable .field-WAITTIME {width: 180px;}
+/*速度曲线报表**monitor/sdqxbj.html*/ /*.speedtable th,.speedtable td{text-align: center;}*/
+.speedtable .field-id {width: 40px;}
+.speedtable .field-SPEED_TIME {width: 160px;}
+/*里程统计**monitor/shizailv.html*/ /*.shizailvtable th,.shizailvtable td{text-align: center;}*/
+.shizailvtable .field-message {width: 110px;}
+.shizailvtable .field-y0 {width: 50px;}
+.shizailvtable .field-y1 {width: 50px;}
+.shizailvtable .field-y2 {width: 50px;}
+.shizailvtable .field-y3 {width: 50px;}
+.shizailvtable .field-y4 {width: 50px;}
+.shizailvtable .field-y5 {width: 50px;}
+.shizailvtable .field-y6 {width: 50px;}
+.shizailvtable .field-y7 {width: 50px;}
+.shizailvtable .field-y8 {width: 50px;}
+.shizailvtable .field-y9 {width: 50px;}
+.shizailvtable .field-y10 {width: 50px;}
+.shizailvtable .field-y11 {width: 50px;}
+.shizailvtable .field-y12 {width: 50px;}
+.shizailvtable .field-y13 {width: 50px;}
+.shizailvtable .field-y14 {width: 50px;}
+.shizailvtable .field-y15 {width: 50px;}
+.shizailvtable .field-y16 {width: 50px;}
+.shizailvtable .field-y17 {width: 50px;}
+.shizailvtable .field-y18 {width: 50px;}
+.shizailvtable .field-y19 {width: 50px;}
+.shizailvtable .field-y20 {width: 50px;}
+.shizailvtable .field-y21 {width: 50px;}
+.shizailvtable .field-y22 {width: 50px;}
+.shizailvtable .field-y23 {width: 50px;}
+.shizailvtable .field-y24 {width: 50px;}
+.shizailvtable .field-y25 {width: 50px;}
+.shizailvtable .field-y26 {width: 50px;}
+.shizailvtable .field-y27 {width: 50px;}
+.shizailvtable .field-y28 {width: 50px;}
+.shizailvtable .field-y29 {width: 50px;}
+.shizailvtable .field-y30 {width: 50px;}
+.shizailvtable .field-y31 {width: 50px;}
+.shizailvtable .field-y32 {width: 50px;}
+.shizailvtable .field-y33 {width: 50px;}
+.shizailvtable .field-y34 {width: 50px;}
+.shizailvtable .field-y35 {width: 50px;}
+.shizailvtable .field-y36 {width: 50px;}
+.shizailvtable .field-y37 {width: 50px;}
+.shizailvtable .field-y38 {width: 50px;}
+.shizailvtable .field-y39 {width: 50px;}
+.shizailvtable .field-y40 {width: 50px;}
+.shizailvtable .field-y41 {width: 50px;}
+.shizailvtable .field-y42 {width: 50px;}
+.shizailvtable .field-y43 {width: 50px;}
+.shizailvtable .field-y44 {width: 50px;}
+.shizailvtable .field-y45 {width: 50px;}
+.shizailvtable .field-y46 {width: 50px;}
+.shizailvtable .field-y47 {width: 50px;}
+/*业户查询**monitor/sjsbxx.html*/ /*.sjsbxxtable th,.sjsbxxtable td{text-align: center;}*/
+.sjsbxxtable .field-dojoId {width: 40px;}
+.sjsbxxtable .field-BJBZ {width: 80px;}
+.sjsbxxtable .field-CLZT {width: 80px;}
+.sjsbxxtable .field-JD {width: 120px;}
+.sjsbxxtable .field-WD {width: 120px;}
+.sjsbxxtable .field-SD {width: 100px;}
+.sjsbxxtable .field-FX {width: 100px;}
+.sjsbxxtable .field-SJ {width: 180px;}
+.sjsbxxtable .field-QYJYXKZH {width: 150px;}
+.sjsbxxtable .field-JSYCYZGZH {width: 150px;}
+.sjsbxxtable .field-CPHM {width: 120px;}
+.sjsbxxtable .field-KJSJ {width: 180px;}
+/*业户查询**monitor/sjxbxx.html*/ /*.sjxbxxtable th,.sjxbxxtable td{text-align: center;}*/
+.sjxbxxtable .field-dojoId {width: 40px;}
+.sjxbxxtable .field-BJBZ {width: 80px;}
+.sjxbxxtable .field-CLZT {width: 80px;}
+.sjxbxxtable .field-JD {width: 120px;}
+.sjxbxxtable .field-WD {width: 120px;}
+.sjxbxxtable .field-SD {width: 100px;}
+.sjxbxxtable .field-FX {width: 100px;}
+.sjxbxxtable .field-SJ {width: 180px;}
+.sjxbxxtable .field-QYJYXKZH {width: 150px;}
+.sjxbxxtable .field-JSYCYZGZH {width: 150px;}
+.sjxbxxtable .field-CPHM {width: 120px;}
+.sjxbxxtable .field-JJQKZ {width: 80px;}
+.sjxbxxtable .field-DBKJSJ {width: 180px;}
+.sjxbxxtable .field-DBGJSJ {width: 180px;}
+.sjxbxxtable .field-DBLC {width: 80px;}
+.sjxbxxtable .field-DBYYLC {width: 100px;}
+.sjxbxxtable .field-CC {width: 60px;}
+.sjxbxxtable .field-JSSJ {width: 180px;}
+.sjxbxxtable .field-ZJJE {width: 80px;}
+.sjxbxxtable .field-KSJE {width: 80px;}
+.sjxbxxtable .field-KC {width: 60px;}
+.sjxbxxtable .field-BJLC {width: 80px;}
+.sjxbxxtable .field-ZJLC {width: 80px;}
+.sjxbxxtable .field-ZYYLC {width: 80px;}
+.sjxbxxtable .field-DJ {width: 60px;}
+.sjxbxxtable .field-ZYYCS {width: 80px;}
+.sjxbxxtable .field-QTFS {width: 80px;}
+/*业户查询**monitor/sjycxxtj.html*/ /*.sjycxxtjtable th,.sjycxxtjtable td{text-align: center;}*/
+.sjycxxtjtable .field-dojoId {width: 40px;}
+.sjycxxtjtable .field-COMP {width: 260px;}
+.sjycxxtjtable .field-YINGYUN {width: 100px;}
+.sjycxxtjtable .field-MONEY {width: 100px;}
+.sjycxxtjtable .field-TIMES {width: 100px;}
+.sjycxxtjtable .field-DISTANCE {width: 100px;}
+.sjycxxtjtable .field-EMPTY {width: 100px;}
+.sjycxxtjtable .field-TOTAL {width: 110px;}
+.sjycxxtjtable .field-PERCENT {width: 130px;}
+.sjycxxtjtable .field-TIMEOUT {width: 150px;}
+.sjycxxtjtable .field-WAITTIME {width: 180px;}
+/*司机账号信息**monitor/sjzhxx.html*/ /*.sjzhxxtable th,.sjzhxxtable td{text-align: center;}*/
+.sjzhxxtable .field-dojoId {width: 40px;}
+.sjzhxxtable .field-NAME {width: 100px;}
+.sjzhxxtable .field-ID_NUMBER {width: 160px;}
+.sjzhxxtable .field-YHNAME {width: 260px;}
+.sjzhxxtable .field-LICENSE_NUMBER {width: 120px;}
+.sjzhxxtable .field-LICENSE_VALID_PERIOD_END {width: 180px;}
+.sjzhxxtable .field-ANNUAL_REVIEW_VALID_PERIOD_END {width: 180px;}
+.sjzhxxtable .field-MOBILE_PHONE {width: 120px;}
+.sjzhxxtable .field-CER_SERIAL_NUMBER {width: 160px;}
+.sjzhxxtable .field-DRIVING_LICENSE {width: 160px;}
+/*司机资质信息**monitor/sjzzxx.html*/ /*.sjzzxxtable th,.sjzzxxtable td{text-align: center;}*/
+.sjzzxxtable .field-dojoId {width: 40px;}
+.sjzzxxtable .field-OWN_NAME {width: 100px;}
+.sjzzxxtable .field-CAR_NO {width: 160px;}
+.sjzzxxtable .field-COMP_NAME {width: 260px;}
+.sjzzxxtable .field-CY_ZGZ {width: 160px;}
+.sjzzxxtable .field-CY_TIME {width: 180px;}
+.sjzzxxtable .field-NS_TIME {width: 180px;}
+.sjzzxxtable .field-OWN_TEL {width: 120px;}
+.sjzzxxtable .field-FW_NO {width: 160px;}
+.sjzzxxtable .field-JS_NO {width: 160px;}
+/*业户查询**monitor/taxiyyts.html*/
+.yytsclass th,.yytsclass td{text-align: center;}
+.yytsclass .field-DATE {width: 80px;}
+.yytsclass .field-a1 {width: 50px;}
+.yytsclass .field-a2 {width: 50px;}
+.yytsclass .field-a3 {width: 50px;}
+.yytsclass .field-a4 {width: 50px;}
+.yytsclass .field-a5 {width: 50px;}
+.yytsclass .field-a6 {width: 50px;}
+.yytsclass .field-a7 {width: 50px;}
+.yytsclass .field-a8 {width: 50px;}
+.yytsclass .field-a9 {width: 50px;}
+.yytsclass .field-a10 {width: 50px;}
+.yytsclass .field-a11 {width: 50px;}
+.yytsclass .field-a12 {width: 50px;}
+.yytsclass .field-a13 {width: 50px;}
+.yytsclass .field-a14 {width: 50px;}
+.yytsclass .field-a15 {width: 50px;}
+.yytsclass .field-a16 {width: 50px;}
+.yytsclass .field-a17 {width: 50px;}
+.yytsclass .field-a18 {width: 50px;}
+.yytsclass .field-a19 {width: 50px;}
+.yytsclass .field-a20 {width: 50px;}
+.yytsclass .field-a21 {width: 50px;}
+.yytsclass .field-a22 {width: 50px;}
+.yytsclass .field-a23 {width: 50px;}
+.yytsclass{height:260px;}
+.tsystyclass th,.tsystyclass td{text-align: center;}
+.tsystyclass .field-DATE {width: 100px;}
+.tsystyclass .field-a0 {width: 50px;}
+.tsystyclass .field-a1 {width: 50px;}
+.tsystyclass .field-a2 {width: 50px;}
+.tsystyclass .field-a3 {width: 50px;}
+.tsystyclass .field-a4 {width: 50px;}
+.tsystyclass .field-a5 {width: 50px;}
+.tsystyclass .field-a6 {width: 50px;}
+.tsystyclass .field-a7 {width: 50px;}
+.tsystyclass .field-a8 {width: 50px;}
+.tsystyclass .field-a9 {width: 50px;}
+.tsystyclass .field-a10 {width: 50px;}
+.tsystyclass .field-a11 {width: 50px;}
+.tsystyclass .field-a12 {width: 50px;}
+.tsystyclass .field-a13 {width: 50px;}
+.tsystyclass .field-a14 {width: 50px;}
+.tsystyclass .field-a15 {width: 50px;}
+.tsystyclass .field-a16 {width: 50px;}
+.tsystyclass .field-a17 {width: 50px;}
+.tsystyclass .field-a18 {width: 50px;}
+.tsystyclass{height:170px;}
+/*业户查询**monitor/tbxx.html*/ /*.tbxxtable th,.tbxxtable td{text-align: center;}*/
+.tbxxtable .field-dojoId {width: 40px;}
+.tbxxtable .field-TBSJQ {width: 180px;}
+.tbxxtable .field-TBSJZ {width: 180px;}
+.tbxxtable .field-DBSJBH {width: 150px;}
+.tbxxtable .field-DBSJXM {width: 150px;}
+.tbxxtable .field-TBSJBH {width: 150px;}
+.tbxxtable .field-TBSJXM {width: 150px;}
+.tbxxtable .field-CPHM {width: 100px;}
+.tbxxtable .field-SHRY {width: 120px;}
+.tbxxtable .field-QYMC {width: 80px;}
+/*车辆定位查询**monitor/vehpos.html*/ /*.vehpostable th,.vehpostable td{text-align: center;}*/
+.vehpostable .field-dojoId {width: 40px;}
+.vehpostable .field-SPEED {width: 80px;}
+.vehpostable .field-STIME {width: 160px;}
+.vehpostable .field-STATUS {width: 40px;}
+.vehpostable .field-HEADING {width: 40px;}
+.vehpostable .field-PY {width: 100px;}
+.vehpostable .field-PX {width: 100px;}
+.vehpostable .field-VEHI_NO {width: 100px;}
+.vehpostable .field-VEHI_SIM {width: 120px;}
+.vehpostable .field-COMP_NAME {width: 280px;}
+.vehpostable .field-OWN_NAME {width: 100px;}
+.vehpostable .field-OWN_TEL {width: 120px;}
+/*车辆在线统计**monitor/wsxcl.html*/
+.offlinetable th,.offlinetable td{text-align: center;}
+.offlinetable .field-id {width: 40px;}
+.offlinetable .field-STIME {width: 160px;}
+.offlinetable .field-COMP_NAME {width: 240px;}
+/*里程统计**monitor/zclfx.html*/ /*.zclfxtable th,.zclfxtable td{text-align: center;}*/
+.zclfxtable .field-message {width: 110px;}
+.zclfxtable .field-y0 {width: 50px;}
+.zclfxtable .field-y1 {width: 50px;}
+.zclfxtable .field-y2 {width: 50px;}
+.zclfxtable .field-y3 {width: 50px;}
+.zclfxtable .field-y4 {width: 50px;}
+.zclfxtable .field-y5 {width: 50px;}
+.zclfxtable .field-y6 {width: 50px;}
+.zclfxtable .field-y7 {width: 50px;}
+.zclfxtable .field-y8 {width: 50px;}
+.zclfxtable .field-y9 {width: 50px;}
+.zclfxtable .field-y10 {width: 50px;}
+.zclfxtable .field-y11 {width: 50px;}
+.zclfxtable .field-y12 {width: 50px;}
+.zclfxtable .field-y13 {width: 50px;}
+.zclfxtable .field-y14 {width: 50px;}
+.zclfxtable .field-y15 {width: 50px;}
+.zclfxtable .field-y16 {width: 50px;}
+.zclfxtable .field-y17 {width: 50px;}
+.zclfxtable .field-y18 {width: 50px;}
+.zclfxtable .field-y19 {width: 50px;}
+.zclfxtable .field-y20 {width: 50px;}
+.zclfxtable .field-y21 {width: 50px;}
+.zclfxtable .field-y22 {width: 50px;}
+.zclfxtable .field-y23 {width: 50px;}
+.zclfxtable .field-y24 {width: 50px;}
+.zclfxtable .field-y25 {width: 50px;}
+.zclfxtable .field-y26 {width: 50px;}
+.zclfxtable .field-y27 {width: 50px;}
+.zclfxtable .field-y28 {width: 50px;}
+.zclfxtable .field-y29 {width: 50px;}
+.zclfxtable .field-y30 {width: 50px;}
+.zclfxtable .field-y31 {width: 50px;}
+.zclfxtable .field-y32 {width: 50px;}
+.zclfxtable .field-y33 {width: 50px;}
+.zclfxtable .field-y34 {width: 50px;}
+.zclfxtable .field-y35 {width: 50px;}
+.zclfxtable .field-y36 {width: 50px;}
+.zclfxtable .field-y37 {width: 50px;}
+.zclfxtable .field-y38 {width: 50px;}
+.zclfxtable .field-y39 {width: 50px;}
+.zclfxtable .field-y40 {width: 50px;}
+.zclfxtable .field-y41 {width: 50px;}
+.zclfxtable .field-y42 {width: 50px;}
+.zclfxtable .field-y43 {width: 50px;}
+.zclfxtable .field-y44 {width: 50px;}
+.zclfxtable .field-y45 {width: 50px;}
+.zclfxtable .field-y46 {width: 50px;}
+.zclfxtable .field-y47 {width: 50px;}
+/*重点区域上线率分析**monitor/zdqusxlfx.html*/ /*.zdqusxlfxtable th,.zdqusxlfxtable td{text-align: center;}*/
+.zdqusxlfxtable .field-message {width: 110px;}
+.zdqusxlfxtable .field-y0 {width: 50px;}
+.zdqusxlfxtable .field-y1 {width: 50px;}
+.zdqusxlfxtable .field-y2 {width: 50px;}
+.zdqusxlfxtable .field-y3 {width: 50px;}
+.zdqusxlfxtable .field-y4 {width: 50px;}
+.zdqusxlfxtable .field-y5 {width: 50px;}
+.zdqusxlfxtable .field-y6 {width: 50px;}
+.zdqusxlfxtable .field-y7 {width: 50px;}
+.zdqusxlfxtable .field-y8 {width: 50px;}
+.zdqusxlfxtable .field-y9 {width: 50px;}
+.zdqusxlfxtable .field-y10 {width: 50px;}
+.zdqusxlfxtable .field-y11 {width: 50px;}
+.zdqusxlfxtable .field-y12 {width: 50px;}
+.zdqusxlfxtable .field-y13 {width: 50px;}
+.zdqusxlfxtable .field-y14 {width: 50px;}
+.zdqusxlfxtable .field-y15 {width: 50px;}
+.zdqusxlfxtable .field-y16 {width: 50px;}
+.zdqusxlfxtable .field-y17 {width: 50px;}
+.zdqusxlfxtable .field-y18 {width: 50px;}
+.zdqusxlfxtable .field-y19 {width: 50px;}
+.zdqusxlfxtable .field-y20 {width: 50px;}
+.zdqusxlfxtable .field-y21 {width: 50px;}
+.zdqusxlfxtable .field-y22 {width: 50px;}
+.zdqusxlfxtable .field-y23 {width: 50px;}
+.zdqusxlfxtable .field-y24 {width: 50px;}
+.zdqusxlfxtable .field-y25 {width: 50px;}
+.zdqusxlfxtable .field-y26 {width: 50px;}
+.zdqusxlfxtable .field-y27 {width: 50px;}
+.zdqusxlfxtable .field-y28 {width: 50px;}
+.zdqusxlfxtable .field-y29 {width: 50px;}
+.zdqusxlfxtable .field-y30 {width: 50px;}
+.zdqusxlfxtable .field-y31 {width: 50px;}
+.zdqusxlfxtable .field-y32 {width: 50px;}
+.zdqusxlfxtable .field-y33 {width: 50px;}
+.zdqusxlfxtable .field-y34 {width: 50px;}
+.zdqusxlfxtable .field-y35 {width: 50px;}
+.zdqusxlfxtable .field-y36 {width: 50px;}
+.zdqusxlfxtable .field-y37 {width: 50px;}
+.zdqusxlfxtable .field-y38 {width: 50px;}
+.zdqusxlfxtable .field-y39 {width: 50px;}
+.zdqusxlfxtable .field-y40 {width: 50px;}
+.zdqusxlfxtable .field-y41 {width: 50px;}
+.zdqusxlfxtable .field-y42 {width: 50px;}
+.zdqusxlfxtable .field-y43 {width: 50px;}
+.zdqusxlfxtable .field-y44 {width: 50px;}
+.zdqusxlfxtable .field-y45 {width: 50px;}
+.zdqusxlfxtable .field-y46 {width: 50px;}
+.zdqusxlfxtable .field-y47 {width: 50px;}
+/*业户查询**monitor/zfjcxx.html*/ /*.zfjcxxtable th,.zfjcxxtable td{text-align: center;}*/
+.zfjcxxtable .field-dojoId {width: 40px;}
+.zfjcxxtable .field-VEHICLE_PLATE_NUMBER {width: 120px;}
+.zfjcxxtable .field-CAUSE {width: 260px;}
+.zfjcxxtable .field-ILLEGAL_TIME {width: 130px;}
+.zfjcxxtable .field-PARTY_NAME {width: 100px;}
+.zfjcxxtable .field-ILLEGAL_LOCATION {width: 180px;}
+/*车辆监控**yjzh/cljk.html*/
+.yhGridDiv th,.yhGridDiv td {text-align: center;}
+.yhGridDiv .field-dojoId {width: 45px;}
+.yhGridDiv .field-userName {width: 250px;}
+.yhGridDiv .field-tel {width: 200px;}
+/*视频监控**yjzh/cljksp.html*/
+.yhGridDiv th,.yhGridDiv td {text-align: center;}
+.yhGridDiv .field-dojoId {width: 45px;}
+.yhGridDiv .field-userName {width: 250px;}
+.yhGridDiv .field-tel {width: 200px;}
+/***lcDgrid.html*/
+.lcDivGrid th,.lcDivGrid td{text-align: center;}
+.lcDivGrid .field-dojoId {width:45px;}
+.lcDivGrid .field-userName {width:250px;}
+.lcDivGrid .field-tel {width:200px;}
+/***vehicleDgrid.html*/
+.vehicleGridDiv th,.vehicleGridDiv td{text-align: center;}
+.vehicleGridDiv .field-dojoId {width:45px;}
+.vehicleGridDiv .field-no {width:8%;}
+.vehicleGridDiv .field-baId {width:16%;}
+.vehicleGridDiv .field-jyxkzh {width:8%;}
+.vehicleGridDiv .field-cp {width:8%;}
+.vehicleGridDiv .field-jbdl {width:16%;}
+.vehicleGridDiv .field-jbsj{width:8%;}
+.vehicleGridDiv .field-remark{width:10%;}
+/***vehicleydDgrid.html*/
+.vehicleydGridDiv th,.vehicleydGridDiv td{text-align: center;}
+.vehicleydGridDiv .field-dojoId {width:45px;}
+.vehicleydGridDiv .field-name {width:120px;}
+.vehicleydGridDiv .field-sim {width:120px;}
+.vehicleydGridDiv .field-sim {width:120px;}
+/***yehuDgrid.html*/
+.yehuGridDiv th,.yehuGridDiv td{text-align: center;}
+.yehuGridDiv .field-dojoId {width:45px;}
+.yehuGridDiv .field-userName {width:250px;}
+.yehuGridDiv .field-tel {width:200px;}
+/***yehuydDgrid.html*/
+.yehuydGridDiv th,.yehuydGridDiv td{text-align: center;}
+.yehuydGridDiv .field-dojoId {width:45px;}
+.yehuydGridDiv .field-userName {width:250px;}
+.yehuydGridDiv .field-tel {width:200px;}
+/***yjzhAlk.html*/
+.alkGridDiv th,.alkGridDiv td{text-align: center;}
+.alkGridDiv .field-dojoId {width:45px;}
+.alkGridDiv .field-userName {width:250px;}
+.alkGridDiv .field-tel {width:200px;}
+/***yjzhBs.html*/
+.yhGridDiv th,.yhGridDiv td {text-align: center;}
+.yhGridDiv .field-dojoId {width: 45px;}
+.yhGridDiv .field-userName {width: 250px;}
+.yhGridDiv .field-tel {width: 200px;}
+/***yjzhCxtj.html*/
+.yhGridDiv th,.yhGridDiv td {text-align: center;}
+.yhGridDiv .field-dojoId {width: 45px;}
+.yhGridDiv .field-userName {width: 250px;}
+.yhGridDiv .field-tel {width: 200px;}
+/***yjzhFlfg.html*/
+.flfgGridDiv th,.flfgGridDiv td{text-align: center;}
+.flfgGridDiv .field-dojoId {width:45px;}
+.flfgGridDiv .field-userName {width:250px;}
+.flfgGridDiv .field-tel {width:200px;}
+/***yjzhJr.html*/
+.yjzhJrGridDiv th,.yjzhJrGridDiv td {text-align: center;}
+.yjzhJrGridDiv .field-dojoId {width: 45px;}
+.yjzhJrGridDiv .field-userName {width: 250px;}
+.yjzhJrGridDiv .field-tel {width: 200px;}
+/***yjzhPgbz.html*/
+.yhGridDiv th,.yhGridDiv td {text-align: center;}
+.yhGridDiv .field-dojoId {width: 45px;}
+.yhGridDiv .field-userName {width: 250px;}
+.yhGridDiv .field-tel {width: 200px;}
+/***yjzhQd.html*/
+.yjzhQdGridDiv th, .yjzhQdGridDiv td{text-align: center;}
+.yjzhQdGridDiv .field-dojoId {width:45px;}
+.yjzhQdGridDiv .field-userName {width:250px;}
+.yjzhQdGridDiv .field-tel {width:200px;}
+/***yjzhQd_v1.html*/
+.yjzhQdGridDiv th, .yjzhQdGridDiv td{text-align: center;}
+.yjzhQdGridDiv .field-dojoId {width:45px;}
+.yjzhQdGridDiv .field-userName {width:250px;}
+.yjzhQdGridDiv .field-tel {width:200px;}
+/***yjzhXxfb.html*/
+.yjzhXxfbGridDiv th, .yjzhXxfbGridDiv td{text-align: center;}
+.yjzhXxfbGridDiv .field-dojoId {width:45px;}
+.yjzhXxfbGridDiv .field-userName {width:250px;}
+.yjzhXxfbGridDiv .field-tel {width:200px;}
+/***yjzhXxsc.html*/
+.yjzhXxscGridDiv th, .yjzhXxscGridDiv td{text-align: center;}
+.yjzhXxscGridDiv .field-dojoId {width:45px;}
+.yjzhXxscGridDiv .field-userName {width:250px;}
+.yjzhXxscGridDiv .field-tel {width:200px;}
+/***yjzhYjya.html*/
+.yjzhYaGridDiv th, .yjzhYaGridDiv td{text-align: center;}
+.yjzhYaGridDiv .field-dojoId {width:45px;}
+.yjzhYaGridDiv .field-userName {width:250px;}
+.yjzhYaGridDiv .field-tel {width:200px;}
+/***yjzhYjzs.html*/
+.yjzsGridDiv th,.yjzsGridDiv td{text-align: center;}
+.yjzsGridDiv .field-dojoId {width:45px;}
+.yjzsGridDiv .field-userName {width:250px;}
+.yjzsGridDiv .field-tel {width:200px;}
+/***yjzhZhdd.html*/
+.yjzhZhddGridDiv th, .yjzhZhddGridDiv td{text-align: center;}
+.yjzhZhddGridDiv .field-dojoId {width:45px;}
+.yjzhZhddGridDiv .field-userName {width:250px;}
+.yjzhZhddGridDiv .field-tel {width:200px;}
+/***yjzhZhdd_v1.html*/
+.yjzhZhddGridDiv th, .yjzhZhddGridDiv td{text-align: center;}
+.yjzhZhddGridDiv .field-dojoId {width:45px;}
+.yjzhZhddGridDiv .field-userName {width:250px;}
+.yjzhZhddGridDiv .field-tel {width:200px;}
+/***yjzhZhiban.html*/
+.yjzhZbGridDiv th, .yjzhZbGridDiv td{text-align: center;}
+.yjzhZbGridDiv .field-dojoId {width:45px;}
+.yjzhZbGridDiv .field-userName {width:250px;}
+.yjzhZbGridDiv .field-tel {width:200px;}
+/***yhqxgl.html*/
+.yhqxgltable th, .yhqxgltable td{text-align: center;}
+.yhqxgltable .field-dojoId {width:45px;}
+.yhqxgltable .field-name {width:100px;}
+.yhqxgltable .field-username {width:100px;}
+.yhqxgltable .field-job {width:100px;}
+.yhqxgltable .field-competenceid {width:300px;}
+/***gwqxgl.html*/
+.gwqxgltable th, .gwqxgltable td{text-align: center;}
+.gwqxgltable .field-dojoId {width:45px;}
+.gwqxgltable .field-job {width:100px;}
+.gwqxgltable .field-competenceid {width:300px;}
+/***fwpjxx.html*/
+.fwpjxxtable th, .fwpjxxtable td{text-align: center;}
+.fwpjxxtable .field-dojoId {width:45px;}
+.fwpjxxtable .field-name {width:120px;}
+.fwpjxxtable .field-vhic {width:120px;}
+.fwpjxxtable .field-color {width:120px;}
+.fwpjxxtable .field-time{width:120px;}
+.fwpjxxtable .field-advice {width:120px;}
+/***raodao.html*/
+.raodaotable .field-id {width: 40px;}
+.raodaotable .field-SPEED_TIME {width: 160px;}
+/***jjqyc.html*/
+.jjqyctable .field-id {width: 40px;}
+.jjqyctable .field-SPEED_TIME {width: 160px;}
+
+
+
+.beonduty_Box {width: 370px; height: 556px; margin-left: 25%; font-family: '黑体'; background: #7db2df;}
+[class$='_Box'] {background: url('../resources/images/zbb.jpg') no-repeat!important;}
+[class$='_Box'] > div {text-align: center;  color: #4976b9;}
+[class$='_Box'] .title {padding: 23px 0px 45px; font-size: 30px; text-align: center; text-shadow: 2px 2px 2px #000; color: #ff0000;}
+.currentDate { margin-bottom: 30px; padding-top: 10px; font-size: 18px; font-weight: bold;}
+.currentDate iii{margin-left: 2px;}
+.currentDate .month, .currentDate .week {margin-left: 17px;}
+.zhiban {margin-top: 20px; font-size: 20px; font-weight: bold;}
+.beonduty_Box .name {width: 160px; height: 35px; line-height: 35px; margin: 10px auto; font-size: 24px; color: #000000; background: #d0ecf8;}
+.beonduty_Box .phone { width: 240px; margin: 0px auto; margin-top: 25px; font-size: 18px; text-align: left; color: #000000;}
+.beonduty_Box .phone > div {margin: 15px 0px;}
+.beonduty_Box .phone > div ._tel {width: 150px; height: 30px; line-height: 30px; padding-left: 10px; display: inline-block; background: #cfecf8;}
+
+.body_Box {width: 370px; height: 556px; position: relative; font-family: '黑体';}
+.body_Box > div {text-align: center;  color: #4976b9;}
+.body {height: 30px; margin: 0px -150px; position: absolute; left: 50%;}
+.body > span {width: 100px;height: 30px; border-bottom: 2px solid #fa0202;  display: block;  float: left; }
+.body { margin-bottom: 30px; padding-top: 10px; font-size: 18px; font-weight: bold;}
+.form{position: relative;  top: 50px;}
+.form ul, .form ul li {list-style-type: none; margin: 0px; padding: 0px;}
+.form ul li{  margin: 18px 0;}
+.form ul li span{  width:100px;height: 20px;display:inline-block;text-align:center; font-size: 14px;font-family: '黑体';}
+.form ul li span.name1 {text-align: center;}
+/****/
+/**查询等待图表*/
+.loadingcss{
+	background-image: url('../resources/images/loading1.gif'); 
+	width: 12px; 
+	height: 12px; 
+    display: none;
+	}
+/** 应急指挥中  查询与统计*/
+.cxytjtable .field-dojoId {width:45px;}
+
+

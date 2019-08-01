@@ -1,0 +1,11 @@
+<html>
+<!-- 里程统计 -->
+<head>
+    <script type="text/javascript" src="app/html/monitor/zclfx.js"></script>
+</head>
+<body>
+<div id="zclfxdiv"></div>
+<div id="zclfxtable" class="zclfxtable" style="height: 350px;" ></div>
+<div id="zclfxtb" style="height:330px;"></div>
+</body>
+</html>

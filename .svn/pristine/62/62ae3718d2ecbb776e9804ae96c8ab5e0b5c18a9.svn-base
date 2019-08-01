@@ -1,0 +1,400 @@
+<!--视频监控-->
+<html>
+<head>
+<style type="text/css">
+
+</style>
+ <script type="text/javascript" src="app/html/yjzh/cljk.js"></script> 
+
+</head>
+<body class="claro">
+	
+	<div id="yhGridDiv4" data-dojo-type="dijit/layout/BorderContainer"
+		data-dojo-props="persist:true,gutters:false,liveSplitters:true"
+		style="height:100%;margin-top: 10px;">
+		<div id="bs_sjmiaoshu" data-dojo-type="dijit/layout/ContentPane"
+			data-dojo-props=" region:'left'"
+			style="width:15%;padding: 0px;margin: 0px;">
+			<div id="sj_bs2"></div>
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane"
+			data-dojo-props=" region:'right'"
+			style="width:85%;padding: 0px;margin: 0px;height: 100%">
+			<OBJECT codebase=".\TLMDVRAx.CAB#version=1,0,4,5" ID="TLMDvrAx" name="TLMDvrAx" CLASSID="CLSID:15AB9520-D6EF-499B-AB7F-906AB0BA04AD" events="true" HEIGHT=581 WIDTH=709 align="top"></OBJECT>
+		</div>
+		
+	</div>
+</body>
+<script language="JavaScript" type="text/JavaScript"> 
+function do_login()
+{
+	document.getElementById("TLMDvrAx").LoginStyle = 0;
+	var szServerIP = "192.168.0.82";
+	var nSeverPort = 10000;
+	var szUserName = "admin";
+	var szPassWord = "njty";
+	var nRet = document.getElementById("TLMDvrAx").LoginServer(szServerIP, nSeverPort, szUserName, szPassWord);
+	if (nRet)
+	{
+		//document.getElementById("login_layer").innerHTML = "";
+		//document.getElementById("login_layer").style.display = "none";
+		//document.getElementById("preview_layer").style.display = "block";
+		document.getElementById("TLMDvrAx").ShowWndStyle = 4;
+	}
+	else
+	{
+		alert("登陆失败！");
+	}
+}
+
+function do_logout()
+{
+	document.getElementById("TLMDvrAx").Logout();
+}
+
+function SubmitKeyClick()
+{
+	if (event.keyCode   ==   13)
+    {
+        document.getElementById("btnOk").focus();
+     }
+
+}
+
+function set_winnum()
+{
+	var nWinNum = parseInt(document.getElementById("txtWinNum").value);
+
+	if (nWinNum)
+	{
+		document.getElementById("TLMDvrAx").ShowWndStyle = nWinNum;
+	}
+}
+
+function get_devlist()
+{
+	var i;
+	var nDevCount = document.getElementById("TLMDvrAx").StartGetDeviceList();
+	var DevInfo;
+
+	document.getElementById("DevList").innerText = "\n设备总数为" + nDevCount.toString();
+
+	for (i = 0; i < nDevCount; i++)
+	{
+		DevInfo = document.getElementById("TLMDvrAx").GetNextDeviceInfo();
+		document.getElementById("DevList").innerText += "\n\n设备" + (i + 1).toString() + ":\n" + DevInfo;
+	}
+}
+
+
+function start_chn(vhic,td)
+{
+	//var nChnNum = parseInt(document.getElementById("txtChnNum").value);
+	//var DevId = document.getElementById("txtDevId").value;
+
+	document.getElementById("TLMDvrAx").PlayVideo(vhic, td);
+}
+
+function stop_chn()
+{
+	document.getElementById("TLMDvrAx").StopVideo();
+}
+
+function set_gps(bOpen)
+{
+	document.getElementById("TLMDvrAx").SetDeviceGPSInfoNotify(bOpen);
+}
+
+function start_rec()
+{
+	var txtFilePath = document.getElementById("txtPathFileName").value;
+	if (0 == document.getElementById("TLMDvrAx").StartRecord(txtFilePath))
+	{
+		alert("启动录像成功");
+	}
+	else
+	{
+		alert("启动录像失败");
+	}
+}
+
+function stop_rec()
+{
+	document.getElementById("TLMDvrAx").StopRecord();
+}
+
+function snap_pic()
+{
+	var txtFilePath = document.getElementById("txtSnapFileName").value;
+	if (0 == document.getElementById("TLMDvrAx").SnapPicture(txtFilePath))
+	{
+		alert("抓图成功");
+	}
+	else
+	{
+		alert("抓图失败");
+	}
+}
+
+function SearchTodayRec()
+{
+	var nChnNum = parseInt(document.getElementById("txtSearchChnNum").value);
+	var DevId = document.getElementById("txtSearchDevId").value;
+	var now = new Date();
+	var nMsTime  = now.getTime();
+	var nEndTime = (nMsTime + 999) / 1000;
+	var nStartTime = 0;//(nEndTime / (3600 * 24)) * (3600 * 24);
+	var nRet = document.getElementById("TLMDvrAx").StartRemoteFileSearch(DevId, 1 << nChnNum, 0x10, nStartTime, nEndTime);
+	var i;
+	document.getElementById("RecSearchResult").innerText = "\n录像总数为" + nRet.toString();
+	for (i = 0; i < (nRet > 10 ? 10 : nRet); i++)
+	{
+		var RecInfo = document.getElementById("TLMDvrAx").GetNextRemoteFileInfo(DevId);
+		document.getElementById("RecSearchResult").innerText += "\n\n录像" + (i + 1).toString() + ":" + RecInfo;
+		if (0 == i)
+		{
+			var txtWords = RecInfo.split(/\s+/);
+			var txtFileName = txtWords[9].split(":");
+			var txtFileOffset = txtWords[8].split(":");
+			var txtFileSize = txtWords[7].split(":");
+			document.getElementById("TLMDvrAx").StartRemoteFileDownload(DevId, txtFileName[1], parseInt(txtFileOffset[1]), parseInt(txtFileSize[1]), "c:\\testdown.ifv");
+		}
+	}
+}
+
+function StopDownRec()
+{
+	var DevId = document.getElementById("txtSearchDevId").value;
+
+	document.getElementById("TLMDvrAx").StopRemoteFileDownload(DevId);
+}
+//获取车牌号码
+function get_carNo() 
+{
+     var DevId = document.getElementById("txtGetCarId").value;
+     
+     if(DevId!="")
+     {        
+        var carno = document.getElementById("TLMDvrAx").GetDeviceConfig(DevId,"LPN");                
+        if(carno=="")
+           alert("返回空");
+        else
+           document.getElementById("TextCarNo").innerText = carno;
+     }
+     else
+     {
+         alert("请填写设备id");    
+         document.getElementById("txtGetCarId").focus(); 
+     }
+}
+//设置车牌号码
+function set_carNo()
+{
+     var carno = document.getElementById("TextCarNo").value;
+     var DevId = document.getElementById("txtGetCarId").value;
+     if(DevId!="")
+     {        
+        var val = document.getElementById("TLMDvrAx").SetDeviceConfig(DevId,"LPN",carno);
+        if(parseInt(val)==0)
+           alert("设置成功"); 
+        else
+           alert("设置失败，错误号: "+val);         
+     }
+     else
+     {
+         alert("请填写设备id");    
+         document.getElementById("txtGetCarId").focus();  
+     }
+}
+
+//在当前激活窗口开始远程文件回放  long 成功返回0，其余失败值见错误码
+ function StartRemoteRecFilePlay()
+ {
+     var DevId = document.getElementById("txtFilePlayId").value;
+     var filename = document.getElementById("txtFilePlayName").value; 
+     var Offset = document.getElementById("txtOffset").value;    
+     var val = 1;  
+     if(DevId=="")
+    {
+         alert("请填写设备id");    
+         document.getElementById("txtFilePlayId").focus();        
+    }
+    else if(filename=="")
+     {        
+         alert("请填写文件名");    
+         document.getElementById("txtFilePlayName").focus();  
+     }
+     else if(Offset=="")
+     {        
+         alert("请填写偏移量");    
+         document.getElementById("txtOffset").focus();  
+     }
+    else
+    {
+       val = document.getElementById("TLMDvrAx").StartRemoteRecFilePlay(DevId,filename, parseInt(Offset));
+           if(val!=0)
+             alert("执行失败，失败码："+val);   
+    }
+  
+/*    
+ if((DevId!="")&&(filename!=""))
+     {
+            var RecInfo = document.getElementById("TLMDvrAx").GetNextRemoteFileInfo(DevId);
+            var txtWords = RecInfo.split(/\s+/);
+			var txtFileName = txtWords[9].split(":");
+			var txtFileOffset = txtWords[8].split(":");
+			var txtFileSize = txtWords[7].split(":");			
+            val = document.getElementById("TLMDvrAx").StartRemoteRecFilePlay(DevId,filename, parseInt(Offset));
+           if(val!=0)
+             alert("执行失败，失败码："+val);    
+     }
+*/
+ }
+//求时间相差的秒数
+function show_date_time(v_time)
+{
+   window.setTimeout("show_date_time()", 1000);
+   BirthDay=new Date("1/1/1970 00:00:00");//起始日期 
+   today=new Date(v_time);
+   timeold=(today.getTime()-BirthDay.getTime());
+   sectimeold=timeold/1000
+   secondsold=Math.floor(sectimeold);
+   msPerDay=24*60*60*1000
+   e_daysold=timeold/msPerDay
+   daysold=Math.floor(e_daysold);
+   e_hrsold=(daysold-e_daysold)*-24;
+   hrsold=Math.floor(e_hrsold);
+   e_minsold=(hrsold-e_hrsold)*-60;
+   minsold=Math.floor((hrsold-e_hrsold)*-60);
+   seconds=Math.floor((minsold-e_minsold)*-60);
+   return daysold*24*3600 + hrsold*3600 + minsold*60 + seconds;
+  // span_dt_dt.innerHTML=daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒" ;
+}
+ //在当前激活窗口开始远程时间回放  long 成功返回0，其余失败值见错误码
+ function StartRemoteRecTimePlay()
+ {
+     var DevId = document.getElementById("txtTimePlayId").value;
+     var chn = document.getElementById("txtTimeChnNum").value; 
+     var AdultObj = document.getElementById("SelectType");
+     var type = AdultObj.options[AdultObj.selectedIndex].value;     
+     var StartTime = document.getElementById("startTimeNum").value;
+     var EndTime = document.getElementById("EndTimeNum").value;		
+     
+     if(DevId=="")	
+     {
+         alert("请填写设备id");    
+         document.getElementById("txtTimePlayId").focus();  
+     }
+     else if(chn=="")
+     {        
+         alert("请填写通道号");    
+         document.getElementById("txtTimeChnNum").focus();  
+     }
+     else if(StartTime=="")
+     {        
+         alert("请填写开始时间，");    
+         document.getElementById("startTimeNum").focus();  
+     }
+     else if(EndTime=="")
+     {        
+         alert("请填写结束时间，");    
+         document.getElementById("EndTimeNum").focus();  
+     }
+     else
+     {
+         var stime = show_date_time(StartTime);
+         var etime = show_date_time(EndTime);
+       //  alert(stime.toString()+"--"+etime.toString());
+         var val = document.getElementById("TLMDvrAx").StartRemoteRecTimePlay(DevId,parseInt(chn), parseInt(type),parseInt(stime),parseInt(etime));
+         if(val!=0)
+            alert("执行失败，失败码："+val);    
+     }
+ }
+ //停止回放
+ function StopRemoteRecPlay()
+ {               		
+     document.getElementById("TLMDvrAx").StopRemoteRecPlay();   
+ }
+  //暂停/恢复回放   long 成功返回0，其余失败值见错误码
+ function RemoteRecPlayPause()
+ {   
+     var val = 100;
+     if(document.getElementById("btnPause").value=="暂停回放")  
+     {          		
+         val =  document.getElementById("TLMDvrAx").RemoteRecPlayPause(1);   
+         if(val==0) //执行成功
+            document.getElementById("btnPause").innerText = "恢复回放";
+         else
+            alert("执行失败，失败码："+val);  
+     }
+     else
+     {
+         val =  document.getElementById("TLMDvrAx").RemoteRecPlayPause(0);   
+         if(val==0) //执行成功
+            document.getElementById("btnPause").value = "暂停回放";     
+         else
+            alert("执行失败，失败码："+val);   
+     }
+ }
+ //在当前激活窗口获取播放位置百分比
+ function RemoteRecPlayGetPos()
+ {                    		
+       var val =  document.getElementById("TLMDvrAx").RemoteRecPlayGetPos();   
+       var str = (val*100).toString().split(".");
+       var rel = str[0] +"%";
+       document.getElementById("txtwz").innerText = rel;//(val*100).toString().substring(0,3)+"%";  
+ }
+ //在当前激活窗口设置播放位置百分比  long 成功返回0，其余失败值见错误码
+ function RemoteRecPlaySetPos()
+ {                    		
+       var val = 1;  
+       var wz = document.getElementById("txtwz").value;
+       if(wz!="")
+       {
+          if(wz.indexOf("%")>0)
+             wz = wz.substr(0,wz.length-1);     
+          var wzint = parseFloat(wz)/100;
+          val =  document.getElementById("TLMDvrAx").RemoteRecPlaySetPos(wzint);  
+       
+       }
+       if(val!=0)
+          alert("执行失败，失败码："+val);    
+ }
+ //在当前激活窗口远程回放上一段 long 成功返回0，其余失败值见错误码
+ function RemoteRecPlayPrevSeg()
+ {     
+       var val = 1;                		
+       val =  document.getElementById("TLMDvrAx").RemoteRecPlayPrevSeg();     
+       if(val!=0)
+          alert("执行失败，失败码："+val);            
+ }
+ //在当前激活窗口远程回放下一段 long 成功返回0，其余失败值见错误码
+ function RemoteRecPlayNextSeg()
+ {       
+       var val = 1;             		
+       val =  document.getElementById("TLMDvrAx").RemoteRecPlayNextSeg();   
+       if(val!=0)
+          alert("执行失败，失败码："+val);            
+ }
+</script>
+
+<script language="JavaScript" type="text/JavaScript" event="DeviceGPSInfo(szGPSInfo)" for="TLMDvrAx">
+	var txtGpsInfo = document.getElementById("GpsHistory").innerText;
+	if (0 == txtGpsInfo.length || txtGpsInfo.length > 400)
+	{
+		document.getElementById("GpsHistory").innerText = szGPSInfo;
+	}
+	else
+	{
+		document.getElementById("GpsHistory").innerText += "\n\n" + szGPSInfo;
+	}
+</script>
+
+<script language="JavaScript" type="text/JavaScript" event="DownloadProgress(szDeviceID, szSaveFileName, nErrCode, nCurPos, nTotalSize)" for="TLMDvrAx">
+	document.getElementById("txtProgress").innerText = szDeviceID;
+	document.getElementById("txtProgress").innerText += " " + szSaveFileName;
+	document.getElementById("txtProgress").innerText += " Err:" + nErrCode.toString();
+	document.getElementById("txtProgress").innerText += " Cur:" + nCurPos.toString();
+	document.getElementById("txtProgress").innerText += " Total:" + nTotalSize.toString();
+</script>
+</html>

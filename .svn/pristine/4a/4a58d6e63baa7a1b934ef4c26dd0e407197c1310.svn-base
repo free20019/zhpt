@@ -1,0 +1,21 @@
+<!-- 业户查询 -->
+<html>
+<head>
+	<script type="text/javascript" src="app/html/monitor/ybdc.js"></script>
+	<style>
+		.ybdcDiv th,.ybdcDiv td {text-align: center;}
+		.ybdcDiv .field-dojoId {width: 45px;}
+		.ybdcDiv .field-COMPNAME {width: 80px;}
+		.ybdcDiv .field-PLATENUMBER {width: 120px;}
+		.ybdcDiv .field-VIN {width: 200px;}
+		.ybdcDiv .field-NAME {width: 100px;}
+		.ybdcDiv .field-IDCARDNUMBER {width: 200px;}
+		.ybdcDiv .field-TRANSACTION {width: 100px;}
+		.ybdcDiv .field-COMPLAINTS {width: 100px;}
+	</style>
+</head>
+<body>
+<div id="ybdcdiv"></div>
+<div id="ybdctable"  class="ybdcDiv" style="height:90%"></div>
+</body>
+</html>
